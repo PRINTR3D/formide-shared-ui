@@ -18,4 +18,4 @@ Fork this repository to create a custom native UI. You will need to create the f
 `SliceFinished.qml`
 `SliceFailed.qml`
 
-Additionally (most likely) you will have to create the rest of the pages, depending on your requests, in order to have a complete UI.
+Additionally (most likely) you will have to create the rest of the pages, depending on your requests, in order to have a complete UI. 
