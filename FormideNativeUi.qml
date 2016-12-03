@@ -234,7 +234,7 @@ Window {
 
     // /!\ Printer specific timers need to be implemented out of here, in main.qml
 
-    // Timeout for printer status override
+    // Timer for printer status override
     Timer{
         id:statusBlockedTimer
         running:false
@@ -246,7 +246,7 @@ Window {
     }
 
 
-    // Timeout to check Wi-Fi status
+    // Timer to check Wi-Fi status
     Timer {
         id: wifiTimer
         interval: 15000
@@ -261,7 +261,7 @@ Window {
         }
     }
 
-    // Initial timer to keep login in. It stops after connecting with Formide
+    // Initial loop to login in. It stops after connecting with Formide.
     Timer {
         id: loginTimer
         interval: 20000
