@@ -10,16 +10,33 @@
 
 .pragma library
 // Includes
-.import "Http.js" as HttpHelper
-.import "formide.js" as Formide
+//.import "Http.js" as HttpHelper
+//.import "formide.js" as Formide
 
 
+function usb(){
+    return{
+
+        updateDriveFilesFromPath:function(callback){return updateDriveFilesFromPath(callback);},
+        updateDrivePath:function(driveP){return updateDrivePath(driveP);},
+        updateDriveListing:function(i){return updateDriveListing(i)},
+        updateDriveUnit:function(driveU){return updateDriveUnit(driveU)}
+
+        // TO be finished
+
+
+
+
+
+
+    }
+}
 
 /*************
  LIBRARY IMPLEMENTATION
  ************/
 
-function updateDriveFilesFromPath(){
+function updateDriveFilesFromPath(callback){
 
     var driveUnit=Formide.driveUnit
     var drivePath=Formide.drivePath
@@ -27,7 +44,10 @@ function updateDriveFilesFromPath(){
 
     readDrive(driveUnit,drivePath,function(err,list){
         if(err)
+        {
             console.log("Error: ",err);
+            callback(err,null);
+        }
         if(list)
         {
             //console.log("Response: ",list);
@@ -40,6 +60,8 @@ function updateDriveFilesFromPath(){
                         return file;
                 }
             });
+
+            callback(null,list);
         }
     });
 }

@@ -14,6 +14,20 @@
 .import "formide.js" as Formide
 
 
+function wifi(){
+    return{
+
+        getRegistrationCode:function(callback){return getRegistrationCode(callback)},
+        checkConnection:function(callback) {return checkConnection(callback)},
+        getSingleNetwork:function(callback){return getSingleNetwork(callback)},
+        getList:function(callback){return getList(callback)},
+        reset:function(callback){return reset(callback)},
+        connect:function(ssid,password,callback){return connect(ssid,password,callback)}
+
+    }
+}
+
+
 
 /*************
  NATIVE IMPLEMENTATION

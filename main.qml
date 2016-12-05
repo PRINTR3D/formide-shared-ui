@@ -9,17 +9,21 @@
 
 import QtQuick 2.3
 import QtQuick.Controls 1.2
-
-import "formide/formide.js" as Formide
+import QtQuick.Window 2.2
 
 FormideNativeUi {
-
     id:main
-    visible: true
     title: qsTr("Formide Native UI")
 
     Label {
         text: "Please build a beautiful UI"
         anchors.centerIn: parent
     }
+
+    Component.onCompleted: {
+
+        console.log("HOLO")
+    }
+
+
 }

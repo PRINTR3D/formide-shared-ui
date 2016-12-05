@@ -27,7 +27,7 @@ var material = materials[materialSelected].id
 var printer = uniquePrinter.id
 */
 
-function slice(modelfiles, sliceprofile, materials, printer/*, settings*/, callback) {
+function slice(modelfiles, sliceprofile, materials, printer, callback) {
 
     var payload =
             {

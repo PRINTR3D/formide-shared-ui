@@ -1,6 +1,24 @@
 
 .pragma library
 
+.import "formideAuth.js" as FormideAuth
+.import "formideDatabase.js" as FormideDatabase
+.import "formidePrinter.js" as FormidePrinter
+.import "formideSlicer.js" as FormideSlicer
+.import "formideUpdate.js" as FormideAUpdate
+.import "formideUsb.js" as FormideUSB
+.import "formideWifi.js" as FormideWifi
+
+//Qt.include("formideAuth.js");
+
+//Qt.include("formideDatabase.js");
+//Qt.include("formidePrinter.js");
+//Qt.include("formideSlicer.js");
+//Qt.include("formideUpdate.js");
+//Qt.include("formideUsb.js");
+//Qt.include("formideWifi.js");
+
+
 
 // Printer status
 var printerStatus={}    // Information about printer status
@@ -97,3 +115,19 @@ var separatorColor="#6F6E6E"
 
 // Extruder selected for load/unload function
 var extruderSelected=1
+
+function auth(){
+    return FormideAuth.auth();
+}
+
+function database(){
+    return FormideDatabase.database();
+}
+
+function printers(port){
+    return FormidePrinter.printer(port);
+}
+
+function slice(modelfiles, sliceprofile, materials, printer, callback){
+    return FormideSlicer.slice(modelfiles, sliceprofile, materials, printer, callback);
+}

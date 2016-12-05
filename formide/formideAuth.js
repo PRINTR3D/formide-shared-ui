@@ -8,40 +8,46 @@
 //
 
 .pragma library
-// Includes
 .import "Http.js" as HttpHelper
-.import "formide.js" as Formide
+// Includes
 
-var accessToken = '';
 
-// call http login
-function login (username, password, callback) {
-    // only request new access token when not set yet
-    if (accessToken === '') {
+var accesstoken='';
 
-        var credentials = {
-            "email": username,
-            "password": password
-        }
-        console.log("Requesting login")
-        HttpHelper.doHttpRequest("POST", "/api/auth/login", JSON.stringify(credentials), function (err, response) {
-            // set access token
+function auth()
+{
 
-            if(err)
-                console.log("ERROR LOGIN: ",err);
+    return{
+        // call http login
+        login:function (username, password, callback) {
+            // only request new access token when not set yet
+            if (accesstoken === '') {
 
-            if(response)
-            {
-                accessToken = JSON.parse(response).access_token;
-                HttpHelper.updateAccessToken(accessToken);
-                console.log("recv bearer: "+accessToken)
-                callback(true)
+                var credentials = {
+                    "email": username,
+                    "password": password
+                }
+                console.log("Requesting login")
+                HttpHelper.doHttpRequest("POST", "/api/auth/login", JSON.stringify(credentials), function (err, response) {
+                    // set access token
+
+                    if(err)
+                        console.log("ERROR LOGIN: ",err);
+
+                    if(response)
+                    {
+                        accesstoken = JSON.parse(response).access_token;
+                        HttpHelper.updateAccessToken(accessToken);
+                        console.log("recv bearer: "+accessToken)
+                        callback(true)
+                    }
+                });
             }
-        });
-    }
-}
+        },
 
-// get access token
-function getAccessToken() {
-    return accessToken;
+        // get access token
+        getAccessToken: function() {
+            return accesstoken;
+        }
+    }
 }

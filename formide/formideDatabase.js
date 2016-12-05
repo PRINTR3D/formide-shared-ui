@@ -11,13 +11,29 @@
 // Includes
 .import "Http.js" as HttpHelper
 .import "formide.js" as Formide
-.import "formidePrinter.js" as FormidePrinter
+
+
+/*************
+ EXPOSURE
+ ************/
+function database(){
+    return{
+        getFiles: function(callback){return getFiles(callback)},
+        images: function(id,hash,callback){return images(id,hash,callback)},
+        getPrintJobs: function(callback){return getPrintJobs(callback)},
+        removeFile: function(id,callback){return removeFile(id,callback)},
+        removePrintJob: function(id,callback){return removePrintJob(id,callback)},
+        removeQueueItem: function(id,callback){return removeQueueItem(id,callback)},
+        materials: function(callback){return materials(callback)},
+        sliceprofiles: function(callback){return sliceprofiles(callback)},
+        getPrinters: function(callback){return getPrinters(callback)}
+    }
+}
 
 
 /*************
  NATIVE IMPLEMENTATION
  ************/
-
 function getFiles(callback) {
 
     // Calls HttpHelper.doHttpRequest
