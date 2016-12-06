@@ -126,3 +126,7 @@ function slice(modelfiles, sliceprofile, materials, printer, callback){
 function update(){
     return FormideUpdate.update();
 }
+
+function wifi(){
+    return FormideWifi.wifi();
+}
