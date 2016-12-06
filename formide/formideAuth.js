@@ -9,10 +9,11 @@
 
 .pragma library
 .import "Http.js" as HttpHelper
+.import "formideShared.js" as Formide
 // Includes
 
 
-var accesstoken='';
+var accesstoken=Formide.accessToken;
 
 function auth()
 {
@@ -32,7 +33,7 @@ function auth()
                     // set access token
 
                     if(err)
-                        console.log("ERROR LOGIN: ",err);
+                        console.log("Error login: ",JSON.stringify(err));
 
                     if(response)
                     {

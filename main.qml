@@ -22,7 +22,6 @@ FormideNativeUi {
 
     Component.onCompleted: {
 
-        console.log("HOLO")
     }
 
 

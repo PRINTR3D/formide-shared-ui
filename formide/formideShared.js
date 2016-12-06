@@ -19,6 +19,7 @@ var printJobs=[]
 
 // UI Status - general
 var initialized=false       // UI is initialised
+var accessToken=''
 var loggedIn=false          // UI is authenticated
 
 // UI password for touch screen
