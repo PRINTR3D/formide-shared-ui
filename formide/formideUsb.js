@@ -17,17 +17,18 @@
 function usb(){
     return{
 
+        // Need callback implementation
         updateDriveFilesFromPath:function(callback){return updateDriveFilesFromPath(callback);},
+        updateDriveUnit:function(driveU,callback){return updateDriveUnit(driveU,callback)},
+        copyFile:function(callback){return copyFile(callback)},
+        scanDrives:function(callback){return scanDrives(callback)},
+
+        // Update var values
         updateDrivePath:function(driveP){return updateDrivePath(driveP);},
-        updateDriveListing:function(i){return updateDriveListing(i)},
-        updateDriveUnit:function(driveU){return updateDriveUnit(driveU)}
+        updateDriveListing:function(i){return updateDriveListing(i)}
 
-        // TO be finished
-
-
-
-
-
+        // Mount has private implementation
+        //mount:function(drive,callback){return mount(drive,callback)}
 
     }
 }
@@ -36,40 +37,9 @@ function usb(){
  LIBRARY IMPLEMENTATION
  ************/
 
-function updateDriveFilesFromPath(callback){
-
-    var driveUnit=Formide.driveUnit
-    var drivePath=Formide.drivePath
-
-
-    readDrive(driveUnit,drivePath,function(err,list){
-        if(err)
-        {
-            console.log("Error: ",err);
-            callback(err,null);
-        }
-        if(list)
-        {
-            //console.log("Response: ",list);
-            Formide.driveListing=0;
-
-            Formide.driveFiles=list.filter(function(file) {
-                if (file.name)
-                {
-                    if(file.name.toLowerCase().indexOf(".gcode") !== -1 || file.name.toLowerCase().indexOf(".stl") !== -1 || file.type=="dir")
-                        return file;
-                }
-            });
-
-            callback(null,list);
-        }
-    });
-}
-
 // Update drive path to read files
 function updateDrivePath(driveP){
     Formide.drivePath=driveP;
-
 }
 
 // Update drive listing
@@ -77,72 +47,47 @@ function updateDriveListing(i){
     Formide.driveListing=i;
 }
 
-// Update drive unit which we read from
-function updateDriveUnit(driveU){
-    Formide.driveUnit=driveU;
-
-    Formide.usb().mount(driveU,function(err,response){
-        if(err)
-            console.log("Error: ",err);
-        if(response)
-            //console.log("Response: ",response);
-            if(response.message=="drive mounted")
-            {
-                updateDriveFilesFromPath()
-            }
-    });
-}
-
-// Scan drive units
-function scanDrives()
-{
-    Formide.usb().scanDrives(function(list)
-    {
-
-        if(list.length>0 && list[0]!=="platform-musb*part*")
-        {
-            //console.log("Updating drives list: ",list)
-            Formide.driveFiles= list;
-        }
-        else
-        {
-            //console.log("Not updating drive")
-            Formide.driveFiles = [];
-        }
-    });
-}
-
 
 /*************
  NATIVE IMPLEMENTATION
  ************/
 
-function readDrive(drive,path,callback) {
+function updateDriveFilesFromPath(callback){
 
-    //console.log("Reading drive");
+    var driveUnit=Formide.driveUnit
+    var drivePath=Formide.drivePath
 
     var data=
     {
-        "path":path
+        "path":drivePath
     }
 
-    var res = encodeURIComponent(drive);
-
-    //console.log("URL: ",res);
+    var res = encodeURIComponent(driveUnit);
 
     HttpHelper.doHttpRequest("GET", "/api/files/read/"+res, data, function (err, list) {
 
+
         if(err)
-            console.log("Response ERR: ",err);
+        {
+            console.log("Error reading drive: ",err);
+            callback(err,null);
+        }
         if(list)
         {
-            //console.log("Response OK: ",list)
-            callback(null,JSON.parse(list));
+            Formide.driveListing=0;
+
+            Formide.driveFiles=list.filter(function(file) {
+                if (file.name)
+                {
+                    if(file.name.toLowerCase().indexO(".gcode") !== -1 || file.name.toLowerCase().indexOf(".stl") !== -1 || file.type=="dir")
+                        return file;
+                }
+            });
+            callback(null,list);
         }
     });
 }
 
-// Needs callback implementation
 function copyFile(callback) {
 
     var drive = Formide.driveUnit;
@@ -177,6 +122,23 @@ function copyFile(callback) {
 
 }
 
+function updateDriveUnit(driveU,callback){
+    Formide.driveUnit=driveU;
+
+    mount(driveU,function(err,response){
+        if(err)
+        {
+            console.log("Error mounting drive: ",err);
+            callback(err,null);
+        }
+        if(response)
+            //console.log("Response mounting drive: ",response);
+            if(response.message=="drive mounted")
+            {
+                updateDriveFilesFromPath(callback)
+            }
+    });
+}
 
 function scanDrives(callback) {
 
@@ -184,19 +146,34 @@ function scanDrives(callback) {
     HttpHelper.doHttpRequest("GET", "/api/files/drives", {}, function (err, list) {
 
         if(err)
-            console.log("Response ERR: ",err);
+        {
+            console.log("Error scanning drives: ",err);
+            callback(err,null)
+        }
         if(list)
         {
-            console.log("Response: ",list);
-            callback(JSON.parse(list));
+            console.log("Response scanning drives: ",list);
+            if(list.length>0 && list[0]!=="platform-musb*part*")
+            {
+                //console.log("Updating drives list: ",list)
+                Formide.driveFiles= list;
+            }
+            else
+            {
+                //console.log("Not updating drive")
+                Formide.driveFiles = [];
+            }
         }
 
     });
 
 }
+
 function mount(drive,callback) {
 
     //console.log("Mounting drive");
+
+
     var res = encodeURIComponent(drive);
     HttpHelper.doHttpRequest("POST", "/api/files/mount/"+res, "", function (err, response) {
 
@@ -211,6 +188,7 @@ function mount(drive,callback) {
     });
 
 }
+
 function unmount(drive,callback) {
 
     //console.log("Unmounting drive");
