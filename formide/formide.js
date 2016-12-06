@@ -11,17 +11,6 @@
 
 .import "formideShared.js" as FormideShared
 
-//Qt.include("formideAuth.js");
-
-//Qt.include("formideDatabase.js");
-//Qt.include("formidePrinter.js");
-//Qt.include("formideSlicer.js");
-//Qt.include("formideUpdate.js");
-//Qt.include("formideUsb.js");
-//Qt.include("formideWifi.js");
-
-
-
 // Printer status
 var printerStatus=FormideShared.printerStatus
 var amountValue=FormideShared.amountValue

@@ -20,14 +20,6 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 1.2
 import Qt.WebSockets 1.0
 
-import "formide/formideAuth.js" as FormideAuth
-import "formide/formideDatabase.js" as FormideDatabase
-import "formide/formidePrinter.js" as FormidePrinter
-import "formide/formideSlicer.js" as FormideSlicer
-import "formide/formideUpdate.js" as FormideAUpdate
-import "formide/formideUsb.js" as FormideUSB
-import "formide/formideWifi.js" as FormideWifi
-
 import "formide/formide.js" as Formide
 
 Window {
