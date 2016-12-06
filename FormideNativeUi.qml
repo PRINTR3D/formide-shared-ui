@@ -161,11 +161,12 @@ Window {
                 {
                     //console.log(JSON.stringify(data.data))
 
-                    if(data.data.status != "connecting")
+                    // Only use printer status after printer is Online
+                    if(data.data.status !== "connecting")
                     {
                         Formide.printerStatus=data.data
 
-                        //TODO: Move out of here
+                        // If the app is not initialized, we initialize it and get the current client version
                         if(!initialized && loggedIn)
                         {
                             initialized=true
@@ -175,16 +176,15 @@ Window {
 
                     }
 
-                    if(data.data.status=="printing")
+                    // If printer is printing, print job id needs to be updated
+                    if(data.data.status==="printing")
                     {
-                        if(Formide.currentPrintJob!==data.data.queueItemId)
+                        if(Formide.currentPrintJobId!==data.data.queueItemId)
                         {
-                            Formide.currentPrintJob = data.data.queueItemId;
+                            Formide.currentPrintJobId = data.data.queueItemId;
                             Formide.printer(printerStatus.port).getQueue();
                         }
                     }
-
-
                 }
 
             }

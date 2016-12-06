@@ -96,7 +96,6 @@ function printer (port) {
                 if(response)
                 {
                    //console.log("Response get queue",JSON.stringify(response));
-
                    for (var i in data) {
                        if (data[i].id === Formide.currentQueueItemId)
                        {
