@@ -146,7 +146,7 @@ function removeQueueItem(id,callback) {
             // Console.log("Response remove queue item",response);
 
             // After removing a queue item, update queue (TODO: Remove it when implementing the socket event for queue item added)
-            FormidePrinter.printer(Formide.printerStatus.port).getQueue();
+            //FormidePrinter.printer(Formide.printerStatus.port).getQueue();
             if(callback)
                 callback(null,response)
         }
