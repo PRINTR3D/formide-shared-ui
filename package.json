@@ -1,0 +1,22 @@
+{
+  "name": "formide-shared-ui",
+  "version": "0.0.1",
+  "description": "Shared code base for all formide-native-ui's made with Qt Quick",
+  "main": "FormideNativeUi.qml",
+  "scripts": {
+    "test": "ls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PRINTR3D/formide-shared-ui.git"
+  },
+  "keywords": [
+    "fnui"
+  ],
+  "author": "printr3d",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PRINTR3D/formide-shared-ui/issues"
+  },
+  "homepage": "https://github.com/PRINTR3D/formide-shared-ui#readme"
+}
