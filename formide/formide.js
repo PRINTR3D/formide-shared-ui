@@ -5,7 +5,7 @@
 .import "formideDatabase.js" as FormideDatabase
 .import "formidePrinter.js" as FormidePrinter
 .import "formideSlicer.js" as FormideSlicer
-.import "formideUpdate.js" as FormideAUpdate
+.import "formideUpdate.js" as FormideUpdate
 .import "formideUsb.js" as FormideUSB
 .import "formideWifi.js" as FormideWifi
 
@@ -115,10 +115,14 @@ function database(){
     return FormideDatabase.database();
 }
 
-function printers(port){
+function printer(port){
     return FormidePrinter.printer(port);
 }
 
 function slice(modelfiles, sliceprofile, materials, printer, callback){
     return FormideSlicer.slice(modelfiles, sliceprofile, materials, printer, callback);
+}
+
+function update(){
+    return FormideUpdate.update();
 }
