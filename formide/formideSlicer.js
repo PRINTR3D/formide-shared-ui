@@ -89,7 +89,7 @@ function slice(modelfiles, sliceprofile, materials, printer, callback) {
 
         if(err)
         {
-            console.log("Error Slicer",err);
+            console.log("Error Slicer",JSON.stringify(err));
             Formide.slicerError=err.message
 
             if(callback)
@@ -107,6 +107,8 @@ function slice(modelfiles, sliceprofile, materials, printer, callback) {
        {
            // Tip for implementation:
            // Slicer response gives back print job ID: response.printJob.id
+
+           console.log("Response Slicer",JSON.stringify(response));
 
            if(callback)
                callback(null,response)
