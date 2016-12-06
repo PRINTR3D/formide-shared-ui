@@ -41,7 +41,7 @@ function getFiles(callback) {
     {
         if(err)
         {
-            console.log("Error getting files"+err);
+            console.log("Error getting files",JSON.stringify(err));
             if(callback)
                 callback(err,null);
         }
@@ -58,7 +58,7 @@ function getFiles(callback) {
 
 // TODO: Rewrite image logic, having all in one place
 function images(id,hash,callback){
-        var url = "http://localhost:1337/api/db/files/"+id+"/images/"+hash+"?access_token="+accessToken;
+        var url = "http://localhost:1337/api/db/files/"+id+"/images/"+hash+"?access_token="+Formide.accessToken;
         if(callback)
             return callback(null, url);
 }
@@ -67,7 +67,7 @@ function getPrintJobs(callback) {
     HttpHelper.doHttpRequest("GET", "/api/db/printjobs", {}, function (err, printjobs) {
         if(err)
         {
-            console.log("Error getting printjobs"+err);
+            console.log("Error getting printjobs",JSON.stringify(err));
             if(callback)
                 callback(err,null);
         }
@@ -92,7 +92,7 @@ function removeFile(id,callback) {
     HttpHelper.doHttpRequest("DELETE", "/api/db/files/" + id, {}, function (err, response) {
         if(err)
         {
-            //console.log("Error deleting file",err);
+            console.log("Error deleting file",JSON.stringify(err));
             if(callback)
                 callback(err,null)
         }
@@ -114,7 +114,7 @@ function removePrintJob(id,callback) {
     HttpHelper.doHttpRequest("DELETE", "/api/db/printjobs/" + id, {}, function (err, response) {
         if(err)
         {
-            //console.log("Error deleting print job",err);
+            console.log("Error deleting print job",JSON.stringify(err));
             if(callback)
                 callback(err,null)
         }
@@ -137,7 +137,7 @@ function removeQueueItem(id,callback) {
 
         if(err)
         {
-            console.log("Error removing queue item"+err)
+            console.log("Error removing queue item",JSON.stringify(err))
             if(callback)
                 callback(err,null)
         }
@@ -159,7 +159,7 @@ function materials(callback) {
 
         if(err)
         {
-            console.log("Error get materials: "+err)
+            console.log("Error get materials: ",JSON.stringify(err))
             if(callback)
                 callback(err,null);
         }
@@ -178,7 +178,7 @@ function sliceprofiles(callback) {
     HttpHelper.doHttpRequest("GET", "/api/db/sliceprofiles", {}, function (err, sliceprofiles) {
         if(err)
         {
-            console.log("Error getting slice profiles: "+err)
+            console.log("Error getting slice profiles: ",JSON.stringify(err))
             if(callback)
                 callback(err,null);
         }
@@ -198,7 +198,7 @@ function getPrinters(callback) {
     HttpHelper.doHttpRequest("GET", "/api/db/printers", {}, function (err, printers) {
             if(err)
             {
-                console.log("Error getting printers: "+err)
+                console.log("Error getting printers: ",JSON.stringify(err))
                 if(callback)
                     callback(err,null);
             }
