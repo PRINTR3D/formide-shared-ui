@@ -34,12 +34,12 @@ function checkUpdate(callback) {
 
         if(err)
         {
-            console.log("Response ERR check updates ",err);
+            console.log("Response ERR check updates ",JSON.stringify(err));
             callback(err,null);
         }
         if(response)
         {
-            console.log("Response ",response)
+            console.log("Response ",JSON.stringify(response))
             if(response.needsUpdate)
             {
                 Formide.updateInformation=response;
@@ -68,12 +68,12 @@ function status(callback) {
 
         if(err)
         {
-            console.log("Error cloud status",err);
+            console.log("Error cloud status",JSON.stringify(err));
             callback(err,null)
         }
         if(response)
         {
-            console.log("Response cloud status",response);
+            console.log("Response cloud status",JSON.stringify(response));
             callback(response);
         }
 
@@ -85,12 +85,12 @@ function updateElement(callback) {
 
         if(err)
         {
-            console.log("Error Update Element",err);
+            console.log("Error Update Element",JSON.stringify(err));
             callback(err,null)
         }
         if (response)
         {
-//           console.log('Response Update Element', response)
+//           console.log('Response Update Element', JSON.stringify(response))
            callback(response);
         }
     });
@@ -102,12 +102,12 @@ function current(callback){
 
         if(err)
         {
-            console.log("Error Cloud Current",err);
+            console.log("Error Cloud Current",JSON.stringify(err));
             callback(err,null)
         }
         if(response)
         {
-            console.log("Response Cloud current",response)
+            console.log("Response Cloud current",JSON.stringify(response))
             return callback(response);
         }
 
