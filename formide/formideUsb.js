@@ -69,7 +69,7 @@ function updateDriveFilesFromPath(callback){
 
         if(err)
         {
-            console.log("Error reading drive: ",err);
+            console.log("Error reading drive: ",JSON.stringify(err));
             callback(err,null);
         }
         if(list)
@@ -106,7 +106,7 @@ function copyFile(callback) {
 
         if(err)
         {
-            //console.log("Response ERR: ",JSON.stringify(err));
+            console.log("Response ERR: ",JSON.stringify(err));
 
             Formide.usbError=err.message
             callback(err,null)
@@ -114,7 +114,7 @@ function copyFile(callback) {
 
         if(list)
         {
-            //console.log("Response OK: ",list)
+            //console.log("Response OK: ",JSON.stringify(list))
             callback(null,JSON.parse(list));
         }
 
@@ -128,11 +128,11 @@ function updateDriveUnit(driveU,callback){
     mount(driveU,function(err,response){
         if(err)
         {
-            console.log("Error mounting drive: ",err);
+            console.log("Error mounting drive: ",JSON.stringify(err));
             callback(err,null);
         }
         if(response)
-            //console.log("Response mounting drive: ",response);
+            //console.log("Response mounting drive: ",JSON.stringify(response));
             if(response.message=="drive mounted")
             {
                 updateDriveFilesFromPath(callback)
@@ -147,12 +147,12 @@ function scanDrives(callback) {
 
         if(err)
         {
-            console.log("Error scanning drives: ",err);
+            console.log("Error scanning drives: ",JSON.stringify(err));
             callback(err,null)
         }
         if(list)
         {
-            console.log("Response scanning drives: ",list);
+            //console.log("Response scanning drives: ",JSON.stringify(list));
             if(list.length>0 && list[0]!=="platform-musb*part*")
             {
                 //console.log("Updating drives list: ",list)
@@ -178,10 +178,13 @@ function mount(drive,callback) {
     HttpHelper.doHttpRequest("POST", "/api/files/mount/"+res, "", function (err, response) {
 
         if(err)
+        {
             console.log("Response ERR: ",JSON.stringify(err));
+            callback(err,null);
+        }
         if(response)
         {
-            //console.log("Response mount OK: ",response)
+            //console.log("Response mount OK: ",JSON.stringify(response))
             callback(null,JSON.parse(response));
         }
 
@@ -195,10 +198,13 @@ function unmount(drive,callback) {
     HttpHelper.doHttpRequest("POST", "/api/files/unmount/"+drive, {}, function (err, response) {
 
         if(err)
-            console.log("Response ERR: ",err);
+        {
+            console.log("Response ERR: ",JSON.stringify(err));
+            callback(err,null);
+        }
         if(response)
         {
-            //console.log("Response OK: ",response)
+            //console.log("Response OK: ",JSON.stringify(response))
             callback(JSON.parse(response));
         }
 
