@@ -98,7 +98,7 @@ function removeFile(id,callback) {
         }
         if (response)
         {
-            //console.log('Response deleting file', response)
+            //console.log('Response deleting file', JSON.stringify(response))
 
             // After deleting a file, we fetch them again
             getFiles();
@@ -120,7 +120,7 @@ function removePrintJob(id,callback) {
         }
         if (response)
         {
-            //console.log('Response deleting print job', response)
+            //console.log('Response deleting print job', JSON.stringify(response))
 
             // After deleting a print job, we fetch them again
             getPrintJobs();
@@ -143,7 +143,7 @@ function removeQueueItem(id,callback) {
         }
         if(response)
         {
-            // Console.log("Response remove queue item",response);
+            // Console.log("Response remove queue item",JSON.stringify(response));
 
             // After removing a queue item, update queue (TODO: Remove it when implementing the socket event for queue item added)
             //FormidePrinter.printer(Formide.printerStatus.port).getQueue();
@@ -165,7 +165,7 @@ function materials(callback) {
         }
         if(materials)
         {
-            //console.log("RESPONSE MATERIALS: " +JSON.stringify(JSON.parse(response)))
+            //console.log("RESPONSE MATERIALS: " +JSON.stringify(materials))
             Formide.materials=materials;
             if(callback)
                 callback(null,materials);
@@ -184,7 +184,7 @@ function sliceprofiles(callback) {
         }
         if(sliceprofiles)
         {
-//            console.log("Response slice profiles",sliceprofiles);
+//            console.log("Response slice profiles",JSON.stringify(sliceprofiles));
             Formide.sliceProfiles=sliceprofiles
             if(callback)
                 callback(null,sliceprofiles)
@@ -204,9 +204,8 @@ function getPrinters(callback) {
             }
             if(printers)
             {
-                //console.log("Response get printers",printers)
+                //console.log("Response get printers",JSON.stringify(printers))
                 Formide.printers=printers;
-
 
                 // In this piece of code we make sure that the printer selected
                 // and used in this UI is the one connected and online
