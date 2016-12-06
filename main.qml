@@ -20,9 +20,5 @@ FormideNativeUi {
         anchors.centerIn: parent
     }
 
-    Component.onCompleted: {
-
-    }
-
 
 }
