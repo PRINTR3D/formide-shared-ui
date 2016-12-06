@@ -59,11 +59,11 @@ function printer (port) {
         // Sends custom gcode to printer
         gcode: function(gcode) {
            //console.log("Sending: "+gcode)
-            var jsonSent =
+            var payload =
                     {
                     "command": gcode
                     }
-            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/gcode", JSON.stringify(jsonSent));
+            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/gcode", JSON.stringify(payload));
         },
 
 
@@ -88,14 +88,14 @@ function printer (port) {
 
                 if(err)
                 {
-                    //console.log("Error loading queue",err)
+                    console.log("Error loading queue",JSON.stringify(err))
                     Formide.loadingQueue=false;
                     if(callback)
                         return callback(err,null);
                 }
                 if(response)
                 {
-                   console.log("Response get queue",response);
+                   //console.log("Response get queue",JSON.stringify(response));
 
                    for (var i in data) {
                        if (data[i].id === Formide.currentQueueItemId)
@@ -134,13 +134,13 @@ function printer (port) {
 
                 if(err)
                 {
-                    console.log("Error adding custom gcode to print jobs: "+err)
+                    console.log("Error adding custom gcode to print jobs: "+JSON.stringify(err))
                     if(callback)
                         return callback(err,null)
                 }
                 if(response)
                 {
-                    //console.log('Response add custom gcode to print jobs: ', response)
+                    //console.log('Response add custom gcode to print jobs: ', JSON.stringify(response))
 
                     // If necessary, we can add print job to Queue and print it
                     if(addToQueueToo || directPrint)
@@ -169,13 +169,13 @@ function printer (port) {
 
                 if(err)
                 {
-                    //console.log("Error adding a file to queue",err);
+                    console.log("Error adding a file to queue",JSON.stringify(err));
                     if(callback)
                         return callback(err,null)
                 }
                 if (response)
                 {
-                    //console.log('Response adding a file to queue', response)
+                    //console.log('Response adding a file to queue', JSON.stringify(response))
 
                     // After adding a file to queue, we update our queue items (to be removed with event implementation)
                     printer(port).getQueue();
@@ -205,13 +205,13 @@ function printer (port) {
                 }, function(err,response){
                     if(err)
                     {
-                        //console.log("Error printing a file from file system",err);
+                        console.log("Error printing a file from file system",JSON.stringify(err));
                         if(callback)
                             return callback(err,null)
                     }
                     if (response)
                     {
-                        console.log("Response print a file from file system",response)
+//                        console.log("Response print a file from file system",JSON.stringify(response))
                         if(callback)
                             return callback(null,response)
                     }
@@ -227,13 +227,13 @@ function printer (port) {
             }, function (err,response){
                 if(err)
                 {
-                    //console.log("Error starting a print",err);
+                    console.log("Error starting a print",JSON.stringify(err));
                     if(callback)
                         return callback(err,null)
                 }
                 if (response)
                 {
-                    console.log("Response starting a print",response)
+//                    console.log("Response starting a print",JSON.stringify(response))
                     if(callback)
                         return callback(null,response)
                 }
