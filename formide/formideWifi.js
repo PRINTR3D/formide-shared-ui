@@ -39,12 +39,12 @@ function getRegistrationCode(callback)
     HttpHelper.doHttpRequest("GET","/api/cloud/code",{},function(err,response){
         if(err)
         {
-            console.log("Error registraton token"+err);
+            console.log("Error registraton token"+JSON.stringify(err));
             callback(err,null);
         }
         if(response)
         {
-            console.log("Response registration token: ",response);
+            console.log("Response registration token: ",JSON.stringify(response));
             Formide.registrationToken=response.code.toString();
             callback(null,response);
         }
@@ -58,7 +58,7 @@ function checkConnection(callback) {
 
         if(err)
         {
-            console.log("Error Is Connected",err);
+            console.log("Error checking connection",JSON.stringify(err));
             callback(err,null);
         }
         if(response)
@@ -68,7 +68,7 @@ function checkConnection(callback) {
                 Formide.isConnectedToWifi=response.connected
                 Formide.ipAddress=response.internalIp;
             }
-//            console.log("Response Is Connected",response);
+//            console.log("Response checking connection",JSON.stringify(response));
             callback(null,response);
         }
 
@@ -86,6 +86,7 @@ function getSingleNetwork(callback) {
             callback(null, net);
         }
         catch (e) {
+            console.log("Exception checking network",e)
             callback(e,null);
         }
     });
@@ -108,6 +109,7 @@ function getList(callback) {
             callback(null, wifiArray);
         }
         catch (e) {
+            console.log("Exception getting network list",e)
             callback(e);
         }
     });
@@ -125,12 +127,12 @@ function reset(callback) {
 
         if(err)
         {
-            console.log("Error reset Wi-Fi",err);
+            console.log("Error reset Wi-Fi",JSON.stringify(err));
             callback(err,null);
         }
         if (response)
         {
-           //console.log('Response reset Wi-Fi', response)
+           //console.log('Response reset Wi-Fi', JSON.stringify(response))
             Formide.singleNetwork=""
             Formide.wifiList=[]
             callback(null,response.message);
@@ -149,13 +151,15 @@ function connect(ssid,password,callback) {
 
         if(err)
         {
-            console.log("Error connecting to Wi-Fi",err);
+            console.log("Error connecting to Wi-Fi",JSON.stringify(err));
             callback(err,null);
         }
         if (response)
         {
 
             // Check connection immediately after connecting
+
+            console.log("Response connecting to network",JSON.stringify(response))
             checkConnection();
             callback(null,response.message);
         }
