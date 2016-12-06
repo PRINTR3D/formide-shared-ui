@@ -62,14 +62,9 @@ Window {
     // Printer status update
     onPrinterStatusChanged:{
 
-//        if(statusBlocked==false){
 
-//            leftRatioValue=printerStatus.ratio;
-//            rightRatioValue=100-printerStatus.ratio;
+        //
 
-//            speedValue=printerStatus.speedMultiplier;
-//            amountValue=printerStatus.flowRate;
-//        }
     }
 
     function login(){
@@ -164,10 +159,6 @@ Window {
 
                 if(data.channel === "printer.status")
                 {
-
-                    //TODO: Rewrite and implement this somewhere else
-                    // Convert in event
-
                     //console.log(JSON.stringify(data.data))
 
                     if(data.data.status != "connecting")
@@ -178,21 +169,18 @@ Window {
                         if(!initialized && loggedIn)
                         {
                             initialized=true
-                            getEverything()
-                            splash.visible=false
 
-                            getCurrentClientVersion()
+                            Formide.update().getCurrentClientVersion()
                         }
 
                     }
 
                     if(data.data.status=="printing")
                     {
-                        //console.log("currentprintjob: "+currentPrintJob)
-                        if(currentPrintJob!==data.data.queueItemId)
+                        if(Formide.currentPrintJob!==data.data.queueItemId)
                         {
-                            currentPrintJob = data.data.queueItemId;
-                            getQueue()
+                            Formide.currentPrintJob = data.data.queueItemId;
+                            Formide.printer(printerStatus.port).getQueue();
                         }
                     }
 
