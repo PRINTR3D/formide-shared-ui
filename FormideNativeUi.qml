@@ -70,18 +70,18 @@ Window {
     // Printer status update
     onPrinterStatusChanged:{
 
-        if(statusBlocked==false){
+//        if(statusBlocked==false){
 
-            leftRatioValue=printerStatus.ratio;
-            rightRatioValue=100-printerStatus.ratio;
+//            leftRatioValue=printerStatus.ratio;
+//            rightRatioValue=100-printerStatus.ratio;
 
-            speedValue=printerStatus.speedMultiplier;
-            amountValue=printerStatus.flowRate;
-        }
+//            speedValue=printerStatus.speedMultiplier;
+//            amountValue=printerStatus.flowRate;
+//        }
     }
 
     function login(){
-        Formide.login('admin@local', 'admin',function(callback){
+        Formide.auth().login('admin@local', 'admin',function(callback){
             if(callback==true)
             {
                 if(Formide.getAccessToken().length > 29)
