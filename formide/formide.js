@@ -9,6 +9,8 @@
 .import "formideUsb.js" as FormideUSB
 .import "formideWifi.js" as FormideWifi
 
+.import "formideShared.js" as FormideShared
+
 //Qt.include("formideAuth.js");
 
 //Qt.include("formideDatabase.js");
@@ -21,75 +23,75 @@
 
 
 // Printer status
-var printerStatus={}    // Information about printer status
-var amountValue=100     // TODO: Change to flowRateValue
-var speedValue=100      // TODO: Change to speedMultiplierValue
+var printerStatus=FormideShared.printerStatus
+var amountValue=FormideShared.amountValue
+var speedValue=FormideShared.speedValue
 
 // Printer status blocked for override
-var statusBlocked=false
+var statusBlocked=FormideShared.statusBlocked
 
 // Formide Data
-var materials=[]
-var printers=[]
-var sliceProfiles=[]
-var fileItems=[]
-var queueItems=[]
-var printJobs=[]
+var materials=FormideShared.materials
+var printers=FormideShared.printers
+var sliceProfiles=FormideShared.sliceProfiles
+var fileItems=FormideShared.fileItems
+var queueItems=FormideShared.queueItems
+var printJobs=FormideShared.printJobs
 
 // UI Status - general
-var initialized=false       // UI is initialised
-var loggedIn=false          // UI is authenticated
+var initialized=FormideShared.initialized
+var loggedIn=FormideShared.loggedIn
 
 // UI password for touch screen
-var isLocked=false
-var passcode
+var isLocked=FormideShared.isLocked
+var passcode=FormideShared.passcode
 
 // Print Job Status
-var uniquePrinter           // Printer used for slicing
-var uniquePrintJob          // TODO: Get rid of this variable
-var currentPrintJobId       // Current print job for display
-var currentPrintJob         // Current print job for display
-var currentQueueItemId      // Current queue item for display
+var uniquePrinter=FormideShared.uniquePrinter
+var uniquePrintJob=FormideShared.uniquePrintJob
+var currentPrintJobId =FormideShared.currentPrintJobId
+var currentPrintJob =FormideShared.currentPrintJob
+var currentQueueItemId=FormideShared.currentQueueItemId
 
 // Slice Data
-var slicing= false
-var fileNameSelected
-var modelFileSelected
-var materialSelected
-var qualitySelected
-var printerSelected
+var slicing=FormideShared.slicing
+var fileNameSelected=FormideShared.fileNameSelected
+var modelFileSelected=FormideShared.modelFileSelected
+var materialSelected=FormideShared.materialSelected
+var qualitySelected=FormideShared.qualitySelected
+var printerSelected=FormideShared.printerSelected
 
 // Error Data - Error messages that will be displayed
-var usbError=""
-var slicerError=""
-var queueError=""
+var usbError=FormideShared.usbError
+var slicerError=FormideShared.slicerError
+var queueError=FormideShared.queueError
 
 // USB Data
-var driveFiles=[]           // Array of files and dirs found
-var driveListing            // Toggle to see if content is file list or drive list
-var drivePath               // Current folder path
-var driveUnit               // Name of drive unit
+var driveFiles=FormideShared.driveFiles
+var driveListing=FormideShared.driveListing
+var drivePath =FormideShared.drivePath
+var driveUnit =FormideShared.driveUnit
 
 // Update Data
-var updateInformation       // Update information from callback
-var updateAvailable=false   // Boolean
+var updateInformation=FormideShared.updateInformation
+var updateAvailable=FormideShared.updateAvailable
 
 // Wi-Fi Data
-var ssidToConnect           // Name of network to connect to
-var wifiList=[]             // Array of SSIDs
-var isConnectedToWifi=false // Boolean
-var singleNetwork           // Network currently connected to
-var registrationToken=""    // Cloud registration token
-var wifiAction=false        // TODO: Get rid of this
+var ssidToConnect=FormideShared.ssidToConnect
+var wifiList=FormideShared.wifiList
+var isConnectedToWifi=FormideShared.isConnectedToWifi
+var singleNetwork=FormideShared.singleNetwork
+var registrationToken=FormideShared.registrationToken
+var wifiAction=FormideShared.wifiAction
 
 // Formide-client Data
-var currentClientVersion=""
-var ipAddress
-var macAddress
+var currentClientVersion=FormideShared.currentClientVersion
+var ipAddress=FormideShared.ipAddress
+var macAddress=FormideShared.macAddress
 
 
 // Intermitent variables
-var loadingQueue=false;     // Used for "Loading" message. TODO: Get rid of this
+var loadingQueue=FormideShared.loadingQueue
 
 
 /* MOVE TO BUILDER UI */
@@ -97,24 +99,24 @@ var loadingQueue=false;     // Used for "Loading" message. TODO: Get rid of this
 // (Keeping it here for now)
 
 // Extruder ratio variables
-var leftRatioValue=100
-var rightRatioValue=0
-var timeoutRatio=1000
+var leftRatioValue=FormideShared.leftRatioValue
+var rightRatioValue=FormideShared.rightRatioValue
+var timeoutRatio=FormideShared.timeoutRatio
 
 // Colors
-var backgroundColor="#ECECEC"
-var statusBackgroundColor="#D2D2D2"
-var leftStatusBackgroundColor="#E1E1E1"
-var temperatureColor="#6F6E6E"
-var targetColor="#8A8A8A"
-var separatorColor="#6F6E6E"
+var backgroundColor=FormideShared.backgroundColor
+var statusBackgroundColor=FormideShared.statusBackgroundColor
+var leftStatusBackgroundColor=FormideShared.leftStatusBackgroundColor
+var temperatureColor=FormideShared.temperatureColor
+var targetColor=FormideShared.targetColor
+var separatorColor=FormideShared.separatorColor
 
 /* MOVE TO FELIX UI */
 /*********************/
 // (Keeping it here for now)
 
 // Extruder selected for load/unload function
-var extruderSelected=1
+var extruderSelected=FormideShared.extruderSelected
 
 function auth(){
     return FormideAuth.auth();

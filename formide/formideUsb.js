@@ -10,8 +10,8 @@
 
 .pragma library
 // Includes
-//.import "Http.js" as HttpHelper
-//.import "formide.js" as Formide
+.import "Http.js" as HttpHelper
+.import "formideShared.js" as Formide
 
 
 function usb(){
@@ -139,9 +139,7 @@ function readDrive(drive,path,callback) {
             //console.log("Response OK: ",list)
             callback(null,JSON.parse(list));
         }
-
     });
-
 }
 
 // Needs callback implementation

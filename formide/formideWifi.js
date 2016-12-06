@@ -11,7 +11,7 @@
 .pragma library
 // Includes
 .import "Http.js" as HttpHelper
-.import "formide.js" as Formide
+.import "formideShared.js" as Formide
 
 
 function wifi(){

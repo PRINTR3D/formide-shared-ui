@@ -11,25 +11,7 @@ Item {
 
     Component.onCompleted:
     {
-        FormideUSB.copyFile(function(err,response){
-            if(err)
-            {
-                console.log("Error USB: ",JSON.stringify(err));
 
-
-                if(pagestack.depth>1)
-                    pagestack.pop()
-                main.pushPagestack("ErrorUsb.qml")
-            }
-
-            if(response)
-            {
-                if(pagestack.depth>1)
-                    pagestack.pop();
-                getFiles();
-
-            }
-        });
     }
 
 }
