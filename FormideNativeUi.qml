@@ -283,7 +283,7 @@ Window {
             anchors.fill: parent
             focus: true
 
-            initialItem: Qt.resolvedUrl("Home.qml")
+            initialItem: Qt.resolvedUrl("../../../Home.qml")
 
 
             delegate: StackViewDelegate {
