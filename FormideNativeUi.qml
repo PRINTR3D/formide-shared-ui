@@ -92,7 +92,7 @@ Window {
 
     function pushPagestack(page)
     {
-        pagestack.push(Qt.resolvedUrl(page))
+        pagestack.push(page)
     }
 
 
@@ -283,7 +283,7 @@ Window {
             anchors.fill: parent
             focus: true
 
-            initialItem: Qt.resolvedUrl("TemplateUsb.qml")
+            initialItem: Qt.resolvedUrl("Home.qml")
 
 
             delegate: StackViewDelegate {
