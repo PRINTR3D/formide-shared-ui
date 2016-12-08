@@ -251,7 +251,7 @@ Window {
         onTriggered:
         {
            console.log("Connecting")
-            if(Formide.getAccessToken().length < 30)
+            if(Formide.auth().getAccessToken().length < 30)
                 login()
             else
             {
