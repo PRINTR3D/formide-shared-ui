@@ -1,9 +1,10 @@
 .pragma library
+.import "formideShared.js" as FormideShared
+
 Qt.include("socketParser.js");
 
 // vars
-var baseUrl = 'http://127.0.0.1:1337';
-//var baseUrl = 'http://10.0.1.72:1337';
+var baseUrl = 'http://'+FormideShared.backendIP+':1337';
 
 var accessToken = '';
 var globalPort;

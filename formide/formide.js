@@ -12,6 +12,7 @@
 .import "formideShared.js" as FormideShared
 
 // UI Library version
+var backendIP = FormideShared.backendIP
 var sharedUiVersion= FormideShared.sharedUiVersion
 
 // Printer status

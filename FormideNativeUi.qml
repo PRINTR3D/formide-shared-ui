@@ -113,12 +113,7 @@ Window {
             }));
         }
         id: sock
-
-//      Use localhost (for production)
-        url: "ws://127.0.0.1:3001"
-
-//      Use this IP for remote access (for development)
-//        url: "ws://10.0.1.69:3001"
+        url:"ws://"+Formide.backendIP+":3001"
 
         onTextMessageReceived: {
             try {
