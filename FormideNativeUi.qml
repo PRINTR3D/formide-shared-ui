@@ -71,9 +71,9 @@ Window {
         Formide.auth().login('admin@local', 'admin',function(callback){
             if(callback==true)
             {
-                if(Formide.getAccessToken().length > 29)
+                if(Formide.auth().getAccessToken().length > 29)
                 {
-                    getIsConnectedToWifi()
+                    Formide.wifi().checkConnection()
                     loginTimer.repeat = false
                     loginTimer.stop()
 

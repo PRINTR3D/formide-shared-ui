@@ -37,9 +37,9 @@ function auth()
 
                     if(response)
                     {
-                        accesstoken = JSON.parse(response).access_token;
-                        HttpHelper.updateAccessToken(accessToken);
-                        console.log("recv bearer: "+accessToken)
+                        accesstoken = response.access_token;
+                        HttpHelper.updateAccessToken(accesstoken);
+                        console.log("recv bearer: "+accesstoken)
                         callback(true)
                     }
                 });
