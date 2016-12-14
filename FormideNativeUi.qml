@@ -108,7 +108,7 @@ Window {
                 channel: "authenticate",
                 data: {
                     type: "user",
-                    accessToken: /*savedAccessToken*/Formide.getAccessToken()
+                    accessToken: /*savedAccessToken*/Formide.auth().getAccessToken()
                 }
             }));
         }

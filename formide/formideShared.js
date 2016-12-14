@@ -3,7 +3,7 @@
 
 // UI
 var backendIP = "127.0.0.1" // For production, we use Localhost
-var backendIP = "10.1.0.65" // Sometimes, for development, we use the IP of an Element
+//var backendIP = "10.1.0.65" // Sometimes, for development, we use the IP of an Element
 var sharedUiVersion
 
 // Printer status
