@@ -1,10 +1,13 @@
 
 .pragma library
 
+//
+var sharedUiVersion
+
 // Printer status
 var printerStatus={}    // Information about printer status
-var amountValue=100     // TODO: Change to flowRateValue
-var speedValue=100      // TODO: Change to speedMultiplierValue
+var flowRateValue=100
+var speedMultiplierValue=100
 
 // Printer status blocked for override
 var statusBlocked=false
@@ -28,7 +31,6 @@ var passcode
 
 // Print Job Status
 var uniquePrinter           // Printer used for slicing
-var uniquePrintJob          // TODO: Get rid of this variable
 var currentPrintJobId       // Current print job for display
 var currentPrintJob         // Current print job for display
 var currentQueueItemId      // Current queue item for display
@@ -62,17 +64,11 @@ var wifiList=[]             // Array of SSIDs
 var isConnectedToWifi=false // Boolean
 var singleNetwork           // Network currently connected to
 var registrationToken=""    // Cloud registration token
-var wifiAction=false        // TODO: Get rid of this
 
 // Formide-client Data
 var currentClientVersion=""
 var ipAddress
 var macAddress
-
-
-// Intermitent variables
-var loadingQueue=false;     // Used for "Loading" message. TODO: Get rid of this
-
 
 /* MOVE TO BUILDER UI */
 /***********************/

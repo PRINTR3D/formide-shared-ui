@@ -11,6 +11,9 @@
 
 .import "formideShared.js" as FormideShared
 
+// UI Library version
+var sharedUiVersion= FormideShared.sharedUiVersion
+
 // Printer status
 var printerStatus=FormideShared.printerStatus
 var amountValue=FormideShared.amountValue
