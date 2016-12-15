@@ -75,7 +75,7 @@ function getPrintJobs(callback) {
         {
 
 //            console.log("Response get printjobs",JSON.stringify(printjobs));
-            Formide.printJobs = data.filter(function(printJob) {
+            Formide.printJobs = printjobs.filter(function(printJob) {
                 if (printJob.sliceFinished)
                     return printJob;
             });
@@ -212,7 +212,7 @@ function getPrinters(callback) {
                 for (var i in printers) {
                     if (printers[i].port == Formide.printerStatus.port)
                     {
-                        Formide.uniquePrinter=data[i]
+                        Formide.uniquePrinter=printers[i]
                     }
                 }
 
