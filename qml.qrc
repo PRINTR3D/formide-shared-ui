@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
         <file>FormideNativeUi.qml</file>
         <file>formide/formide.js</file>
         <file>formide/formideAuth.js</file>
@@ -16,7 +15,6 @@
         <file>main.cpp</file>
         <file>qml.qrc</file>
         <file>VirtualKeyboard.qml</file>
-        <file>TemplateUsb.qml</file>
         <file>formide/formideShared.js</file>
     </qresource>
 </RCC>
