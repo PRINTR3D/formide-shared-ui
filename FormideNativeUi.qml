@@ -85,17 +85,6 @@ Window {
         });
     }
 
-    function popPagestack()
-    {
-        pagestack.pop()
-    }
-
-    function pushPagestack(page)
-    {
-        pagestack.push(page)
-    }
-
-
 /************************************
      WEBSOCKET EVENTS
 ************************************/
@@ -256,58 +245,5 @@ Window {
             }
         }
     }
-
-
-/************************************
-      MAIN PAGE STACK
-*************************************/
-
-    // This is the main page stack (StackView) of the application.
-    // You can push pages and pop them by simply calling the functions push and pop
-
-
-    Rectangle{
-
-        width:parent.width
-        height:parent.height
-        rotation:0
-
-        StackView
-        {
-            id:pagestack
-            anchors.fill: parent
-            focus: true
-
-            initialItem: Qt.resolvedUrl("../../../Home.qml")
-
-
-            delegate: StackViewDelegate {
-                    function transitionFinished(properties)
-                    {
-                        properties.exitItem.opacity = 1
-                    }
-
-                    pushTransition: StackViewTransition {
-                        PropertyAnimation {
-                            target: enterItem
-                            property: "opacity"
-                            from: 0
-                            to: 1
-                            duration: 0
-                        }
-                        PropertyAnimation {
-                            target: exitItem
-                            property: "opacity"
-                            from: 1
-                            to: 0
-                            duration: 0
-                        }
-                    }
-
-                } // delegate
-
-        }//Stackview
-
-    }// Rectangle
 
 }
