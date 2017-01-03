@@ -7,7 +7,7 @@ var backendIP = "127.0.0.1" // For production, we use Localhost
 var sharedUiVersion
 
 // Printer status
-var printerStatus={}    // Information about printer status
+var printerStatus    // Information about printer status
 var flowRateValue=100
 var speedMultiplierValue=100
 
