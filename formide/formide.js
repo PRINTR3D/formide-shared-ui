@@ -60,6 +60,7 @@ var slicerError=FormideShared.slicerError
 var queueError=FormideShared.queueError
 
 // USB Data
+var usbAvailable=FormideShared.usbAvailable
 var driveFiles=FormideShared.driveFiles
 var driveListing=FormideShared.driveListing
 var drivePath =FormideShared.drivePath

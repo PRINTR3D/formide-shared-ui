@@ -51,6 +51,7 @@ var slicerError=""
 var queueError=""
 
 // USB Data
+var usbAvailable=false
 var driveFiles=[]           // Array of files and dirs found
 var driveListing            // Toggle to see if content is file list or drive list
 var drivePath               // Current folder path
