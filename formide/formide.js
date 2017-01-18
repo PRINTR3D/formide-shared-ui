@@ -71,6 +71,7 @@ var updateInformation=FormideShared.updateInformation
 var updateAvailable=FormideShared.updateAvailable
 
 // Wi-Fi Data
+var APMode=FormideShared.APMode
 var ssidToConnect=FormideShared.ssidToConnect
 var wifiList=FormideShared.wifiList
 var isConnectedToWifi=FormideShared.isConnectedToWifi

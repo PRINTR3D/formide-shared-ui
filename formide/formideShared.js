@@ -62,6 +62,7 @@ var updateInformation       // Update information from callback
 var updateAvailable=false   // Boolean
 
 // Wi-Fi Data
+var APMode=false
 var ssidToConnect           // Name of network to connect to
 var wifiList=[]             // Array of SSIDs
 var isConnectedToWifi=false // Boolean
