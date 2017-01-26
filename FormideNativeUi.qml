@@ -278,6 +278,23 @@ Window {
 
     }
 
+    // Check: Maybe we don't need to call it here
+    function connectToWifi(ssid,password)
+    {
+
+        Formide.wifi().connect(ssid,password,function (err, response) {
+
+            if(err)
+            {
+                console.log("Error connecting to Wi-Fi",JSON.stringify(err));
+            }
+            if (response)
+            {
+                console.log("Response connecting to network",JSON.stringify(response))
+            }
+        });
+    }
+
 
 
 
