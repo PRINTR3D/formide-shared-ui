@@ -290,6 +290,7 @@ Window {
             }
             if (response)
             {
+                checkConnection()
                 console.log("Response connecting to network",JSON.stringify(response))
             }
         });

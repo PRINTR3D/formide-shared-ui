@@ -170,7 +170,6 @@ function connect(ssid,password,callback) {
             // Check connection immediately after connecting
 
             console.log("Response connecting to network",JSON.stringify(response))
-            checkConnection();
             if(callback)
                 callback(null,response.message);
         }
