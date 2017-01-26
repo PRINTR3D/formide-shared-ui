@@ -66,8 +66,8 @@ function checkConnection(callback) {
         {
             if(response.connected)
             {
-                Formide.isConnectedToWifi=response.connected
-                Formide.ipAddress=response.internalIp;
+//                Formide.isConnectedToWifi=response.connected
+//                Formide.ipAddress=response.internalIp;
             }
 //            console.log("Response checking connection",JSON.stringify(response));
             if(callback)
@@ -84,7 +84,6 @@ function getSingleNetwork(callback) {
     HttpHelper.doHttpRequest("GET", "/api/cloud/network", {}, function (err, network) {
         try {
             var net = network.ssid;
-            Formide.singleNetwork=net;
             if(callback)
                 callback(null, net);
         }
@@ -110,7 +109,6 @@ function getList(callback) {
 
 
 //            console.log("Found "+wifiArray.length+" networks")
-            Formide.wifiList=wifiArray;
             if(callback)
                 callback(null, wifiArray);
         }
@@ -141,8 +139,6 @@ function reset(callback) {
         if (response)
         {
            //console.log('Response reset Wi-Fi', JSON.stringify(response))
-            Formide.singleNetwork=""
-            Formide.wifiList=[]
             if(callback)
                 callback(null,response.message);
         }
