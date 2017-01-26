@@ -11,7 +11,6 @@
 .pragma library
 // Includes
 .import "Http.js" as HttpHelper
-.import "formideShared.js" as Formide
 
 
 function wifi(){
@@ -39,14 +38,13 @@ function getRegistrationCode(callback)
     HttpHelper.doHttpRequest("GET","/api/cloud/code",{},function(err,response){
         if(err)
         {
-            console.log("Error registraton token"+JSON.stringify(err));
+            console.log("Error registraton token",JSON.stringify(err));
             if(callback)
                 callback(err,null);
         }
         if(response)
         {
-            console.log("Response registration token: ",JSON.stringify(response));
-            Formide.registrationToken=response.code.toString();
+            console.log("Response registration token",JSON.stringify(response));
             if(callback)
                 callback(null,response);
         }
@@ -55,7 +53,7 @@ function getRegistrationCode(callback)
 }
 
 function checkConnection(callback) {
-    //console.log("Checking if it's connected!");
+//    console.log("Checking if it's connected!");
     HttpHelper.doHttpRequest("GET", "/api/cloud/status", {}, function (err, response) {
 
         if(err)
@@ -102,6 +100,7 @@ function getSingleNetwork(callback) {
 
 function getList(callback) {
 
+//    console.log("Retrieving Wi-Fi list")
     HttpHelper.doHttpRequest("GET", "/api/cloud/networks", {}, function (err, list) {
         try {
             var wifiArray = [];
