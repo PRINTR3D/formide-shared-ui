@@ -468,6 +468,40 @@ Window {
     }
 
 /************************************
+     MAIN LOGIC - Slicer
+************************************/
+
+    function slice(modelfiles,sliceprofile,materials)
+    {
+        Formide.slice().slice(modelfiles,sliceprofile,materials,uniquePrinter,function (err, response) {
+
+            if(err)
+            {
+                console.log("Error Slicer",JSON.stringify(err));
+                slicerError=err.message
+
+                // TIP for callback implementation
+                /*
+                if(pagestack.depth>1)
+                    pagestack.pop()
+                pagestack.push(Qt.resolvedUrl("ErrorSlicer.qml"));
+                */
+
+            }
+           if(response)
+           {
+               // Tip for implementation:
+               // Slicer response gives back print job ID: response.printJob.id
+
+               console.log("Response Slicer",JSON.stringify(response));
+           }
+
+        });
+    }
+
+
+
+/************************************
      MAIN LOGIC - Wi-Fi
 ************************************/
 
