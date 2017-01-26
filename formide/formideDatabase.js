@@ -41,14 +41,11 @@ function getFiles(callback) {
     {
         if(err)
         {
-            console.log("Error getting files",JSON.stringify(err));
             if(callback)
                 callback(err,null);
         }
         if(files)
         {
-//          console.log("Response get files",JSON.stringify(response));
-            Formide.fileItems=files;
             if(callback)
                 callback(null,files);
         }
@@ -67,19 +64,11 @@ function getPrintJobs(callback) {
     HttpHelper.doHttpRequest("GET", "/api/db/printjobs", {}, function (err, printjobs) {
         if(err)
         {
-            console.log("Error getting printjobs",JSON.stringify(err));
             if(callback)
                 callback(err,null);
         }
         if(printjobs)
         {
-
-//            console.log("Response get printjobs",JSON.stringify(printjobs));
-            Formide.printJobs = printjobs.filter(function(printJob) {
-                if (printJob.sliceFinished)
-                    return printJob;
-            });
-
             if(callback)
                 callback(null,printjobs);
         }
@@ -92,17 +81,11 @@ function removeFile(id,callback) {
     HttpHelper.doHttpRequest("DELETE", "/api/db/files/" + id, {}, function (err, response) {
         if(err)
         {
-            console.log("Error deleting file",JSON.stringify(err));
             if(callback)
                 callback(err,null)
         }
         if (response)
         {
-            //console.log('Response deleting file', JSON.stringify(response))
-
-            // After deleting a file, we fetch them again
-            getFiles();
-
             if(callback)
                 callback(null,response);
         }
@@ -114,17 +97,11 @@ function removePrintJob(id,callback) {
     HttpHelper.doHttpRequest("DELETE", "/api/db/printjobs/" + id, {}, function (err, response) {
         if(err)
         {
-            console.log("Error deleting print job",JSON.stringify(err));
             if(callback)
                 callback(err,null)
         }
         if (response)
         {
-            //console.log('Response deleting print job', JSON.stringify(response))
-
-            // After deleting a print job, we fetch them again
-            getPrintJobs();
-
             if(callback)
                 callback(null,response);
         }
@@ -137,16 +114,12 @@ function removeQueueItem(id,callback) {
 
         if(err)
         {
-            console.log("Error removing queue item",JSON.stringify(err))
             if(callback)
                 callback(err,null)
         }
         if(response)
         {
-            // Console.log("Response remove queue item",JSON.stringify(response));
 
-            // After removing a queue item, update queue (TODO: Remove it when implementing the socket event for queue item added)
-            //FormidePrinter.printer(Formide.printerStatus.port).getQueue();
             if(callback)
                 callback(null,response)
         }
@@ -159,14 +132,11 @@ function materials(callback) {
 
         if(err)
         {
-            console.log("Error get materials: ",JSON.stringify(err))
             if(callback)
                 callback(err,null);
         }
         if(materials)
         {
-            //console.log("RESPONSE MATERIALS: " +JSON.stringify(materials))
-            Formide.materials=materials;
             if(callback)
                 callback(null,materials);
         }
@@ -178,14 +148,11 @@ function sliceprofiles(callback) {
     HttpHelper.doHttpRequest("GET", "/api/db/sliceprofiles", {}, function (err, sliceprofiles) {
         if(err)
         {
-            console.log("Error getting slice profiles: ",JSON.stringify(err))
             if(callback)
                 callback(err,null);
         }
         if(sliceprofiles)
         {
-//            console.log("Response slice profiles",JSON.stringify(sliceprofiles));
-            Formide.sliceProfiles=sliceprofiles
             if(callback)
                 callback(null,sliceprofiles)
         }
@@ -198,24 +165,11 @@ function getPrinters(callback) {
     HttpHelper.doHttpRequest("GET", "/api/db/printers", {}, function (err, printers) {
             if(err)
             {
-                console.log("Error getting printers: ",JSON.stringify(err))
                 if(callback)
                     callback(err,null);
             }
             if(printers)
             {
-                //console.log("Response get printers",JSON.stringify(printers))
-                Formide.printers=printers;
-
-                // In this piece of code we make sure that the printer selected
-                // and used in this UI is the one connected and online
-                for (var i in printers) {
-                    if (printers[i].port == Formide.printerStatus.port)
-                    {
-                        Formide.uniquePrinter=printers[i]
-                    }
-                }
-
                 if(callback)
                     callback(null,printers)
             }

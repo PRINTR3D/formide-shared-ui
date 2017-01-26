@@ -163,6 +163,13 @@ Window {
 
     }
 
+
+
+
+/************************************
+     MAIN LOGIC - Auth
+************************************/
+
     function login(){
         Formide.auth().login('admin@local', 'admin',function(callback){
             if(callback==true)
@@ -180,6 +187,165 @@ Window {
             }
         });
     }
+
+
+/************************************
+     MAIN LOGIC - Database
+************************************/
+
+
+    function getFiles()
+    {
+        Formide.database().getFiles(function (err, files)
+        {
+            if(err)
+            {
+                console.log("Error getting files",JSON.stringify(err));
+            }
+            if(files)
+            {
+//                console.log("Response get files",JSON.stringify(response));
+                fileItems=files;
+            }
+        });
+    }
+
+    // Check: No need to be called here
+    function getImages(id,hash)
+    {
+
+    }
+
+
+    function getPrintJobs()
+    {
+        Formide.database().getPrintJobs(function (err, printjobs) {
+            if(err)
+            {
+                console.log("Error getting printjobs",JSON.stringify(err));
+            }
+            if(printjobs)
+            {
+//              console.log("Response get printjobs",JSON.stringify(printjobs));
+                printJobs = printjobs.filter(function(printJob) {
+                    if (printJob.sliceFinished)
+                        return printJob;
+                });
+            }
+        });
+    }
+
+    function removeFile(id)
+    {
+        Formide.database().removeFile(id,function (err, response) {
+            if(err)
+            {
+                console.log("Error deleting file",JSON.stringify(err));
+            }
+            if (response)
+            {
+                //console.log('Response deleting file', JSON.stringify(response))
+
+                // After deleting a file, we fetch them again
+                getFiles();
+            }
+        });
+    }
+
+
+    function removePrintJob(id)
+    {
+        Formide.database().removePrintJob(id,function (err, response) {
+            if(err)
+            {
+                console.log("Error deleting print job",JSON.stringify(err));
+            }
+            if (response)
+            {
+                //console.log('Response deleting print job', JSON.stringify(response))
+
+                // After deleting a print job, we fetch them again
+                getPrintJobs();
+            }
+        });
+    }
+
+    function removeQueueItem(id)
+    {
+
+        Formide.database().removeQueueItem(id,function (err, response) {
+
+            if(err)
+            {
+                console.log("Error removing queue item",JSON.stringify(err))
+            }
+            if(response)
+            {
+                // Console.log("Response remove queue item",JSON.stringify(response));
+
+                // After removing a queue item, update queue (TODO: Remove it when implementing the socket event for queue item added)
+                //FormidePrinter.printer(Formide.printerStatus.port).getQueue();
+            }
+        });
+    }
+
+
+    function getMaterials()
+    {
+        Formide.database().materials(function (err, material) {
+
+            if(err)
+            {
+                console.log("Error get materials: ",JSON.stringify(err))
+            }
+            if(material)
+            {
+                //console.log("RESPONSE MATERIALS: " +JSON.stringify(materials))
+                materials=material;
+            }
+        });
+
+    }
+
+    function getSliceProfiles()
+    {
+        Formide.database().sliceprofiles(function (err, sliceprofiles) {
+            if(err)
+            {
+                console.log("Error getting slice profiles: ",JSON.stringify(err))
+            }
+            if(sliceprofiles)
+            {
+    //            console.log("Response slice profiles",JSON.stringify(sliceprofiles));
+                sliceProfiles=sliceprofiles
+            }
+        });
+    }
+
+    function getPrinters()
+    {
+        Formide.database().getPrinters(function (err, printrs) {
+            if(err)
+            {
+                console.log("Error getting printers: ",JSON.stringify(err))
+            }
+            if(printrs)
+            {
+                //console.log("Response get printers",JSON.stringify(printers))
+                printers=printrs;
+
+                // In this piece of code we make sure that the printer selected
+                // and used in this UI is the one connected and online
+                for (var i in printers) {
+                    if (printers[i].port === printerStatus.port)
+                    {
+                        uniquePrinter=printers[i]
+                    }
+                }
+            }
+        });
+    }
+
 
 
 /************************************
