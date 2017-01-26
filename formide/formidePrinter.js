@@ -80,39 +80,17 @@ function printer (port) {
 
         // get queue for specific port
         getQueue: function(callback) {
-
-            Formide.loadingQueue=true;
             HttpHelper.doHttpRequest("GET", "/api/db/queue", {
                 port: "/dev/"+port
             }, function(err, response) {
 
                 if(err)
                 {
-                    console.log("Error loading queue",JSON.stringify(err))
-                    Formide.loadingQueue=false;
                     if(callback)
                         return callback(err,null);
                 }
                 if(response)
                 {
-                   //console.log("Response get queue",JSON.stringify(response));
-                   for (var i in data) {
-                       if (data[i].id === Formide.currentQueueItemId)
-                       {
-                           Formide.currentPrintJob=data[i].printJob
-                           break;
-                       }
-                   }
-
-                   // Update queue items
-                   Formide.queueItems = response.filter(function(queueItem) {
-                       if (queueItem.status == "queued")
-                           return queueItem;
-                   });
-
-
-                   Formide.loadingQueue=false;
-
                    if(callback)
                        return callback(null,response);
                 }
@@ -122,7 +100,7 @@ function printer (port) {
         // Add item to queue for specific port
         // example: Formide.printer().addToQueue(function(err, response) {});
 
-        addCustomGcodeToPrintJobs: function (gcodefileId, addToQueueToo, directPrint, callback) {
+        addCustomGcodeToPrintJobs: function (gcodefileId, callback) {
 
             var payload =
                 {
@@ -133,20 +111,11 @@ function printer (port) {
 
                 if(err)
                 {
-                    console.log("Error adding custom gcode to print jobs: "+JSON.stringify(err))
                     if(callback)
                         return callback(err,null)
                 }
                 if(response)
                 {
-                    //console.log('Response add custom gcode to print jobs: ', JSON.stringify(response))
-
-                    // If necessary, we can add print job to Queue and print it
-                    if(addToQueueToo || directPrint)
-                    {
-                        printer(Formide.printerStatus.port).addToQueue(response.printJob.id,directPrint);
-                    }
-
 
                     if(callback)
                         return callback(null,response)
@@ -156,7 +125,7 @@ function printer (port) {
         },
 
 
-        addToQueue: function(printJobId, directPrint, callback) {
+        addToQueue: function(printJobId, callback) {
 
             var payload =
                     {
@@ -168,26 +137,11 @@ function printer (port) {
 
                 if(err)
                 {
-                    console.log("Error adding a file to queue",JSON.stringify(err));
                     if(callback)
                         return callback(err,null)
                 }
                 if (response)
                 {
-                    //console.log('Response adding a file to queue', JSON.stringify(response))
-
-                    // After adding a file to queue, we update our queue items (to be removed with event implementation)
-                    printer(port).getQueue();
-
-                    // Print file after being added to queue
-                    if(directPrint)
-                    {
-                        if(response.queueItem.status==="queued")
-                        {
-                            var queueId = response.queueItem.id
-                            printer(port).start(queueId);
-                        }
-                    }
 
                     if(callback)
                         return callback(null,response);
@@ -204,13 +158,11 @@ function printer (port) {
                 }, function(err,response){
                     if(err)
                     {
-                        console.log("Error printing a file from file system",JSON.stringify(err));
                         if(callback)
                             return callback(err,null)
                     }
                     if (response)
                     {
-//                        console.log("Response print a file from file system",JSON.stringify(response))
                         if(callback)
                             return callback(null,response)
                     }

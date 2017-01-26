@@ -66,6 +66,7 @@ Window {
     property var fileItems:[]
     property var queueItems:[]
     property var printJobs:[]
+    property bool loadingQueue:false
 
     // UI Status - general
     property var initialized:false       // UI is initialised
@@ -347,6 +348,124 @@ Window {
     }
 
 
+/************************************
+     MAIN LOGIC - Printer
+************************************/
+
+
+    function getQueue()
+    {
+        loadingQueue=true;
+        Formide.printer(printerStatus.port).getQueue(function(err, response) {
+
+            if(err)
+            {
+                console.log("Error loading queue",JSON.stringify(err))
+                loadingQueue=false;
+            }
+            if(response)
+            {
+               //console.log("Response get queue",JSON.stringify(response));
+               for (var i in data) {
+                   if (data[i].id === currentQueueItemId)
+                   {
+                       currentPrintJob=data[i].printJob
+                       break;
+                   }
+               }
+
+               // Update queue items
+               queueItems = response.filter(function(queueItem) {
+                   if (queueItem.status == "queued")
+                       return queueItem;
+               });
+
+               loadingQueue=false;
+            }
+        });
+    }
+
+
+    function addCustomGcodeToPrintJobs(gcodefileId,addToQueueToo,directPrint)
+    {
+        Formide.printer(printerStatus.port).addCustomGcodeToPrintJobs(gcodefileId,function (err, response) {
+
+            if(err)
+            {
+                console.log("Error adding custom gcode to print jobs: "+JSON.stringify(err))
+            }
+            if(response)
+            {
+                //console.log('Response add custom gcode to print jobs: ', JSON.stringify(response))
+
+                // If necessary, we can add print job to Queue and print it
+                if(addToQueueToo || directPrint)
+                {
+                    addPrintJobToQueue(response.printJob.id,directPrint);
+                }
+            }
+        });
+    }
+
+    function addPrintJobToQueue(printJobId,directPrint)
+    {
+
+        Formide.printer(printerStatus.port).addToQueue(printJobId,function (err, response) {
+
+            if(err)
+            {
+                console.log("Error adding a file to queue",JSON.stringify(err));
+            }
+            if (response)
+            {
+                //console.log('Response adding a file to queue', JSON.stringify(response))
+
+                // After adding a file to queue, we update our queue items (to be removed with event implementation)
+                getQueue();
+
+                // Print file after being added to queue
+                if(directPrint)
+                {
+                    if(response.queueItem.status==="queued")
+                    {
+                        var queueId = response.queueItem.id
+                        startPrintFromQueueId(queueId);
+                    }
+                }
+            }
+        });
+    }
+
+
+    function startPrintFromQueueId(queueId)
+    {
+
+        Formide.printer(printerStatus.port).start(queueId,function (err,response){
+            if(err)
+            {
+                console.log("Error starting a print",JSON.stringify(err));
+            }
+            if (response)
+            {
+//              console.log("Response starting a print",JSON.stringify(response))
+            }
+        });
+    }
+
+
+    function startPrintFromFileSystem(filePath)
+    {
+        Formide.printer(printerStatus.port).printFileFromFileSystem(filePath,function(err,response){
+            if(err)
+            {
+                console.log("Error printing a file from file system",JSON.stringify(err));
+            }
+            if (response)
+            {
+//              console.log("Response print a file from file system",JSON.stringify(response))
+            }
+    });
+    }
 
 /************************************
      MAIN LOGIC - Wi-Fi
