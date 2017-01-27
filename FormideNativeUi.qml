@@ -21,6 +21,7 @@ import QtQuick.Controls 1.2
 import Qt.WebSockets 1.0
 
 import "formide/formide.js" as Formide
+import "formide/formideShared.js" as FormideShared
 
 Window {
     visible: true
@@ -47,7 +48,7 @@ Window {
 
 
     // UI
-    property var backendIP: Formide.backendIP
+    property var backendIP: FormideShared.backendIP
     property var sharedUiVersion
 
     // Printer status
