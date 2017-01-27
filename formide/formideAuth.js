@@ -13,7 +13,7 @@
 // Includes
 
 
-var accesstoken=Formide.accessToken;
+var accesstoken="";
 
 function auth()
 {

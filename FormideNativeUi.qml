@@ -191,7 +191,6 @@ Window {
                     // Check if this is optimal
                     getCurrentClientVersion()
                     getQueue();
-                    getPrinters()
                     getFiles();
                     getPrintJobs();
 
@@ -365,6 +364,9 @@ Window {
 
     function getQueue()
     {
+        if(!printerStatus)
+            return;
+
         loadingQueue=true;
         Formide.printer(printerStatus.port).getQueue(function(err, response) {
 
@@ -376,10 +378,10 @@ Window {
             if(response)
             {
                //console.log("Response get queue",JSON.stringify(response));
-               for (var i in data) {
-                   if (data[i].id === currentQueueItemId)
+               for (var i in response) {
+                   if (response[i].id === currentQueueItemId)
                    {
-                       currentPrintJob=data[i].printJob
+                       currentPrintJob=response[i].printJob
                        break;
                    }
                }
@@ -391,7 +393,6 @@ Window {
                    if (queueItem.status == "queued")
                        return queueItem;
                });
-
 
             }
         });
@@ -768,7 +769,7 @@ Window {
                     ipAddress=""
                 }
 
-                console.log("Response checking connection",JSON.stringify(response));
+                //console.log("Response checking connection",JSON.stringify(response));
             }
 
 
@@ -905,7 +906,7 @@ Window {
 
                 if(data.channel === "printer.status")
                 {
-                    console.log(JSON.stringify(data.data))
+                    //console.log(JSON.stringify(data.data))
 
                     // Only use printer status after printer is Online
                     if(data.data.status !== "connecting")
@@ -916,6 +917,7 @@ Window {
                         if(!initialized && loggedIn)
                         {
                             initialized=true
+                            getPrinters()
 
                         }
 
@@ -924,12 +926,12 @@ Window {
                     // If printer is printing, print job id needs to be updated
                     if(data.data.status==="printing" || data.data.status==="heating" || data.data.status==="paused")
                     {
-                        //console.log("currentprintjob: "+currentPrintJob)
+                        console.log("currentprintjob: "+currentPrintJob)
                         if(currentQueueItemId!==data.data.queueItemId)
                         {
                             currentQueueItemId = data.data.queueItemId;
 
-                            //console.log("currentprintjob updated: "+currentPrintJob)
+                            console.log("Current queue item id updated: "+currentQueueItemId)
 
                             getQueue()
                         }
