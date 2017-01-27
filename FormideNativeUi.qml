@@ -642,18 +642,16 @@ Window {
     function getWifiList(){
 
         Formide.wifi().getList(function (err, list) {
-            try {
-                var wifiArray = [];
-                for (var key in list) {
-                    wifiArray.push(list[key]['ssid']);
-                }
 
-
-                console.log("Found "+wifiArray.length+" networks")
-                wifiList=wifiArray;
+            if(err)
+            {
+                console.log("Error getting Wi-Fi list",JSON.stringify(err));
             }
-            catch (e) {
-                console.log("Exception getting network list",e)
+
+            if(list)
+            {
+                console.log("Found "+list.length+" networks")
+                wifiList=list;
             }
         });
     }

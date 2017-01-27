@@ -107,13 +107,10 @@ function getList(callback) {
                 wifiArray.push(list[key]['ssid']);
             }
 
-
-//            console.log("Found "+wifiArray.length+" networks")
             if(callback)
                 callback(null, wifiArray);
         }
         catch (e) {
-            console.log("Exception getting network list",e)
             if(callback)
                 callback(e);
         }
