@@ -751,6 +751,12 @@ Window {
                     isConnectedToWifi=response.connected
                     ipAddress=response.internalIp;
                 }
+                else
+                {
+                    isConnectedToWifi=false
+                    ipAddress=""
+                }
+
                 console.log("Response checking connection",JSON.stringify(response));
             }
 
@@ -801,6 +807,7 @@ Window {
             if (response)
             {
                //console.log('Response reset Wi-Fi', JSON.stringify(response))
+                checkConnection()
                 singleNetwork=""
                 wifiList=[]
             }
@@ -820,9 +827,9 @@ Window {
             }
             if (response)
             {
-                checkConnection()
                 console.log("Response connecting to network",JSON.stringify(response))
             }
+            checkConnection()
         });
     }
 
@@ -1011,7 +1018,7 @@ Window {
                     console.log("Wi-Fi Checking")
                     getWifiList()
                     checkConnection()
-                    getIs
+                    scanDrives() // To check if there are usb connected
                 }
 
         }
