@@ -180,7 +180,7 @@ Window {
                     loginTimer.repeat = false
                     loginTimer.stop()
 
-                    Formide.loggedIn=true
+                    loggedIn=true
                     sock.active = true
 
                     //startTimers()
@@ -570,7 +570,7 @@ Window {
     }
 
 
-    function current()
+    function getCurrentClientVersion()
     {
         Formide.update().current(function (err, response) {
 
@@ -720,7 +720,7 @@ Window {
             }));
         }
         id: sock
-        url:"ws://"+Formide.backendIP+":3001"
+        url:"ws://"+backendIP+":3001"
 
         onTextMessageReceived: {
             try {
@@ -766,14 +766,14 @@ Window {
                     // Only use printer status after printer is Online
                     if(data.data.status !== "connecting")
                     {
-                        Formide.printerStatus=data.data
+                        printerStatus=data.data
 
                         // If the app is not initialized, we initialize it and get the current client version
                         if(!initialized && loggedIn)
                         {
                             initialized=true
 
-                            Formide.update().getCurrentClientVersion()
+                            getCurrentClientVersion()
                         }
 
                     }
@@ -781,10 +781,10 @@ Window {
                     // If printer is printing, print job id needs to be updated
                     if(data.data.status==="printing")
                     {
-                        if(Formide.currentPrintJobId!==data.data.queueItemId)
+                        if(currentPrintJobId!==data.data.queueItemId)
                         {
-                            Formide.currentPrintJobId = data.data.queueItemId;
-                            Formide.printer(printerStatus.port).getQueue();
+                            currentPrintJobId = data.data.queueItemId;
+                            getQueue();
                         }
                     }
                 }
@@ -821,7 +821,7 @@ Window {
         id:statusBlockedTimer
         running:false
         repeat:false
-        interval:Formide.timeoutRatio*5
+        interval:timeoutRatio*5
         onTriggered: {
             statusBlocked=false
         }
@@ -842,8 +842,8 @@ Window {
                 if(printerStatus.status==="online" || printerStatus.status==="printing" || printerStatus.status==="heating")
                 {
                     console.log("Wi-Fi Checking")
-                    Formide.wifi().getList()
-                    Formide.wifi().checkConnection()
+                    getWifiList()
+                    checkConnection()
                 }
 
         }
