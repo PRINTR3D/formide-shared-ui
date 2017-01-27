@@ -750,6 +750,7 @@ Window {
                 {
                     isConnectedToWifi=response.connected
                     ipAddress=response.internalIp;
+                    getSingleNetwork()
                 }
                 else
                 {
