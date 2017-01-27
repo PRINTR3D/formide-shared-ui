@@ -159,7 +159,7 @@ Window {
     // Run at boot
     Component.onCompleted: {
         login();
-        macAddress = mySystem.msg("fiw wlan0 mac");
+        //macAddress = mySystem.msg("fiw wlan0 mac");
     }
 
     // Printer status update
@@ -973,12 +973,13 @@ Window {
         interval:oneSecond*15
         onTriggered: {
 
-            if(printerStatus.status !== "printing" && printerStatus.status !== "heating" && printerStatus.status !== "paused")
-            {
-                getFiles();
-                getPrintJobs();
-                getQueue();
-            }
+            if(printerStatus)
+                if(printerStatus.status !== "printing" && printerStatus.status !== "heating" && printerStatus.status !== "paused")
+                {
+                    getFiles();
+                    getPrintJobs();
+                    getQueue();
+                }
 
         }
     }
@@ -1042,7 +1043,7 @@ Window {
         onTriggered:
         {
            console.log("Connecting")
-            if(Formide.auth().getAccessToken().length < 30)
+            if(Formide.auth().accesstoken.length < 30)
                 login()
             else
             {
