@@ -607,12 +607,18 @@ Window {
                 if(list.length>0 && list[0]!=="platform-musb*part*")
                 {
                     //console.log("Updating drives list: ",list)
+                    if(!usbAvailable)
+                        usbAvailable=true
                     driveFiles= list;
                 }
                 else
                 {
                     //console.log("Not updating drive")
-                    driveFiles = [];
+                    if(usbAvailable)
+                    {
+                        usbAvailable=false
+                        driveFiles=[]
+                    }
                 }
             }
 
@@ -1005,6 +1011,7 @@ Window {
                     console.log("Wi-Fi Checking")
                     getWifiList()
                     checkConnection()
+                    getIs
                 }
 
         }
