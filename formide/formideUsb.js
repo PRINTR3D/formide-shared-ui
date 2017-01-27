@@ -162,12 +162,10 @@ function unmount(drive,callback) {
 
         if(err)
         {
-            console.log("Response ERR: ",JSON.stringify(err));
             callback(err,null);
         }
         if(response)
         {
-            //console.log("Response OK: ",JSON.stringify(response))
             callback(JSON.parse(response));
         }
 
