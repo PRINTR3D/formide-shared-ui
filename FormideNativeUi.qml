@@ -49,15 +49,12 @@ Window {
 
     // UI
     property var backendIP: FormideShared.backendIP
-    property var sharedUiVersion
+    property var sharedUiVersion:"v1.0.0"
 
     // Printer status
     property var printerStatus    // Information about printer status
     property var flowRateValue:100
     property var speedMultiplierValue:100
-
-    // Printer status blocked for override
-    property var statusBlocked:false
 
     // Formide Data
     property var materials:[]
@@ -70,7 +67,6 @@ Window {
 
     // UI Status - general
     property var initialized:false       // UI is initialised
-    property var accessToken:''
     property var loggedIn:false          // UI is authenticated
 
     // UI password for touch screen
@@ -79,21 +75,24 @@ Window {
 
     // Print Job Status
     property var uniquePrinter           // Printer used for slicing
-    property var currentPrintJobId       // Current print job for display
+    //property var currentPrintJobId       // Current print job for display
     property var currentPrintJob         // Current print job for display
     property var currentQueueItemId      // Current queue item for display
 
+    // TODO: Probably moving to Formide Shared
     // Slice Data
-    property var slicing: false
-    property var fileNameSelected
-    property var modelFileSelected
-    property var materialSelected
-    property var qualitySelected
-    property var printerSelected
+//    property var slicing: false
+//    property var fileNameSelected
+//    property var modelFileSelected
+//    property var materialSelected
+//    property var qualitySelected
+//    property var printerSelected
 
+
+    // TODO: Probably moving them to Formide Shared
     // Error Data - Error messages that will be displayed
     property var usbError:""
-    property var slicerError:""
+    property var slicerError:""    
     property var queueError:""
 
     // USB Data
@@ -108,8 +107,11 @@ Window {
     property var updateAvailable:false   // Boolean
 
     // Wi-Fi Data
-    property var apMode:false
+
+    // TODO: Move ssid to connect to Formide Shared
     property var ssidToConnect           // Name of network to connect to
+
+    property var apMode:false
     property var wifiList:[]             // Array of SSIDs
     property var isConnectedToWifi:false // Boolean
     property var singleNetwork           // Network currently connected to
@@ -128,6 +130,9 @@ Window {
     property var rightRatioValue:0
     property var timeoutRatio:1000
     property var oneSecond:1000
+    // Printer status blocked for override
+    property var statusBlocked:false
+
 
     // Colors
     property var backgroundColor:"#ECECEC"
@@ -153,8 +158,8 @@ Window {
 
     // Run at boot
     Component.onCompleted: {
-
         login();
+        macAddress = mySystem.msg("fiw wlan0 mac");
     }
 
     // Printer status update
@@ -186,6 +191,7 @@ Window {
                     // Check if this is optimal
                     getCurrentClientVersion()
                     getQueue();
+                    getPrinters()
                     getFiles();
                     getPrintJobs();
 
@@ -378,13 +384,15 @@ Window {
                    }
                }
 
+               loadingQueue=false;
+
                // Update queue items
                queueItems = response.filter(function(queueItem) {
                    if (queueItem.status == "queued")
                        return queueItem;
                });
 
-               loadingQueue=false;
+
             }
         });
     }
@@ -585,6 +593,7 @@ Window {
             if(response)
             {
                 console.log("Response Cloud current",JSON.stringify(response))
+                currentClientVersion=response.version;
             }
 
         })
@@ -913,12 +922,16 @@ Window {
                     }
 
                     // If printer is printing, print job id needs to be updated
-                    if(data.data.status==="printing")
+                    if(data.data.status==="printing" || data.data.status==="heating" || data.data.status==="paused")
                     {
-                        if(currentPrintJobId!==data.data.queueItemId)
+                        //console.log("currentprintjob: "+currentPrintJob)
+                        if(currentQueueItemId!==data.data.queueItemId)
                         {
-                            updateEverythingTimer.start()
-                            currentPrintJobId = data.data.queueItemId;
+                            currentQueueItemId = data.data.queueItemId;
+
+                            //console.log("currentprintjob updated: "+currentPrintJob)
+
+                            getQueue()
                         }
                     }
                 }
@@ -985,13 +998,7 @@ Window {
     }
 
 
-
-
-
-
-
-
-    // Timer for printer status override
+    // Timer for printer status override (Builder specific - move out of here)
     Timer{
         id:statusBlockedTimer
         running:false
