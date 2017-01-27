@@ -15,6 +15,9 @@ var newE1Temperature;
 var newE2Temperature;
 var newBedTemperature;
 
+var newFlowRate;
+var newSpeedMultiplier;
+var newFanSpeed;
 
 
 
