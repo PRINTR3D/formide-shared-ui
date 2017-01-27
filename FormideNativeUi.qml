@@ -184,6 +184,7 @@ Window {
 
 
                     // Check if this is optimal
+                    getCurrentClientVersion()
                     getQueue();
                     getFiles();
                     getPrintJobs();
@@ -907,7 +908,6 @@ Window {
                         {
                             initialized=true
 
-                            getCurrentClientVersion()
                         }
 
                     }
