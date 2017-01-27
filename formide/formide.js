@@ -31,6 +31,10 @@ function update(){
     return FormideUpdate.update();
 }
 
+function usb(){
+    return FormideUSB.usb();
+}
+
 function wifi(){
     return FormideWifi.wifi();
 }

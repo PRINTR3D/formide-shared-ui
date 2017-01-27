@@ -160,11 +160,9 @@ Window {
     // Printer status update
     onPrinterStatusChanged:{
 
-
         console.log("PrinterStatus")
 
     }
-
 
 
 
@@ -199,7 +197,6 @@ Window {
 /************************************
      MAIN LOGIC - Database
 ************************************/
-
 
     function getFiles()
     {
@@ -591,6 +588,129 @@ Window {
 
         })
     }
+
+/************************************
+     MAIN LOGIC - USB
+************************************/
+
+    function scanDrives()
+    {
+        Formide.usb().scanDrives(function (err, list) {
+
+            if(err)
+            {
+                console.log("Error scanning drives: ",JSON.stringify(err));
+            }
+            if(list)
+            {
+                //console.log("Response scanning drives: ",JSON.stringify(list));
+                if(list.length>0 && list[0]!=="platform-musb*part*")
+                {
+                    //console.log("Updating drives list: ",list)
+                    driveFiles= list;
+                }
+                else
+                {
+                    //console.log("Not updating drive")
+                    driveFiles = [];
+                }
+            }
+
+        });
+    }
+
+    function updateDriveFilesFromPath()
+    {
+        Formide.usb().updateDriveFilesFromPath(driveUnit,drivePath,function (err, list) {
+
+            if(err)
+            {
+                console.log("Error reading drive: ",JSON.stringify(err));
+            }
+            if(list)
+            {
+                driveListing=0;
+
+                driveFiles=list.filter(function(file) {
+                    if (file.name)
+                    {
+                        if(file.name.toLowerCase().indexO(".gcode") !== -1 || file.name.toLowerCase().indexOf(".stl") !== -1 || file.type=="dir")
+                            return file;
+                    }
+                });
+            }
+        });
+    }
+
+
+    function copyFile()
+    {
+        Formide.usb().copyFile(driveUnit,drivePath,function (err, list) {
+
+            if(err)
+            {
+                console.log("Response ERR: ",JSON.stringify(err));
+
+                usbError=err.message
+            }
+
+            if(list)
+            {
+                //console.log("Response OK: ",JSON.stringify(list))
+
+                // Implement callback!
+
+            }
+
+        });
+    }
+
+
+    function updateDriveUnit(driveU)
+    {
+        driveUnit=driveU
+        Formide.usb().mount(driveUnit,function(err,response){
+            if(err)
+            {
+                console.log("Error mounting drive: ",JSON.stringify(err));
+            }
+            if(response)
+            {
+                //console.log("Response mounting drive: ",JSON.stringify(response));
+                if(response.message=="drive mounted")
+                {
+                    updateDriveFilesFromPath()
+                }
+            }
+        });
+
+    }
+
+    function unMountDrive(drive)
+    {
+        Formide.usb().unmount(drive,function (err, response) {
+
+            if(err)
+            {
+                console.log("Response from unmounting: ",JSON.stringify(err));
+            }
+            if(response)
+            {
+                //console.log("Response from unmounting: ",JSON.stringify(response))
+            }
+
+        });
+
+    }
+
+
+
+
+
+
+
+
+
 
 /************************************
      MAIN LOGIC - Wi-Fi
