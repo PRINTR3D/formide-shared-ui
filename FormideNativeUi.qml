@@ -126,6 +126,7 @@ Window {
     property var leftRatioValue:100
     property var rightRatioValue:0
     property var timeoutRatio:1000
+    property var oneSecond:1000
 
     // Colors
     property var backgroundColor:"#ECECEC"
@@ -182,7 +183,12 @@ Window {
                     loggedIn=true
                     sock.active = true
 
-                    //startTimers()
+
+                    // Check if this is optimal
+                    getQueue();
+                    getFiles();
+                    getPrintJobs();
+
                 }
             }
         });
@@ -776,8 +782,8 @@ Window {
                     {
                         if(currentPrintJobId!==data.data.queueItemId)
                         {
+                            updateEverythingTimer.start()
                             currentPrintJobId = data.data.queueItemId;
-                            getQueue();
                         }
                     }
                 }
@@ -806,15 +812,56 @@ Window {
 /************************************
      TIMERS
 ************************************/
-
+    // note
     // /!\ Printer specific timers need to be implemented out of here, in main.qml
+
+
+
+    // Timer to check queue, print jobs and files
+    Timer{
+        id:checkEverythingTimer
+        running:true
+        repeat:true
+        interval:oneSecond*15
+        onTriggered: {
+
+            if(printerStatus.status !== "printing" && printerStatus.status !== "heating" && printerStatus.status !== "paused")
+            {
+                getFiles();
+                getPrintJobs();
+                getQueue();
+            }
+
+        }
+    }
+
+    Timer{
+        id:updateEverythingTimer
+        running:false
+        repeat:false
+        interval:5000
+        onTriggered: {
+
+                getFiles();
+                getPrintJobs();
+                getQueue();
+
+        }
+    }
+
+
+
+
+
+
+
 
     // Timer for printer status override
     Timer{
         id:statusBlockedTimer
         running:false
         repeat:false
-        interval:timeoutRatio*5
+        interval:oneSecond*5
         onTriggered: {
             statusBlocked=false
         }
@@ -832,7 +879,7 @@ Window {
 
             console.log("Checking Wi-Fi")
             if(printerStatus)
-                if(printerStatus.status==="online" || printerStatus.status==="printing" || printerStatus.status==="heating")
+                if(printerStatus.status==="online" || printerStatus.status==="printing" || printerStatus.status==="heating" || printerStatus.status === "paused")
                 {
                     console.log("Wi-Fi Checking")
                     getWifiList()
