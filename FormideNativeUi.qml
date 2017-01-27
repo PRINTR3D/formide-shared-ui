@@ -47,8 +47,7 @@ Window {
 
 
     // UI
-    //property var backendIP : "127.0.0.1" // For production, we use Localhost
-    property var backendIP: "10.1.0.16" // Sometimes, for development, we use the IP of an Element
+    property var backendIP: Formide.backendIP
     property var sharedUiVersion
 
     // Printer status
@@ -108,7 +107,7 @@ Window {
     property var updateAvailable:false   // Boolean
 
     // Wi-Fi Data
-    property var APMode:false
+    property var apMode:false
     property var ssidToConnect           // Name of network to connect to
     property var wifiList:[]             // Array of SSIDs
     property var isConnectedToWifi:false // Boolean
@@ -652,13 +651,9 @@ Window {
 
                 console.log("Found "+wifiArray.length+" networks")
                 wifiList=wifiArray;
-                if(callback)
-                    callback(null, wifiArray);
             }
             catch (e) {
                 console.log("Exception getting network list",e)
-                if(callback)
-                    callback(e);
             }
         });
     }
