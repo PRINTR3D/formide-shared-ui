@@ -92,7 +92,7 @@ Window {
     // TODO: Probably moving them to Formide Shared
     // Error Data - Error messages that will be displayed
     property var usbError:""
-    property var slicerError:""    
+    property var slicerError:""
     property var queueError:""
 
     // USB Data
@@ -364,6 +364,7 @@ Window {
 
     function getQueue()
     {
+        checkEverythingTimer.restart()
         if(!printerStatus)
             return;
 
@@ -976,7 +977,7 @@ Window {
         onTriggered: {
 
             if(printerStatus)
-                if(printerStatus.status !== "printing" && printerStatus.status !== "heating" && printerStatus.status !== "paused")
+                if(printerStatus.status === "online")
                 {
                     getFiles();
                     getPrintJobs();
