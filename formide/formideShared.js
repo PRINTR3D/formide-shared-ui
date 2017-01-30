@@ -19,6 +19,7 @@ var newFlowRate;
 var newSpeedMultiplier;
 var newFanSpeed;
 
+var ssidToConnect;
 
 
 /**********************
