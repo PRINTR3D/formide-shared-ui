@@ -1,9 +1,12 @@
-#include "systemcall.h"
+#include "SystemCall.h"
 #include <QProcess>
 
 SystemCall::SystemCall()
 {
+
     std::cout << "Object created" << std::endl;
+
+
 }
 
 

@@ -55,6 +55,7 @@ function getFiles(callback) {
 
 // TODO: Rewrite image logic, having all in one place
 function images(id,hash,callback){
+
         var url = "http://localhost:1337/api/db/files/"+id+"/images/"+hash+"?access_token="+Formide.accessToken;
         if(callback)
             return callback(null, url);

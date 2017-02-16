@@ -1,20 +1,20 @@
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QQmlContext>
-#include "systemcall.h"
-#include <unistd.h>
+//#include <QGuiApplication>
+//#include <QQmlApplicationEngine>
+//#include <QQmlContext>
+//#include "systemcall.h"
+//#include <unistd.h>
 
-int main(int argc, char *argv[])
-{
+//int main(int argc, char *argv[])
+//{
 
-    QGuiApplication app(argc, argv);
-    QQmlApplicationEngine engine;
+//    QGuiApplication app(argc, argv);
+//    QQmlApplicationEngine engine;
 
-    //New: System calls
-    SystemCall mySystemObject;
-    engine.rootContext()->setContextProperty("mySystem", &mySystemObject);
+//    //New: System calls
+//    SystemCall mySystemObject;
+//    engine.rootContext()->setContextProperty("mySystem", &mySystemObject);
 
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+//    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    return app.exec();
-}
+//    return app.exec();
+//}

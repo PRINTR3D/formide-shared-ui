@@ -1,8 +1,8 @@
 #include <QObject>
 #include <iostream>
 
-#ifndef systemcall_H
-#define systemcall_H
+#ifndef SystemCall_H
+#define SystemCall_H
 
 
 class SystemCall : public QObject

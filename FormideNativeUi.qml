@@ -75,7 +75,6 @@ Window {
 
     // Print Job Status
     property var uniquePrinter           // Printer used for slicing
-    //property var currentPrintJobId       // Current print job for display
     property var currentPrintJob         // Current print job for display
     property var currentQueueItemId      // Current queue item for display
 
@@ -88,11 +87,15 @@ Window {
 //    property var qualitySelected
 //    property var printerSelected
 
+    // Slice variables
+    property var slicing:false
+    property var slicedPrintJob
+
 
     // TODO: Probably moving them to Formide Shared
     // Error Data - Error messages that will be displayed
     property var usbError:""
-    property var slicerError:""
+    property var slicerError:""    
     property var queueError:""
 
     // USB Data
@@ -115,7 +118,7 @@ Window {
     property var wifiList:[]             // Array of SSIDs
     property var isConnectedToWifi:false // Boolean
     property var singleNetwork           // Network currently connected to
-    property var registrationToken:""    // Cloud registration token
+    property var registrationToken:"12345"    // Cloud registration token
 
     // Formide-client Data
     property var currentClientVersion:""
@@ -159,13 +162,13 @@ Window {
     // Run at boot
     Component.onCompleted: {
         login();
-        //macAddress = mySystem.msg("fiw wlan0 mac");
+        macAddress = mySystem.msg("fiw wlan0 mac");
     }
 
     // Printer status update
     onPrinterStatusChanged:{
 
-        console.log("PrinterStatus")
+        //console.log("PrinterStatus")
 
     }
 
@@ -185,14 +188,15 @@ Window {
                     loginTimer.stop()
 
                     loggedIn=true
-                    sock.active = true
-
 
                     // Check if this is optimal
                     getCurrentClientVersion()
                     getQueue();
                     getFiles();
                     getPrintJobs();
+
+
+                    sock.active = true
 
                 }
             }
@@ -214,16 +218,29 @@ Window {
             }
             if(files)
             {
-//                console.log("Response get files",JSON.stringify(response));
+                //console.log("Response get files",JSON.stringify(files));
                 fileItems=files;
             }
         });
     }
 
     // Check: No need to be called here
-    function getImages(id,hash)
-    {
+    function getImage(id,hash){
 
+        var returnValue=""
+        Formide.database().images(id,hash,function(err,response){
+
+            if(err)
+                console.log("ERR: "+err);
+            if(response)
+            {
+                //console.log("Response IMAGES: "+response);
+                returnValue= response;
+            }
+
+        });
+
+        return returnValue;
     }
 
 
@@ -236,11 +253,12 @@ Window {
             }
             if(printjobs)
             {
-//              console.log("Response get printjobs",JSON.stringify(printjobs));
+              //console.log("Response get printjobs",JSON.stringify(printjobs));
                 printJobs = printjobs.filter(function(printJob) {
-                    if (printJob.sliceFinished)
+                    if (printJob.sliceFinished && printJob.sliceMethod == "local" && printJob.files.length>0)
                         return printJob;
                 });
+                //console.log("PrintJobs",JSON.stringify(printJobs))
             }
         });
     }
@@ -347,10 +365,12 @@ Window {
                 // In this piece of code we make sure that the printer selected
                 // and used in this UI is the one connected and online
                 for (var i in printers) {
-                    if (printers[i].port === printerStatus.port)
-                    {
-                        uniquePrinter=printers[i]
-                    }
+
+                    if(printers[i] !== undefined && printerStatus !== undefined)
+                        if (printers[i].port === printerStatus.port)
+                        {
+                            uniquePrinter=printers[i]
+                        }
                 }
             }
         });
@@ -366,7 +386,10 @@ Window {
     {
         checkEverythingTimer.restart()
         if(!printerStatus)
+        {
+            console.log("!printerStatus = !queue")
             return;
+        }
 
         loadingQueue=true;
         Formide.printer(printerStatus.port).getQueue(function(err, response) {
@@ -421,7 +444,7 @@ Window {
         });
     }
 
-    function addPrintJobToQueue(printJobId,directPrint)
+    function addPrintJobToQueue(printJobId,directPrint,callback)
     {
 
         Formide.printer(printerStatus.port).addToQueue(printJobId,function (err, response) {
@@ -429,6 +452,7 @@ Window {
             if(err)
             {
                 console.log("Error adding a file to queue",JSON.stringify(err));
+                callback(err)
             }
             if (response)
             {
@@ -446,6 +470,8 @@ Window {
                         startPrintFromQueueId(queueId);
                     }
                 }
+
+                callback(null,response);
             }
         });
     }
@@ -485,9 +511,12 @@ Window {
      MAIN LOGIC - Slicer
 ************************************/
 
-    function slice(modelfiles,sliceprofile,materials)
+    function slice(modelfiles,sliceprofile,materials, override)
     {
-        Formide.slice().slice(modelfiles,sliceprofile,materials,uniquePrinter,function (err, response) {
+
+        slicing=true
+        console.log("")
+        Formide.slice(modelfiles,sliceprofile, materials, override, uniquePrinter.id,function (err, response) {
 
             if(err)
             {
@@ -508,6 +537,7 @@ Window {
                // Slicer response gives back print job ID: response.printJob.id
 
                console.log("Response Slicer",JSON.stringify(response));
+
            }
 
         });
@@ -518,13 +548,14 @@ Window {
      MAIN LOGIC - Update
 ************************************/
 
-    function checkUpdate()
+    function checkUpdate(callback)
     {
         Formide.update().checkUpdate(function (err, response) {
 
             if(err)
             {
                 console.log("Response ERR check updates ",JSON.stringify(err));
+                callback(false)
             }
             if(response)
             {
@@ -533,11 +564,13 @@ Window {
                 {
                     updateInformation=response;
                     updateAvailable=true;
+                    callback(true)
                 }
                 else
                 {
                     console.log("No update needed")
                     updateAvailable=false;
+                    callback(false)
                 }
 
                 //{"message":"There is no update available at this moment","needsUpdate":false}
@@ -734,17 +767,22 @@ Window {
      MAIN LOGIC - Wi-Fi
 ************************************/
 
-    function getRegistrationToken()
+    function getRegistrationToken(callback)
     {
         Formide.wifi().getRegistrationCode(function(err,response){
             if(err)
             {
                 console.log("Error registraton token",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
             }
             if(response)
             {
                 console.log("Response registration token",JSON.stringify(response));
                 registrationToken=response.code.toString();
+
+                if(callback)
+                    callback(null,response)
             }
         });
     }
@@ -879,11 +917,29 @@ Window {
 
                 if(data.channel === "slicer.finished")
                 {
-                    slicerFinished(data.data)
+                    if(slicing===true)
+                    {
+                        slicing=false;
+                        if(slicerError.length>1)
+                        {
+                            // If HTTP call is wrong, we get information from notification
+                            slicerError="";
+                        }
+
+                        slicedPrintJob=data.data.data.printJob
+                        slicerFinished()
+
+                    }
                 }
                 if(data.channel === "slicer.failed")
                 {
-                    slicerFailed(data.data)
+                    console.log("Slicer error",JSON.stringify(data.data))
+                    if(slicing===true)
+                    {
+                        slicing=false;
+                        slicerFailed(data.data)
+                    }
+
                 }
 
                 if(data.channel === "printer.stopped")
@@ -918,6 +974,13 @@ Window {
                         if(!initialized && loggedIn)
                         {
                             initialized=true
+
+                            // Moved to normal login
+//                            // Check if this is optimal
+//                            getCurrentClientVersion()
+//                            getQueue();
+//                            getFiles();
+//                            getPrintJobs();
                             getPrinters()
 
                         }
@@ -927,7 +990,7 @@ Window {
                     // If printer is printing, print job id needs to be updated
                     if(data.data.status==="printing" || data.data.status==="heating" || data.data.status==="paused")
                     {
-                        console.log("currentprintjob: "+currentPrintJob)
+//                        console.log("currentprintjob: "+currentPrintJob)
                         if(currentQueueItemId!==data.data.queueItemId)
                         {
                             currentQueueItemId = data.data.queueItemId;
@@ -979,6 +1042,7 @@ Window {
             if(printerStatus)
                 if(printerStatus.status === "online")
                 {
+                    console.log("GETTING EVERYTHING")
                     getFiles();
                     getPrintJobs();
                     getQueue();

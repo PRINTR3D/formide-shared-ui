@@ -23,8 +23,8 @@ function printer(port){
     return FormidePrinter.printer(port);
 }
 
-function slice(modelfiles, sliceprofile, materials, printer, callback){
-    return FormideSlicer.slice(modelfiles, sliceprofile, materials, printer, callback);
+function slice(modelfiles, sliceprofile, materials, override, printer, callback){
+    return FormideSlicer.slice(modelfiles, sliceprofile, materials, override, printer, callback);
 }
 
 function update(){

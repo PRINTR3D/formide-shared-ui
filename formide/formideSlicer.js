@@ -27,7 +27,7 @@ var material = materials[materialSelected].id
 var printer = uniquePrinter.id
 */
 
-function slice(modelfiles, sliceprofile, materials, printer, callback) {
+function slice(modelfiles, sliceprofile, materials, override, printer, callback) {
 
     var payload =
             {
@@ -35,53 +35,7 @@ function slice(modelfiles, sliceprofile, materials, printer, callback) {
             "sliceProfile": sliceprofile,
             "materials":[materials, materials],
             "printer":printer,
-            "settings": {
-                  "brim": {
-                      "use": false
-                  },
-                  "raft": {
-                      "use": false
-                  },
-                  "bed": {
-                      "use": true,
-                      "temperature":45,
-                      "firstLayersTemperature":45
-                  },
-                  "support": {
-                      "use": false
-                  },
-                  "skirt": {
-                      "use": true,
-                      "extruder": 0
-                  },
-                  "fan": {
-                      "use": true,
-                      "speed": 100
-                  },
-                  "override": {
-                  },
-                  "files": [
-                      {
-                          "id": 1,
-                          "extruder": 0,
-                          "position": {
-                              "x": 0,
-                              "y": 0,
-                              "z": 0
-                          },
-                          "rotation": {
-                              "x": 0,
-                              "y": 0,
-                              "z": 0
-                          },
-                          "scale": {
-                              "x": 1,
-                              "y": 1,
-                              "z": 1
-                          }
-                      }
-                  ]
-              }
+            "settings": override
             }
 
     //console.log("Sending slice request",JSON.stringify(payload))

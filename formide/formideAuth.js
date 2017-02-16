@@ -20,6 +20,8 @@ function auth()
 
     return{
         // call http login
+
+        accesstoken:accesstoken,
         login:function (username, password, callback) {
             // only request new access token when not set yet
             if (accesstoken === '') {
@@ -38,6 +40,7 @@ function auth()
                     if(response)
                     {
                         accesstoken = response.access_token;
+                        Formide.accessToken=accesstoken;
                         HttpHelper.updateAccessToken(accesstoken);
                         console.log("recv bearer: "+accesstoken)
                         callback(true)

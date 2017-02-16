@@ -84,7 +84,7 @@ function current(callback){
         }
         if(response)
         {
-            callback(response);
+            callback(null,response);
         }
 
     })
