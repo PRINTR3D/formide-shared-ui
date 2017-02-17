@@ -106,7 +106,7 @@ Window {
     property var apMode:false
     property var wifiList:[]             // Array of SSIDs
     property var isConnectedToWifi:false // Boolean
-    property var singleNetwork           // Network currently connected to
+    property var singleNetwork:""           // Network currently connected to
     property var registrationToken:"12345"    // Cloud registration token
 
     // Formide-client Data
@@ -815,8 +815,9 @@ Window {
 
         Formide.wifi().getSingleNetwork(function (err, network) {
             try {
-                var net = network.ssid;
+                var net = network;
                 singleNetwork=net;
+                console.log("Single network",singleNetwork)
             }
             catch (e) {
                 console.log("Exception checking network",e)
@@ -862,7 +863,7 @@ Window {
     }
 
     // Check: Maybe we don't need to call it here
-    function connectToWifi(ssid,password)
+    function connectToWifi(ssid,password,callback)
     {
 
         Formide.wifi().connect(ssid,password,function (err, response) {
@@ -870,10 +871,14 @@ Window {
             if(err)
             {
                 console.log("Error connecting to Wi-Fi",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
             }
             if (response)
             {
                 console.log("Response connecting to network",JSON.stringify(response))
+                if(callback)
+                    callback(null,response)
             }
             checkConnection()
         });
@@ -1085,8 +1090,6 @@ Window {
         running: true
         onTriggered:
         {
-
-            console.log("Checking Wi-Fi")
             if(printerStatus)
                 if(printerStatus.status==="online" || printerStatus.status==="printing" || printerStatus.status==="heating" || printerStatus.status === "paused")
                 {
