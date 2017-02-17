@@ -27,11 +27,7 @@ var ssidToConnect;
 // Index variables
 var fileIndexSelected;
 
-
-/**********************
-    MOVE TO FELIX UI
-/*********************/
-// (Keeping it here for now)
-
-// Extruder selected for load/unload function
-var extruderSelected=1
+// Extruder pages
+var extruderSelected=0;
+var temperature;
+var replaced=false;

@@ -78,21 +78,10 @@ Window {
     property var currentPrintJob         // Current print job for display
     property var currentQueueItemId      // Current queue item for display
 
-    // TODO: Probably moving to Formide Shared
-    // Slice Data
-//    property var slicing: false
-//    property var fileNameSelected
-//    property var modelFileSelected
-//    property var materialSelected
-//    property var qualitySelected
-//    property var printerSelected
-
     // Slice variables
     property var slicing:false
     property var slicedPrintJob
 
-
-    // TODO: Probably moving them to Formide Shared
     // Error Data - Error messages that will be displayed
     property var usbError:""
     property var slicerError:""    
@@ -194,6 +183,12 @@ Window {
                     getQueue();
                     getFiles();
                     getPrintJobs();
+
+
+                    // Remove later
+                    getWifiList()
+                    checkConnection()
+                    scanDrives()
 
 
                     sock.active = true
@@ -1029,6 +1024,10 @@ Window {
     // note
     // /!\ Printer specific timers need to be implemented out of here, in main.qml
 
+    function touchInput(){
+        checkEverythingTimer.restart()
+        wifiTimer.restart()
+    }
 
 
     // Timer to check queue, print jobs and files
