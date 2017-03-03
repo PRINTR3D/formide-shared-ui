@@ -418,13 +418,16 @@ Window {
     }
 
 
-    function addCustomGcodeToPrintJobs(gcodefileId,addToQueueToo,directPrint)
+    function addCustomGcodeToPrintJobs(gcodefileId,addToQueueToo,directPrint, callback)
     {
         Formide.printer(printerStatus.port).addCustomGcodeToPrintJobs(gcodefileId,function (err, response) {
 
             if(err)
             {
                 console.log("Error adding custom gcode to print jobs: "+JSON.stringify(err))
+
+                if(callback)
+                    callback(err,null)
             }
             if(response)
             {
@@ -433,7 +436,11 @@ Window {
                 // If necessary, we can add print job to Queue and print it
                 if(addToQueueToo || directPrint)
                 {
-                    addPrintJobToQueue(response.printJob.id,directPrint);
+                    addPrintJobToQueue(response.printJob.id,directPrint,callback);
+                }
+                else
+                {
+                    callback(null,response)
                 }
             }
         });
@@ -447,7 +454,8 @@ Window {
             if(err)
             {
                 console.log("Error adding a file to queue",JSON.stringify(err));
-                callback(err)
+                if(callback)
+                    callback(err,null)
             }
             if (response)
             {
@@ -462,42 +470,55 @@ Window {
                     if(response.queueItem.status==="queued")
                     {
                         var queueId = response.queueItem.id
-                        startPrintFromQueueId(queueId);
+                        startPrintFromQueueId(queueId,callback);
                     }
                 }
+                else
+                {
+                    if(callback)
+                        callback(null,response);
+                }
 
-                callback(null,response);
+
             }
         });
     }
 
 
-    function startPrintFromQueueId(queueId)
+    function startPrintFromQueueId(queueId,callback)
     {
 
         Formide.printer(printerStatus.port).start(queueId,function (err,response){
             if(err)
             {
                 console.log("Error starting a print",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
             }
             if (response)
             {
 //              console.log("Response starting a print",JSON.stringify(response))
+                if(callback)
+                    callback(null,response)
             }
         });
     }
 
 
-    function startPrintFromFileSystem(filePath)
+    function startPrintFromFileSystem(filePath,callback)
     {
         Formide.printer(printerStatus.port).printFileFromFileSystem(filePath,function(err,response){
             if(err)
             {
                 console.log("Error printing a file from file system",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
             }
             if (response)
             {
 //              console.log("Response print a file from file system",JSON.stringify(response))
+                if(callback)
+                    callback(null,response)
             }
     });
     }
@@ -506,19 +527,20 @@ Window {
      MAIN LOGIC - Slicer
 ************************************/
 
-    function slice(modelfiles,sliceprofile,materials, override)
+    function slice(modelfiles,sliceprofile,materials, uniquePrinter,override)
     {
 
         slicing=true
         console.log("")
-        Formide.slice(modelfiles,sliceprofile, materials, override, uniquePrinter.id,function (err, response) {
+        Formide.slice(modelfiles,sliceprofile, materials, uniquePrinter.id, override,function (err, response) {
 
             if(err)
             {
                 console.log("Error Slicer",JSON.stringify(err));
                 slicerError=err.message
 
-                // TIP for callback implementation
+
+                // TIP for callback implementation: USE EVENTS
                 /*
                 if(pagestack.depth>1)
                     pagestack.pop()
@@ -595,17 +617,23 @@ Window {
     }
 
 
-    function updateElement()
+    function updateElement(callback)
     {
         Formide.update().updateElement(function (err, response) {
 
             if(err)
             {
                 console.log("Error Update Element",JSON.stringify(err));
+                if(callback)
+                {
+                    callback(err,null)
+                }
             }
             if (response)
             {
     //           console.log('Response Update Element', JSON.stringify(response))
+                if(callback)
+                    callback(null,response)
             }
         });
 
@@ -633,13 +661,16 @@ Window {
      MAIN LOGIC - USB
 ************************************/
 
-    function scanDrives()
+    function scanDrives(callback)
     {
         Formide.usb().scanDrives(function (err, list) {
 
             if(err)
             {
                 console.log("Error scanning drives: ",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
+
             }
             if(list)
             {
@@ -660,18 +691,22 @@ Window {
                         driveFiles=[]
                     }
                 }
+                if(callback)
+                    callback(null,list)
             }
 
         });
     }
 
-    function updateDriveFilesFromPath()
+    function updateDriveFilesFromPath(callback)
     {
         Formide.usb().updateDriveFilesFromPath(driveUnit,drivePath,function (err, list) {
 
             if(err)
             {
                 console.log("Error reading drive: ",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
             }
             if(list)
             {
@@ -684,12 +719,15 @@ Window {
                             return file;
                     }
                 });
+
+                if(callback)
+                    callback(null,list)
             }
         });
     }
 
 
-    function copyFile()
+    function copyFile(callback)
     {
         Formide.usb().copyFile(driveUnit,drivePath,function (err, list) {
 
@@ -698,51 +736,60 @@ Window {
                 console.log("Response ERR: ",JSON.stringify(err));
 
                 usbError=err.message
+
+                if(callback)
+                    callback(err,null)
             }
 
             if(list)
             {
                 //console.log("Response OK: ",JSON.stringify(list))
 
-                // Implement callback!
-
+                if(callback)
+                    callback(null,list)
             }
 
         });
     }
 
 
-    function updateDriveUnit(driveU)
+    function updateDriveUnit(driveU,callback)
     {
         driveUnit=driveU
         Formide.usb().mount(driveUnit,function(err,response){
             if(err)
             {
                 console.log("Error mounting drive: ",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
             }
             if(response)
             {
                 //console.log("Response mounting drive: ",JSON.stringify(response));
                 if(response.message=="drive mounted")
                 {
-                    updateDriveFilesFromPath()
+                    updateDriveFilesFromPath(callback)
                 }
             }
         });
 
     }
 
-    function unMountDrive(drive)
+    function unMountDrive(drive, callback)
     {
         Formide.usb().unmount(drive,function (err, response) {
 
             if(err)
             {
                 console.log("Response from unmounting: ",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
             }
             if(response)
             {
                 //console.log("Response from unmounting: ",JSON.stringify(response))
+                if(callback)
+                    callback(null,response)
             }
 
         });
@@ -782,12 +829,14 @@ Window {
         });
     }
 
-    function checkConnection() {
+    function checkConnection(callback) {
         Formide.wifi().checkConnection(function (err, response) {
 
             if(err)
             {
                 console.log("Error checking connection",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
             }
             if(response)
             {
@@ -802,6 +851,9 @@ Window {
                     isConnectedToWifi=false
                     ipAddress=""
                 }
+
+                if(callback)
+                    callback(null,response)
 
                 //console.log("Response checking connection",JSON.stringify(response));
             }
@@ -843,13 +895,15 @@ Window {
     }
 
 
-    function resetWifi()
+    function resetWifi(callback)
     {
         Formide.wifi().reset(function (err, response) {
 
             if(err)
             {
                 console.log("Error reset Wi-Fi",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
             }
             if (response)
             {
@@ -857,6 +911,9 @@ Window {
                 checkConnection()
                 singleNetwork=""
                 wifiList=[]
+
+                if(callback)
+                    callback(null,response)
             }
         });
 
