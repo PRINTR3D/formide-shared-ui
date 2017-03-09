@@ -39,7 +39,7 @@ function auth()
 
                     if(response)
                     {
-                        accesstoken = response.access_token;
+                        accesstoken = response.token;
                         Formide.accessToken=accesstoken;
                         HttpHelper.updateAccessToken(accesstoken);
                         console.log("recv bearer: "+accesstoken)
