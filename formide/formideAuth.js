@@ -27,7 +27,7 @@ function auth()
             if (accesstoken === '') {
 
                 var credentials = {
-                    "email": username,
+                    "username": username,
                     "password": password
                 }
                 console.log("Requesting login")
