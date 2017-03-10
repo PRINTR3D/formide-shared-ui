@@ -15,7 +15,8 @@
 
 function printer (port) {
 
-    port = port.substr(5) || globalPort;
+    //port = port.substr(5) || globalPort;
+    port = encodeURIComponent(port);
 
     return {
 
@@ -63,6 +64,7 @@ function printer (port) {
                     {
                     "command": gcode
                     }
+
             HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/gcode", JSON.stringify(payload));
         },
 

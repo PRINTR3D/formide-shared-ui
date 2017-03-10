@@ -382,7 +382,6 @@ Window {
         checkEverythingTimer.restart()
         if(!printerStatus)
         {
-            console.log("!printerStatus = !queue")
             return;
         }
 
@@ -951,7 +950,9 @@ Window {
     WebSocket {
         active: false
 
-        function socketLogin () {
+        function socketLogin() {
+            console.log("Socket login")
+            console.log("Token: ",Formide.auth().getAccessToken())
             sock.sendTextMessage(JSON.stringify({
                 channel: "authenticate",
                 data: {
@@ -1071,6 +1072,7 @@ Window {
             } else if (sock.status == WebSocket.Closed) {
                console.log(qsTr("Client socket closed."));
             } else if (sock.status == WebSocket.Open) {
+                console.log("Socket open")
                 socketLogin();
             }
             else {
