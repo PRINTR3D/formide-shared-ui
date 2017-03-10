@@ -54,7 +54,7 @@ function getRegistrationCode(callback)
 
 function checkConnection(callback) {
 //    console.log("Checking if it's connected!");
-    HttpHelper.doHttpRequest("GET", "/api/cloud/status", {}, function (err, response) {
+    HttpHelper.doHttpRequest("GET", "/api/network/status", {}, function (err, response) {
 
         if(err)
         {
@@ -100,7 +100,7 @@ function getSingleNetwork(callback) {
 function getList(callback) {
 
 //    console.log("Retrieving Wi-Fi list")
-    HttpHelper.doHttpRequest("GET", "/api/cloud/networks", {}, function (err, list) {
+    HttpHelper.doHttpRequest("GET", "/api/network/list", {}, function (err, list) {
         try {
             var wifiArray = [];
             for (var key in list) {
@@ -119,13 +119,14 @@ function getList(callback) {
 
 
 
-function reset(callback) {
+function reset(enabled,callback) {
    console.log("Reseting wifi");
     var payload =
             {
-
+            "enabled":enabled
             };
-    HttpHelper.doHttpRequest("POST", "/api/cloud/setup", JSON.stringify(payload), function (err, response) {
+
+    HttpHelper.doHttpRequest("POST", "/api/network/hotspot", JSON.stringify(payload), function (err, response) {
 
         if(err)
         {
@@ -149,7 +150,7 @@ function connect(ssid,password,callback) {
             "ssid":ssid,
             "password": password
             }
-    HttpHelper.doHttpRequest("POST", "/api/cloud/wifi", JSON.stringify(payload), function (err, response) {
+    HttpHelper.doHttpRequest("POST", "/api/network/connect", JSON.stringify(payload), function (err, response) {
 
         if(err)
         {
@@ -161,10 +162,12 @@ function connect(ssid,password,callback) {
         {
 
             // Check connection immediately after connecting
-
             console.log("Response connecting to network",JSON.stringify(response))
-            if(callback)
-                callback(null,response.message);
+            reset(false,callback)
+
+            // Send callback to reset function
+//            if(callback)
+//                callback(null,response.message);
         }
     });
 }
