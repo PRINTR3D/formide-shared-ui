@@ -182,7 +182,7 @@ Window {
                     getCurrentClientVersion()
                     getQueue();
                     getFiles();
-                    getPrintJobs();
+                    //getPrintJobs();
 
 
                     // Remove later
@@ -205,7 +205,7 @@ Window {
 
     function getFiles()
     {
-        Formide.database().getFiles(function (err, files)
+        Formide.storage().getFiles(function (err, files)
         {
             if(err)
             {
@@ -1107,7 +1107,7 @@ Window {
                 {
                     console.log("GETTING EVERYTHING")
                     getFiles();
-                    getPrintJobs();
+                    // DEPRECATED getPrintJobs();
                     getQueue();
                 }
 
@@ -1122,7 +1122,7 @@ Window {
         onTriggered: {
 
                 getFiles();
-                getPrintJobs();
+                // DEPRECATED getPrintJobs();
                 getQueue();
 
         }
