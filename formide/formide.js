@@ -3,6 +3,7 @@
 
 .import "formideAuth.js" as FormideAuth
 .import "formideDatabase.js" as FormideDatabase
+.import "formideStorage.js" as FormideStorage
 .import "formidePrinter.js" as FormidePrinter
 .import "formideSlicer.js" as FormideSlicer
 .import "formideUpdate.js" as FormideUpdate
@@ -17,6 +18,10 @@ function auth(){
 
 function database(){
     return FormideDatabase.database();
+}
+
+function storage(){
+    return FormideStorage.storage();
 }
 
 function printer(port){

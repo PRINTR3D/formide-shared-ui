@@ -14,7 +14,7 @@
 /*************
  EXPOSURE
  ************/
-function database(){
+function storage(){
     return{
         list: function(callback){return list(callback)},
         single: function(filename, callback){return single(filename,callback)},
