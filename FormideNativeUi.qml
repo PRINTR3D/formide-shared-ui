@@ -1030,40 +1030,46 @@ Window {
                     }
 
                     // Only use printer status after printer is Online
-                    if(data.data.status !== "connecting")
+                    if(data.data.status !== "connecting" && data.data.status !=="disconnected")
                     {
-                        printerStatus=data.data
 
-                        // If the app is not initialized, we initialize it and get the current client version
-                        if(!initialized && loggedIn)
+                        // Make sure printer status has temperature
+                        if(data.data.extruders[0].temp > 0)
                         {
-                            initialized=true
+                            printerStatus=data.data
 
-                            // Moved to normal login
-//                            // Check if this is optimal
-//                            getCurrentClientVersion()
-//                            getQueue();
-//                            getFiles();
-//                            getPrintJobs();
-                            getPrinters()
+                            // If the app is not initialized, we initialize it and get the current client version
+                            if(!initialized && loggedIn)
+                            {
+                                initialized=true
 
+                                // Moved to normal login
+    //                            // Check if this is optimal
+    //                            getCurrentClientVersion()
+    //                            getQueue();
+    //                            getFiles();
+    //                            getPrintJobs();
+                                getPrinters()
+
+                            }
+
+                            // If printer is printing, print job id needs to be updated
+                            if(data.data.status==="printing" || data.data.status==="heating" || data.data.status==="paused")
+                            {
+    //                          console.log("currentprintjob: "+currentPrintJob)
+                                if(currentQueueItemId!==data.data.queueItemId)
+                                {
+                                    currentQueueItemId = data.data.queueItemId;
+
+                                    console.log("Current queue item id updated: "+currentQueueItemId)
+
+                                    getQueue()
+                                }
+                            }
                         }
-
                     }
 
-                    // If printer is printing, print job id needs to be updated
-                    if(data.data.status==="printing" || data.data.status==="heating" || data.data.status==="paused")
-                    {
-//                        console.log("currentprintjob: "+currentPrintJob)
-                        if(currentQueueItemId!==data.data.queueItemId)
-                        {
-                            currentQueueItemId = data.data.queueItemId;
 
-                            console.log("Current queue item id updated: "+currentQueueItemId)
-
-                            getQueue()
-                        }
-                    }
                 }
 
             }
