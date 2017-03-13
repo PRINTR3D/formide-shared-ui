@@ -163,11 +163,11 @@ function connect(ssid,password,callback) {
 
             // Check connection immediately after connecting
             console.log("Response connecting to network",JSON.stringify(response))
-            reset(false,callback)
+//            reset(false,callback)
 
             // Send callback to reset function
-//            if(callback)
-//                callback(null,response.message);
+            if(callback)
+                callback(null,response.message);
         }
     });
 }
