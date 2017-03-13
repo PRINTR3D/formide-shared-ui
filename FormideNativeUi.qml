@@ -188,7 +188,7 @@ Window {
                     // Remove later
                     getWifiList()
                     checkConnection()
-                    scanDrives()
+//                  TODO: Waiting for client v2: scanDrives()
 
 
                     sock.active = true
