@@ -58,14 +58,14 @@ function printer (port) {
         },
 
         // Sends custom gcode to printer
-        gcode: function(gcode) {
+        gcode: function(gcode,callback) {
            //console.log("Sending: "+gcode)
             var payload =
                     {
                     "command": gcode
                     }
 
-            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/gcode", JSON.stringify(payload));
+            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/gcode", JSON.stringify(payload),callback);
         },
 
 

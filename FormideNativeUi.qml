@@ -205,7 +205,7 @@ Window {
 
     function getFiles()
     {
-        Formide.storage().getFiles(function (err, files)
+        Formide.storage().list(function (err, files)
         {
             if(err)
             {
@@ -1021,7 +1021,13 @@ Window {
 
                 if(data.channel === "printer.status")
                 {
-                    //console.log(JSON.stringify(data.data))
+                    console.log(JSON.stringify(data.data))
+
+                    if(data.data.port==="/dev/virt0")
+                    {
+//                        console.log("Virtual printer return")
+                        return
+                    }
 
                     // Only use printer status after printer is Online
                     if(data.data.status !== "connecting")
@@ -1155,7 +1161,7 @@ Window {
                     console.log("Wi-Fi Checking")
                     getWifiList()
                     checkConnection()
-                    scanDrives() // To check if there are usb connected
+//                    waiting for client 2: scanDrives() // To check if there are usb connected
                 }
 
         }
@@ -1178,8 +1184,6 @@ Window {
                 loginTimer.repeat = false
                 loginTimer.running = false
                 loginTimer.stop()
-
-
             }
         }
     }

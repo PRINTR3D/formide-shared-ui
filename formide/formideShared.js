@@ -25,7 +25,7 @@ var newFanSpeed;
 var ssidToConnect;
 
 // Index variables
-var fileIndexSelected;
+var fileIndexSelected=0;
 
 // Extruder pages
 var extruderSelected=0;
