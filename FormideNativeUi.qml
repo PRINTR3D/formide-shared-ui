@@ -847,7 +847,6 @@ Window {
                     externalIpAddress=response.externalIp;
                     internalIpAddress=response.internalIp;
                     singleNetwork=response.network;
-                    getSingleNetwork()
                 }
                 else
                 {
@@ -866,20 +865,6 @@ Window {
         });
     }
 
-
-    function getSingleNetwork(){
-
-        Formide.wifi().getSingleNetwork(function (err, network) {
-            try {
-                var net = network;
-                singleNetwork=net;
-                console.log("Single network",singleNetwork)
-            }
-            catch (e) {
-                console.log("Exception checking network",e)
-            }
-        });
-    }
 
     function getWifiList(){
 
