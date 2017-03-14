@@ -844,8 +844,8 @@ Window {
                 {
                     console.log("Woeeee")
                     isConnectedToWifi=response.isConnected;
-                    externalIpAddress=response.externalIp;
-                    internalIpAddress=response.internalIp;
+                    externalIpAddress=response.publicIp;
+                    internalIpAddress=response.ip;
                     singleNetwork=response.network;
                 }
                 else
