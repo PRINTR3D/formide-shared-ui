@@ -842,7 +842,7 @@ Window {
             {
                 if(response.isConnected)
                 {
-                    console.log("Woeeee")
+
                     isConnectedToWifi=response.isConnected;
                     externalIpAddress=response.publicIp;
                     internalIpAddress=response.ip;
