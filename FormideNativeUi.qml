@@ -111,7 +111,8 @@ Window {
 
     // Formide-client Data
     property var currentClientVersion:""
-    property var ipAddress
+    property var internalIpAddress
+    property var externalIpAddress
     property var macAddress
 
     /* MOVE TO BUILDER UI */
@@ -841,14 +842,16 @@ Window {
             {
                 if(response.connected)
                 {
-                    isConnectedToWifi=response.connected
-                    ipAddress=response.internalIp;
+                    isConnectedToWifi=response.isConnected;
+                    externalIpAddress=response.externalIp;
+                    internalIpAddress=response.internalIp;
                     getSingleNetwork()
                 }
                 else
                 {
                     isConnectedToWifi=false
-                    ipAddress=""
+                    internalIpAddress="Unknown"
+                    externalIpAddress="Unknown"
                 }
 
                 if(callback)

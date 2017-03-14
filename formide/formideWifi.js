@@ -64,7 +64,7 @@ function checkConnection(callback) {
         }
         if(response)
         {
-            if(response.connected)
+            if(response.isConnected)
             {
 //                Formide.isConnectedToWifi=response.connected
 //                Formide.ipAddress=response.internalIp;
