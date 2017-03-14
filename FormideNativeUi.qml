@@ -840,8 +840,9 @@ Window {
             }
             if(response)
             {
-                if(response.connected)
+                if(response.isConnected)
                 {
+                    console.log("Woeeee")
                     isConnectedToWifi=response.isConnected;
                     externalIpAddress=response.externalIp;
                     internalIpAddress=response.internalIp;
