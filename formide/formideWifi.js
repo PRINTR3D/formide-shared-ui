@@ -35,7 +35,7 @@ function wifi(){
 // Tip: If error = 404, Make sure there is internet connection
 function getRegistrationCode(callback)
 {
-    HttpHelper.doHttpRequest("GET","/api/cloud/code",{},function(err,response){
+    HttpHelper.doHttpRequest("GET","/api/system/cloud/code",{},function(err,response){
         if(err)
         {
             console.log("Error registraton token",JSON.stringify(err));
@@ -69,7 +69,7 @@ function checkConnection(callback) {
 //                Formide.isConnectedToWifi=response.connected
 //                Formide.ipAddress=response.internalIp;
             }
-//            console.log("Response checking connection",JSON.stringify(response));
+            console.log("Response checking connection",JSON.stringify(response));
             if(callback)
                 callback(null,response);
         }
