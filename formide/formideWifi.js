@@ -18,7 +18,6 @@ function wifi(){
 
         getRegistrationCode:function(callback){return getRegistrationCode(callback)},
         checkConnection:function(callback) {return checkConnection(callback)},
-        getSingleNetwork:function(callback){return getSingleNetwork(callback)},
         getList:function(callback){return getList(callback)},
         reset:function(callback){return reset(callback)},
         connect:function(ssid,password,callback){return connect(ssid,password,callback)}
@@ -77,25 +76,6 @@ function checkConnection(callback) {
 
     });
 }
-
-// Tip for callback: It returns the name of the network!
-function getSingleNetwork(callback) {
-
-    HttpHelper.doHttpRequest("GET", "/api/cloud/network", {}, function (err, network) {
-        try {
-            var net = network.ssid;
-            if(callback)
-                callback(null, net);
-        }
-        catch (e) {
-            console.log("Exception checking network",e)
-            if(callback)
-                callback(e,null);
-        }
-    });
-}
-
-
 
 function getList(callback) {
 

@@ -846,6 +846,7 @@ Window {
                     isConnectedToWifi=response.isConnected;
                     externalIpAddress=response.externalIp;
                     internalIpAddress=response.internalIp;
+                    singleNetwork=response.network;
                     getSingleNetwork()
                 }
                 else
