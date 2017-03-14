@@ -883,20 +883,19 @@ Window {
         });
     }
 
-
-    function resetWifi(callback)
+    function reset(callback)
     {
         Formide.wifi().reset(function (err, response) {
 
             if(err)
             {
-                console.log("Error reset Wi-Fi",JSON.stringify(err));
+                console.log("Error reset",JSON.stringify(err));
                 if(callback)
                     callback(err,null)
             }
             if (response)
             {
-               //console.log('Response reset Wi-Fi', JSON.stringify(response))
+               //console.log('Response reset', JSON.stringify(response))
                 checkConnection()
                 singleNetwork=""
                 wifiList=[]
@@ -905,7 +904,28 @@ Window {
                     callback(null,response)
             }
         });
+    }
 
+
+    function hotspot(enabled,callback)
+    {
+        Formide.wifi().hotspot(enabled,function (err, response) {
+
+            if(err)
+            {
+                console.log("Error hotspot",JSON.stringify(err));
+                if(callback)
+                    callback(err,null)
+            }
+            if (response)
+            {
+               //console.log('Response hotspot', JSON.stringify(response))
+                checkConnection()
+
+                if(callback)
+                    callback(null,response)
+            }
+        });
     }
 
     // Check: Maybe we don't need to call it here

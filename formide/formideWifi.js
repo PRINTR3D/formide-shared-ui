@@ -20,6 +20,7 @@ function wifi(){
         checkConnection:function(callback) {return checkConnection(callback)},
         getList:function(callback){return getList(callback)},
         reset:function(callback){return reset(callback)},
+        hotspot:function(enabled,callback){return hotspot(enabled,callback)},
         connect:function(ssid,password,callback){return connect(ssid,password,callback)}
 
     }
@@ -97,16 +98,13 @@ function getList(callback) {
     });
 }
 
-
-
-function reset(enabled,callback) {
-   console.log("Reseting wifi");
+function reset(callback) {
+   console.log("Reseting Wi-Fi");
     var payload =
             {
-            "enabled":enabled
             };
 
-    HttpHelper.doHttpRequest("POST", "/api/network/hotspot", JSON.stringify(payload), function (err, response) {
+    HttpHelper.doHttpRequest("POST", "/api/network/reset", JSON.stringify(payload), function (err, response) {
 
         if(err)
         {
@@ -116,7 +114,33 @@ function reset(enabled,callback) {
         }
         if (response)
         {
-           //console.log('Response reset Wi-Fi', JSON.stringify(response))
+           //console.log('Response reset', JSON.stringify(response))
+            if(callback)
+                callback(null,response.message);
+        }
+    });
+}
+
+
+
+function hotspot(enabled,callback) {
+   console.log("Enable hotspot?",enabled);
+    var payload =
+            {
+            "enabled":enabled
+            };
+
+    HttpHelper.doHttpRequest("POST", "/api/network/hotspot", JSON.stringify(payload), function (err, response) {
+
+        if(err)
+        {
+            console.log("Error Hotspot Wi-Fi",JSON.stringify(err));
+            if(callback)
+                callback(err,null);
+        }
+        if (response)
+        {
+           //console.log('Response Hotspot', JSON.stringify(response))
             if(callback)
                 callback(null,response.message);
         }
@@ -143,9 +167,7 @@ function connect(ssid,password,callback) {
 
             // Check connection immediately after connecting
             console.log("Response connecting to network",JSON.stringify(response))
-//            reset(false,callback)
 
-            // Send callback to reset function
             if(callback)
                 callback(null,response.message);
         }
