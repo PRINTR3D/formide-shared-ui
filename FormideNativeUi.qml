@@ -259,16 +259,16 @@ Window {
         });
     }
 
-    function removeFile(id)
+    function removeFile(path)
     {
-        Formide.database().removeFile(id,function (err, response) {
+        Formide.storage().remove(path,function (err, response) {
             if(err)
             {
                 console.log("Error deleting file",JSON.stringify(err));
             }
             if (response)
             {
-                //console.log('Response deleting file', JSON.stringify(response))
+//                console.log('Response deleting file', JSON.stringify(response))
 
                 // After deleting a file, we fetch them again
                 getFiles();

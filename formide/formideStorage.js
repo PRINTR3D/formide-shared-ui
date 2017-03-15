@@ -48,7 +48,7 @@ function list(callback) {
 
 
 function single(filename,callback) {
-    HttpHelper.doHttpRequest("GET", "http://localhost:1337/api/storage/"+filename, {}, function (err, response) {
+    HttpHelper.doHttpRequest("GET", "/api/storage/"+filename, {}, function (err, response) {
         if(err)
         {
             if(callback)
@@ -62,9 +62,13 @@ function single(filename,callback) {
     });
 }
 
+function remove(name,callback) {
+    var file = encodeURIComponent(name);
+    var payload = {};
 
-function remove(filename,callback) {
-    HttpHelper.doHttpRequest("DELETE", "http://localhost:1337/api/storage/"+filename, {}, function (err, response) {
+    HttpHelper.doHttpRequest("DELETE", "/api/storage/"+file, JSON.stringify(payload), function (err, response) {
+
+        console.log("Deleting")
         if(err)
         {
             if(callback)
@@ -79,7 +83,7 @@ function remove(filename,callback) {
 }
 
 function download(filename,callback) {
-    HttpHelper.doHttpRequest("DELETE", "http://localhost:1337/api/storage/"+filename+"/download", {}, function (err, response) {
+    HttpHelper.doHttpRequest("GET", "/api/storage/"+filename+"/download", {}, function (err, response) {
         if(err)
         {
             if(callback)

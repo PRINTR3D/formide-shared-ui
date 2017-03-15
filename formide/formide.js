@@ -17,9 +17,9 @@ function auth(){
     return FormideAuth.auth();
 }
 
-function database(){
-    return FormideDatabase.database();
-}
+//function database(){
+//    return FormideDatabase.database();
+//}
 
 function storage(){
     return FormideStorage.storage();

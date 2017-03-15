@@ -11,6 +11,10 @@ var globalPort;
 
 // Do an http request
 function doHttpRequest(method, path, data, callback) {
+
+    console.log("Path",path)
+    console.log("Method",method)
+    console.log("Data",data)
     var xhr = new XMLHttpRequest;
     var uri = baseUrl + path;
     var queryString = "";
@@ -29,11 +33,11 @@ function doHttpRequest(method, path, data, callback) {
 
     // listen to http response
     xhr.onreadystatechange = function() {
+
         if (xhr.readyState === XMLHttpRequest.DONE) {
             var response = xhr.responseText;
-
             var responseCode = xhr.status;
-            //console.log("STATUS HTTP REQUEST: "+responseCode)
+//            console.log("STATUS HTTP REQUEST: "+responseCode)
 
 
             if (responseCode !== 200)
@@ -52,6 +56,7 @@ function doHttpRequest(method, path, data, callback) {
                         {
                             "message":"Internal error."
                         }
+//                    console.log("Exception!",e)
                     return callback(errorResponse,null);
                 }
 
@@ -71,6 +76,7 @@ function doHttpRequest(method, path, data, callback) {
     else {
             xhr.setRequestHeader("Content-type", "application/json");
             xhr.setRequestHeader("Content-length", data.length);
+
              xhr.send(data);
     }
 }
