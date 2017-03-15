@@ -39,9 +39,6 @@ Window {
     signal printerPaused
     signal printerResumed
 
-    signal slicerFinished
-    signal slicerFailed
-
     signal printerConnected
     signal printerOnline
     signal printerDisconnected
@@ -57,12 +54,9 @@ Window {
     property var speedMultiplierValue:100
 
     // Formide Data
-    property var materials:[]
     property var printers:[]
-    property var sliceProfiles:[]
     property var fileItems:[]
     property var queueItems:[]
-    property var printJobs:[]
     property bool loadingQueue:false
 
     // UI Status - general
@@ -75,16 +69,10 @@ Window {
 
     // Print Job Status
     property var uniquePrinter           // Printer used for slicing
-    property var currentPrintJob         // Current print job for display
     property var currentQueueItemId      // Current queue item for display
-
-    // Slice variables
-    property var slicing:false
-    property var slicedPrintJob
 
     // Error Data - Error messages that will be displayed
     property var usbError:""
-    property var slicerError:""    
     property var queueError:""
 
     // USB Data
@@ -181,10 +169,8 @@ Window {
 
                     // Check if this is optimal
                     getCurrentClientVersion()
-                    getQueue();
+                    // WAITING FOR QUEUE getQueue();
                     getFiles();
-                    //getPrintJobs();
-
 
                     // Remove later
                     getWifiList()
@@ -290,7 +276,7 @@ Window {
                for (var i in response) {
                    if (response[i].id === currentQueueItemId)
                    {
-                       currentPrintJob=response[i].printJob
+                       // DEPRECATED currentPrintJob=response[i].printJob
                        break;
                    }
                }
@@ -306,74 +292,6 @@ Window {
             }
         });
     }
-
-
-    function addCustomGcodeToPrintJobs(gcodefileId,addToQueueToo,directPrint, callback)
-    {
-        Formide.printer(printerStatus.port).addCustomGcodeToPrintJobs(gcodefileId,function (err, response) {
-
-            if(err)
-            {
-                console.log("Error adding custom gcode to print jobs: "+JSON.stringify(err))
-
-                if(callback)
-                    callback(err,null)
-            }
-            if(response)
-            {
-                //console.log('Response add custom gcode to print jobs: ', JSON.stringify(response))
-
-                // If necessary, we can add print job to Queue and print it
-                if(addToQueueToo || directPrint)
-                {
-                    addPrintJobToQueue(response.printJob.id,directPrint,callback);
-                }
-                else
-                {
-                    callback(null,response)
-                }
-            }
-        });
-    }
-
-    function addPrintJobToQueue(printJobId,directPrint,callback)
-    {
-
-        Formide.printer(printerStatus.port).addToQueue(printJobId,function (err, response) {
-
-            if(err)
-            {
-                console.log("Error adding a file to queue",JSON.stringify(err));
-                if(callback)
-                    callback(err,null)
-            }
-            if (response)
-            {
-                //console.log('Response adding a file to queue', JSON.stringify(response))
-
-                // After adding a file to queue, we update our queue items (to be removed with event implementation)
-                getQueue();
-
-                // Print file after being added to queue
-                if(directPrint)
-                {
-                    if(response.queueItem.status==="queued")
-                    {
-                        var queueId = response.queueItem.id
-                        startPrintFromQueueId(queueId,callback);
-                    }
-                }
-                else
-                {
-                    if(callback)
-                        callback(null,response);
-                }
-
-
-            }
-        });
-    }
-
 
     function startPrintFromQueueId(queueId,callback)
     {
@@ -411,43 +329,6 @@ Window {
                     callback(null,response)
             }
     });
-    }
-
-/************************************
-     MAIN LOGIC - Slicer
-************************************/
-
-    function slice(modelfiles,sliceprofile,materials, uniquePrinter,override)
-    {
-
-        slicing=true
-        console.log("")
-        Formide.slice(modelfiles,sliceprofile, materials, uniquePrinter.id, override,function (err, response) {
-
-            if(err)
-            {
-                console.log("Error Slicer",JSON.stringify(err));
-                slicerError=err.message
-
-
-                // TIP for callback implementation: USE EVENTS
-                /*
-                if(pagestack.depth>1)
-                    pagestack.pop()
-                pagestack.push(Qt.resolvedUrl("ErrorSlicer.qml"));
-                */
-
-            }
-           if(response)
-           {
-               // Tip for implementation:
-               // Slicer response gives back print job ID: response.printJob.id
-
-               console.log("Response Slicer",JSON.stringify(response));
-
-           }
-
-        });
     }
 
 
@@ -903,33 +784,6 @@ Window {
                 // For each socket event, we emit a signal, so we can add the implementation
                 // outside the library
 
-                if(data.channel === "slicer.finished")
-                {
-                    if(slicing===true)
-                    {
-                        slicing=false;
-                        if(slicerError.length>1)
-                        {
-                            // If HTTP call is wrong, we get information from notification
-                            slicerError="";
-                        }
-
-                        slicedPrintJob=data.data.data.printJob
-                        slicerFinished()
-
-                    }
-                }
-                if(data.channel === "slicer.failed")
-                {
-                    console.log("Slicer error",JSON.stringify(data.data))
-                    if(slicing===true)
-                    {
-                        slicing=false;
-                        slicerFailed(data.data)
-                    }
-
-                }
-
                 if(data.channel === "printer.stopped")
                 {
                     printerStopped(data.data)
@@ -951,7 +805,7 @@ Window {
 
                 if(data.channel === "printer.status")
                 {
-//                    console.log(JSON.stringify(data.data))
+                    console.log(JSON.stringify(data.data))
 
                     if(data.data.port==="/dev/virt0")
                     {
@@ -978,7 +832,6 @@ Window {
     //                            getCurrentClientVersion()
     //                            getQueue();
     //                            getFiles();
-    //                            getPrintJobs();
                                 getPrinters()
 
                             }
@@ -993,7 +846,7 @@ Window {
 
                                     console.log("Current queue item id updated: "+currentQueueItemId)
 
-                                    getQueue()
+                                    // WAITING FOR QUEUE getQueue()
                                 }
                             }
                         }
@@ -1049,8 +902,7 @@ Window {
                 {
                     console.log("GETTING EVERYTHING")
                     getFiles();
-                    // DEPRECATED getPrintJobs();
-                    getQueue();
+                    // WAITING FOR QUEUE getQueue();
                 }
 
         }
@@ -1064,8 +916,7 @@ Window {
         onTriggered: {
 
                 getFiles();
-                // DEPRECATED getPrintJobs();
-                getQueue();
+                // WAITING FOR QUEUE getQueue();
 
         }
     }

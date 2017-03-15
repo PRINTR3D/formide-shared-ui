@@ -150,9 +150,7 @@ function mount(drive,callback) {
         {
             callback(null,JSON.parse(response));
         }
-
     });
-
 }
 
 function unmount(drive,callback) {

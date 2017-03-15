@@ -92,6 +92,7 @@ function printer (port) {
 
             var jsonSent =
                     {
+                    "port":port,
                     "command": gcode
                     }
             HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/tune", JSON.stringify(jsonSent));
