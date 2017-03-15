@@ -20,6 +20,23 @@ function printer (port) {
 
     return {
 
+        list: function(callback)
+        {
+            HttpHelper.doHttpRequest("GET", "/api/printer/", {}, function(err, response) {
+
+                if(err)
+                {
+                    if(callback)
+                       callback(err,null);
+                }
+                if(response)
+                {
+                   if(callback)
+                       callback(null,response);
+                }
+            });
+        },
+
         // Home the printer - Sends G28
         home: function() {
            //console.log("Homing printer")
@@ -154,10 +171,14 @@ function printer (port) {
         // Print a file from file path
         printFileFromFileSystem: function(filePath,callback) {
             console.log("Printing file from file system: "+filePath);
-            HttpHelper.doHttpRequest("GET","/api/printer/"+ port + "/print",
-                {
-                    file:filePath
-                }, function(err,response){
+
+            var payload = {
+                file:filePath,
+                port:port
+
+            };
+
+            HttpHelper.doHttpRequest("POST","/api/printer/"+ port + "/print",JSON.stringify(payload), function(err,response){
                     if(err)
                     {
                         if(callback)
@@ -196,19 +217,19 @@ function printer (port) {
         // pause the printer
         // example: Formide.printer().pause();
         pause: function() {
-            HttpHelper.doHttpRequest("GET", "/api/printer/" + port + "/pause");
+            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/pause",JSON.stringify({}));
         },
 
         // resume the printer
         // example: Formide.printer().resume();
         resume: function() {
-            HttpHelper.doHttpRequest("GET", "/api/printer/" + port + "/resume");
+            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/resume",JSON.stringify({}));
         },
 
         // stop the printer
         // example: Formide.printer().stop();
         stop: function() {
-            HttpHelper.doHttpRequest("GET", "/api/printer/" + port + "/stop");
+            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/stop",JSON.stringify({}));
         }
     }
 }
