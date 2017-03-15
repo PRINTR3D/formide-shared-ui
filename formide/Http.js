@@ -11,10 +11,6 @@ var globalPort;
 
 // Do an http request
 function doHttpRequest(method, path, data, callback) {
-
-    console.log("Path",path)
-    console.log("Method",method)
-    console.log("Data",data)
     var xhr = new XMLHttpRequest;
     var uri = baseUrl + path;
     var queryString = "";
@@ -39,10 +35,8 @@ function doHttpRequest(method, path, data, callback) {
             var responseCode = xhr.status;
 //            console.log("STATUS HTTP REQUEST: "+responseCode)
 
-
             if (responseCode !== 200)
             {
-
                 try
                 {
                     var responseFromClient = JSON.parse(response)
@@ -76,8 +70,7 @@ function doHttpRequest(method, path, data, callback) {
     else {
             xhr.setRequestHeader("Content-type", "application/json");
             xhr.setRequestHeader("Content-length", data.length);
-
-             xhr.send(data);
+            xhr.send(data);
     }
 }
 
