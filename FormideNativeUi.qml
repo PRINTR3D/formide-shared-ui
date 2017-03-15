@@ -855,8 +855,14 @@ Window {
             if(err)
             {
                 console.log("Error checking connection",JSON.stringify(err));
+                isConnectedToWifi=false
+                internalIpAddress="Unknown"
+                externalIpAddress="Unknown"
                 if(callback)
                     callback(err,null)
+
+                wifiTimer.restart();
+                getWifiList();
             }
             if(response)
             {
