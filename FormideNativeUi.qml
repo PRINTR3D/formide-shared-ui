@@ -639,8 +639,28 @@ Window {
 
     }
 
-
     function getCurrentClientVersion()
+    {
+
+        Formide.system().info(function (err, response) {
+
+            if(err)
+            {
+                console.log("Error System info",JSON.stringify(err));
+            }
+            if(response)
+            {
+                console.log("Response System info",JSON.stringify(response))
+                currentClientVersion=response.version;
+            }
+
+        })
+
+    }
+
+
+
+    function getCurrentUpdateVersion()
     {
         Formide.update().current(function (err, response) {
 
@@ -811,7 +831,7 @@ Window {
 
     function getRegistrationToken(callback)
     {
-        Formide.wifi().getRegistrationCode(function(err,response){
+        Formide.system().getRegistrationCode(function(err,response){
             if(err)
             {
                 console.log("Error registraton token",JSON.stringify(err));

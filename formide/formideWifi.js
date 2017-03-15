@@ -16,7 +16,6 @@
 function wifi(){
     return{
 
-        getRegistrationCode:function(callback){return getRegistrationCode(callback)},
         checkConnection:function(callback) {return checkConnection(callback)},
         getList:function(callback){return getList(callback)},
         reset:function(callback){return reset(callback)},
@@ -31,26 +30,6 @@ function wifi(){
 /*************
  NATIVE IMPLEMENTATION
  ************/
-
-// Tip: If error = 404, Make sure there is internet connection
-function getRegistrationCode(callback)
-{
-    HttpHelper.doHttpRequest("GET","/api/system/cloud/code",{},function(err,response){
-        if(err)
-        {
-            console.log("Error registraton token",JSON.stringify(err));
-            if(callback)
-                callback(err,null);
-        }
-        if(response)
-        {
-            console.log("Response registration token",JSON.stringify(response));
-            if(callback)
-                callback(null,response);
-        }
-
-    });
-}
 
 function checkConnection(callback) {
 //    console.log("Checking if it's connected!");

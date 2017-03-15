@@ -6,6 +6,7 @@
 .import "formideStorage.js" as FormideStorage
 .import "formidePrinter.js" as FormidePrinter
 .import "formideSlicer.js" as FormideSlicer
+.import "formideSystem.js" as FormideSystem
 .import "formideUpdate.js" as FormideUpdate
 .import "formideUsb.js" as FormideUSB
 .import "formideWifi.js" as FormideWifi
@@ -30,6 +31,10 @@ function printer(port){
 
 function slice(modelfiles, sliceprofile, materials, printer, override, callback){
     return FormideSlicer.slice(modelfiles, sliceprofile, materials, printer, override, callback);
+}
+
+function system(){
+    return FormideSystem.system();
 }
 
 function update(){
