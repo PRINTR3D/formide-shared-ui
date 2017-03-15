@@ -2,7 +2,6 @@
 .pragma library
 
 .import "formideAuth.js" as FormideAuth
-.import "formideDatabase.js" as FormideDatabase
 .import "formideStorage.js" as FormideStorage
 .import "formidePrinter.js" as FormidePrinter
 .import "formideSlicer.js" as FormideSlicer
@@ -17,12 +16,13 @@ function auth(){
     return FormideAuth.auth();
 }
 
-//function database(){
-//    return FormideDatabase.database();
-//}
 
 function storage(){
     return FormideStorage.storage();
+}
+
+function printer(){
+    return FormidePrinter.printer("NO_PRINTER");
 }
 
 function printer(port){
