@@ -748,6 +748,7 @@ Window {
                 isConnectedToWifi=false
                 internalIpAddress="Unknown"
                 externalIpAddress="Unknown"
+                singleNetwork=""
                 if(callback)
                     callback(err,null)
 
@@ -769,6 +770,7 @@ Window {
                     isConnectedToWifi=false
                     internalIpAddress="Unknown"
                     externalIpAddress="Unknown"
+                    singleNetwork=""
                 }
 
                 if(callback)
@@ -853,16 +855,18 @@ Window {
             if(err)
             {
                 console.log("Error connecting to Wi-Fi",JSON.stringify(err));
+                checkConnection()
                 if(callback)
                     callback(err,null)
             }
             if (response)
             {
                 console.log("Response connecting to network",JSON.stringify(response))
+                checkConnection()
                 if(callback)
                     callback(null,response)
             }
-            checkConnection()
+
         });
     }
 
