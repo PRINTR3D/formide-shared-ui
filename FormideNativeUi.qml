@@ -794,7 +794,7 @@ Window {
 
                 if(data.channel === "printer.status")
                 {
-                    console.log(JSON.stringify(data.data))
+//                    console.log(JSON.stringify(data.data))
 
                     if(data.data.port==="/dev/virt0")
                     {
