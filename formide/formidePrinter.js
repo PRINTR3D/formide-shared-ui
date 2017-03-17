@@ -7,7 +7,6 @@
 //
 //
 
-
 .pragma library
 // Includes
 .import "Http.js" as HttpHelper
