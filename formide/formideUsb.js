@@ -17,36 +17,15 @@
 function usb(){
     return{
 
-        // Need callback implementation
-        updateDriveFilesFromPath:function(callback){return updateDriveFilesFromPath(callback);},
-//        updateDriveUnit:function(driveU,callback){return updateDriveUnit(driveU,callback)},
-        copyFile:function(callback){return copyFile(callback)},
+        // New
         scanDrives:function(callback){return scanDrives(callback)},
-
-        // Update var values
-//        updateDrivePath:function(driveP){return updateDrivePath(driveP);},
-//        updateDriveListing:function(i){return updateDriveListing(i)}
-
-        // Mount has private implementation
-        //mount:function(drive,callback){return mount(drive,callback)}
+        updateDriveFilesFromPath:function(drive, path, callback){return updateDriveFilesFromPath(drive, path, callback);},
+        copyFile:function(drive, path, callback){return copyFile(drive, path, callback)},
+        mount:function(drive, callback){return mount(drive,callback)},
+        unmount:function(drive, callback){return unmount(drive,callback)}
 
     }
 }
-
-/*********************
- LIBRARY IMPLEMENTATION
- **********************/
-
-//// Update drive path to read files
-//function updateDrivePath(driveP){
-//    Formide.drivePath=driveP;
-//}
-
-//// Update drive listing
-//function updateDriveListing(i){
-//    Formide.driveListing=i;
-//}
-
 
 /*************
  NATIVE IMPLEMENTATION
@@ -61,7 +40,7 @@ function updateDriveFilesFromPath(driveUnit, drivePath, callback){
 
     var res = encodeURIComponent(driveUnit);
 
-    HttpHelper.doHttpRequest("GET", "/api/files/read/"+res, data, function (err, list) {
+    HttpHelper.doHttpRequest("GET", "/plugins/com.printr.usb-drive/api/drives/"+res+"/read", data, function (err, list) {
 
         if(err)
         {
@@ -85,7 +64,7 @@ function copyFile(drive, path, callback) {
 
     var res = encodeURIComponent(drive);
 
-    HttpHelper.doHttpRequest("POST", "/api/files/copy/"+res, JSON.stringify(data), function (err, list) {
+    HttpHelper.doHttpRequest("POST", "/plugins/com.printr.usb-drive/drives/"+res+"/copy", JSON.stringify(data), function (err, list) {
 
         if(err)
         {
@@ -101,25 +80,10 @@ function copyFile(drive, path, callback) {
 
 }
 
-//function updateDriveUnit(driveU,callback){
-//    Formide.driveUnit=driveU;
-
-//    mount(driveU,function(err,response){
-//        if(err)
-//        {
-//            callback(err,null);
-//        }
-//        if(response)
-//        {
-//            callback(null,response)
-//        }
-//    });
-//}
-
 function scanDrives(callback) {
 
     //console.log("Scanning drives");
-    HttpHelper.doHttpRequest("GET", "/api/files/drives", {}, function (err, list) {
+    HttpHelper.doHttpRequest("GET", "/plugins/com.printr.usb-drive/api/drives", {}, function (err, list) {
 
         if(err)
         {
@@ -140,7 +104,7 @@ function mount(drive,callback) {
 
 
     var res = encodeURIComponent(drive);
-    HttpHelper.doHttpRequest("POST", "/api/files/mount/"+res, "", function (err, response) {
+    HttpHelper.doHttpRequest("POST", "/plugins/com.printr.usb-drive/api/drives/"+ res +"/mount", "", function (err, response) {
 
         if(err)
         {
@@ -156,7 +120,8 @@ function mount(drive,callback) {
 function unmount(drive,callback) {
 
     //console.log("Unmounting drive");
-    HttpHelper.doHttpRequest("POST", "/api/files/unmount/"+drive, {}, function (err, response) {
+    var res = encodeURIComponent(drive);
+    HttpHelper.doHttpRequest("POST", "/plugins/com.printr.usb-drive/api/drives/"+ res +"/unmount", {}, function (err, response) {
 
         if(err)
         {
