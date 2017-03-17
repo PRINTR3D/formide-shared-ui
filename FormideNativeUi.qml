@@ -144,14 +144,6 @@ Window {
         macAddress = mySystem.msg("fiw wlan0 mac");
     }
 
-    // Printer status update
-    onPrinterStatusChanged:{
-
-        //console.log("PrinterStatus")
-
-    }
-
-
 
 /************************************
      MAIN LOGIC - Auth
@@ -176,7 +168,7 @@ Window {
                     // Remove later
                     getWifiList()
                     checkConnection()
-//                  TODO: Waiting for client v2: scanDrives()
+//                    scanDrives()
 
 
                     sock.active = true
@@ -589,14 +581,6 @@ Window {
     }
 
 
-
-
-
-
-
-
-
-
 /************************************
      MAIN LOGIC - Wi-Fi
 ************************************/
@@ -905,7 +889,6 @@ Window {
             if(printerStatus)
                 if(printerStatus.status === "online")
                 {
-                    console.log("GETTING EVERYTHING")
                     getFiles();
                     // WAITING FOR QUEUE getQueue();
                 }
