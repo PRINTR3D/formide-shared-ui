@@ -94,6 +94,7 @@ Window {
     property var apMode:false
     property var wifiList:[]             // Array of SSIDs
     property var isConnectedToWifi:false // Boolean
+    property var isHotspot:false
     property var singleNetwork:""           // Network currently connected to
     property var registrationToken:"12345"    // Cloud registration token
 
@@ -630,6 +631,7 @@ Window {
                 internalIpAddress="Unknown"
                 externalIpAddress="Unknown"
                 singleNetwork=""
+                isHotspot=false
                 if(callback)
                     callback(err,null)
 
@@ -656,6 +658,9 @@ Window {
 
                 if(callback)
                     callback(null,response)
+
+
+                isHotspot=response.isHotspot
 
                 //console.log("Response checking connection",JSON.stringify(response));
             }
