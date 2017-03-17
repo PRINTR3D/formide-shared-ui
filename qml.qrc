@@ -3,9 +3,7 @@
         <file>FormideNativeUi.qml</file>
         <file>formide/formide.js</file>
         <file>formide/formideAuth.js</file>
-        <file>formide/formideDatabase.js</file>
         <file>formide/formidePrinter.js</file>
-        <file>formide/formideSlicer.js</file>
         <file>formide/formideUpdate.js</file>
         <file>formide/formideUsb.js</file>
         <file>formide/formideWifi.js</file>
@@ -14,7 +12,6 @@
         <file>formide-shared-ui.pro</file>
         <file>main.cpp</file>
         <file>qml.qrc</file>
-        <file>VirtualKeyboard.qml</file>
         <file>formide/formideShared.js</file>
     </qresource>
 </RCC>
