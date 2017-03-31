@@ -100,7 +100,7 @@ function printer (port) {
         // get queue for specific port
         getQueue: function(callback) {
             HttpHelper.doHttpRequest("GET", "/api/queue", {
-                port: "/dev/"+port
+                port: port
             }, function(err, response) {
 
                 if(err)
@@ -196,7 +196,8 @@ function printer (port) {
         start: function(queueId, callback) {
           console.log("Sending start print request");
            //console.log("GET /api/printer/" + port + "/start")
-            HttpHelper.doHttpRequest("GET", "/api/printer/" + port + "/start", {
+
+            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/start", {
                 queueItem: queueId
             }, function (err,response){
                 if(err)

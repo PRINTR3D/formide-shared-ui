@@ -151,10 +151,12 @@ Window {
 
     function login(){
         Formide.auth().login('admin@local', 'admin',function(callback){
+
             if(callback==true)
             {
                 if(Formide.auth().getAccessToken().length > 29)
                 {
+                    console.log("Login completed")
                     loginTimer.repeat = false
                     loginTimer.stop()
 
@@ -162,14 +164,9 @@ Window {
 
                     // Check if this is optimal
                     getCurrentClientVersion()
-                    // WAITING FOR QUEUE getQueue();
                     getFiles();
 
-                    // Remove later
-                    getWifiList()
-                    checkConnection()
 //                    scanDrives()
-
 
                     sock.active = true
 
@@ -265,11 +262,10 @@ Window {
             }
             if(response)
             {
-               //console.log("Response get queue",JSON.stringify(response));
+//               console.log("Response get queue",JSON.stringify(response));
                for (var i in response) {
                    if (response[i].id === currentQueueItemId)
                    {
-                       // DEPRECATED currentPrintJob=response[i].printJob
                        break;
                    }
                }
@@ -794,7 +790,7 @@ Window {
 
                 if(data.channel === "printer.status")
                 {
-//                    console.log(JSON.stringify(data.data))
+                    console.log(JSON.stringify(data.data))
 
                     if(data.data.port==="/dev/virt0")
                     {
@@ -816,13 +812,9 @@ Window {
                             {
                                 initialized=true
 
-                                // Moved to normal login
-    //                            // Check if this is optimal
-    //                            getCurrentClientVersion()
-    //                            getQueue();
-    //                            getFiles();
+                                getQueue();
+                                getFiles();
                                 getPrinters()
-
                             }
 
                             // If printer is printing, print job id needs to be updated
@@ -835,7 +827,7 @@ Window {
 
                                     console.log("Current queue item id updated: "+currentQueueItemId)
 
-                                    // WAITING FOR QUEUE getQueue()
+                                    getQueue()
                                 }
                             }
                         }
@@ -890,7 +882,7 @@ Window {
                 if(printerStatus.status === "online")
                 {
                     getFiles();
-                    // WAITING FOR QUEUE getQueue();
+                    getQueue();
                 }
 
         }
@@ -904,7 +896,7 @@ Window {
         onTriggered: {
 
                 getFiles();
-                // WAITING FOR QUEUE getQueue();
+                getQueue();
 
         }
     }
