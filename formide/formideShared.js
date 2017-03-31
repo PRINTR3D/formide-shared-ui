@@ -7,7 +7,7 @@
 
 // Used IP
 var backendIP = "127.0.0.1" // For production, we use Localhost
-//var backendIP = "10.1.0.57" // Sometimes, for development, we use the IP of an Element
+//var backendIP = "10.1.0.49" // Sometimes, for development, we use the IP of an Element
 
 var accessToken;
 

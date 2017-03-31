@@ -99,7 +99,7 @@ function printer (port) {
 
         // get queue for specific port
         getQueue: function(callback) {
-            HttpHelper.doHttpRequest("GET", "/api/db/queue", {
+            HttpHelper.doHttpRequest("GET", "/api/queue", {
                 port: "/dev/"+port
             }, function(err, response) {
 
