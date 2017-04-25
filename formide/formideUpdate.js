@@ -22,10 +22,7 @@ function update(){
     }
 }
 
-/*************
- NATIVE IMPLEMENTATION
- ************/
-
+// Native Implementation
 // Tip for callback: Check update variables!
 function checkUpdate(callback) {
 

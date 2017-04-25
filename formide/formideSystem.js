@@ -17,10 +17,7 @@ function system(){
     }
 }
 
-/*************
- NATIVE IMPLEMENTATION
- ************/
-
+// Native Implementation
 // Tip: If error = 404, Make sure there is internet connection
 function getRegistrationCode(callback)
 {
