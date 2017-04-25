@@ -1,10 +1,6 @@
 //
-
-
-            //  STORAGE
+//  STORAGE
 //
-//
-
 .pragma library
 // Includes
 .import "Http.js" as HttpHelper

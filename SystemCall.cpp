@@ -4,18 +4,12 @@
 SystemCall::SystemCall()
 {
 
-    std::cout << "Object created" << std::endl;
-
-
 }
-
 
 QString SystemCall::msg(QString a)
 {
     std::string utf8_text = a.toUtf8().constData();
     std::cout << utf8_text << std::endl;
-
-//    system(utf8_text.c_str());
 
     QProcess process;
     process.start(utf8_text.c_str());
@@ -24,7 +18,6 @@ QString SystemCall::msg(QString a)
     QString stdout = process.readAllStandardOutput();
 
     return stdout;
-
 }
 
 void SystemCall::msg2(QString a)
@@ -33,7 +26,5 @@ void SystemCall::msg2(QString a)
     std::cout << utf8_text << std::endl;
 
     system(utf8_text.c_str());
-
-
 
 }

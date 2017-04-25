@@ -27,10 +27,7 @@ function usb(){
     }
 }
 
-/*************
- NATIVE IMPLEMENTATION
- ************/
-
+// Native Implementation
 function updateDriveFilesFromPath(driveUnit, drivePath, callback){
 
     var data=

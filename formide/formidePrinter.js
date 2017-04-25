@@ -15,6 +15,7 @@
 function printer (port) {
 
     //port = port.substr(5) || globalPort;
+    var decodedPort=port;
     port = encodeURIComponent(port);
 
     return {
@@ -193,13 +194,15 @@ function printer (port) {
         },
 
         // Start a print based on queue id
-        start: function(queueId, callback) {
+        start: function(queueId, gcode, callback) {
           console.log("Sending start print request");
-           //console.log("GET /api/printer/" + port + "/start")
+           //console.log("POST /api/printer/" + port + "/start")
 
-            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/start", {
-                queueItem: queueId
-            }, function (err,response){
+            var payload={
+                port: decodedPort,
+                gcode: gcode
+            }
+            HttpHelper.doHttpRequest("POST", "/api/queue/" + queueId + "/print", JSON.stringify(payload), function (err,response){
                 if(err)
                 {
                     console.log("Error starting a print",JSON.stringify(err));

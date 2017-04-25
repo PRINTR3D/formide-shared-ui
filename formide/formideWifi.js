@@ -25,14 +25,8 @@ function wifi(){
     }
 }
 
-
-
-/*************
- NATIVE IMPLEMENTATION
- ************/
-
+// Native Implementation
 function checkConnection(callback) {
-//    console.log("Checking if it's connected!");
     HttpHelper.doHttpRequest("GET", "/api/network/status", {}, function (err, response) {
 
         if(err)
