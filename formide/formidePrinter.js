@@ -87,7 +87,7 @@ function printer (port) {
 
 
         // Sends tune command to printer (when printing)
-        tune: function(gcode) {
+        tune: function(gcode,callback) {
            //console.log("Sending: "+gcode)
 
             var jsonSent =
@@ -95,7 +95,7 @@ function printer (port) {
                     "port":port,
                     "command": gcode
                     }
-            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/tune", JSON.stringify(jsonSent));
+            HttpHelper.doHttpRequest("POST", "/api/printer/" + port + "/tune", JSON.stringify(jsonSent),callback);
         },
 
         // get queue for specific port
@@ -113,58 +113,6 @@ function printer (port) {
                 {
                    if(callback)
                        return callback(null,response);
-                }
-            });
-        },
-
-        // Add item to queue for specific port
-        // example: Formide.printer().addToQueue(function(err, response) {});
-
-        addCustomGcodeToPrintJobs: function (gcodefileId, callback) {
-
-            var payload =
-                {
-                    "file": gcodefileId
-                }
-
-            HttpHelper.doHttpRequest("POST", "/api/db/printjobs", JSON.stringify(payload) , function (err, response) {
-
-                if(err)
-                {
-                    if(callback)
-                        return callback(err,null)
-                }
-                if(response)
-                {
-
-                    if(callback)
-                        return callback(null,response)
-                }
-            });
-
-        },
-
-
-        addToQueue: function(printJobId, callback) {
-
-            var payload =
-                    {
-                    "printJob": printJobId,
-                    "port": "/dev/"+port
-                    }
-
-            HttpHelper.doHttpRequest("POST", "/api/db/queue", JSON.stringify(payload) , function (err, response) {
-
-                if(err)
-                {
-                    if(callback)
-                        return callback(err,null)
-                }
-                if (response)
-                {
-
-                    if(callback)
-                        return callback(null,response);
                 }
             });
         },
