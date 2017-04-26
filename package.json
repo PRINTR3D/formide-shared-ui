@@ -1,6 +1,6 @@
 {
   "name": "formide-shared-ui",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Shared code base for all formide-native-ui's made with Qt Quick",
   "main": "FormideNativeUi.qml",
   "scripts": {
