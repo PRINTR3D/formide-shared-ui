@@ -70,6 +70,7 @@ Window {
     // Printer used for slicing
     property var currentQueueItemId
     // Current queue item for display
+    property var currentQueueItemName
 
     // Error Data - Error messages that will be displayed
     property var usbError: ""
@@ -236,6 +237,7 @@ Window {
                 //               console.log("Response get queue",JSON.stringify(response));
                 for (var i in response) {
                     if (response[i].id === currentQueueItemId) {
+                        currentQueueItemName=response[i].printJob.name
                         break
                     }
                 }
