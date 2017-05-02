@@ -25,13 +25,13 @@ Window {
     visible: true
     width: 480
     height: 272
-    signal
+
     /************************************
             MAIN VARIABLES
              ************************************/
 
     // Events - Signals we can emit (different printers have different behavior)
-    printerFinished
+    signal printerFinished
     signal printerStarted
     signal printerStopped
     signal printerPaused
@@ -94,7 +94,6 @@ Window {
     property var ssidToConnect
 
     // Name of network to connect to
-    property var apMode: false
     property var wifiList: [] // Array of SSIDs
     property var isConnectedToWifi: false // Boolean
     property var isHotspot: false
@@ -673,7 +672,7 @@ Window {
                 }
 
                 if (data.channel === "printer.status") {
-                    console.log(JSON.stringify(data.data))
+//                    console.log(JSON.stringify(data.data))
 
                     if (data.data.port === "/dev/virt0") {
                         //                        console.log("Virtual printer return")
