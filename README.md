@@ -4,16 +4,18 @@ Formide-Touch is a library you can import to create a Qt UI Application, and it 
 
 At the same time, it is an API wrapper for Formide Client, including a wide list of functions, classes and event handlers to make the development of your application really easy.
 
+
 ## Features
 * Emission of events when connecting / disconnecting printers, printer started, finished, paused, and more.
-* Control one or many printers at the same time
+* Control one or many printers at the same time.
 * Send gcode commands.
 * Print Gcode files.
-* Pause / Resume / Stop prints
-* Manage Cloud Queue
-* Register device to Formide Account
+* Pause / Resume / Stop prints.
+* Manage Cloud Queue.
+* Register device to Formide Account.
 * Upload and store files, or download them from Formide Cloud.
 * Check printer status (temperatures, progress, coordinates, current layer, etc).
+
 
 # Installation
 Installation of this library can be done with `npm`:
