@@ -31,7 +31,7 @@ Build instructions for a normal Qt Application can be found [here][https://githu
 
 
 # Contributing
-You can contribute to `formide-drivers` by closing issues (via fork -> pull request to development), adding features or just using it and report bugs!
+You can contribute to `formide-touch` by closing issues (via fork -> pull request to development), adding features or just using it and report bugs!
 Please check the issue list of this repo before adding new ones to see if we're already aware of the issue that you're having.
 
 
