@@ -20,7 +20,7 @@ Rectangle {
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "../../Images/blurBackground.png"
+        source: "../../../images/blurBackground.png"
     }
 
     // Home Button
@@ -33,7 +33,7 @@ Rectangle {
             height: 32
             x: 16
             y: 8
-            source: "../../Images/icons/Dashboard/Overlays/HomeButtonOut.png"
+            source: "../../../images/icons/dashboard/Overlays/HomeButtonOut.png"
         }
 
         MouseArea {

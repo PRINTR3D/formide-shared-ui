@@ -39,7 +39,7 @@ Item {
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "../Images/blurBackground.png"
+        source: "../images/blurBackground.png"
     }
 
     Item {
@@ -89,7 +89,7 @@ Item {
         height: 56
         x: 100
         y: 64
-        source: "../Images/icons/Dashboard/Overlays/LowerIcon.png"
+        source: "../images/icons/dashboard/Overlays/LowerIcon.png"
     }
 
     // Arrow forward
@@ -98,7 +98,7 @@ Item {
         height: 56
         x: 344
         y: 64
-        source: "../Images/icons/Dashboard/Overlays/RaiseIcon.png"
+        source: "../images/icons/dashboard/Overlays/RaiseIcon.png"
     }
 
     KeyboardLetter {

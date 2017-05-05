@@ -12,7 +12,7 @@ Item {
     property var isConnectedToWifi: main.isConnectedToWifi
 
     function getImage() {
-        return "../../Images/icons/noIcon.png"
+        return Qt.resolvedUrl("../../../images/icons/noIcon.png")
     }
 
     Component.onCompleted: {

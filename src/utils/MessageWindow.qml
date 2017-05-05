@@ -22,7 +22,7 @@ Item {
     // Blurry Background
     Image{
         anchors.fill: parent
-        source:"../Images/blurBackground.png"
+        source:"../images/blurBackground.png"
     }
 
     MouseArea{
@@ -41,7 +41,7 @@ Item {
             height:30
             x:25
             y:11
-            source:"../Images/icons/noIcon.png"
+            source:"../images/icons/noIcon.png"
 
         }
 

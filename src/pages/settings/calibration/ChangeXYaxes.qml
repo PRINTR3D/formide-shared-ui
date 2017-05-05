@@ -85,7 +85,7 @@ Item {
         height: 48
         x: 24
         y: 64
-        source: "../../Images/icons/noIcon.png"
+        source: "../../../images/icons/noIcon.png"
         Rectangle {
             anchors.fill: parent
             color: "lightgrey"
@@ -99,7 +99,7 @@ Item {
         height: 48
         x: 192
         y: 64
-        source: "../../Images/icons/noIcon.png"
+        source: "../../../images/icons/noIcon.png"
         Rectangle {
             anchors.fill: parent
             color: "lightgrey"
@@ -172,7 +172,7 @@ Item {
         height: 48
         x: 256
         y: 64
-        source: "../../Images/icons/noIcon.png"
+        source: "../../../images/icons/noIcon.png"
         Rectangle {
             anchors.fill: parent
             color: "lightgrey"
@@ -186,7 +186,7 @@ Item {
         height: 48
         x: 424
         y: 64
-        source: "../../Images/icons/noIcon.png"
+        source: "../../../images/icons/noIcon.png"
         Rectangle {
             anchors.fill: parent
             color: "lightgrey"

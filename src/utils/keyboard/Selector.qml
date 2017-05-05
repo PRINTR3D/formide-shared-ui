@@ -86,7 +86,7 @@ Rectangle {
         height: 32
         x: 13.5
         y: 8
-        source: "../../Images/icons/Dashboard/Overlays/LowerIcon.png"
+        source: "../images/icons/dashboard/Overlays/LowerIcon.png"
     }
 
     // Arrow forward
@@ -95,6 +95,6 @@ Rectangle {
         height: 32
         x: 204.5
         y: 8
-        source: "../../Images/icons/Dashboard/Overlays/RaiseIcon.png"
+        source: "../images/icons/dashboard/Overlays/RaiseIcon.png"
     }
 }

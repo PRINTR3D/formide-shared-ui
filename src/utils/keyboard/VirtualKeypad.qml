@@ -98,7 +98,7 @@ Rectangle {
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "../../Images/blurBackground.png"
+        source: "../../images/blurBackground.png"
     }
 
     //Home Icon
@@ -106,7 +106,7 @@ Rectangle {
         type: "quit"
         onHomeClicked: {
 
-            keypadPage.parent.pop()
+            pagestack.popPagestack()
         }
     }
 
@@ -260,7 +260,7 @@ Rectangle {
                 width: 44
                 height: 32
                 anchors.centerIn: parent
-                source: "../../Images/icons/Keyboard/BackIcon.png"
+                source: "../../images/icons/keyboard/BackIcon.png"
             }
             backgroundColor: "#646464"
             opacity: 0.6

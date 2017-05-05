@@ -11,7 +11,7 @@ Item {
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "../Images/blurBackground.png"
+        source: "images/blurBackground.png"
     }
 
     // Home Icon
@@ -27,7 +27,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "Images/icons/Menu/DashboardIcon.png"
+            source: "images/icons/menu/DashboardIcon.png"
         }
 
         onClicked: {
@@ -43,7 +43,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "Images/icons/Menu/LibraryIcon.png"
+            source: "images/icons/menu/LibraryIcon.png"
         }
 
         onClicked: {
@@ -59,7 +59,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "Images/icons/Menu/QueueIcon.png"
+            source: "images/icons/menu/QueueIcon.png"
         }
 
         onClicked: {
@@ -75,7 +75,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "Images/icons/Menu/SettingsIcon.png"
+            source: "images/icons/menu/SettingsIcon.png"
         }
 
         onClicked: {

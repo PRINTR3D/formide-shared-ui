@@ -45,7 +45,7 @@ Item {
         height: 20
         x: 48
         y: 104
-        source: "../Images/icons/Settings/Warning.png"
+        source: "../images/icons/settings/Warning.png"
     }
 
     Text {

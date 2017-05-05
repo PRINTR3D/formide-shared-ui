@@ -26,7 +26,7 @@ PopupWindow {
                         if (err) {
                             pagestack.pushPagestack(
                                         Qt.resolvedUrl(
-                                            "library/PrintingError.qml"))
+                                            "../library/PrintingError.qml"))
                         }
                     })
         pagestack.pushPagestack(Qt.resolvedUrl("PrintingSpinner.qml"))

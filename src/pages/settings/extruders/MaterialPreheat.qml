@@ -28,7 +28,7 @@ Item {
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "../../Images/blurBackground.png"
+        source: "../../../images/blurBackground.png"
     }
 
     HomeIcon {
@@ -57,7 +57,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/PLA.png"
+            source: "../../../images/icons/settings/PLA.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -71,7 +71,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/ABS.png"
+            source: "../../../images/icons/settings/ABS.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -85,7 +85,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/PET.png"
+            source: "../../../images/icons/settings/PET.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -99,7 +99,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/WF.png"
+            source: "../../../images/icons/settings/WF.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -113,7 +113,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/NPA6.png"
+            source: "../../../images/icons/settings/NPA6.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -133,7 +133,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/BL.png"
+            source: "../../../images/icons/settings/BL.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -147,7 +147,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/LW3.png"
+            source: "../../../images/icons/settings/LW3.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -161,7 +161,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/NF.png"
+            source: "../../../images/icons/settings/NF.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -175,7 +175,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/EWC.png"
+            source: "../../../images/icons/settings/EWC.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -189,7 +189,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../Images/icons/Settings/PF.png"
+            source: "../../../images/icons/settings/PF.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {

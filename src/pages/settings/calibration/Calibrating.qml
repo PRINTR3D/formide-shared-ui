@@ -23,7 +23,7 @@ Item {
         x: 152 + 140 + 16
         y: 24
 
-        source: "../../Images/icons/Settings/Spinner.png"
+        source: "../../../images/icons/settings/Spinner.png"
     }
 
     Timer {

@@ -32,7 +32,7 @@ Item {
 
         name: singleNetwork
         wifiActive: true
-        fileImagePath: "../../Images/icons/Header/Active States/WifiIconA.png"
+        fileImagePath: Qt.resolvedUrl("../../../images/icons/header/Active States/WifiIconA.png")
 
         MouseArea {
             anchors.fill: parent
@@ -72,7 +72,7 @@ Item {
                     //TODO: false
                     expanded = false
                     pagestack.pushPagestack(Qt.resolvedUrl(
-                                                "../Cloud/CloudError.qml"))
+                                                "../cloud/CloudError.qml"))
                 }
                 if (response) {
                     //TODO: replace for string

@@ -154,7 +154,7 @@ Flickable {
         SingleListItem {
             id: files
             name: getName(index)
-            arrowImagePath: "../Images/icons/Dashboard/Overlays/RaiseIcon.png"
+            arrowImagePath: Qt.resolvedUrl("../images/icons/dashboard/Overlays/RaiseIcon.png")
             fileImagePath: getImage(index)
             textSize: 24
             property string status: root.status

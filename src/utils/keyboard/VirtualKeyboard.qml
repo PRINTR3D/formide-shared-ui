@@ -205,7 +205,7 @@ Rectangle {
                 width: 18
                 height: 16
                 anchors.centerIn: parent
-                source: "../../Images/icons/Keyboard/Shift.png"
+                source: "../../images/icons/keyboard/Shift.png"
             }
             backgroundColor: "#dcdcde"
             onClicked: activeKeyboard = "upperCase"
@@ -390,7 +390,7 @@ Rectangle {
                 width: 18
                 height: 16
                 anchors.centerIn: parent
-                source: "../../Images/icons/Keyboard/Shift.png"
+                source: "../../images/icons/keyboard/Shift.png"
             }
             backgroundColor: "#dcdcde"
             onClicked: activeKeyboard = "lowerCase"
@@ -656,7 +656,7 @@ Rectangle {
                 width: 18
                 height: 16
                 anchors.centerIn: parent
-                source: "../../Images/icons/Keyboard/Shift.png"
+                source: "../../images/icons/keyboard/Shift.png"
             }
             onClicked: pressLetter("^")
         }
@@ -849,7 +849,7 @@ Rectangle {
             width: 44
             height: 32
             anchors.centerIn: parent
-            source: "../../Images/icons/Keyboard/BackIcon.png"
+            source: "../../images/icons/keyboard/BackIcon.png"
         }
 
         backgroundColor: "#dcdcde"

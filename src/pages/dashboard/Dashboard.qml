@@ -204,7 +204,7 @@ Item {
                         pagestack.changeTransition("newPageComesFromUp")
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(
-                                        "../utils/keyboard/VirtualKeypad.qml"))
+                                        "../../utils/keyboard/VirtualKeypad.qml"))
                     } else {
                         if (!printerStatus) {
                             return
@@ -212,7 +212,7 @@ Item {
                             pagestack.changeTransition("newPageComesFromInside")
                             pagestack.pushPagestack(
                                         Qt.resolvedUrl(
-                                            "Controls/ChangeTemperatureE1.qml"))
+                                            "controls/ChangeTemperatureE1.qml"))
                         }
                     }
                 }
@@ -258,14 +258,14 @@ Item {
                         pagestack.changeTransition("newPageComesFromUp")
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(
-                                        "../utils/keyboard/VirtualKeypad.qml"))
+                                        "../../utils/keyboard/VirtualKeypad.qml"))
                     } else {
                         if (!printerStatus)
                             return
                         pagestack.changeTransition("newPageComesFromInside")
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(
-                                        "Controls/ChangeTemperatureE2.qml"))
+                                        "controls/ChangeTemperatureE2.qml"))
                     }
                 }
             }
@@ -310,14 +310,14 @@ Item {
                         pagestack.changeTransition("newPageComesFromUp")
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(
-                                        "../utils/keyboard/VirtualKeypad.qml"))
+                                        "../../utils/keyboard/VirtualKeypad.qml"))
                     } else {
                         if (!printerStatus)
                             return
                         pagestack.changeTransition("newPageComesFromInside")
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(
-                                        "Controls/ChangeTemperatureBed.qml"))
+                                        "controls/ChangeTemperatureBed.qml"))
                     }
                 }
             }
@@ -470,7 +470,7 @@ Item {
                     y: 136
                     source: isPrinting(
                                 ) ? isPaused(
-                                        ) ? "../Images/icons/Dashboard/StartButtonIcon.png" : "../Images/icons/Dashboard/PauseButtonIcon.png" : "../Images/icons/Dashboard/StartButtonIcon.png"
+                                        ) ? "../../images/icons/dashboard/StartButtonIcon.png" : "../../images/icons/dashboard/PauseButtonIcon.png" : "../../images/icons/dashboard/StartButtonIcon.png"
                 }
 
                 // Pause/Resume text
@@ -497,7 +497,7 @@ Item {
                             pagestack.changeTransition("newPageComesFromUp")
                             pagestack.pushPagestack(
                                         Qt.resolvedUrl(
-                                            "../utils/keyboard/VirtualKeypad.qml"))
+                                            "../../utils/keyboard/VirtualKeypad.qml"))
                         } else {
                             if (isPrinting()) {
                                 if (isPaused()) {
@@ -522,7 +522,7 @@ Item {
                     height: 40
                     x: 336
                     y: 136
-                    source: "../Images/icons/Dashboard/StopButtonIcon.png"
+                    source: "../../images/icons/dashboard/StopButtonIcon.png"
                 }
 
                 // Stop text
@@ -548,7 +548,7 @@ Item {
                             pagestack.changeTransition("newPageComesFromUp")
                             pagestack.pushPagestack(
                                         Qt.resolvedUrl(
-                                            "../utils/keyboard/VirtualKeypad.qml"))
+                                            "../../utils/keyboard/VirtualKeypad.qml"))
                         } else {
                             if (isPrinting()) {
                                 pagestack.changeTransition(
@@ -573,7 +573,7 @@ Item {
                     x: 408
                     y: 136
                     source: isPrinting(
-                                ) ? "../Images/icons/Dashboard/TuneIcon.png" : "../Images/icons/Dashboard/ControlButtonIcon.png"
+                                ) ? "../../images/icons/dashboard/TuneIcon.png" : "../../images/icons/dashboard/ControlButtonIcon.png"
                 }
 
                 // Tune text
@@ -599,19 +599,19 @@ Item {
                             pagestack.changeTransition("newPageComesFromUp")
                             pagestack.pushPagestack(
                                         Qt.resolvedUrl(
-                                            "../utils/keyboard/VirtualKeypad.qml"))
+                                            "../../utils/keyboard/VirtualKeypad.qml"))
                         } else {
                             if (isPrinting()) {
                                 pagestack.changeTransition(
                                             "newPageComesFromDown")
                                 pagestack.pushPagestack(
-                                            Qt.resolvedUrl("Controls/Tune.qml"))
+                                            Qt.resolvedUrl("controls/Tune.qml"))
                             } else {
                                 pagestack.changeTransition(
                                             "newPageComesFromDown")
                                 pagestack.pushPagestack(
                                             Qt.resolvedUrl(
-                                                "Controls/Controls.qml"))
+                                                "controls/Controls.qml"))
                             }
                         }
                     }

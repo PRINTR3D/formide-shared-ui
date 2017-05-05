@@ -24,7 +24,7 @@ Item {
         function getImage(index) {
 //            if(listModel[index].filetype==="text/gcode")
 //            {
-            return "../Images/icons/gcodeIcon.png"
+            return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
 //            }
 //            if(listModel[index].filetype==="text/stl")
 //            {
@@ -45,7 +45,7 @@ Item {
 //                    console.log("listModel["+index+"].id is UNDEFINED")
 //                }
 //            }
-//            return "../Images/icons/noIcon.png"
+//            return Qt.resolvedUrl("../../images/icons/noIcon.png")
         }
 
         LibraryItemExpanded {

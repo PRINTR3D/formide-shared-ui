@@ -12,7 +12,7 @@ Rectangle {
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "../../Images/blurBackground.png"
+        source: "../../../images/blurBackground.png"
     }
 
     // Home icon
@@ -42,7 +42,7 @@ Rectangle {
             height: 56.1
             x: 83
             y: 96
-            source: "../../Images/icons/Dashboard/Overlays/FlowRateIcon.png"
+            source: "../../../images/icons/dashboard/Overlays/FlowRateIcon.png"
         }
 
         KeyboardLetter {
@@ -84,7 +84,7 @@ Rectangle {
             height: 56.1
             x: 212.4
             y: 96
-            source: "../../Images/icons/Dashboard/Overlays/PrintSpeedIcon.png"
+            source: "../../../images/icons/dashboard/Overlays/PrintSpeedIcon.png"
         }
 
         KeyboardLetter {
@@ -126,7 +126,7 @@ Rectangle {
             height: 56.1
             x: 340
             y: 96
-            source: "../../Images/icons/Dashboard/Overlays/Shape.png"
+            source: "../../../images/icons/dashboard/Overlays/Shape.png"
         }
 
         KeyboardLetter {

@@ -24,7 +24,7 @@ Item {
                 //CLOUD LOGIC
                 if (queueItems[index].origin == "cloud") {
                     if (queueItems[index].printJob.sliceMethod === "custom") {
-                        return "../Images/icons/gcodeIcon.png"
+                        return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
                     } else {
                         return "https://storage.googleapis.com/images.formide.com/"
                                 + queueItems[index].printJob.files[0].images[0]
@@ -45,11 +45,11 @@ Item {
                                                 file.images[0])
                         return url
                     } else {
-                        return "../Images/icons/gcodeIcon.png"
+                        return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
                     }
                 }
             } else
-                return "../Images/icons/noIcon.png"
+                return Qt.resolvedUrl("../../images/icons/noIcon.png")
         }
 
         onItemSelected: {

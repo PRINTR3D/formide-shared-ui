@@ -12,14 +12,14 @@ Item {
 
     function getImage() {
         if (type === "home") {
-            return "../Images/icons/Header/HomeButtonIn.png"
+            return Qt.resolvedUrl("../images/icons/header/HomeButtonIn.png")
         }
 
         if (type === "quit") {
-            return "../Images/icons/Dashboard/Overlays/HomeButtonOut.png"
+            return Qt.resolvedUrl("../images/icons/dashboard/Overlays/HomeButtonOut.png")
         }
         if (type === "back") {
-            return "../Images/gif/backarrow.png"
+            return Qt.resolvedUrl("../images/gif/backarrow.png")
         }
     }
 

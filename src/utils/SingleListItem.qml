@@ -87,9 +87,9 @@ Rectangle {
         function getWifiIcon()
         {
             if(wifiActive)
-                return "../../Images/icons/Settings/wifi/Wi-FiIconActive.png"
+                return Qt.resolvedUrl("../images/icons/settings/wifi/Wi-FiIconActive.png")
             else if(wifi)
-                return "../../Images/icons/Settings/wifi/Wi-FiIcon.png"
+                return Qt.resolvedUrl("../images/icons/settings/wifi/Wi-FiIcon.png")
             else
                 return fileImagePath
         }

@@ -8,13 +8,13 @@ Rectangle {
     color: "#141414"
 
     property var name: "Network name"
-    property var fileImagePath: "../Images/icons/Dashboard/Overlays/RaiseIcon.png"
-    property var fileImagePathLock: "../Images/icons/Header/LockIcon.png"
+    property var fileImagePath: "../images/icons/dashboard/Overlays/RaiseIcon.png"
+    property var fileImagePathLock: "../images/icons/header/LockIcon.png"
 
     signal clickedSignal
 
     function getButtonImage() {
-        return "../Images/icons/Header/WifiIcon.png"
+        return Qt.resolvedUrl("../images/icons/header/WifiIcon.png")
     }
 
     Image {

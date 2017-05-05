@@ -23,7 +23,7 @@ Item {
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "../Images/blurBackground.png"
+        source: "../images/blurBackground.png"
     }
 
     // Home icon

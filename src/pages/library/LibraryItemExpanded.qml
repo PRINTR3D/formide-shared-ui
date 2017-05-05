@@ -31,12 +31,12 @@ Item {
     function getImage() {
         if (fileIndexSelected === undefined) {
             //            console.log("No photo shown in Library Extended - 1")
-            return "../Images/icons/noIcon.png"
+            return Qt.resolvedUrl("../../images/icons/noIcon.png")
         }
 
         //        if(fileItems[fileIndexSelected].filetype==="text/gcode")
         //        {
-        return "../Images/icons/gcodeIcon.png"
+        return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
         //        }
         //        if(fileItems[fileIndexSelected].filetype==="text/stl")
         //        {
@@ -57,7 +57,7 @@ Item {
         //                console.log("fileItems["+fileIndexSelected+"].id is UNDEFINED")
         //            }
         //        }
-        //        return "../Images/icons/noIcon.png"
+        //        return Qt.resolvedUrl("../../images/icons/noIcon.png")
     }
 
     function getName() {
@@ -72,7 +72,7 @@ Item {
         y: 8
         name: getName()
         fileImagePath: getImage()
-        arrowImagePath: "../Images/icons/Dashboard/Overlays/LowerIcon.png"
+        arrowImagePath: Qt.resolvedUrl("../../images/icons/dashboard/Overlays/LowerIcon.png")
 
         MouseArea {
             anchors.fill: parent

@@ -69,7 +69,7 @@ Flickable {
             x: 24
             y: 16
 
-            source: "../Images/icons/PrintrIcon.png"
+            source: "../../images/icons/PrintrIcon.png"
         }
 
         Image {
@@ -78,7 +78,7 @@ Flickable {
             x: 24
             y: 104
 
-            source: "../Images/icons/PrintrIcon.png"
+            source: "../../images/icons/PrintrIcon.png"
         }
 
         DefaultText {

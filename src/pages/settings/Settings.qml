@@ -59,7 +59,7 @@ Item {
                 height: 48
                 x: 24
                 y: 8
-                source: "../Images/icons/Settings/AboutIcon.png"
+                source: "../../images/icons/settings/AboutIcon.png"
             }
 
             onClickedSignal: {
@@ -76,7 +76,7 @@ Item {
                 height: 48
                 x: 24
                 y: 8
-                source: "../Images/icons/Settings/WiFiIcon.png"
+                source: "../../images/icons/settings/WiFiIcon.png"
             }
 
             onClickedSignal: {
@@ -94,7 +94,7 @@ Item {
                 height: 48
                 x: 24
                 y: 8
-                source: "../Images/icons/Settings/CloudIcon.png"
+                source: "../../images/icons/settings/CloudIcon.png"
             }
             onClickedSignal: {
                 main.settingsIndexSelected = 2
@@ -111,7 +111,7 @@ Item {
                 height: 48
                 x: 24
                 y: 8
-                source: "../Images/icons/Settings/UpdateIcon.png"
+                source: "../../images/icons/settings/UpdateIcon.png"
             }
 
             onClickedSignal: {
@@ -129,7 +129,7 @@ Item {
                 height: 48
                 x: 24
                 y: 8
-                source: "../Images/icons/Settings/CalibrationIcon.png"
+                source: "../../images/icons/settings/CalibrationIcon.png"
             }
 
             onClickedSignal: {
@@ -148,7 +148,7 @@ Item {
                 height: 48
                 x: 24
                 y: 8
-                source: "../Images/icons/Settings/ExtrudersIcon.png"
+                source: "../../images/icons/settings/ExtrudersIcon.png"
             }
 
             onClickedSignal: {
@@ -158,7 +158,7 @@ Item {
                         || printerStatus.status === "paused")
                 {
                     pagestack.changeTransition("newPageComesFromInside")
-                    pagestack.pushPagestack(Qt.resolvedUrl("Extruders/ExtrudersNotAvailable.qml"))
+                    pagestack.pushPagestack(Qt.resolvedUrl("extruders/ExtrudersNotAvailable.qml"))
                 }
 
                 else

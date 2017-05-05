@@ -31,60 +31,57 @@ Item {
         viewStack.pop()
 
         if (viewStackActivePage == "Dashboard")
-            viewStack.push(Qt.resolvedUrl("dashboard/Dashboard.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/dashboard/Dashboard.qml"))
 
         else if (viewStackActivePage == "Queue")
-            viewStack.push(Qt.resolvedUrl("queue/Queue.qml"))
-
-        else if (viewStackActivePage == "Print Jobs")
-            viewStack.push(Qt.resolvedUrl("printJobs/PrintJobs.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/queue/Queue.qml"))
 
         else if (viewStackActivePage == "Library")
-            viewStack.push(Qt.resolvedUrl("library/Library.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/library/Library.qml"))
 
         else if (viewStackActivePage == "Settings")
-            viewStack.push(Qt.resolvedUrl("settings/Settings.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/Settings.qml"))
 
         else if (viewStackActivePage == "Wi-Fi")
-            viewStack.push(Qt.resolvedUrl("settings/wifi/Wi-Fi.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/wifi/Wi-Fi.qml"))
 
         else if (viewStackActivePage == "About")
-            viewStack.push(Qt.resolvedUrl("settings/About.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/About.qml"))
 
         else if (viewStackActivePage == "Cloud")
-            viewStack.push(Qt.resolvedUrl("settings/cloud/Cloud.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/cloud/Cloud.qml"))
 
         else if (viewStackActivePage == "Update")
-            viewStack.push(Qt.resolvedUrl("settings/update/Update.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/update/Update.qml"))
 
         else if (viewStackActivePage == "Update Available")
             viewStack.push(Qt.resolvedUrl(
-                               "settings/update/UpdateAvailable.qml"))
+                               "pages/settings/update/UpdateAvailable.qml"))
 
         else if (viewStackActivePage == "No Update")
             viewStack.push(Qt.resolvedUrl(
-                               "settings/update/UpdateNotAvailable.qml"))
+                               "pages/settings/update/UpdateNotAvailable.qml"))
 
         else if (viewStackActivePage == "Update Active")
-            viewStack.push(Qt.resolvedUrl("settings/update/UpdateActive.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/update/UpdateActive.qml"))
 
         else if (viewStackActivePage == "Calibration")
-            viewStack.push(Qt.resolvedUrl("settings/calibration/Calibrate.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/calibration/Calibrate.qml"))
 
         else if (viewStackActivePage == "Extruders")
-            viewStack.push(Qt.resolvedUrl("settings/extruders/Extruders.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/extruders/Extruders.qml"))
 
         else if (viewStackActivePage == "MaterialPreheat")
             viewStack.push(Qt.resolvedUrl(
-                               "settings/extruders/MaterialPreheat.qml"))
+                               "pages/settings/extruders/MaterialPreheat.qml"))
 
         else if (viewStackActivePage == "ExtruderReplace")
             viewStack.push(Qt.resolvedUrl(
-                               "settings/extruders/ExtruderReplace.qml"))
+                               "pages/settings/extruders/ExtruderReplace.qml"))
 
         else if (viewStackActivePage == "ExtruderReplace")
             viewStack.push(Qt.resolvedUrl(
-                               "settings/extruders/ExtruderReplace.qml"))
+                               "pages/settings/extruders/ExtruderReplace.qml"))
 
         else if (viewStackActivePage == "X and Y Calibration")
             viewStack.push(Qt.resolvedUrl("popups/settingsCalibrateXY.qml"))
@@ -104,20 +101,20 @@ Item {
     function getAPIcon() {
 
         if (isHotspot)
-            return "Images/icons/Header/Active States/APA.png"
+            return Qt.resolvedUrl("images/icons/header/Active States/APA.png")
         else
-            return "Images/icons/Header/AP.png"
+            return Qt.resolvedUrl("images/icons/header/AP.png")
     }
 
     function getUSBIcon() {
 
         if (!printerStatus)
-            return "Images/icons/Header/USBIcon.png"
+            return Qt.resolvedUrl("images/icons/header/USBIcon.png")
         else {
             if (usbAvailable) {
-                return "Images/icons/Header/Active States/USBIconA.png"
+                return Qt.resolvedUrl("images/icons/header/Active States/USBIconA.png")
             } else {
-                return "Images/icons/Header/USBIcon.png"
+                return Qt.resolvedUrl("images/icons/header/USBIcon.png")
             }
         }
     }
@@ -125,21 +122,21 @@ Item {
     function getWifiIcon() {
 
         if (isConnectedToWiFi) {
-            return "Images/icons/Header/Active States/WifiIconA.png"
+            return Qt.resolvedUrl("images/icons/header/Active States/WifiIconA.png")
         } else {
-            return "Images/icons/Header/WifiIcon.png"
+            return Qt.resolvedUrl("images/icons/header/WifiIcon.png")
         }
     }
 
     function getLockIcon() {
 
         if (!isLocked) {
-            return "Images/icons/Header/LockIcon.png"
+            return Qt.resolvedUrl("images/icons/header/LockIcon.png")
         } else {
             if (isLocked) {
-                return "Images/icons/Header/Active States/LockIconA.png"
+                return Qt.resolvedUrl("images/icons/header/Active States/LockIconA.png")
             } else {
-                return "Images/icons/Header/LockIcon.png"
+                return Qt.resolvedUrl("images/icons/header/LockIcon.png")
             }
         }
     }
@@ -330,7 +327,7 @@ Item {
                     console.log("VirtualKeypad.qml")
                     pagestack.pushPagestack(
                                 Qt.resolvedUrl(
-                                    "/utils/keyboard/VirtualKeypad.qml"))
+                                    "utils/keyboard/VirtualKeypad.qml"))
                 }
             }
         }
