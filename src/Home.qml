@@ -31,52 +31,72 @@ Item {
         viewStack.pop()
 
         if (viewStackActivePage == "Dashboard")
-            viewStack.push(Qt.resolvedUrl("Dashboard/Dashboard.qml"))
+            viewStack.push(Qt.resolvedUrl("dashboard/Dashboard.qml"))
+
         else if (viewStackActivePage == "Queue")
-            viewStack.push(Qt.resolvedUrl("Queue/Queue.qml"))
+            viewStack.push(Qt.resolvedUrl("queue/Queue.qml"))
+
         else if (viewStackActivePage == "Print Jobs")
-            viewStack.push(Qt.resolvedUrl("PrintJobs/PrintJobs.qml"))
+            viewStack.push(Qt.resolvedUrl("printJobs/PrintJobs.qml"))
+
         else if (viewStackActivePage == "Library")
-            viewStack.push(Qt.resolvedUrl("Library/Library.qml"))
+            viewStack.push(Qt.resolvedUrl("library/Library.qml"))
+
         else if (viewStackActivePage == "Settings")
-            viewStack.push(Qt.resolvedUrl("Settings/Settings.qml"))
+            viewStack.push(Qt.resolvedUrl("settings/Settings.qml"))
+
         else if (viewStackActivePage == "Wi-Fi")
-            viewStack.push(Qt.resolvedUrl("Settings/Wifi/Wi-Fi.qml"))
+            viewStack.push(Qt.resolvedUrl("settings/wifi/Wi-Fi.qml"))
+
         else if (viewStackActivePage == "About")
-            viewStack.push(Qt.resolvedUrl("Settings/About.qml"))
+            viewStack.push(Qt.resolvedUrl("settings/About.qml"))
+
         else if (viewStackActivePage == "Cloud")
-            viewStack.push(Qt.resolvedUrl("Settings/Cloud/Cloud.qml"))
+            viewStack.push(Qt.resolvedUrl("settings/cloud/Cloud.qml"))
+
         else if (viewStackActivePage == "Update")
-            viewStack.push(Qt.resolvedUrl("Settings/Update/Update.qml"))
+            viewStack.push(Qt.resolvedUrl("settings/update/Update.qml"))
+
         else if (viewStackActivePage == "Update Available")
             viewStack.push(Qt.resolvedUrl(
-                               "Settings/Update/UpdateAvailable.qml"))
+                               "settings/update/UpdateAvailable.qml"))
+
         else if (viewStackActivePage == "No Update")
             viewStack.push(Qt.resolvedUrl(
-                               "Settings/Update/UpdateNotAvailable.qml"))
+                               "settings/update/UpdateNotAvailable.qml"))
+
         else if (viewStackActivePage == "Update Active")
-            viewStack.push(Qt.resolvedUrl("Settings/Update/UpdateActive.qml"))
+            viewStack.push(Qt.resolvedUrl("settings/update/UpdateActive.qml"))
+
         else if (viewStackActivePage == "Calibration")
-            viewStack.push(Qt.resolvedUrl("Settings/Calibration/Calibrate.qml"))
+            viewStack.push(Qt.resolvedUrl("settings/calibration/Calibrate.qml"))
+
         else if (viewStackActivePage == "Extruders")
-            viewStack.push(Qt.resolvedUrl("Settings/Extruders/Extruders.qml"))
+            viewStack.push(Qt.resolvedUrl("settings/extruders/Extruders.qml"))
+
         else if (viewStackActivePage == "MaterialPreheat")
             viewStack.push(Qt.resolvedUrl(
-                               "Settings/Extruders/MaterialPreheat.qml"))
+                               "settings/extruders/MaterialPreheat.qml"))
+
         else if (viewStackActivePage == "ExtruderReplace")
             viewStack.push(Qt.resolvedUrl(
-                               "Settings/Extruders/ExtruderReplace.qml"))
+                               "settings/extruders/ExtruderReplace.qml"))
+
         else if (viewStackActivePage == "ExtruderReplace")
             viewStack.push(Qt.resolvedUrl(
-                               "Settings/Extruders/ExtruderReplace.qml"))
+                               "settings/extruders/ExtruderReplace.qml"))
+
         else if (viewStackActivePage == "X and Y Calibration")
-            viewStack.push(Qt.resolvedUrl("Popups/settingsCalibrateXY.qml"))
+            viewStack.push(Qt.resolvedUrl("popups/settingsCalibrateXY.qml"))
+
         else if (viewStackActivePage == "Z Calibration")
-            viewStack.push(Qt.resolvedUrl("Popups/settingsCalibrateZ.qml"))
+            viewStack.push(Qt.resolvedUrl("popups/settingsCalibrateZ.qml"))
+
         else if (viewStackActivePage == "Bed Calibration")
-            viewStack.push(Qt.resolvedUrl("Popups/settingsCalibrateBed.qml"))
+            viewStack.push(Qt.resolvedUrl("popups/settingsCalibrateBed.qml"))
+
         else if (viewStackActivePage == "Full Calibration")
-            viewStack.push(Qt.resolvedUrl("Popups/settingsFullCalibrate.qml"))
+            viewStack.push(Qt.resolvedUrl("popups/settingsFullCalibrate.qml"))
         else
             viewStack.push(Qt.resolvedUrl("Background.qml"))
     }
