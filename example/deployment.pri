@@ -11,3 +11,4 @@ unix:!android {
 }
 
 export(INSTALLS)
+
