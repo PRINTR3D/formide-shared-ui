@@ -2,8 +2,9 @@ import QtQuick 2.3
 import QtQuick.Controls 1.2
 import QtQuick.Window 2.2
 
-import "../lib"
 import "../lib/formide/formide.js" as Formide
+import "../lib"
+
 
 FormideNativeUi {
     visible: true
