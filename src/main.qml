@@ -239,4 +239,35 @@ FormideNativeUi {
             }
         } //Stackview
     } // Rectangle
+
+    onPrinterStatusChanged:
+    {
+        splash.visible=false
+    }
+
+    Timer{
+        id:splashTimer
+
+        interval: 120000
+        repeat: false
+        running: true
+
+        onTriggered:
+        {
+            console.log("Disabling splash")
+            splash.visible=false
+        }
+    }
+
+    Rectangle{
+        id:splash
+
+        visible:true
+        anchors.fill: parent
+        Image{
+            anchors.fill: parent
+            source:"images/splash.bmp"
+        }
+
+    }
 }

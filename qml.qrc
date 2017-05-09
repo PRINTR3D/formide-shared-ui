@@ -144,5 +144,6 @@
         <file>lib/FormideNativeUi.qml</file>
         <file>lib/SystemCall.cpp</file>
         <file>lib/SystemCall.h</file>
+        <file>src/images/splash.bmp</file>
     </qresource>
 </RCC>
