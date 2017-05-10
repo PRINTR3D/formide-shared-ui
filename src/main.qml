@@ -248,7 +248,7 @@ FormideNativeUi {
     Timer{
         id:splashTimer
 
-        interval: 120000
+        interval: 5000
         repeat: false
         running: true
 
