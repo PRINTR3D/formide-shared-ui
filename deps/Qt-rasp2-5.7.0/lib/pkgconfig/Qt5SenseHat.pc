@@ -1,0 +1,14 @@
+prefix=/opt/rpi/sysroot/usr/local/Qt-rasp2-5.7.0
+exec_prefix=${prefix}
+libdir=/usr/local/Qt-rasp2-5.7.0/lib
+includedir=/usr/local/Qt-rasp2-5.7.0/include
+
+
+Name: Qt5 SenseHat
+Description: Qt SenseHat module
+Version: 5.6.0
+Libs: -L${libdir} -lQt5SenseHat 
+Libs.private: -L/opt/rpi/sysroot/opt/vc/lib -lRTIMULib -L/opt/rpi/sysroot/usr/local/Qt-rasp2-5.7.0/lib -lQt5Gui -L/opt/rpi/sysroot/home/pi/qtdeps/lib -lQt5Core -lpthread -lGLESv2  
+Cflags: -I${includedir}/QtSenseHat -I${includedir}
+Requires: Qt5Core Qt5Gui
+

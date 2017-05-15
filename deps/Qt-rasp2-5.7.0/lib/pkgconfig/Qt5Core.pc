@@ -1,0 +1,15 @@
+prefix=/opt/rpi/sysroot/usr/local/Qt-rasp2-5.7.0
+exec_prefix=${prefix}
+libdir=/usr/local/Qt-rasp2-5.7.0/lib
+includedir=/usr/local/Qt-rasp2-5.7.0/include
+
+host_bins=${prefix}/bin
+qt_config=minimal-config small-config medium-config large-config full-config fontconfig libudev evdev tslib libinput linuxfb c++11 accessibility egl eglfs eglfs_brcm openvg opengl opengles2 shared qpa reduce_exports clock-gettime clock-monotonic posix_fallocate mremap getaddrinfo ipv6ifname getifaddrs inotify eventfd threadsafe-cloexec poll_poll system-png png doubleconversion system-freetype harfbuzz system-zlib mtdev nis cups iconv glib dbus dbus-linked openssl libproxy rpath alsa pulseaudio gstreamer-1.0 icu concurrent audio-backend release
+
+Name: Qt5 Core
+Description: Qt Core module
+Version: 5.7.0
+Libs: -L${libdir} -lQt5Core 
+Libs.private: -lpthread -L/opt/rpi/sysroot/home/pi/qtdeps/lib -lz -licui18n -licuuc -licudata -L/usr/local/Qt-rasp2-5.7.0/lib -lqtpcre -L/opt/rpi/sysroot/home/pi/qtdeps/lib -lm -ldl -L/opt/rpi/sysroot/usr/lib/arm-linux-gnueabihf -lgthread-2.0 -pthread -lglib-2.0 -lrt  
+Cflags: -I${includedir}/QtCore -I${includedir}
+
