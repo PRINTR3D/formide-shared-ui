@@ -235,7 +235,7 @@ Item {
         // Page title
         DefaultText {
             y: 8
-            x: 64
+            x: 64//parent.width - 416
             text: viewStackActivePage
             font.pixelSize: 24
             font.weight: Font.Black
@@ -245,7 +245,7 @@ Item {
         Image {
             width: 42
             height: 24
-            x: 306
+            x: parent.width - 174 //306
             y: 12
             source: getAPIcon()
             MouseArea {
@@ -267,7 +267,7 @@ Item {
         Image {
             width: 39
             height: 24
-            x: 356
+            x: parent.width - 124 //356
             y: 12
             source: getUSBIcon()
             MouseArea {
@@ -290,7 +290,7 @@ Item {
         Image {
             width: 33
             height: 24
-            x: 403
+            x: parent.width - 77 // 403
             y: 12
             source: getWifiIcon()
             MouseArea {
@@ -318,7 +318,7 @@ Item {
         Image {
             width: 20
             height: 24
-            x: 444
+            x: parent.width - 36 // 444
             y: 12
             source: getLockIcon()
             MouseArea {
