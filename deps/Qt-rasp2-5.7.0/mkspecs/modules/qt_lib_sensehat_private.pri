@@ -1,0 +1,11 @@
+QT.sensehat_private.VERSION = 5.6.0
+QT.sensehat_private.MAJOR_VERSION = 5
+QT.sensehat_private.MINOR_VERSION = 6
+QT.sensehat_private.PATCH_VERSION = 0
+QT.sensehat_private.name = QtSenseHat
+QT.sensehat_private.module =
+QT.sensehat_private.libs = $$QT_MODULE_LIB_BASE
+QT.sensehat_private.includes = $$QT_MODULE_INCLUDE_BASE/QtSenseHat/5.6.0 $$QT_MODULE_INCLUDE_BASE/QtSenseHat/5.6.0/QtSenseHat
+QT.sensehat_private.frameworks =
+QT.sensehat_private.depends = sensehat
+QT.sensehat_private.module_config = v2 internal_module
