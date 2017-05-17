@@ -22,9 +22,13 @@ Item {
         clip: true
 
         Component.onCompleted: {
-            if (index > 3)
-                index = 3
-            contentY = 65 * index
+            var newC = 65 * index
+            if(contentHeight - newC > height)
+                contentY=newC
+//            else
+//                contentY=contentHeight-height
+
+
         }
 
         property int currentContentY: 0

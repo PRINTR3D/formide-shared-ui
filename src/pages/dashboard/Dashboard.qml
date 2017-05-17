@@ -6,6 +6,9 @@ Item {
 
     // Vars
     property var printerStatus: main.printerStatus
+    property var unitMultiplierX:1//main.unitMultiplierX
+    property var unitMultiplierY:1//main.unitMultiplierY
+
 
     property string e1temp: ""
     property string e2temp: ""
@@ -172,10 +175,10 @@ Item {
 
             // Label
             DefaultText {
-                width: 112
-                height: 24
-                x: 16
-                y: 8
+                width: 112 * unitMultiplierX
+                height: 24 * unitMultiplierY
+                x: 16 * unitMultiplierX
+                y: 8 * unitMultiplierY
                 text: "Nozzle One"
                 font.weight: Font.Black
                 font.pixelSize: 16
@@ -184,10 +187,10 @@ Item {
 
             // Temperatures
             DefaultText {
-                width: 112
-                height: 64
-                x: 16
-                y: 32
+                width: 112 * unitMultiplierX
+                height: 64 * unitMultiplierY
+                x: 16 * unitMultiplierX
+                y: 32* unitMultiplierY
                 font.weight: Font.Black
                 text: getE1Temp() + '\n' + getE1TargetTemp() //e1temp
                 font.pixelSize: 24
@@ -195,10 +198,10 @@ Item {
             }
 
             MouseArea {
-                width: 112
-                height: 90
-                x: 16
-                y: 4
+                width: 112 * unitMultiplierX
+                height: 90 * unitMultiplierY
+                x: 16 * unitMultiplierX
+                y: 4 * unitMultiplierY
                 onClicked: {
                     if (lock) {
                         pagestack.changeTransition("newPageComesFromUp")
@@ -225,10 +228,10 @@ Item {
 
             // Label
             DefaultText {
-                width: 112
-                height: 24
-                x: 128
-                y: 8
+                width: 112 * unitMultiplierX
+                height: 24 * unitMultiplierY
+                x: 128 * unitMultiplierX
+                y: 8 * unitMultiplierY
                 text: "Nozzle Two"
                 font.weight: Font.Black
                 font.pixelSize: 16
@@ -237,10 +240,10 @@ Item {
 
             // Temperatures
             DefaultText {
-                width: 112
-                height: 64
-                x: 128
-                y: 32
+                width: 112 * unitMultiplierX
+                height: 64 * unitMultiplierY
+                x: 128 * unitMultiplierX
+                y: 32 * unitMultiplierY
                 font.weight: Font.Black
                 text: getE2Temp() + '\n' + getE2TargetTemp() //e1temp
                 font.pixelSize: 24
@@ -249,10 +252,10 @@ Item {
             }
 
             MouseArea {
-                width: 112
-                height: 90
-                x: 128
-                y: 4
+                width: 112 * unitMultiplierX
+                height: 90 * unitMultiplierY
+                x: 128 * unitMultiplierX
+                y: 4 * unitMultiplierY
                 onClicked: {
                     if (lock) {
                         pagestack.changeTransition("newPageComesFromUp")
@@ -277,10 +280,10 @@ Item {
 
             // Label
             DefaultText {
-                width: 112
-                height: 24
-                x: 240
-                y: 8
+                width: 112 * unitMultiplierX
+                height: 24 * unitMultiplierY
+                x: 240 * unitMultiplierX
+                y: 8 * unitMultiplierY
                 text: "Heated Bed"
                 font.pixelSize: 16
                 font.weight: Font.Black
@@ -289,10 +292,10 @@ Item {
 
             // Temperatures
             DefaultText {
-                width: 112
-                height: 64
-                x: 240
-                y: 32
+                width: 112 * unitMultiplierX
+                height: 64 * unitMultiplierY
+                x: 240 * unitMultiplierX
+                y: 32 * unitMultiplierY
                 font.weight: Font.Black
                 text: getBedTemp() + '\n' + getBedTargetTemp() //e1temp
                 font.pixelSize: 24
@@ -301,10 +304,10 @@ Item {
             }
 
             MouseArea {
-                width: 112
-                height: 90
-                x: 240
-                y: 4
+                width: 112 * unitMultiplierX
+                height: 90 * unitMultiplierY
+                x: 240 * unitMultiplierX
+                y: 4 * unitMultiplierY
                 onClicked: {
                     if (lock) {
                         pagestack.changeTransition("newPageComesFromUp")
@@ -329,10 +332,10 @@ Item {
 
             // Label
             DefaultText {
-                width: 112
-                height: 24
-                x: 352
-                y: 8
+                width: 112 * unitMultiplierX
+                height: 24 * unitMultiplierY
+                x: 352 * unitMultiplierX
+                y: 8 * unitMultiplierY
                 text: "Bed Height"
                 font.pixelSize: 16
                 font.weight: Font.Black
@@ -341,10 +344,10 @@ Item {
 
             // Bed Height value
             DefaultText {
-                width: 112
-                height: 33
-                x: 352
-                y: 32
+                width: 112 * unitMultiplierX
+                height: 33 * unitMultiplierY
+                x: 352 * unitMultiplierX
+                y: 32 * unitMultiplierY
                 font.weight: Font.Black
                 text: getBedHeight()
                 font.pixelSize: 24
@@ -356,12 +359,12 @@ Item {
 
     // Progress Bar
     ProgressBar {
-        width: 448
+        width: parent.width - 32 // 448
         height: 16
-        x: 16
-        y: 104
+        x: 16 * unitMultiplierX
+        y: 104 * unitMultiplierY
 
-        targetProgress: getProgress()
+        targetProgress: 50//getProgress()
 
         function getProgress() {
             if (!printerStatus)
@@ -381,10 +384,10 @@ Item {
 
                 // Job label
                 DefaultText {
-                    width: 56
-                    height: 24
-                    x: 16
-                    y: 136
+                    width: 56 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 16 * unitMultiplierX
+                    y: 136 * unitMultiplierY
                     font.pixelSize: 16
                     text: "File"
                     font.weight: Font.Black
@@ -392,10 +395,10 @@ Item {
 
                 // Job description
                 DefaultText {
-                    width: 160
-                    height: 24
-                    x: 80
-                    y: 136
+                    width: 160 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 80 * unitMultiplierX
+                    y: 136 * unitMultiplierY
                     clip: true
                     font.pixelSize: 16
                     font.weight: Font.Medium
@@ -408,10 +411,10 @@ Item {
 
                 // Status label
                 DefaultText {
-                    width: 56
-                    height: 24
-                    x: 16
-                    y: 160
+                    width: 56 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 16 * unitMultiplierX
+                    y: 160 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Black
                     text: "Status"
@@ -419,10 +422,10 @@ Item {
 
                 // Status description
                 DefaultText {
-                    width: 160
-                    height: 24
-                    x: 80
-                    y: 160
+                    width: 160 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 80 * unitMultiplierX
+                    y: 160 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Medium
                     text: getPrinterStatus()
@@ -434,10 +437,10 @@ Item {
 
                 // Time label
                 DefaultText {
-                    width: 56
-                    height: 24
-                    x: 16
-                    y: 184
+                    width: 56 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 16 * unitMultiplierX
+                    y: 184 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Black
                     text: "Time"
@@ -445,10 +448,10 @@ Item {
 
                 // Time description
                 DefaultText {
-                    width: 160
-                    height: 24
-                    x: 80
-                    y: 184
+                    width: 160 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 80 * unitMultiplierX
+                    y: 184 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Medium
                     text: getPrintingTime()
@@ -466,8 +469,8 @@ Item {
                 Image {
                     width: 40
                     height: 40
-                    x: 266
-                    y: 136
+                    x: 266 * unitMultiplierX
+                    y: 136 * unitMultiplierY
                     source: isPrinting(
                                 ) ? isPaused(
                                         ) ? "../../images/icons/dashboard/StartButtonIcon.png" : "../../images/icons/dashboard/PauseButtonIcon.png" : "../../images/icons/dashboard/StartButtonIcon.png"
@@ -477,8 +480,8 @@ Item {
                 DefaultText {
                     width: 72
                     height: 24
-                    x: 248
-                    y: 184
+                    x: 248 * unitMultiplierX
+                    y: 184 * unitMultiplierY
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
                     font.weight: Font.Black
@@ -488,10 +491,10 @@ Item {
                 }
 
                 MouseArea {
-                    width: 72
-                    height: 88
-                    x: 248
-                    y: 120
+                    width: 72 * unitMultiplierX
+                    height: 88 * unitMultiplierY
+                    x: 248 * unitMultiplierX
+                    y: 120 * unitMultiplierY
                     onClicked: {
                         if (lock) {
                             pagestack.changeTransition("newPageComesFromUp")
@@ -520,8 +523,8 @@ Item {
                 Image {
                     width: 40
                     height: 40
-                    x: 336
-                    y: 136
+                    x: 336 * unitMultiplierX
+                    y: 136 * unitMultiplierY
                     source: "../../images/icons/dashboard/StopButtonIcon.png"
                 }
 
@@ -529,8 +532,8 @@ Item {
                 DefaultText {
                     width: 72
                     height: 24
-                    x: 320
-                    y: 184
+                    x: 320 * unitMultiplierX
+                    y: 184 * unitMultiplierY
                     font.weight: Font.Black
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
@@ -539,10 +542,10 @@ Item {
                 }
 
                 MouseArea {
-                    width: 72
-                    height: 88
-                    x: 320
-                    y: 120
+                    width: 72 * unitMultiplierX
+                    height: 88 * unitMultiplierY
+                    x: 320 * unitMultiplierX
+                    y: 120 * unitMultiplierY
                     onClicked: {
                         if (lock) {
                             pagestack.changeTransition("newPageComesFromUp")
@@ -570,8 +573,8 @@ Item {
                 Image {
                     width: 40
                     height: 40
-                    x: 408
-                    y: 136
+                    x: 408 * unitMultiplierX
+                    y: 136 * unitMultiplierY
                     source: isPrinting(
                                 ) ? "../../images/icons/dashboard/TuneIcon.png" : "../../images/icons/dashboard/ControlButtonIcon.png"
                 }
@@ -580,8 +583,8 @@ Item {
                 DefaultText {
                     width: 72
                     height: 24
-                    x: 392
-                    y: 184
+                    x: 392 * unitMultiplierX
+                    y: 184 * unitMultiplierY
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
                     font.weight: Font.Black
@@ -590,10 +593,10 @@ Item {
                 }
 
                 MouseArea {
-                    width: 72
-                    height: 88
-                    x: 392
-                    y: 120
+                    width: 72 * unitMultiplierX
+                    height: 88 * unitMultiplierY
+                    x: 392 * unitMultiplierX
+                    y: 120 * unitMultiplierY
                     onClicked: {
                         if (lock) {
                             pagestack.changeTransition("newPageComesFromUp")

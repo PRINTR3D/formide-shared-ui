@@ -6,8 +6,8 @@ import "../../../../lib/formide/formide.js" as Formide
 
 Item {
 
-    width: 480
-    height: 272
+    width: parent.width
+    height: parent.height
     id: materialPreheatPage
 
     property bool visibleHomeIcon: true

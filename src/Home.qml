@@ -245,7 +245,7 @@ Item {
         Image {
             width: 42
             height: 24
-            x: parent.width - 174 //306
+            x: /*parent.width - 174*/ 306
             y: 12
             source: getAPIcon()
             MouseArea {
@@ -267,7 +267,7 @@ Item {
         Image {
             width: 39
             height: 24
-            x: parent.width - 124 //356
+            x: /*parent.width - 124*/ 356
             y: 12
             source: getUSBIcon()
             MouseArea {
@@ -290,7 +290,7 @@ Item {
         Image {
             width: 33
             height: 24
-            x: parent.width - 77 // 403
+            x: /*parent.width - 77*/ 403
             y: 12
             source: getWifiIcon()
             MouseArea {
@@ -318,7 +318,7 @@ Item {
         Image {
             width: 20
             height: 24
-            x: parent.width - 36 // 444
+            x: /*parent.width - 36*/ 444
             y: 12
             source: getLockIcon()
             MouseArea {
@@ -344,8 +344,9 @@ Item {
     // Second Stack for views under main menu
     StackView {
         id: viewStack
-        width: parent.width
+        width: /*parent.width*/ main.stackSize
         height: parent.height - 48
+        //x:(parent.width - width)/2
         y: 48
 
         Component.onCompleted: {

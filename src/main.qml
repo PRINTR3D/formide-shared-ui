@@ -11,6 +11,11 @@ FormideNativeUi {
     width:800
     height:480
 
+
+    property var stackSize:480
+    property var unitMultiplierX:width/480
+    property var unitMultiplierY:height/272
+
     visible: true
     title: qsTr("formide-standard-ui")
 
@@ -56,6 +61,9 @@ FormideNativeUi {
         width: parent.width
         height: parent.height
         rotation: 0
+
+
+        transform: Scale{origin.x:1;origin.y:1;xScale: unitMultiplierX; yScale: unitMultiplierY}
 
         StackView {
             id: pagestack

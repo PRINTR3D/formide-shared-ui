@@ -9,8 +9,8 @@ Item {
     Flickable {
 
         id: cloudFlickable
-        width: 480
-        height: 272
+        width: parent.width
+        height: parent.height
         contentHeight: getContentHeight()
         clip: true
         visible: main.isConnectedToWifi

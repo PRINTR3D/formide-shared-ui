@@ -7,7 +7,7 @@ Item {
     property var printerStatus: main.printerStatus
 
     id: progressBar
-    width: 480
+    width: parent.width
     height: 16
 
     property bool lock: main.isLocked

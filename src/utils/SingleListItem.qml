@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
 
-    width: 480
+    width: parent.width
     height: 65
     color: "#141414"
 

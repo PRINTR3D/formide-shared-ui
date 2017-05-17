@@ -16,7 +16,7 @@ Flickable {
 
     //:main.fileItems//:hardcodedFiles
     contentHeight: getContentHeight()
-    contentWidth: 480
+    contentWidth: width
     interactive: true
     clip: true
 
@@ -93,7 +93,11 @@ Flickable {
             //animateContentY(0)
         }
         if (status === "list") {
-            contentY = 65 * indexSelected
+            var newC = 65 * indexSelected
+            if(contentHeight - newC > height)
+                contentY=newC
+            else
+                contentY=contentHeight-height
         }
     }
 
