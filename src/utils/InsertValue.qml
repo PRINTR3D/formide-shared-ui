@@ -44,7 +44,7 @@ Item {
 
     Item {
         width: parent.width
-        height: parent.height - 112//160
+        height: /*parent.height - 112*/ 160
 
         Flickable {
             id: mousi
