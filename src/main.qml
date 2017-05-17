@@ -7,6 +7,10 @@ import "../lib"
 
 
 FormideNativeUi {
+
+    width:800
+    height:480
+
     visible: true
     title: qsTr("formide-standard-ui")
 
@@ -262,11 +266,11 @@ FormideNativeUi {
     Rectangle{
         id:splash
 
-        visible:true
+        visible:false
         anchors.fill: parent
         Image{
             anchors.fill: parent
-            source:"images/splash.bmp"
+            source:"images/splash.jpg"
         }
 
     }

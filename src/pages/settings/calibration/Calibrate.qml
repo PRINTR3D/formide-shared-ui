@@ -9,8 +9,8 @@ Item {
     width: parent.width
 
     Item {
-        width: 480
-        height: 224
+        width: parent.width
+        height: parent.height - 48
 
         DefaultText {
             x: 92

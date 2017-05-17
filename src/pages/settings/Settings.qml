@@ -7,13 +7,13 @@ Item {
     id: root
 
     property var printerStatus:main.printerStatus
-    width: 480
-    height: 272
+    width: parent.width
+    height: parent.height
 
     Flickable {
         id: flick
-        width: 480
-        height: 224
+        width: parent.width
+        height: parent.height - 48
         contentWidth: width
         contentHeight: 402
 

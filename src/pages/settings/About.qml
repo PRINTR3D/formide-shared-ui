@@ -3,8 +3,8 @@ import "../../utils"
 
 Flickable {
 
-    width: 480
-    height: 224
+    width: parent.width
+    height: parent.height -48
     clip: true
 
     contentWidth: width

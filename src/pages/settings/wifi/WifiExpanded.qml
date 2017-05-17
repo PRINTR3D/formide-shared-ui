@@ -183,7 +183,7 @@ Item {
 
         // Separator
         Rectangle {
-            width: 448
+            width: parent.width - 32
             height: 1
             x: 16
             y: 193
@@ -214,7 +214,7 @@ Item {
 
         // Separator
         Rectangle {
-            width: 448
+            width: parent.width - 32
             height: 1
             x: 16
             y: 282

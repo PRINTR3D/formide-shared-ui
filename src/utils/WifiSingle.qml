@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
 
-    width: 480
+    width: parent.width
     //height: 65
     height: 73
     color: "#141414"
@@ -65,7 +65,7 @@ Rectangle {
 
     // Separator
     Rectangle {
-        width: 448
+        width: parent.width - 32
         height: 1
         x: 16
         y: 72

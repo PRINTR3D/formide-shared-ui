@@ -39,7 +39,7 @@ Item {
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "../images/blurBackground.png"
+        source: "../images/blurBackground.jpg"
     }
 
     Item {

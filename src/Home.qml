@@ -336,7 +336,7 @@ Item {
     Rectangle {
         id: background
         width: parent.width
-        height: 224
+        height: parent.height - 48
         y: 48
         color: "#141414"
     }
@@ -345,7 +345,7 @@ Item {
     StackView {
         id: viewStack
         width: parent.width
-        height: 224
+        height: parent.height - 48
         y: 48
 
         Component.onCompleted: {

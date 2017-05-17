@@ -5,8 +5,8 @@ import "../../../lib/formide/formide.js" as Formide
 Rectangle {
 
     id: keypadPage
-    width: 480
-    height: 272
+    width: parent.width
+    height: parent.height
 
     property string currentPassword: ""
 
@@ -98,7 +98,7 @@ Rectangle {
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "../../images/blurBackground.png"
+        source: "../../images/blurBackground.jpg"
     }
 
     //Home Icon

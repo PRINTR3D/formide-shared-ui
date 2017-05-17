@@ -62,7 +62,6 @@
         <file>src/images/icons/gcodeIcon.png</file>
         <file>src/images/icons/noIcon.png</file>
         <file>src/images/icons/PrintrIcon.png</file>
-        <file>src/images/blurBackground.png</file>
         <file>src/pages/dashboard/controls/ChangeFanSpeed.qml</file>
         <file>src/pages/dashboard/controls/ChangeFlowRate.qml</file>
         <file>src/pages/dashboard/controls/ChangePrintSpeed.qml</file>
@@ -144,6 +143,8 @@
         <file>lib/FormideNativeUi.qml</file>
         <file>lib/SystemCall.cpp</file>
         <file>lib/SystemCall.h</file>
-        <file>src/images/splash.bmp</file>
+        <file>src/images/splash.jpg</file>
+        <file>src/images/blurBackground.jpg</file>
+        <file>src/images/blurBackground-2.png</file>
     </qresource>
 </RCC>

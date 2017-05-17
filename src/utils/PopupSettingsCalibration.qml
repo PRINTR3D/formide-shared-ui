@@ -3,8 +3,8 @@ import QtQuick 2.0
 Item {
     id: root
 
-    width: 480
-    height: 224
+    width: parent.width
+    height: parent.height - 48
 
     property var firstText: "" // Text shown as title
     property var secondText: "" // Warning

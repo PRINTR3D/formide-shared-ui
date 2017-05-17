@@ -5,13 +5,13 @@ import "../lib/formide/formideShared.js" as FormideShared
 
 Item {
 
-    width: 480
-    height: 272
+    width: parent.width
+    height: parent.height
 
     // Blurry Background
     Image {
         anchors.fill: parent
-        source: "images/blurBackground.png"
+        source: "images/blurBackground.jpg"
     }
 
     // Home Icon

@@ -4,8 +4,8 @@ import "../"
 Rectangle {
 
     id: root
-    width: 480
-    height: 272
+    width: parent.width
+    height: parent.height
     color: "#0a0a0a"
 
     property var currentPassword: ""
