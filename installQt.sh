@@ -50,7 +50,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BDCBFB15
 sudo apt-get update
 sudo apt-get install -y qt5
 
-sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential ca-certificates curl g++ gcc git libqt5qml5 libqt5quick5 libqt5sql5 qml-modulet-websockets qml-module-qtquick-controls qml-module-qtquick-dialogs qml-module-qtquick-layouts qml-module-qtquick-particles2 qt5-default qtdeclarative5-dev python sqlite xinit xinput-calibrator xorg
+sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential ca-certificates curl g++ gcc git libqt5qml5 libqt5quick5 libqt5sql5 qml-module-qt-websockets qml-module-qtquick-controls qml-module-qtquick-dialogs qml-module-qtquick-layouts qml-module-qtquick-particles2 qt5-default qtdeclarative5-dev python sqlite xinit xinput-calibrator xorg
 echo "Done."
 
 # Back to main folder
