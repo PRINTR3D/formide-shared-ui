@@ -1,0 +1,8 @@
+#ifndef QT_QTSENSEHAT_MODULE_H
+#define QT_QTSENSEHAT_MODULE_H
+#include <QtSenseHat/QtSenseHatDepends>
+#include "qsenseglobal.h"
+#include "qsensehatfb.h"
+#include "qsensehatsensors.h"
+#include "qtsensehatversion.h"
+#endif
