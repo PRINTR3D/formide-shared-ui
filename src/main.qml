@@ -11,7 +11,6 @@ FormideNativeUi {
     width:800
     height:480
 
-
     property var stackSize:480
     property var unitMultiplierX:width/480
     property var unitMultiplierY:height/272

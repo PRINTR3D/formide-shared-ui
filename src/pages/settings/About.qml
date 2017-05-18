@@ -8,13 +8,14 @@ Flickable {
     clip: true
 
     contentWidth: width
-    contentHeight: 344
+    contentHeight: height+95  // Previously 344
 
     property var macAddress: main.macAddress
     property var externalIpAddress: main.externalIpAddress
     property var internalIpAddress: main.internalIpAddress
     property var currentClientVersion: main.currentClientVersion
     property var printerStatus: main.printerStatus
+
 
     function getFirmwareName() {
         if (printerStatus) {
