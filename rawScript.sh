@@ -12,10 +12,10 @@ echo "Done."
 export LD_LIBRARY_PATH=/usr/local/qtdeps/lib
 export PATH=$PATH:/usr/local/qt5/bin:/usr/local/Qt-rasp2-5.7.0/bin
 
-export PATH=$PATH:/usr/local/Qt-rasp2-5.7.0/bin
+#export PATH=$PATH:/usr/local/Qt-rasp2-5.7.0/bin
 ldconfig
 sudo ldconfig
-export LD_LIBRARY_PATH=/usr/local/qtdeps/lib:/usr/local/Qt-rasp2-5.7.0/lib
+#export LD_LIBRARY_PATH=/usr/local/qtdeps/lib:/usr/local/Qt-rasp2-5.7.0/lib
 
 sudo apt-get install build-essential autoconf ccache gawk gperf mesa-utils zip unzip -y
 
