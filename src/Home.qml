@@ -22,7 +22,6 @@ Item {
     property var isLocked: main.isLocked
 
     Component.onCompleted: {
-
         changePage()
     }
 
@@ -349,7 +348,7 @@ Item {
     // Second Stack for views under main menu
     StackView {
         id: viewStack
-        width: /*parent.width*/ main.stackSize
+        width: parent.width
         height: parent.height - 48
         //x:(parent.width - width)/2
         y: 48
