@@ -128,7 +128,7 @@ Window {
     // Run at boot
     Component.onCompleted: {
         login()
-        macAddress = mySystem.msg("fiw wlan0 mac")
+        // Disabled: macAddress = mySystem.msg("fiw wlan0 mac")
     }
 
 
@@ -551,13 +551,14 @@ Window {
                 getWifiList()
                 if (response.isConnected) {
 
-
                     isConnectedToWifi = response.isConnected
                     externalIpAddress = response.publicIp
+                    macAddress = response.mac
                     internalIpAddress = response.ip
                     singleNetwork = response.network
                 } else {
                     isConnectedToWifi = false
+                    macAddress = "Unknown"
                     internalIpAddress = "Unknown"
                     externalIpAddress = "Unknown"
                     singleNetwork = ""
