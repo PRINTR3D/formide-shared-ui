@@ -24,8 +24,8 @@ echo "Updating binary and library paths..."
 export LD_LIBRARY_PATH=/usr/local/qtdeps/lib
 export PATH=$PATH:/usr/local/Qt-rasp2-5.7.0/bin
 
-ldconfig
-sudo ldconfig
+ldconfig -v
+sudo ldconfig -v
 
 export LD_LIBRARY_PATH=/usr/local/qtdeps/lib:/usr/local/Qt-rasp2-5.7.0/lib
 echo "Done."
@@ -55,6 +55,12 @@ echo "Done."
 
 # Back to main folder
 popd > /dev/null
+
+# Test: Compile and run
+qmake
+make
+
+./formide-touch -platform eglfs
 
 echo "All done!"
 
