@@ -98,6 +98,10 @@ Window {
     property var externalIpAddress
     property var macAddress
 
+    // Disk space Data
+    property var totalSpace
+    property var freeSpace
+
     // Extruder ratio variables
     property var leftRatioValue: 100
     property var rightRatioValue: 0
@@ -145,6 +149,8 @@ Window {
                     // Check if this is optimal
                     getCurrentClientVersion()
                     getFiles()
+                    // Temporal:
+                    checkConnection()
 
 
                     //                    scanDrives()
@@ -505,9 +511,28 @@ Window {
         })
     }
 
+    function checkStorage(callback)
+    {
+        Formide.storage().diskSpace(function(err,response) {
+            if(err)
+            {
+                console.log("Error getting storage",JSON.stringify(err))
+            }
+            if(response)
+            {
+                var div = Math.pow(1024,3)
+                totalSpace = (response.total/div).toFixed(1)
+                freeSpace = (response.free/div).toFixed(1)
+                //console.log("response disk space",JSON.stringify(response))
+            }
+
+            })
+    }
+
     function checkConnection(callback) {
         Formide.wifi().checkConnection(function (err, response) {
 
+            console.log("Check connection")
             if (err) {
                 console.log("Error checking connection", JSON.stringify(err))
                 isConnectedToWifi = false
@@ -522,7 +547,10 @@ Window {
                 getWifiList()
             }
             if (response) {
+                console.log("Response Check Connection",JSON.stringify(response))
+                getWifiList()
                 if (response.isConnected) {
+
 
                     isConnectedToWifi = response.isConnected
                     externalIpAddress = response.publicIp
@@ -791,8 +819,11 @@ Window {
                     console.log("Wi-Fi Checking")
                     getWifiList()
                     checkConnection()
-                    //                    waiting for client 2: scanDrives() // To check if there are usb connected
+                    return;
+
                 }
+            getWifiList()
+            checkConnection()
         }
     }
 

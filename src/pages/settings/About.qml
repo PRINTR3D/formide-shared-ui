@@ -21,7 +21,13 @@ Flickable {
     property var internalIpAddress: main.internalIpAddress
     property var currentClientVersion: main.currentClientVersion
     property var printerStatus: main.printerStatus
+    property var totalSpace: main.totalSpace
+    property var freeSpace: main.freeSpace
 
+
+    Component.onCompleted: {
+        main.checkStorage()
+    }
 
     function getFirmwareName() {
         if (printerStatus) {
@@ -136,7 +142,7 @@ Flickable {
             lineHeightMode: Text.FixedHeight
             lineHeight: 25
 
-            text: "Printr-5G\n5 GB\n4.7GB\nFormide Linux\n" + "0.0.1" + "\n" + getCurrentVersion(
+            text: "Printr-5G\n"+totalSpace+" GB\n"+freeSpace+" GB\nFormide Linux\n" + "0.0.1" + "\n" + getCurrentVersion(
                       ) + "\n" + getFirmwareName() + "\n" + getMacAddress()
         }
     }
