@@ -17,6 +17,7 @@ Flickable {
     contentHeight: height+95  // Previously 344
 
     property var macAddress: main.macAddress
+    property var singleNetwork: main.singleNetwork
     property var externalIpAddress: main.externalIpAddress
     property var internalIpAddress: main.internalIpAddress
     property var currentClientVersion: main.currentClientVersion
@@ -142,7 +143,7 @@ Flickable {
             lineHeightMode: Text.FixedHeight
             lineHeight: 25
 
-            text: "Printr-5G\n"+totalSpace+" GB\n"+freeSpace+" GB\nFormide Linux\n" + "0.0.1" + "\n" + getCurrentVersion(
+            text: singleNetwork+"\n"+totalSpace+" GB\n"+freeSpace+" GB\nFormide Linux\n" + "0.0.1" + "\n" + getCurrentVersion(
                       ) + "\n" + getFirmwareName() + "\n" + getMacAddress()
         }
     }
