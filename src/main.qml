@@ -1,3 +1,8 @@
+/*
+ *	This code was created for Printr B.V. It is open source under the formide-touch package.
+ *	Copyright (c) 2017, All rights reserved, Printr B.V.
+ */
+
 import QtQuick 2.3
 import QtQuick.Controls 1.2
 import QtQuick.Window 2.2
@@ -62,7 +67,7 @@ FormideNativeUi {
         rotation: 0
 
 
-        transform: Scale{origin.x:1;origin.y:1;xScale: unitMultiplierX; yScale: unitMultiplierY}
+        transform: Scale{origin.x:1;origin.y:1;xScale: unitMultiplierX>unitMultiplierY?unitMultiplierY:unitMultiplierX; yScale: unitMultiplierX>unitMultiplierY?unitMultiplierY:unitMultiplierX}
 
         StackView {
             id: pagestack
