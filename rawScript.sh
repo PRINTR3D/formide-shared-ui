@@ -2,6 +2,8 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 echo "Copying Qt libs to file system..."
+cd deps
+pwd
 sudo cp -r -v Qt-rasp2-5.7.0 /usr/local
 sudo cp -r -v qtdeps /usr/local/qtdeps
 echo "Done."
@@ -26,14 +28,17 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BDCBFB15
 sudo apt-get update
 sudo apt-get install -y qt5
 
-sudo apt-get install -y --no-install-recommends build-essential ca-certificates curl g++ gcc git libqt5qml5 libqt5quick5 libqt5sql5 qml-module-qt-websockets qml-module-qtquick-controls qml-module-qtquick-dialogs qml-module-qtquick-layouts qml-module-qtquick-particles2 qt5-default qtdeclarative5-dev python sqlite xinit xinput-calibrator xorg
+#sudo apt-get install -y --no-install-recommends build-essential ca-certificates curl g++ gcc git libqt5qml5 libqt5quick5 libqt5sql5 qml-module-qt-websockets qml-module-qtquick-controls qml-module-qtquick-dialogs qml-module-qtquick-layouts qml-module-qtquick-particles2 qt5-default qtdeclarative5-dev python sqlite xinit xinput-calibrator xorg
 
+cd ..
+pwd
 
-qmake
-make clean
-make
+# qmake
+# make clean
+# make
 
-./formide-touch -platform eglfs
+./fnui -platform eglfs
+
+#./formide-touch -platform eglfs
 
 exit 0
-
