@@ -370,11 +370,11 @@ Item {
         x: 16 * unitMultiplierX
         y: 104 * unitMultiplierY
 
-        targetProgress: 50//getProgress()
+        targetProgress: getProgress()
 
         function getProgress() {
             if (!printerStatus)
-                return 0
+                return 60
             else
                 return printerStatus.progress
         }
