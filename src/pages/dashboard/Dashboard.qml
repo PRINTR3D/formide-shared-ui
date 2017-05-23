@@ -127,7 +127,7 @@ Item {
 
     function getPrinterStatus() {
         if (!printerStatus)
-            return "Unknown"
+            return "Idle"
         else {
             if (printerStatus.status === "online")
                 return "Idle"
@@ -144,7 +144,7 @@ Item {
 
     function getPrintingTime() {
         if (!printerStatus)
-            return "Unknown"
+            return "..."
         else {
             if (printerStatus.status !== "printing"
                     && printerStatus.status !== "heating"
@@ -385,32 +385,6 @@ Item {
 
         // Information
         Item {
-            // Job info
-            Item {
-
-                // Job label
-                DefaultText {
-                    width: 56 * unitMultiplierX
-                    height: 24 * unitMultiplierY
-                    x: 16 * unitMultiplierX
-                    y: 136 * unitMultiplierY
-                    font.pixelSize: 16
-                    text: "File"
-                    font.weight: Font.Black
-                }
-
-                // Job description
-                DefaultText {
-                    width: 160 * unitMultiplierX
-                    height: 24 * unitMultiplierY
-                    x: 80 * unitMultiplierX
-                    y: 136 * unitMultiplierY
-                    clip: true
-                    font.pixelSize: 16
-                    font.weight: Font.Medium
-                    text: getPrintJobName()
-                }
-            }
 
             // Status information
             Item {
@@ -420,7 +394,7 @@ Item {
                     width: 56 * unitMultiplierX
                     height: 24 * unitMultiplierY
                     x: 16 * unitMultiplierX
-                    y: 160 * unitMultiplierY
+                    y: 136 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Black
                     text: "Status"
@@ -431,12 +405,40 @@ Item {
                     width: 160 * unitMultiplierX
                     height: 24 * unitMultiplierY
                     x: 80 * unitMultiplierX
-                    y: 160 * unitMultiplierY
+                    y: 136 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Medium
                     text: getPrinterStatus()
                 }
             }
+
+            // Job info
+            Item {
+
+                // Job label
+                DefaultText {
+                    width: 56 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 16 * unitMultiplierX
+                    y: 160 * unitMultiplierY
+                    font.pixelSize: 16
+                    text: "File"
+                    font.weight: Font.Black
+                }
+
+                // Job description
+                DefaultText {
+                    width: 160 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 80 * unitMultiplierX
+                    y: 160 * unitMultiplierY
+                    clip: true
+                    font.pixelSize: 16
+                    font.weight: Font.Medium
+                    text: getPrintJobName()
+                }
+            }
+
 
             // Time information
             Item {
