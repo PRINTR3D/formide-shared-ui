@@ -479,9 +479,8 @@ Item {
                     height: 40
                     x: 266 * unitMultiplierX
                     y: 136 * unitMultiplierY
-                    source: isPrinting(
-                                ) ? isPaused(
-                                        ) ? "../../images/icons/dashboard/StartButtonIcon.png" : "../../images/icons/dashboard/PauseButtonIcon.png" : "../../images/icons/dashboard/StartButtonIcon.png"
+                    visible: isPrinting()
+                    source: isPaused() ? "../../images/icons/dashboard/StartButtonIcon.png" : "../../images/icons/dashboard/PauseButtonIcon.png"
                 }
 
                 // Pause/Resume text
@@ -493,9 +492,8 @@ Item {
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
                     font.weight: Font.Black
-
-                    text: isPrinting() ? isPaused(
-                                             ) ? "Resume" : "Pause" : "Start"
+                    visible: isPrinting()
+                    text: isPaused() ? "Resume" : "Pause"
                 }
 
                 MouseArea {
@@ -517,7 +515,7 @@ Item {
                                     Formide.printer(printerStatus.port).pause()
                                 }
                             } else {
-                                main.viewStackActivePage = "Queue"
+
                             }
                         }
                     }
@@ -533,7 +531,7 @@ Item {
                     height: 40
                     x: 336 * unitMultiplierX
                     y: 136 * unitMultiplierY
-                    source: "../../images/icons/dashboard/StopButtonIcon.png"
+                    source: isPrinting() ? "../../images/icons/dashboard/StopButtonIcon.png" : "../../images/icons/dashboard/QueueButtonIcon.png"
                 }
 
                 // Stop text
@@ -545,8 +543,7 @@ Item {
                     font.weight: Font.Black
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
-
-                    text: "Stop"
+                    text: isPrinting() ? "Stop" : "Queue"
                 }
 
                 MouseArea {
@@ -567,7 +564,7 @@ Item {
                                 pagestack.pushPagestack(Qt.resolvedUrl(
                                                             "StopConfirm.qml"))
                             } else {
-                                console.log("no stop because it's not printing!")
+                                main.viewStackActivePage = "Queue"
                             }
                         }
                     }
@@ -583,8 +580,7 @@ Item {
                     height: 40
                     x: 408 * unitMultiplierX
                     y: 136 * unitMultiplierY
-                    source: isPrinting(
-                                ) ? "../../images/icons/dashboard/TuneIcon.png" : "../../images/icons/dashboard/ControlButtonIcon.png"
+                    source: isPrinting() ? "../../images/icons/dashboard/TuneIcon.png" : "../../images/icons/dashboard/ControlButtonIcon.png"
                 }
 
                 // Tune text

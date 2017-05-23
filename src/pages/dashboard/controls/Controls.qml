@@ -115,9 +115,9 @@ Rectangle {
         }
     }
 
+
     // + Y
-    KeyboardLetter {
-        width: 106
+    ControlKey {
         height: 104
         x: 16
         y: 120
@@ -126,78 +126,64 @@ Rectangle {
 
         letter: "+ Y"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 Y10\n")
         }
+
+
     }
 
     // + X
-    KeyboardLetter {
-        width: 106
-        height: 48
+    ControlKey {
         x: 130
         y: 120
-        backgroundColor: "lightgrey"
-        letterSize: 16
 
         letter: "+ X"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 X10\n")
         }
     }
 
     // - X
-    KeyboardLetter {
-        width: 106
-        height: 48
+    ControlKey {
         x: 130
         y: 176
-        backgroundColor: "lightgrey"
-        letterSize: 16
 
         letter: "- X"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 X-10\n")
         }
     }
 
     // - Y
-    KeyboardLetter {
-        width: 106
+    ControlKey {
         height: 104
         x: 244
         y: 120
-        backgroundColor: "lightgrey"
-        letterSize: 16
 
         letter: "- Y"
-        onClicked: {
+
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 Y-10\n")
         }
     }
 
     // + Z
-    KeyboardLetter {
-        width: 106
-        height: 48
+    ControlKey {
         x: 358
         y: 120
-        backgroundColor: "lightgrey"
-        letterSize: 16
 
         letter: "+ Z"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 Z5\n")
         }
     }
 
     // - Z
-    KeyboardLetter {
-        width: 106
-        height: 48
+    ControlKey {
         x: 358
         y: 176
         backgroundColor: "lightgrey"
@@ -205,7 +191,7 @@ Rectangle {
 
         letter: "- Z"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 Z-5\n")
         }
     }

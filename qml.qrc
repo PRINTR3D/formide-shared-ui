@@ -146,5 +146,7 @@
         <file>src/images/splash.jpg</file>
         <file>src/images/blurBackground.jpg</file>
         <file>src/images/blurBackground-2.png</file>
+        <file>src/images/icons/dashboard/QueueButtonIcon.png</file>
+        <file>src/utils/ControlKey.qml</file>
     </qresource>
 </RCC>
