@@ -103,7 +103,7 @@ Rectangle {
     // Label
     DefaultText{
         x: 80
-        y: 14
+        y: 16
         width: 328
         height: 32
         font.family: "OpenSans-Regular"
