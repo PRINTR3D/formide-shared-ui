@@ -60,7 +60,7 @@ Rectangle {
         letterSize: 16
         letter: "Home All"
         x: 16
-        y: 46
+        y: 56
 
         onClicked: {
             Formide.printer(printerStatus.port).gcode("G28\nG91\n")
@@ -72,7 +72,7 @@ Rectangle {
         width: 106
         height: 48
         x: 130
-        y: 46
+        y: 56
         backgroundColor: "#46b1e6"
         letterColor: "#ffffff"
         letterSize: 15
@@ -88,7 +88,7 @@ Rectangle {
         width: 106
         height: 48
         x: 244
-        y: 46
+        y: 56
         backgroundColor: "#46b1e6"
         letterColor: "#ffffff"
         letterSize: 15
@@ -104,7 +104,7 @@ Rectangle {
         width: 106
         height: 48
         x: 358
-        y: 46
+        y: 56
         letter: "Home Z-Axis"
         backgroundColor: "#46b1e6"
         letterColor: "#ffffff"
