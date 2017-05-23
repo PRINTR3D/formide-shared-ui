@@ -1,3 +1,9 @@
+/*
+ *	This code was created for Printr B.V. It is open source under the formide-touch package.
+ *	Copyright (c) 2017, All rights reserved, Printr B.V.
+ */
+
+
 import QtQuick 2.0
 import "../../utils"
 
@@ -8,13 +14,21 @@ Flickable {
     clip: true
 
     contentWidth: width
-    contentHeight: 344
+    contentHeight: height+95  // Previously 344
 
     property var macAddress: main.macAddress
+    property var singleNetwork: main.singleNetwork
     property var externalIpAddress: main.externalIpAddress
     property var internalIpAddress: main.internalIpAddress
     property var currentClientVersion: main.currentClientVersion
     property var printerStatus: main.printerStatus
+    property var totalSpace: main.totalSpace
+    property var freeSpace: main.freeSpace
+
+
+    Component.onCompleted: {
+        main.checkStorage()
+    }
 
     function getFirmwareName() {
         if (printerStatus) {
@@ -129,7 +143,7 @@ Flickable {
             lineHeightMode: Text.FixedHeight
             lineHeight: 25
 
-            text: "Printr-5G\n5 GB\n4.7GB\nFormide Linux\n" + "0.0.1" + "\n" + getCurrentVersion(
+            text: singleNetwork+"\n"+totalSpace+" GB\n"+freeSpace+" GB\nFormide Linux\n" + "0.0.1" + "\n" + getCurrentVersion(
                       ) + "\n" + getFirmwareName() + "\n" + getMacAddress()
         }
     }

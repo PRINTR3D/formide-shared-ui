@@ -17,6 +17,10 @@ At the same time, it is an API wrapper for Formide Client, including a wide list
 * Check printer status (temperatures, progress, coordinates, current layer, etc).
 
 
+# Documentation
+Please find all the documentation in this project's [wiki](https://github.com/PRINTR3D/formide-touch/wiki).
+
+
 # Installation
 Installation of this library can be done with `npm`:
 ```

@@ -1,10 +1,15 @@
+/*
+ *	This code was created for Printr B.V. It is open source under the formide-touch package.
+ *	Copyright (c) 2017, All rights reserved, Printr B.V.
+ */
+
 import QtQuick 2.0
 
 Item {
     id:root
 
-    width:480
-    height:272
+    width: parent.width
+    height: parent.height
 
     property var firstText:""                   // Text shown as title
     property var secondText:""                  // Text shown in subtitle

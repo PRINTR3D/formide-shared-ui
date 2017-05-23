@@ -1,3 +1,8 @@
+/*
+ *	This code was created for Printr B.V. It is open source under the formide-touch package.
+ *	Copyright (c) 2017, All rights reserved, Printr B.V.
+ */
+
 import QtQuick 2.0
 import "keyboard/"
 
@@ -43,8 +48,8 @@ Item {
     }
 
     Item {
-        width: 480
-        height: 160
+        width: parent.width
+        height: /*parent.height - 112*/ 160
 
         Flickable {
             id: mousi
@@ -52,7 +57,7 @@ Item {
             height: parent.height
             anchors.centerIn: parent
 
-            contentWidth: 480 + (maxValue * 20)
+            contentWidth: width + (maxValue * 20)
             contentHeight: parent.height
             boundsBehavior: Flickable.StopAtBounds
             onContentXChanged: newValue = (contentX / 20).toFixed(0)

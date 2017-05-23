@@ -1,16 +1,7 @@
-
-//    ______ ____  _____  __  __ _____ _____  ______
-//   |  ____/ __ \|  __ \|  \/  |_   _|  __ \|  ____|
-//   | |__ | |  | | |__) | \  / | | | | |  | | |__
-//   |  __|| |  | |  _  /| |\/| | | | | |  | |  __|
-//   | |   | |__| | | \ \| |  | |_| |_| |__| | |____
-//   |_|    \____/|_|  \_|_|  |_|_____|_____/|______|
-//    _   _       _______ _______      ________   _    _ _____
-//   | \ | |   /\|__   __|_   _\ \    / |  ____| | |  | |_   _|
-//   |  \| |  /  \  | |    | |  \ \  / /| |__    | |  | | | |
-//   | . ` | / /\ \ | |    | |   \ \/ / |  __|   | |  | | | |
-//   | |\  |/ ____ \| |   _| |_   \  /  | |____  | |__| |_| |_
-//   |_| \_/_/    \_|_|  |_____|   \/   |______|  \____/|_____|
+/*
+ *	This code was created for Printr B.V. It is open source under the formide-touch package.
+ *	Copyright (c) 2017, All rights reserved, Printr B.V.
+ */
 
 
 import QtQuick 2.3
@@ -107,6 +98,10 @@ Window {
     property var externalIpAddress
     property var macAddress
 
+    // Disk space Data
+    property var totalSpace
+    property var freeSpace
+
     // Extruder ratio variables
     property var leftRatioValue: 100
     property var rightRatioValue: 0
@@ -133,7 +128,7 @@ Window {
     // Run at boot
     Component.onCompleted: {
         login()
-        macAddress = mySystem.msg("fiw wlan0 mac")
+        // Disabled: macAddress = mySystem.msg("fiw wlan0 mac")
     }
 
 
@@ -154,6 +149,8 @@ Window {
                     // Check if this is optimal
                     getCurrentClientVersion()
                     getFiles()
+                    // Temporal:
+                    checkConnection()
 
 
                     //                    scanDrives()
@@ -514,9 +511,28 @@ Window {
         })
     }
 
+    function checkStorage(callback)
+    {
+        Formide.storage().diskSpace(function(err,response) {
+            if(err)
+            {
+                console.log("Error getting storage",JSON.stringify(err))
+            }
+            if(response)
+            {
+                var div = Math.pow(1024,3)
+                totalSpace = (response.total/div).toFixed(1)
+                freeSpace = (response.free/div).toFixed(1)
+                //console.log("response disk space",JSON.stringify(response))
+            }
+
+            })
+    }
+
     function checkConnection(callback) {
         Formide.wifi().checkConnection(function (err, response) {
 
+            console.log("Check connection")
             if (err) {
                 console.log("Error checking connection", JSON.stringify(err))
                 isConnectedToWifi = false
@@ -531,14 +547,18 @@ Window {
                 getWifiList()
             }
             if (response) {
+                console.log("Response Check Connection",JSON.stringify(response))
+                getWifiList()
                 if (response.isConnected) {
 
                     isConnectedToWifi = response.isConnected
                     externalIpAddress = response.publicIp
+                    macAddress = response.mac
                     internalIpAddress = response.ip
                     singleNetwork = response.network
                 } else {
                     isConnectedToWifi = false
+                    macAddress = "Unknown"
                     internalIpAddress = "Unknown"
                     externalIpAddress = "Unknown"
                     singleNetwork = ""
@@ -800,8 +820,11 @@ Window {
                     console.log("Wi-Fi Checking")
                     getWifiList()
                     checkConnection()
-                    //                    waiting for client 2: scanDrives() // To check if there are usb connected
+                    return;
+
                 }
+            getWifiList()
+            checkConnection()
         }
     }
 

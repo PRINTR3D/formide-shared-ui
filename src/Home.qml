@@ -1,3 +1,8 @@
+/*
+ *	This code was created for Printr B.V. It is open source under the formide-touch package.
+ *	Copyright (c) 2017, All rights reserved, Printr B.V.
+ */
+
 import QtQuick 2.3
 import QtQuick.Controls 1.2
 import "utils"
@@ -17,7 +22,6 @@ Item {
     property var isLocked: main.isLocked
 
     Component.onCompleted: {
-
         changePage()
     }
 
@@ -245,7 +249,7 @@ Item {
         Image {
             width: 42
             height: 24
-            x: parent.width - 174 //306
+            x: /*parent.width - 174*/ 306
             y: 12
             source: getAPIcon()
             MouseArea {
@@ -267,7 +271,7 @@ Item {
         Image {
             width: 39
             height: 24
-            x: parent.width - 124 //356
+            x: /*parent.width - 124*/ 356
             y: 12
             source: getUSBIcon()
             MouseArea {
@@ -290,7 +294,7 @@ Item {
         Image {
             width: 33
             height: 24
-            x: parent.width - 77 // 403
+            x: /*parent.width - 77*/ 403
             y: 12
             source: getWifiIcon()
             MouseArea {
@@ -318,7 +322,7 @@ Item {
         Image {
             width: 20
             height: 24
-            x: parent.width - 36 // 444
+            x: /*parent.width - 36*/ 444
             y: 12
             source: getLockIcon()
             MouseArea {
@@ -346,6 +350,7 @@ Item {
         id: viewStack
         width: parent.width
         height: parent.height - 48
+        //x:(parent.width - width)/2
         y: 48
 
         Component.onCompleted: {

@@ -1,3 +1,8 @@
+/*
+ *	This code was created for Printr B.V. It is open source under the formide-touch package.
+ *	Copyright (c) 2017, All rights reserved, Printr B.V.
+ */
+
 import QtQuick 2.0
 import "../../../lib/formide/formideShared.js" as FormideShared
 import "../../utils"
@@ -12,8 +17,8 @@ Item {
 
     Flickable {
         id: flick
-        width: parent.width
-        height: parent.height - 48
+        width:parent.width
+        height:224
         contentWidth: width
         contentHeight: 402
 
@@ -22,9 +27,13 @@ Item {
         clip: true
 
         Component.onCompleted: {
-            if (index > 3)
-                index = 3
-            contentY = 65 * index
+            var newC = 65 * index
+            if(contentHeight - newC > height)
+                contentY=newC
+//            else
+//                contentY=contentHeight-height
+
+
         }
 
         property int currentContentY: 0

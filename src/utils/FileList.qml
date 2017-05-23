@@ -1,3 +1,8 @@
+/*
+ *	This code was created for Printr B.V. It is open source under the formide-touch package.
+ *	Copyright (c) 2017, All rights reserved, Printr B.V.
+ */
+
 import QtQuick 2.0
 
 Flickable {
@@ -16,7 +21,7 @@ Flickable {
 
     //:main.fileItems//:hardcodedFiles
     contentHeight: getContentHeight()
-    contentWidth: 480
+    contentWidth: width
     interactive: true
     clip: true
 
@@ -93,7 +98,11 @@ Flickable {
             //animateContentY(0)
         }
         if (status === "list") {
-            contentY = 65 * indexSelected
+            var newC = 65 * indexSelected
+            if(contentHeight - newC > height)
+                contentY=newC
+            else
+                contentY=contentHeight-height
         }
     }
 

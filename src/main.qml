@@ -1,3 +1,8 @@
+/*
+ *	This code was created for Printr B.V. It is open source under the formide-touch package.
+ *	Copyright (c) 2017, All rights reserved, Printr B.V.
+ */
+
 import QtQuick 2.3
 import QtQuick.Controls 1.2
 import QtQuick.Window 2.2
@@ -10,6 +15,14 @@ FormideNativeUi {
 
     width:800
     height:480
+
+    property var unitMultiplierX:width/480
+    property var unitMultiplierY:height/272
+
+    Component.onCompleted: {
+        console.log("multiplier X",unitMultiplierX)
+        console.log("multiplier Y",unitMultiplierY)
+    }
 
     visible: true
     title: qsTr("formide-standard-ui")
@@ -49,13 +62,26 @@ FormideNativeUi {
         }
     }
 
+    Background{
+        anchors.fill: parent
+        y:0
+    }
+
     // This is the main page stack (StackView) of the application.
     // You can push pages and pop them by simply calling the functions push and pop
     Rectangle {
 
-        width: parent.width
-        height: parent.height
+        width: 480
+        height: 272
         rotation: 0
+
+        transform:
+                Scale{
+                        origin.x:1;
+                        origin.y:1;
+                        xScale: unitMultiplierX>unitMultiplierY?unitMultiplierY:unitMultiplierX;
+                        yScale: unitMultiplierX>unitMultiplierY?unitMultiplierY:unitMultiplierX;
+        }
 
         StackView {
             id: pagestack
