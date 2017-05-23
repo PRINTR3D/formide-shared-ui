@@ -57,8 +57,15 @@ Item {
         y: -2
         font.pixelSize: 14
         font.weight: Font.Black
-        text: targetProgress + "%"
+        text: getText()
         color: getColor()
+
+        function getText() {
+            if (targetProgress == 0)
+                return ""
+            else
+                return targetProgress + "%"
+        }
 
         function getColor() {
             if (targetProgress < 10)
@@ -69,7 +76,7 @@ Item {
 
         function getX() {
             if (targetProgress < 10)
-                return parent.width / 100 * targetProgress + 8
+                return parent.width / 100 * progress + 8
             else
                 return 8
         }

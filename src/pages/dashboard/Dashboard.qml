@@ -374,7 +374,7 @@ Item {
 
         function getProgress() {
             if (!printerStatus)
-                return 60
+                return 0
             else
                 return printerStatus.progress
         }
