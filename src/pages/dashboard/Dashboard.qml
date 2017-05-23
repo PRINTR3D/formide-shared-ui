@@ -107,7 +107,7 @@ Item {
 
     function getPrintJobName() {
         if (!printerStatus)
-            return "..."
+            return "-"
         else {
             if (printerStatus.status === "printing"
                     || printerStatus.status === "heating"
@@ -115,12 +115,12 @@ Item {
                 if (!main.currentQueueItemName) {
                     console.log("If you see this message continuously, something is going wrong")
                     main.getQueue()
-                    return "..."
+                    return "-"
                 } else {
                     return main.currentQueueItemName
                 }
             } else {
-                return "..."
+                return "-"
             }
         }
     }
@@ -144,12 +144,12 @@ Item {
 
     function getPrintingTime() {
         if (!printerStatus)
-            return "..."
+            return "-"
         else {
             if (printerStatus.status !== "printing"
                     && printerStatus.status !== "heating"
                     && printerStatus.status !== "paused") {
-                return "..."
+                return "-"
             }
 
             var totalSec = printerStatus.remainingPrintingTime

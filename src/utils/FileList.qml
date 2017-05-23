@@ -166,13 +166,15 @@ Flickable {
             arrowImagePath: Qt.resolvedUrl("../images/icons/dashboard/Overlays/RaiseIcon.png")
             fileImagePath: getImage(index)
             textSize: 24
-            property string status: root.status
-            property int indexSelected: root.indexSelected
             y: getVerticalPosition(index)
             wifi: getWifi()
             wifiActive: getWifiActive()
 
             visible: status === "list"
+
+            property string status: root.status
+            property bool statusResolved: false
+            property int indexSelected: root.indexSelected
 
             function getWifi() {
                 if (type === "wifi")
@@ -196,11 +198,12 @@ Flickable {
             }
 
             onStatusChanged: {
-                if (status === "list") {
+                if (status === "list" && statusResolved === true) {
                     if (indexSelected === index) {
                         unrotateArrow()
                     }
                 }
+                statusResolved = true
             }
 
             MouseArea {
