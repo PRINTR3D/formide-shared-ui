@@ -30,6 +30,15 @@ Item {
     property var ewcTemperature: 200
     property var pfTemperature: 200
 
+
+    function setTemperature (){
+        Formide.printer(printerStatus.port).gcode(
+                            "M104 T" + FormideShared.extruderSelected + " S" + FormideShared.temperature)
+        pagestack.popPagestack()
+        pagestack.pushPagestack(Qt.resolvedUrl("ExtruderHeating.qml"))
+        main.viewStackActivePage = "Extruder Replace"
+    }
+
     // Blurry Background
     Image {
         anchors.fill: parent
@@ -40,7 +49,6 @@ Item {
         visible: visibleHomeIcon
         type: "quit"
         onHomeClicked: {
-            main.replaced = false
             pagestack.popPagestack()
         }
     }
@@ -68,8 +76,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
@@ -82,8 +90,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
@@ -96,8 +104,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
@@ -110,8 +118,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
@@ -124,8 +132,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
@@ -144,8 +152,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
@@ -158,8 +166,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
@@ -172,8 +180,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
@@ -186,8 +194,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
@@ -200,8 +208,8 @@ Item {
                 onClicked: {
                     console.log("PLA")
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }

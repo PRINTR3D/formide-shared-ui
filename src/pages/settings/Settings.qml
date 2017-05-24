@@ -174,7 +174,6 @@ Item {
                 {
                     main.settingsIndexSelected = 5
                     flick.animateContentY("Extruders")
-                    main.replaced = false
                 }
             }
         }

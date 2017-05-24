@@ -17,7 +17,6 @@ Item {
     width: parent.width
 
     property var printerStatus: main.printerStatus
-    property bool replaced: main.replaced
     property var extruderSelected: FormideShared.extruderSelected
 
     // Load functions

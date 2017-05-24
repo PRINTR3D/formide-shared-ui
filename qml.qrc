@@ -151,5 +151,6 @@
         <file>src/images/icons/dashboard/Overlays/TimesIcon.png</file>
         <file>src/pages/settings/wifi/WifiReset.qml</file>
         <file>src/pages/settings/wifi/WifiDisconnecting.qml</file>
+        <file>src/pages/settings/extruders/ExtruderHeating.qml</file>
     </qresource>
 </RCC>
