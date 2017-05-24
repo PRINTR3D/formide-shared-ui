@@ -65,7 +65,7 @@ Item {
 
                 console.log("Printing file: " + list.listModel[fileIndexSelected].path)
 
-                pagestack.pushPagestack(Qt.resolvedUrl("Printing.qml"))
+                pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
                 main.startPrintFromFileSystem(
                             list.listModel[fileIndexSelected].path,
                             function (err, response) {
@@ -74,7 +74,7 @@ Item {
                                                 JSON.stringify(err))
                                     pagestack.pushPagestack(
                                                 Qt.resolvedUrl(
-                                                    "PrintingError.qml"))
+                                                    "../../utils/PrintingError.qml"))
                                 }
                                 if (response) {
                                     console.log("Print file success",

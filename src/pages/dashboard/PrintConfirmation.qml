@@ -14,7 +14,7 @@ PopupWindow {
     property var fileIndexSelected: FormideShared.fileIndexSelected
     property var queueItems: main.queueItems
 
-    firstText: "Start print from queue file?" // Text shown as title
+    firstText: "Print the next queued file?" // Text shown as title
     secondText: ""
 
     cancelButtonText: "Cancel" // Text shown on cancel button
@@ -25,16 +25,16 @@ PopupWindow {
 
     onConfirmButtonSignal: {
         main.startPrintFromQueueId(
-                    queueItems[fileIndexSelected].id,
-                    queueItems[fileIndexSelected].printJob.gcode,
+                    queueItems[0].id,
+                    queueItems[0].printJob.gcode,
                     function (err, response) {
                         if (err) {
                             pagestack.pushPagestack(
                                         Qt.resolvedUrl(
-                                            "../library/PrintingError.qml"))
+                                            "../../utils/PrintingError.qml"))
                         }
                     })
-        pagestack.pushPagestack(Qt.resolvedUrl("PrintingSpinner.qml"))
+        pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
     }
 
     onCancelButtonSignal: {

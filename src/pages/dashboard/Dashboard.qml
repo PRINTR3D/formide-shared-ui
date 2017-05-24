@@ -22,6 +22,8 @@ Item {
 
     property bool lock: main.isLocked
 
+    property var queueItems: main.queueItems
+
     function isPrinting() {
         if (!printerStatus)
             return false
@@ -543,7 +545,7 @@ Item {
                     font.weight: Font.Black
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
-                    text: isPrinting() ? "Stop" : "Queue"
+                    text: isPrinting() ? "Stop" : "Print"
                 }
 
                 MouseArea {
@@ -564,7 +566,8 @@ Item {
                                 pagestack.pushPagestack(Qt.resolvedUrl(
                                                             "StopConfirm.qml"))
                             } else {
-                                main.viewStackActivePage = "Cloud Queue"
+                                pagestack.changeTransition("newPageComesFromInside")
+                                pagestack.pushPagestack(Qt.resolvedUrl("PrintConfirmation.qml"))
                             }
                         }
                     }

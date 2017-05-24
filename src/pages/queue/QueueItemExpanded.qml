@@ -127,10 +127,10 @@ Item {
                             if (err) {
                                 pagestack.pushPagestack(
                                             Qt.resolvedUrl(
-                                                "../library/PrintingError.qml"))
+                                                "../../utils/PrintingError.qml"))
                             }
                         })
-            pagestack.pushPagestack(Qt.resolvedUrl("PrintingSpinner.qml"))
+            pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
         }
     }
 

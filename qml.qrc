@@ -74,10 +74,6 @@
         <file>src/pages/dashboard/StopConfirm.qml</file>
         <file>src/pages/library/Library.qml</file>
         <file>src/pages/library/LibraryItemExpanded.qml</file>
-        <file>src/pages/library/Printing.qml</file>
-        <file>src/pages/library/PrintingError.qml</file>
-        <file>src/pages/queue/PrintConfirmation.qml</file>
-        <file>src/pages/queue/PrintingSpinner.qml</file>
         <file>src/pages/queue/Queue.qml</file>
         <file>src/pages/settings/calibration/Calibrate.qml</file>
         <file>src/pages/settings/calibration/Calibrating.qml</file>
@@ -149,5 +145,8 @@
         <file>src/images/icons/dashboard/QueueButtonIcon.png</file>
         <file>src/utils/ControlKey.qml</file>
         <file>src/pages/queue/QueueItemExpanded.qml</file>
+        <file>src/pages/dashboard/PrintConfirmation.qml</file>
+        <file>src/utils/PrintingSpinner.qml</file>
+        <file>src/utils/PrintingError.qml</file>
     </qresource>
 </RCC>

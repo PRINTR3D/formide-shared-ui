@@ -5,7 +5,7 @@
 
 import QtQuick 2.0
 
-import "../../utils"
+import "../"
 
 MessageWindow {
     id: root
