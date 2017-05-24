@@ -37,7 +37,7 @@ Item {
         if (viewStackActivePage == "Dashboard")
             viewStack.push(Qt.resolvedUrl("pages/dashboard/Dashboard.qml"))
 
-        else if (viewStackActivePage == "Queue")
+        else if (viewStackActivePage == "Cloud Queue")
             viewStack.push(Qt.resolvedUrl("pages/queue/Queue.qml"))
 
         else if (viewStackActivePage == "Library")

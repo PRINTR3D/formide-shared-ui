@@ -564,7 +564,7 @@ Item {
                                 pagestack.pushPagestack(Qt.resolvedUrl(
                                                             "StopConfirm.qml"))
                             } else {
-                                main.viewStackActivePage = "Queue"
+                                main.viewStackActivePage = "Cloud Queue"
                             }
                         }
                     }

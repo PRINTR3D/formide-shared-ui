@@ -59,11 +59,9 @@ Item {
 
         onItemSelected: {
             FormideShared.fileIndexSelected = indexSelected
-
-            pagestack.changeTransition("newPageComesFromInside")
-            pagestack.pushPagestack(Qt.resolvedUrl("PrintConfirmation.qml"))
-
-            contentytimer.restart()
+            expanded = true
+            status = "expanded"
+            expandedMenuSize = 216
         }
 
         Timer {
@@ -77,6 +75,45 @@ Item {
                 } else {
                     parent.contentY = 0
                 }
+            }
+        }
+
+        QueueItemExpanded {
+            visible: list.status === "expanded"
+
+            onFileClicked: {
+                list.status = "list"
+                list.expanded = !list.expanded
+            }
+            onPrintFile: {
+
+                console.log("Printing file: " + list.listModel[fileIndexSelected].path)
+
+                pagestack.pushPagestack(Qt.resolvedUrl("Printing.qml"))
+                main.startPrintFromFileSystem(
+                            list.listModel[fileIndexSelected].path,
+                            function (err, response) {
+                                if (err) {
+                                    console.log("File could not be printed",
+                                                JSON.stringify(err))
+                                    pagestack.pushPagestack(
+                                                Qt.resolvedUrl(
+                                                    "PrintingError.qml"))
+                                }
+                                if (response) {
+                                    console.log("Print file success",
+                                                JSON.stringify(response))
+                                    pagestack.popPagestack()
+                                    main.viewStackActivePage = "Dashboard"
+                                }
+                            })
+            }
+
+            onDeleteFile: {
+
+                main.removeFile(list.listModel[fileIndexSelected].path)
+                list.status = "list"
+                list.expanded = !list.expanded
             }
         }
     }

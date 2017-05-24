@@ -60,7 +60,7 @@ Item {
     MenuItem {
         x: 204
         y: 48
-        label: "Queue"
+        label: "Cloud Queue"
         Image {
             width: 72
             height: 72
@@ -69,7 +69,7 @@ Item {
 
         onClicked: {
             pagestack.popPagestack()
-            main.viewStackActivePage = "Queue"
+            main.viewStackActivePage = "Cloud Queue"
         }
     }
 
