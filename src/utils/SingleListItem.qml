@@ -15,6 +15,7 @@ Rectangle {
 
     property string name:"File name"
     property string arrowImagePath
+    property string timesImagePath
     property string fileImagePath
     property var wifiActive:false
     property var wifi:false
@@ -120,6 +121,7 @@ Rectangle {
         height:48
         x:424
         y:8
+        visible: !wifiActive
 
         Image{
             id:image
@@ -143,6 +145,21 @@ Rectangle {
             from: 180
             to:0
             duration:150
+        }
+    }
+
+    // Times
+    Item{
+        width:45
+        height:48
+        x:412
+        y:8
+        visible: wifiActive
+
+        Image{
+            id:timesImage
+            anchors.fill: parent
+            source:timesImagePath
         }
     }
 

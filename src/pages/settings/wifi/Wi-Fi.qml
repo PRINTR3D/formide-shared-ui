@@ -39,7 +39,7 @@ Item {
             FormideShared.ssidToConnect = listModel[indexSelected]
 
             if (name === main.singleNetwork)
-                main.viewStackActivePage = "Cloud"
+                pagestack.pushPagestack(Qt.resolvedUrl("WifiReset.qml"))
             else
                 pagestack.pushPagestack(Qt.resolvedUrl("WifiKeyboard.qml"))
         }

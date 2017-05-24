@@ -148,5 +148,8 @@
         <file>src/pages/dashboard/PrintConfirmation.qml</file>
         <file>src/utils/PrintingSpinner.qml</file>
         <file>src/utils/PrintingError.qml</file>
+        <file>src/images/icons/dashboard/Overlays/TimesIcon.png</file>
+        <file>src/pages/settings/wifi/WifiReset.qml</file>
+        <file>src/pages/settings/wifi/WifiDisconnecting.qml</file>
     </qresource>
 </RCC>
