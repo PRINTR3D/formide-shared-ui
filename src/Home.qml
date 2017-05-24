@@ -245,33 +245,12 @@ Item {
             font.weight: Font.Black
         }
 
-        // AP icon
-        Image {
-            width: 42
-            height: 24
-            x: /*parent.width - 174*/ 306
-            y: 12
-            source: getAPIcon()
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    if (isLocked) {
-                        console.log("Locked screen")
-                        pagestack.pushPagestack(
-                                    Qt.resolvedUrl(
-                                        "utils/keyboard/VirtualKeypad.qml"))
-                    } else {
-                        console.log("AP.qml")
-                    }
-                }
-            }
-        }
 
         // USB icon
         Image {
             width: 39
             height: 24
-            x: /*parent.width - 124*/ 356
+            x: /*parent.width - 156*/ 324
             y: 12
             source: getUSBIcon()
             MouseArea {
@@ -294,7 +273,7 @@ Item {
         Image {
             width: 33
             height: 24
-            x: /*parent.width - 77*/ 403
+            x: /*parent.width - 93*/ 387
             y: 12
             source: getWifiIcon()
             MouseArea {
