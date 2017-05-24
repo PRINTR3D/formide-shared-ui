@@ -27,7 +27,7 @@ Item {
 
     MenuItem {
         x: 44
-        y: 48
+        y: 56
         label: "Dashboard"
         Image {
             width: 72
@@ -43,7 +43,7 @@ Item {
 
     MenuItem {
         x: 124
-        y: 48
+        y: 56
         label: "Library"
         Image {
             width: 72
@@ -59,7 +59,7 @@ Item {
 
     MenuItem {
         x: 204
-        y: 48
+        y: 56
         label: "Cloud Queue"
         Image {
             width: 72
@@ -75,7 +75,7 @@ Item {
 
     MenuItem {
         x: 284
-        y: 48
+        y: 56
         label: "Settings"
         Image {
             width: 72
