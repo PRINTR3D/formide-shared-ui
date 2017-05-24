@@ -51,7 +51,7 @@ Item {
             if ((printerStatus.extruders[extruderSelected].targetTemp
                  - printerStatus.extruders[extruderSelected].temp) <= 10) {
                 heatingTimer.stop()
-                main.viewStackActivePage = "ExtruderReplace"
+                main.viewStackActivePage = "Extruder Replace"
             }
         }
     }

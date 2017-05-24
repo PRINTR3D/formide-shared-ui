@@ -75,15 +75,15 @@ Item {
         else if (viewStackActivePage == "Extruders")
             viewStack.push(Qt.resolvedUrl("pages/settings/extruders/Extruders.qml"))
 
-        else if (viewStackActivePage == "MaterialPreheat")
+        else if (viewStackActivePage == "Material Preheat")
             viewStack.push(Qt.resolvedUrl(
                                "pages/settings/extruders/MaterialPreheat.qml"))
 
-        else if (viewStackActivePage == "ExtruderReplace")
+        else if (viewStackActivePage == "Extruder Replace")
             viewStack.push(Qt.resolvedUrl(
                                "pages/settings/extruders/ExtruderReplace.qml"))
 
-        else if (viewStackActivePage == "ExtruderReplace")
+        else if (viewStackActivePage == "Extruder Replace")
             viewStack.push(Qt.resolvedUrl(
                                "pages/settings/extruders/ExtruderReplace.qml"))
 
@@ -172,9 +172,9 @@ Item {
                     return "back"
                 else if (viewStackActivePage == "Extruders")
                     return "back"
-                else if (viewStackActivePage == "MaterialPreheat")
+                else if (viewStackActivePage == "Material Preheat")
                     return "back"
-                else if (viewStackActivePage == "ExtruderReplace")
+                else if (viewStackActivePage == "Extruder Replace")
                     return "back"
                 else if (viewStackActivePage == "X and Y Calibration")
                     return "back"
@@ -216,9 +216,9 @@ Item {
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Extruders")
                         main.viewStackActivePage = "Settings"
-                    else if (viewStackActivePage == "MaterialPreheat")
+                    else if (viewStackActivePage == "Material Preheat")
                         main.viewStackActivePage = "Extruders"
-                    else if (viewStackActivePage == "ExtruderReplace")
+                    else if (viewStackActivePage == "Extruder Replace")
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "X and Y Calibration")
                         main.viewStackActivePage = "Calibration"
