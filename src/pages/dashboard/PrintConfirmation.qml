@@ -14,14 +14,14 @@ PopupWindow {
     property var fileIndexSelected: FormideShared.fileIndexSelected
     property var queueItems: main.queueItems
 
-    firstText: "Print the next queued file?" // Text shown as title
-    secondText: ""
+    firstText: getName(0) ? "Print the next queued file?" : "No queue items found"
+    secondText: getName(0) ? "File: " + getName(0) : ""
 
     cancelButtonText: "Cancel" // Text shown on cancel button
     confirmButtonText: "Print" // Text shown in confirm button
 
     cancelButton: true
-    confirmButton: true
+    confirmButton: getName(0) ? true : false
 
     onConfirmButtonSignal: {
         main.startPrintFromQueueId(
@@ -39,5 +39,12 @@ PopupWindow {
 
     onCancelButtonSignal: {
         pagestack.popPagestack()
+    }
+
+    function getName(index) {
+        if (queueItems[index])
+            return queueItems[index].printJob.name
+        else
+            return false
     }
 }
