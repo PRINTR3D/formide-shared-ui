@@ -118,6 +118,7 @@ Item {
         letterColor: "#ffffff"
         letter: "Print File"
         letterSize: 16
+        enabled: printerStatus.status === "printing" ? false : true
 
         onClicked: {
             main.startPrintFromQueueId(

@@ -20,6 +20,7 @@ Item {
 
     property var fileIndexSelected
     property var fileItems: main.fileItems
+    property var printerStatus: main.printerStatus
 
     property var item
 
@@ -117,6 +118,7 @@ Item {
         letterColor: "#ffffff"
         letter: "Print File"
         letterSize: 16
+        enabled: printerStatus.status === "printing" ? false : true
 
         onClicked: printFile.call()
     }
