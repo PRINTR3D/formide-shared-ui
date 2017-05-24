@@ -32,6 +32,15 @@ Window {
     signal printerOnline
     signal printerDisconnected
 
+    signal printerError(var data)
+    signal printerWarning(var data)
+    signal printerInfo(var data)
+
+    signal printerUsbIn
+    signal printerUsbOut
+
+    signal printerStatusEvent(var data)
+
     // UI
     property var backendIP: FormideShared.backendIP
     property var sharedUiVersion: "v1.0.0"
@@ -153,7 +162,7 @@ Window {
                     checkConnection()
 
 
-                    //                    scanDrives()
+                    scanDrives()
                     sock.active = true
                 }
             }
@@ -231,7 +240,7 @@ Window {
                 loadingQueue = false
             }
             if (response) {
-                //               console.log("Response get queue",JSON.stringify(response));
+                console.log("Response get queue",JSON.stringify(response));
                 for (var i in response) {
                     if (response[i].id === currentQueueItemId) {
                         currentQueueItemName=response[i].printJob.name
@@ -248,6 +257,10 @@ Window {
                 })
             }
         })
+    }
+
+    onLoadingQueueChanged: {
+        console.log("LOADING QUEUE ",loadingQueue)
     }
 
     function startPrintFromQueueId(queueId, gcode, callback) {
@@ -379,6 +392,28 @@ Window {
     /************************************
          MAIN LOGIC - USB
          ************************************/
+
+    function isUsbConnected()
+    {
+        Formide.usb().scanDrives(function(list)
+        {
+
+            if(list.length>0 && list[0]!=="platform-musb*part*")
+            {
+                if(!usbAvailable)
+                    usbAvailable=true
+            }
+            else
+            {
+                if(usbAvailable)
+                {
+                    usbAvailable=false
+                    driveFiles=[]
+                }
+            }
+        });
+    }
+
     function scanDrives(callback) {
         Formide.usb().scanDrives(function (err, list) {
 
@@ -458,6 +493,8 @@ Window {
 
     function updateDriveUnit(driveU, callback) {
         driveUnit = driveU
+
+        console.log("NOOOOOO")
         Formide.usb().mount(driveUnit, function (err, response) {
             if (err) {
                 console.log("Error mounting drive: ", JSON.stringify(err))
@@ -529,6 +566,11 @@ Window {
             })
     }
 
+    function resetWifiUsbTimer()
+    {
+        wifiTimer.restart()
+    }
+
     function checkConnection(callback) {
         Formide.wifi().checkConnection(function (err, response) {
 
@@ -551,7 +593,8 @@ Window {
                 getWifiList()
                 if (response.isConnected) {
 
-                    isConnectedToWifi = response.isConnected
+                    if(!isConnectedToWifi)
+                        isConnectedToWifi = response.isConnected
                     externalIpAddress = response.publicIp
                     macAddress = response.mac
                     internalIpAddress = response.ip
@@ -627,7 +670,6 @@ Window {
         })
     }
 
-    // Check: Maybe we don't need to call it here
     function connectToWifi(ssid, password, callback) {
 
         Formide.wifi().connect(ssid, password, function (err, response) {
@@ -648,6 +690,27 @@ Window {
         })
     }
 
+    /************************************
+         IMAGES
+         ************************************/
+
+    function getImage(id,hash){
+
+        var returnValue=""
+        Formide.database().images(id,hash,function(err,response){
+
+            if(err)
+                console.log("ERR: "+err);
+            if(response)
+            {
+                //console.log("Response IMAGES: "+response);
+                returnValue= response;
+            }
+
+        });
+
+        return returnValue;
+    }
 
     /************************************
          WEBSOCKET EVENTS
@@ -678,24 +741,79 @@ Window {
 
                 // For each socket event, we emit a signal, so we can add the implementation
                 // outside the library
+
+
+                // Printer Finished
+
+                if(data.channel === "printer.finished")
+                {
+                    printerFinished.call()
+                }
+
+                // Printer info
+                if(data.channel === "printer.info")
+                {
+                    printerInfo(data)
+                }
+
+                // Printer warning
+                if(data.channel === "printer.warning")
+                {
+                    printerWarning(data)
+                }
+
+                // Printer error
+                if(data.channel === "printer.error")
+                {
+                    printerError(data)
+                }
+
+                // Printer Resumed
+                if(data.channel === "printer.resumed")
+                {
+                    printerResumed.call()
+                }
+
+                // Printer error
+                if(data.channel === "printer.paused")
+                {
+                    printerPaused.call()
+                }
+
+                // if usb connected
+                if(data.channel === "usb.plugged-in")
+                {
+                    printerUsbIn.call()
+                }
+
+                // if usb disconnected
+                if(data.channel === "usb.plugged-out")
+                {
+                    printerUsbOut.call()
+
+                }
+
+
+
                 if (data.channel === "printer.stopped") {
-                    printerStopped(data.data)
+                    printerStopped.call()
                 }
 
                 if (data.channel === "printer.started") {
-                    printerStarted(data.data)
+                    printerStarted.call()
                 }
 
                 if (data.channel === "printer.connected") {
-                    printerConnected(data.data)
+                    printerConnected.call()
                 }
                 if (data.channel === "printer.disconnected") {
-                    printerDisconnected(data.data)
+                    printerDisconnected.call()
                 }
 
                 if (data.channel === "printer.status") {
 //                    console.log(JSON.stringify(data.data))
 
+                    printerStatusEvent(data)
                     if (data.data.port === "/dev/virt0") {
                         //                        console.log("Virtual printer return")
                         return
@@ -808,11 +926,12 @@ Window {
     // Timer to check Wi-Fi status
     Timer {
         id: wifiTimer
-        interval: 15000
+        interval: 10000
         repeat: true
         running: true
         onTriggered: {
             if (printerStatus)
+            {
                 if (printerStatus.status === "online"
                         || printerStatus.status === "printing"
                         || printerStatus.status === "heating"
@@ -820,11 +939,18 @@ Window {
                     console.log("Wi-Fi Checking")
                     getWifiList()
                     checkConnection()
+                    isUsbConnected()
                     return;
 
                 }
-            getWifiList()
-            checkConnection()
+            }
+            else
+            {
+                getWifiList()
+                checkConnection()
+            }
+
+
         }
     }
 
