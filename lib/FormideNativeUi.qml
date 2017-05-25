@@ -812,12 +812,14 @@ Window {
 
                 if (data.channel === "printer.started") {
 
+                    printerStarted(data)
+
                     // Local item
                     if(!data.data.queueItemId || data.data.queueItemId !== "")
                     {
                         var path = data.data.filePath
 
-                        var splitPath = data.split("/")
+                        var splitPath = path.split("/")
                         var name = splitPath.pop()
 
                         console.log("File name: "+name)
