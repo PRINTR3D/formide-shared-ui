@@ -795,12 +795,14 @@ Window {
                 // if usb connected
                 if(data.channel === "usb.plugged-in")
                 {
+                    console.log("Usb plugged in")
                     printerUsbIn.call()
                 }
 
                 // if usb disconnected
                 if(data.channel === "usb.plugged-out")
                 {
+                    console.log("Usb plugged out")
                     printerUsbOut.call()
 
                 }
