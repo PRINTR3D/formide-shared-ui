@@ -23,7 +23,7 @@ Window {
 
     // Events - Signals we can emit (different printers have different behavior)
     signal printerFinished
-    signal printerStarted
+    signal printerStarted(var data)
     signal printerStopped
     signal printerPaused
     signal printerResumed
@@ -800,7 +800,7 @@ Window {
                 }
 
                 if (data.channel === "printer.started") {
-                    printerStarted.call()
+                    printerStarted(data)
                 }
 
                 if (data.channel === "printer.connected") {
