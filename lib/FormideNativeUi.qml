@@ -395,7 +395,7 @@ Window {
 
     function isUsbConnected()
     {
-        Formide.usb().scanDrives(function(list)
+        Formide.usb().scanDrives(function(err,list)
         {
 
             if(list.length>0 && list[0]!=="platform-musb*part*")
