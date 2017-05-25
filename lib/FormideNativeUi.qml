@@ -222,6 +222,18 @@ Window {
         })
     }
 
+    function removeQueueItem(id){
+        Formide.printer(printerStatus.port).removeQueueItem(id,function(err,response){
+            if(err){
+                console.log("Error deleting queue item",JSON.stringify(err))
+            }
+            if(response){
+                getQueue()
+            }
+
+        })
+    }
+
 
     /************************************
          MAIN LOGIC - Printer
