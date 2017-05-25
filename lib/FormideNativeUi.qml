@@ -601,7 +601,7 @@ Window {
                 getWifiList()
             }
             if (response) {
-                console.log("Response Check Connection",JSON.stringify(response))
+//                console.log("Response Check Connection",JSON.stringify(response))
                 getWifiList()
                 if (response.isConnected) {
 
@@ -914,7 +914,8 @@ Window {
     function restartTimers(){
 
         checkEverythingTimer.restart()
-        queueTimer.restart()
+        wifiTimer.restart()
+
     }
 
 
