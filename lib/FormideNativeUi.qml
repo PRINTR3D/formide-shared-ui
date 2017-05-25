@@ -240,7 +240,7 @@ Window {
                 loadingQueue = false
             }
             if (response) {
-                console.log("Response get queue",JSON.stringify(response));
+//                console.log("Response get queue",JSON.stringify(response));
                 for (var i in response) {
                     if (response[i].id === currentQueueItemId) {
                         currentQueueItemName=response[i].printJob.name
@@ -877,6 +877,14 @@ Window {
     /************************************
          TIMERS
          ************************************/
+
+    function restartTimers(){
+
+        checkEverythingTimer.restart()
+        queueTimer.restart()
+    }
+
+
     // note
     // /!\ Printer specific timers need to be implemented out of here, in main.qml
     function touchInput() {
@@ -926,7 +934,7 @@ Window {
     // Timer to check Wi-Fi status
     Timer {
         id: wifiTimer
-        interval: 10000
+        interval: 15000
         repeat: true
         running: true
         onTriggered: {
