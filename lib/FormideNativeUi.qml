@@ -749,11 +749,8 @@ Window {
             try {
                 var data = JSON.parse(message)
 
-                console.log("received event: " + JSON.stringify(data.channel));
-
                 // For each socket event, we emit a signal, so we can add the implementation
                 // outside the library
-
 
                 // Printer Finished
 
@@ -814,6 +811,26 @@ Window {
                 }
 
                 if (data.channel === "printer.started") {
+
+                    // Local item
+                    if(!data.data.queueItemId || data.data.queueItemId !== "")
+                    {
+                        var path = data.data.filePath
+
+                        var splitPath = data.split("/")
+                        var name = splitPath.pop()
+
+                        console.log("File name: "+name)
+
+                        currentQueueItemName = name
+                    }
+
+                    // Queue item
+                    else
+                    {
+                        getQueue()
+                    }
+
                     printerStarted(data)
                 }
 
