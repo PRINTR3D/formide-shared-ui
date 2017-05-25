@@ -793,14 +793,14 @@ Window {
                 }
 
                 // if usb connected
-                if(data.channel === "usb.plugged-in")
+                if(data.channel === "com.printr.gpio-control-mode.plugged-in")
                 {
                     console.log("Usb plugged in")
                     printerUsbIn.call()
                 }
 
                 // if usb disconnected
-                if(data.channel === "usb.plugged-out")
+                if(data.channel === "com.printr.gpio-control-mode.plugged-out")
                 {
                     console.log("Usb plugged out")
                     printerUsbOut.call()
