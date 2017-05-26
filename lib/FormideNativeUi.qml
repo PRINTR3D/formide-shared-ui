@@ -979,12 +979,14 @@ Window {
                         || printerStatus.status === "heating"
                         || printerStatus.status === "paused") {
                     console.log("Wi-Fi Checking")
-                    getWifiList()
                     checkConnection()
-                    isUsbConnected()
+
                     return;
 
                 }
+
+                if(printerStatus.status === "online")
+                    isUsbConnected()
             }
             else
             {
