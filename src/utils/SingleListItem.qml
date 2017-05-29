@@ -121,7 +121,6 @@ Rectangle {
         height:48
         x:424
         y:8
-        visible: !wifiActive
 
         Image{
             id:image
@@ -148,20 +147,19 @@ Rectangle {
         }
     }
 
-    // Times
-    Item{
-        width:45
-        height:48
-        x:412
-        y:8
-        visible: wifiActive
+//    // Times
+//    Item{
+//        width:45
+//        height:48
+//        x:412
+//        y:8
 
-        Image{
-            id:timesImage
-            anchors.fill: parent
-            source:timesImagePath
-        }
-    }
+//        Image{
+//            id:timesImage
+//            anchors.fill: parent
+//            source:timesImagePath
+//        }
+//    }
 
     // Separator
     Rectangle{

@@ -24,9 +24,10 @@ Item {
 
         touchInput()
 
-        if (FormideShared.extruderSelected == 0)
+        if (FormideShared.extruderSelected == 0) {
             Formide.printer(printerStatus.port).gcode("G1 E2 F300\n")
-        else {
+        } else {
+            console.log('load set')
             FormideShared.extruderSelected = 0
             Formide.printer(printerStatus.port).gcode("T0\nG1 E2 F300\n")
         }
@@ -34,9 +35,9 @@ Item {
     function loadSecond() {
 
         touchInput()
-        if (FormideShared.extruderSelected == 1)
+        if (FormideShared.extruderSelected == 1) {
             Formide.printer(printerStatus.port).gcode("G1 E2 F300\n")
-        else {
+        } else {
             FormideShared.extruderSelected = 1
             Formide.printer(printerStatus.port).gcode("T1\nG1 E2 F300\n")
         }
@@ -44,9 +45,9 @@ Item {
     function unloadFirst() {
 
         touchInput()
-        if (FormideShared.extruderSelected == 0)
+        if (FormideShared.extruderSelected == 0) {
             Formide.printer(printerStatus.port).gcode("G1 E-2 F300\n")
-        else {
+        } else {
             FormideShared.extruderSelected = 0
             Formide.printer(printerStatus.port).gcode("T0\nG1 E-2 F300\n")
         }

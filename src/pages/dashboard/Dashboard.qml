@@ -78,7 +78,7 @@ Item {
             if (printerStatus.extruders[1])
                 return printerStatus.extruders[1].targetTemp + "°"
             else
-                return "-"
+                return ""
         }
     }
 
@@ -100,7 +100,7 @@ Item {
             if (printerStatus.bed.temp)
                 return printerStatus.bed.targetTemp + "°"
             else
-                return "-"
+                return ""
     }
 
     function getBedHeight() {

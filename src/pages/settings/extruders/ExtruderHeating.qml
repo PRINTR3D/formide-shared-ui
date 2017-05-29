@@ -22,7 +22,7 @@ Item {
         height: 24
         x: 16
         y: 80
-        text: "Heating to " + targetTemp + " °, please Wait"
+        text: "Heating to " + targetTemp + "°, please Wait"
         color: "white"
         font.pixelSize: 24
         horizontalAlignment: TextInput.AlignHCenter
@@ -31,10 +31,10 @@ Item {
     ProgressBar {
         id: prog
         targetProgress: getProgress()
-        width: 368
+        width: 384
         height: 16
         x: 16
-        y: 150
+        y: 152
 
         function getProgress() {
 
@@ -50,9 +50,9 @@ Item {
         id: temp
         width: 56
         height: 32
-        x: 408
+        x: 416
         y: 142
-        text: ((getTemperature()) + " °")
+        text: ((getTemperature()) + "°")
         font.pixelSize: 24
 
         function getTemperature() {

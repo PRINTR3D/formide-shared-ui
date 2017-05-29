@@ -12,11 +12,11 @@ PopupWindow {
 
     property var printerStatus: main.printerStatus
 
-    firstText: "Reset Wi-Fi and disconnect?"
+    firstText: "Disconnect from network?"
     secondText: ""
 
     cancelButtonText: "Cancel" // Text shown on cancel button
-    confirmButtonText: "Reset" // Text shown in confirm button
+    confirmButtonText: "Disconnect" // Text shown in confirm button
 
     cancelButton: true
     confirmButton: true
