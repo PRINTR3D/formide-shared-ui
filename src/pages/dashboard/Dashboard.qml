@@ -48,52 +48,59 @@ Item {
 
     function getE1Temp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else
             return printerStatus.extruders[0].temp + "°"
     }
 
     function getE1TargetTemp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else
             return printerStatus.extruders[0].targetTemp + "°"
     }
 
     function getE2Temp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else {
             if (printerStatus.extruders[1])
                 return printerStatus.extruders[1].temp + "°"
             else
-                return "000 °"
+                return "-"
         }
     }
 
     function getE2TargetTemp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else {
             if (printerStatus.extruders[1])
                 return printerStatus.extruders[1].targetTemp + "°"
             else
-                return "000 °"
+                return "-"
         }
     }
 
     function getBedTemp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else
-            return printerStatus.bed.temp + "°"
+            if (printerStatus.bed.temp)
+                return printerStatus.bed.temp + "°"
+            else
+                return "-"
+
     }
 
     function getBedTargetTemp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else
-            return printerStatus.bed.targetTemp + "°"
+            if (printerStatus.bed.temp)
+                return printerStatus.bed.targetTemp + "°"
+            else
+                return "-"
     }
 
     function getBedHeight() {
@@ -217,7 +224,7 @@ Item {
                                     Qt.resolvedUrl(
                                         "../../utils/keyboard/VirtualKeypad.qml"))
                     } else {
-                        if (!printerStatus) {
+                        if (!printerStatus || !printerStatus.extruders[0]) {
                             return
                         } else {
                             pagestack.changeTransition("newPageComesFromInside")
@@ -271,7 +278,7 @@ Item {
                                     Qt.resolvedUrl(
                                         "../../utils/keyboard/VirtualKeypad.qml"))
                     } else {
-                        if (!printerStatus)
+                        if (!printerStatus || !printerStatus.extruders[1])
                             return
                         pagestack.changeTransition("newPageComesFromInside")
                         pagestack.pushPagestack(
@@ -323,7 +330,7 @@ Item {
                                     Qt.resolvedUrl(
                                         "../../utils/keyboard/VirtualKeypad.qml"))
                     } else {
-                        if (!printerStatus)
+                        if (!printerStatus || !printerStatus.bed.temp)
                             return
                         pagestack.changeTransition("newPageComesFromInside")
                         pagestack.pushPagestack(
