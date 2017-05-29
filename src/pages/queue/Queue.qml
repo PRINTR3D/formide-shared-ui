@@ -25,7 +25,6 @@ Item {
         listModel: queueItems
 
         function getImage(index) {
-            console.log('image', queueItems[index].printJob.images[0])
 
             if (queueItems[index] !== undefined) {
 
@@ -40,10 +39,7 @@ Item {
                     else {
                         return Qt.resolvedUrl("../../images/icons/stlIcon.png")
                     }
-
                 }
-
-
 
             } else
                 return Qt.resolvedUrl("../../images/icons/noIcon.png")
