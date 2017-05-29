@@ -6,6 +6,7 @@
 
 import QtQuick 2.0
 import "../"
+import "../../"
 import "../../../lib/formide/formide.js" as Formide
 
 Rectangle {
@@ -101,10 +102,9 @@ Rectangle {
         console.log("Is locked? " + isLocked)
     }
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../../images/blurBackground.jpg"
+    // Background
+    Background{
+        y:0
     }
 
     //Home Icon

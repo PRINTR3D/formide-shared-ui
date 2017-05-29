@@ -4,6 +4,7 @@
  */
 
 import QtQuick 2.0
+import "../"
 
 Item {
     id:root
@@ -24,10 +25,9 @@ Item {
     signal confirmButtonSignal                  // Event emitted when pressing confirm
     signal quitButtonSignal                     // Event emitted when pressing the [X] button
 
-    // Blurry Background
-    Image{
-        anchors.fill: parent
-        source:"../images/blurBackground.jpg"
+    // Background
+    Background{
+        y:0
     }
 
     DefaultText{

@@ -5,6 +5,7 @@
 
 import QtQuick 2.0
 import QtQuick.LocalStorage 2.0
+import "../../../"
 import "../../../utils"
 import "../../../../lib/formide/formideShared.js" as FormideShared
 import "../../../../lib/formide/formide.js" as Formide
@@ -39,10 +40,9 @@ Item {
         main.viewStackActivePage = "Extruder Replace"
     }
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../../../images/blurBackground.jpg"
+    // Background
+    Background{
+        y:0
     }
 
     HomeIcon {

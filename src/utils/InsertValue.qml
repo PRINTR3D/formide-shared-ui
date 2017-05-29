@@ -4,6 +4,7 @@
  */
 
 import QtQuick 2.0
+import "../"
 import "keyboard/"
 
 Item {
@@ -41,10 +42,10 @@ Item {
 
         return newValue + unit
     }
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../images/blurBackground.jpg"
+
+    // Background
+    Background{
+        y:0
     }
 
     Item {

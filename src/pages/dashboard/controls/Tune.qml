@@ -6,6 +6,7 @@
 
 // Controls
 import QtQuick 2.0
+import "../../../"
 import "../../../utils"
 import "../../../utils/keyboard"
 
@@ -15,10 +16,9 @@ Rectangle {
     width: parent.width
     height: parent.height
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../../../images/blurBackground.jpg"
+    // Background
+    Background{
+        y:0
     }
 
     // Home icon

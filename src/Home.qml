@@ -316,13 +316,7 @@ Item {
         }
     }
 
-    Rectangle {
-        id: background
-        width: parent.width
-        height: parent.height - 48
-        y: 48
-        color: "#141414"
-    }
+    Background{}
 
     // Second Stack for views under main menu
     StackView {

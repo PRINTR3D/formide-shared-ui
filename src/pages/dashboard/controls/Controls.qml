@@ -7,6 +7,7 @@
 
 // Controls
 import QtQuick 2.0
+import "../../../"
 import "../../../utils"
 import "../../../utils/keyboard"
 
@@ -24,10 +25,9 @@ Rectangle {
         Formide.printer(printerStatus.port).gcode("G91")
     }
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../../../images/blurBackground.jpg"
+    // Background
+    Background{
+        y:0
     }
 
     // Home Button

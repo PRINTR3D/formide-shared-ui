@@ -13,10 +13,8 @@ Item {
     width: parent.width
     height: parent.height
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "images/blurBackground.jpg"
+    Background{
+        y:0
     }
 
     // Home Icon
