@@ -14,7 +14,7 @@ Flickable {
     clip: true
 
     contentWidth: width
-    contentHeight: height+95  // Previously 344
+    contentHeight: height+95
 
     property var macAddress: main.macAddress
     property var singleNetwork: main.singleNetwork
