@@ -14,7 +14,7 @@ Flickable {
     clip: true
 
     contentWidth: width
-    contentHeight: height+95
+    contentHeight: height +48
 
     property var macAddress: main.macAddress
     property var singleNetwork: main.singleNetwork
@@ -57,20 +57,6 @@ Flickable {
         }
     }
 
-    function getPrintingTime() {
-
-        if (printerStatus) {
-            if (printerStatus.firmware) {
-                if (printerStatus.firmware.printingTime) {
-                    if (printerStatus.firmware.printingTime.length > 0) {
-                        return printerStatus.firmware.printingTime
-                    }
-                }
-            }
-        }
-        return "Unknown"
-    }
-
     Rectangle {
         id: about
         width: parent.width
@@ -86,44 +72,13 @@ Flickable {
             source: "../../images/icons/PrintrIcon.png"
         }
 
-        Image {
-            width: 72
-            height: 72
-            x: 24
-            y: 104
-
-            source: "../../images/icons/PrintrIcon.png"
-        }
-
-        DefaultText {
-            width: 146
-            height: 24
-            font.pixelSize: 16
-            x: 112
-            y: 24
-            color: "#ffffff"
-
-            text: "Total Printing Time"
-        }
-
-        DefaultText {
-            width: 191
-            height: 24
-            font.pixelSize: 16
-            x: 112
-            y: 56
-            color: "#ffffff"
-
-            text: getPrintingTime()
-        }
-
         DefaultText {
             width: 144
             height: 216
             font.pixelSize: 16
             //font.weight: Font.Medium
             x: 112
-            y: 112
+            y: 16
             color: "#ffffff"
 
             lineHeightMode: Text.FixedHeight
@@ -137,7 +92,7 @@ Flickable {
             height: 216
             font.pixelSize: 16
             x: 265
-            y: 112
+            y: 16
             color: "#ffffff"
 
             lineHeightMode: Text.FixedHeight
