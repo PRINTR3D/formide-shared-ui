@@ -25,34 +25,26 @@ Item {
         listModel: queueItems
 
         function getImage(index) {
+            console.log('image', queueItems[index].printJob.images[0])
+
             if (queueItems[index] !== undefined) {
-                //CLOUD LOGIC
-                if (queueItems[index].origin == "cloud") {
-                    if (queueItems[index].printJob.sliceMethod === "custom") {
-                        return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
-                    } else {
-                        return "https://storage.googleapis.com/images.formide.com/"
-                                + queueItems[index].printJob.files[0].images[0]
-                    }
-                } // LOCAL LOGIC
-                else {
 
-                    var file = {
-
-                    }
-                    for (var i = 0, len = fileItems.length; i < len; i++) {
-                        if (fileItems[i].id == queueItems[index].printJob.files[0].id)
-                            file = fileItems[i]
-                    }
-
-                    if (file.filetype == "text/stl") {
-                        var url = main.getImage(queueItems[index].id,
-                                                file.images[0])
-                        return url
-                    } else {
-                        return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
-                    }
+                if (queueItems[index].printJob.sliceMethod === "custom") {
+                    return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
                 }
+                else {
+                    if (queueItems[index].printJob.images[0] !== undefined) {
+                        return "https://storage.googleapis.com/images.formide.com/"
+                                + queueItems[index].printJob.images[0]
+                    }
+                    else {
+                        return Qt.resolvedUrl("../../images/icons/stlIcon.png")
+                    }
+
+                }
+
+
+
             } else
                 return Qt.resolvedUrl("../../images/icons/noIcon.png")
         }
