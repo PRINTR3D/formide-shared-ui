@@ -120,19 +120,7 @@ Item {
         letterSize: 16
         enabled: printerStatus.status === "printing" ? false : true
 
-        onClicked: {
-            main.startPrintFromQueueId(
-                        queueItems[fileIndexSelected].id,
-                        queueItems[fileIndexSelected].printJob.gcode,
-                        function (err, response) {
-                            if (err) {
-                                pagestack.pushPagestack(
-                                            Qt.resolvedUrl(
-                                                "../../utils/PrintingError.qml"))
-                            }
-                        })
-            pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
-        }
+        onClicked: printFile.call()
     }
 
     KeyboardLetter {
@@ -145,8 +133,6 @@ Item {
         letter: "Remove File"
         letterSize: 16
 
-        onClicked: {
-            // TODO
-        }
+        onClicked: deleteFile.call()
     }
 }

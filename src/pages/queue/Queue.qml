@@ -87,31 +87,22 @@ Item {
             }
             onPrintFile: {
 
-                console.log("Printing file: " + list.listModel[fileIndexSelected].path)
-
-                pagestack.pushPagestack(Qt.resolvedUrl("Printing.qml"))
-                main.startPrintFromFileSystem(
-                            list.listModel[fileIndexSelected].path,
+                main.startPrintFromQueueId(
+                            queueItems[fileIndexSelected].id,
+                            queueItems[fileIndexSelected].printJob.gcode,
                             function (err, response) {
                                 if (err) {
-                                    console.log("File could not be printed",
-                                                JSON.stringify(err))
                                     pagestack.pushPagestack(
                                                 Qt.resolvedUrl(
-                                                    "PrintingError.qml"))
-                                }
-                                if (response) {
-                                    console.log("Print file success",
-                                                JSON.stringify(response))
-                                    pagestack.popPagestack()
-                                    main.viewStackActivePage = "Dashboard"
+                                                    "../../utils/PrintingError.qml"))
                                 }
                             })
+                pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
             }
 
             onDeleteFile: {
 
-                main.removeFile(list.listModel[fileIndexSelected].path)
+                main.removeQueueItem(queueItems[fileIndexSelected].id)
                 list.status = "list"
                 list.expanded = !list.expanded
             }
