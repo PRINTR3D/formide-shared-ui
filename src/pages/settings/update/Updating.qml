@@ -19,18 +19,15 @@ Item {
         height: 32
         font.pixelSize: 24
         x: 89
-        y: 24
+        y: 70
 
         text: "Installing Update..."
     }
 
-    Image {
-        width: 32
-        height: 32
+    Spinner {
         x: 218 + 89 + 16
-        y: 24
-
-        source: "../../../images/icons/settings/Spinner.png"
+        y: 70
+        visible: checking
     }
 
     Timer {

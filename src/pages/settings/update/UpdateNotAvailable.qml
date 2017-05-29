@@ -21,7 +21,7 @@ Item {
         height: 32
         font.pixelSize: 24
         x: 81
-        y: 24
+        y: 70
 
         text: "Your software is up to date."
     }
