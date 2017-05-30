@@ -61,6 +61,21 @@ Item {
             return ""
     }
 
+    function isPrinting(){
+        if (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused')
+            return true
+        else
+            return false
+    }
+
+    function isPrintingThisFile(){
+        if (printerStatus.queueItemId === queueItems[fileIndexSelected].id)
+            return true
+        else
+            return false
+    }
+
+
     SingleListItem {
         id: singleItem
         y: 8
@@ -77,24 +92,13 @@ Item {
     }
 
     DefaultText {
-        width: 112
+        width: 432
         height: 24
         x: 24
         y: 89
         font.pixelSize: 16
         lineHeight: 1.5
-        text: "Description"
-    }
-
-    DefaultText {
-        width: 230
-        height: 24
-        x: 144
-        y: 90
-        font.pixelSize: 16
-        lineHeightMode: Text.FixedHeight
-        lineHeight: 2.25
-        text: "GCODE File in local storage"
+        text: isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""
     }
 
     KeyboardLetter {
@@ -106,7 +110,7 @@ Item {
         letterColor: "#ffffff"
         letter: "Print File"
         letterSize: 16
-        enabled: printerStatus.status === "printing" ? false : true
+        enabled: !isPrinting()
 
         onClicked: printFile.call()
     }
@@ -120,7 +124,7 @@ Item {
         letterColor: "#ffffff"
         letter: "Remove File"
         letterSize: 16
-        enabled: printerStatus.queueItemId === queueItems[fileIndexSelected].id ? false : true
+        enabled: !isPrintingThisFile()
 
         onClicked: deleteFile.call()
     }
