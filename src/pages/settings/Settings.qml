@@ -20,7 +20,7 @@ Item {
         width:parent.width
         height:224
         contentWidth: width
-        contentHeight: 402
+        contentHeight: 467
 
         property var index: main.settingsIndexSelected
 
@@ -174,6 +174,29 @@ Item {
                 {
                     main.settingsIndexSelected = 5
                     flick.animateContentY("Extruders")
+                }
+            }
+        }
+
+        SingleListItem {
+
+            y: 398
+            name: "Lock Screen"
+
+            Image {
+                width: 48
+                height: 48
+                x: 24
+                y: 8
+                source: "../../images/icons/settings/LockIcon.png"
+            }
+
+            onClickedSignal: {
+
+                onClickedSignal: {
+                    pagestack.pushPagestack(
+                                Qt.resolvedUrl(
+                                    "../../utils/keyboard/VirtualKeypad.qml"))
                 }
             }
         }
