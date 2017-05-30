@@ -53,7 +53,7 @@ MouseArea {
 
         function getOffset() {
             if (letter === "clear")
-                return 17
+                return 18
             if (smallLetter === "")
                 return 14
             else

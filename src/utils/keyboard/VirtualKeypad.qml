@@ -89,7 +89,7 @@ Rectangle {
             if (enterPasscode.length < 4)
                 enterPasscode = enterPasscode + letter
 
-            else if (enterPasscode.length == 4)
+            if (enterPasscode.length == 4)
                 if (!isLocked)
                     // if we are locking
                     setPassCode(enterPasscode)
