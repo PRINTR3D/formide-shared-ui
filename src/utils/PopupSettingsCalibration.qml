@@ -66,31 +66,8 @@ Item {
     }
 
     Rectangle {
+
         x: 48
-        y: 150
-        width: 184
-        height: 48
-        radius: 3
-        color: "#46b1e6"
-
-        Text {
-            font.family: "OpenSans"
-            font.pixelSize: 16
-            color: "#ffffff"
-            anchors.centerIn: parent
-            text: confirmButtonText
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                confirmButtonSignal.call()
-            }
-        }
-    }
-
-    Rectangle {
-        x: 240
         y: 150
         width: 184
         height: 48
@@ -109,6 +86,31 @@ Item {
             anchors.fill: parent
             onClicked: {
                 cancelButtonSignal.call()
+            }
+        }
+    }
+
+    Rectangle {
+
+        x: 240
+        y: 150
+        width: 184
+        height: 48
+        radius: 3
+        color: "#46b1e6"
+
+        Text {
+            font.family: "OpenSans"
+            font.pixelSize: 16
+            color: "#ffffff"
+            anchors.centerIn: parent
+            text: confirmButtonText
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                confirmButtonSignal.call()
             }
         }
     }

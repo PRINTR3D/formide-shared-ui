@@ -58,9 +58,38 @@ Item {
     }
 
     Rectangle{
-        visible:confirmButton
+        visible:cancelButton
 
         x:56
+        y:176
+        width: 176
+        height: 48
+        radius: 3
+        color:mo.pressed?"#878896": "#ef4661"
+
+        DefaultText{
+           font.family: "OpenSans"
+           font.pixelSize: 16
+           anchors.centerIn: parent
+           color: "#ffffff"
+
+           text: cancelButtonText
+        }
+
+        MouseArea{
+
+            id:mo
+            anchors.fill: parent
+            onClicked:{
+                cancelButtonSignal.call()
+            }
+        }
+    }
+
+    Rectangle{
+        visible:confirmButton
+
+        x:248
         y:176
         width: 176
         height: 48
@@ -82,35 +111,6 @@ Item {
             onClicked:{
 
                 confirmButtonSignal.call()
-            }
-        }
-    }
-
-    Rectangle{
-        visible:cancelButton
-        x:248
-        y:176
-
-        width: 176
-        height: 48
-        radius: 3
-        color:mo.pressed?"#878896": "#ef4661"
-
-        DefaultText{
-           font.family: "OpenSans"
-           font.pixelSize: 16
-           anchors.centerIn: parent
-           color: "#ffffff"
-
-           text: cancelButtonText
-        }
-
-        MouseArea{
-
-            id:mo
-            anchors.fill: parent
-            onClicked:{
-                cancelButtonSignal.call()
             }
         }
     }

@@ -123,6 +123,20 @@ Item {
         height: 48
         x: 24
         y: 129
+        backgroundColor: "#ef4661"
+        letterColor: "#ffffff"
+        letter: "Delete File"
+        letterSize: 16
+        enabled: !isPrintingThisFile()
+
+        onClicked: deleteFile.call()
+    }
+
+    KeyboardLetter {
+        width: 216
+        height: 48
+        x: 248
+        y: 129
         backgroundColor: "#46b1e6"
         letterColor: "#ffffff"
         letter: "Print File"
@@ -132,17 +146,4 @@ Item {
         onClicked: printFile.call()
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
-        x: 248
-        y: 129
-        backgroundColor: "#ef4661"
-        letterColor: "#ffffff"
-        letter: "Delete File"
-        letterSize: 16
-        enabled: !isPrintingThisFile()
-
-        onClicked: deleteFile.call()
-    }
 }
