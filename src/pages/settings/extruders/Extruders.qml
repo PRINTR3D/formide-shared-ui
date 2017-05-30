@@ -20,7 +20,6 @@ Item {
     property var extruderSelected: FormideShared.extruderSelected
 
 
-
     DefaultText {
         x: 61
         y: 16
@@ -70,6 +69,7 @@ Item {
         backgroundColor: "#46b1e6"
         letterColor: "white"
         letterSize: 16
+        enabled: printerStatus.extruders[1] ? true : false
 
         onClicked: {
             replaced = false

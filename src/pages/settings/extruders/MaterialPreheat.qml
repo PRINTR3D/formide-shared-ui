@@ -57,7 +57,6 @@ Item {
         x: 48
         y: 48
         font.pixelSize: 24
-        //font.bold: true
         font.weight: Font.Medium
 
         text: "Choose Material for preheat"
@@ -74,7 +73,7 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
+
                     FormideShared.temperature = plaTemperature
 
                     setTemperature()
@@ -88,8 +87,8 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
+
+                    FormideShared.temperature = absTemperature
 
                     setTemperature()
                 }
@@ -102,8 +101,8 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
+
+                    FormideShared.temperature = petTemperature
 
                     setTemperature()
                 }
@@ -116,8 +115,8 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
+
+                    FormideShared.temperature = wfTemperature
 
                     setTemperature()
                 }
@@ -130,8 +129,8 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
+
+                    FormideShared.temperature = npa6Temperature
 
                     setTemperature()
                 }
@@ -150,8 +149,8 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
+
+                    FormideShared.temperature = blTemperature
 
                     setTemperature()
                 }
@@ -164,8 +163,8 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
+
+                    FormideShared.temperature = lw3Temperature
 
                     setTemperature()
                 }
@@ -178,8 +177,8 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
+
+                    FormideShared.temperature = nfTemperature
 
                     setTemperature()
                 }
@@ -192,8 +191,8 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
+
+                    FormideShared.temperature = ewcTemperature
 
                     setTemperature()
                 }
@@ -206,8 +205,8 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
+
+                    FormideShared.temperature = pfTemperature
 
                     setTemperature()
                 }
