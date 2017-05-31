@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
+        <file>deployment.pri</file>
         <file>src/main.qml</file>
         <file>src/fonts/OpenSans-Regular.ttf</file>
         <file>src/images/gif/smallSpinner.gif</file>
@@ -95,7 +96,6 @@
         <file>src/utils/Spinner.qml</file>
         <file>src/utils/WifiSingle.qml</file>
         <file>src/Background.qml</file>
-        <file>src/deployment.pri</file>
         <file>src/Home.qml</file>
         <file>src/Menu.qml</file>
         <file>lib/formide/formide.js</file>

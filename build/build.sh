@@ -6,7 +6,7 @@
 #
 
 readonly SERVICE_USER=formide
-readonly plugin_dir=/home/$SERVICE_USER/formide/plugins
+readonly plugin_dir=/opt/plugins
 readonly assets_dir=/var/standard-ui
 
 echo "Standard UI setup..."
@@ -19,6 +19,11 @@ echo "Done"
 
 echo -n "Copying splash screen..."
 cp ./splash.bmp /boot/splash.bmp
+echo "Done"
+
+echo "Installing USB drive plugin from remote..."
+cd $plugin_dir
+git clone https://github.com/PRINTR3D/formide-client-usb-drive.git # USB drive plugin, has no dependecies
 echo "Done"
 
 echo "Done with Standard UI build script"
