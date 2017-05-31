@@ -1,5 +1,6 @@
 # Build outputs
 formide-touch.app
+.qmake.stash
 
 # C++ objects and libs
 
