@@ -146,5 +146,9 @@
         <file>src/images/icons/materials/PF.png</file>
         <file>src/images/icons/materials/PLA.png</file>
         <file>src/images/icons/materials/WF.png</file>
+        <file>src/pages/settings/accesspoint/AccessPoint.qml</file>
+        <file>src/pages/settings/accesspoint/AccessPointError.qml</file>
+        <file>src/pages/settings/accesspoint/AccessPointEnabling.qml</file>
+        <file>src/pages/settings/accesspoint/AccessPointDisabling.qml</file>
     </qresource>
 </RCC>

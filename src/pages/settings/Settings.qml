@@ -123,7 +123,7 @@ Item {
             }
             onClickedSignal: {
                 main.settingsIndexSelected = 3
-                flick.animateContentY("AP")
+                flick.animateContentY("Access Point")
             }
         }
         SingleListItem {

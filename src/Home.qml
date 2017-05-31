@@ -55,6 +55,9 @@ Item {
         else if (viewStackActivePage == "Cloud")
             viewStack.push(Qt.resolvedUrl("pages/settings/cloud/Cloud.qml"))
 
+        else if (viewStackActivePage == "Access Point")
+            viewStack.push(Qt.resolvedUrl("pages/settings/accesspoint/AccessPoint.qml"))
+
         else if (viewStackActivePage == "Update")
             viewStack.push(Qt.resolvedUrl("pages/settings/update/Update.qml"))
 
@@ -162,6 +165,8 @@ Item {
                     return "back"
                 else if (viewStackActivePage == "Cloud")
                     return "back"
+                else if (viewStackActivePage == "Access Point")
+                    return "back"
                 else if (viewStackActivePage == "Update")
                     return "back"
                 else if (viewStackActivePage == "Update Available")
@@ -205,6 +210,8 @@ Item {
                     else if (viewStackActivePage == "About")
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Cloud")
+                        main.viewStackActivePage = "Settings"
+                    else if (viewStackActivePage == "Access Point")
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Update")
                         main.viewStackActivePage = "Settings"
