@@ -2,21 +2,9 @@
     <qresource prefix="/">
         <file>src/main.qml</file>
         <file>src/fonts/OpenSans-Regular.ttf</file>
-        <file>src/images/gif/ArrowOut.gif</file>
-        <file>src/images/gif/backarrow.png</file>
-        <file>src/images/gif/BarToArrow.gif</file>
-        <file>src/images/gif/InOut.gif</file>
-        <file>src/images/gif/OutArrow.gif</file>
-        <file>src/images/gif/OutIn.gif</file>
         <file>src/images/gif/smallSpinner.gif</file>
         <file>src/images/gif/Spinner.gif</file>
         <file>src/images/gif/SpinnerSlow.gif</file>
-        <file>src/images/icons/dashboard/Overlays/FlowRateIcon.png</file>
-        <file>src/images/icons/dashboard/Overlays/HomeButtonOut.png</file>
-        <file>src/images/icons/dashboard/Overlays/LowerIcon.png</file>
-        <file>src/images/icons/dashboard/Overlays/PrintSpeedIcon.png</file>
-        <file>src/images/icons/dashboard/Overlays/RaiseIcon.png</file>
-        <file>src/images/icons/dashboard/Overlays/Shape.png</file>
         <file>src/images/icons/dashboard/ControlButtonIcon.png</file>
         <file>src/images/icons/dashboard/PauseButtonIcon.png</file>
         <file>src/images/icons/dashboard/StartButtonIcon.png</file>
@@ -27,39 +15,23 @@
         <file>src/images/icons/header/Active States/USBIconA.png</file>
         <file>src/images/icons/header/Active States/WifiIconA.png</file>
         <file>src/images/icons/header/AP.png</file>
-        <file>src/images/icons/header/HomeButtonIn.png</file>
         <file>src/images/icons/header/LockIcon.png</file>
         <file>src/images/icons/header/USBIcon.png</file>
         <file>src/images/icons/header/WifiIcon.png</file>
         <file>src/images/icons/keyboard/BackIcon.png</file>
         <file>src/images/icons/keyboard/Shift.png</file>
-        <file>src/images/icons/keypad/ClearAll.png</file>
         <file>src/images/icons/menu/DashboardIcon.png</file>
         <file>src/images/icons/menu/LibraryIcon.png</file>
         <file>src/images/icons/menu/PrintIcon.png</file>
         <file>src/images/icons/menu/QueueIcon.png</file>
         <file>src/images/icons/menu/SettingsIcon.png</file>
-        <file>src/images/icons/settings/wifi/Wi-FiIcon.png</file>
-        <file>src/images/icons/settings/wifi/Wi-FiIconActive.png</file>
         <file>src/images/icons/settings/AboutIcon.png</file>
-        <file>src/images/icons/settings/ABS.png</file>
-        <file>src/images/icons/settings/BL.png</file>
         <file>src/images/icons/settings/CalibrationIcon.png</file>
         <file>src/images/icons/settings/CloudIcon.png</file>
-        <file>src/images/icons/settings/EWC.png</file>
         <file>src/images/icons/settings/ExtrudersIcon.png</file>
-        <file>src/images/icons/settings/LW3.png</file>
-        <file>src/images/icons/settings/NF.png</file>
-        <file>src/images/icons/settings/NPA6.png</file>
-        <file>src/images/icons/settings/PET.png</file>
-        <file>src/images/icons/settings/PF.png</file>
-        <file>src/images/icons/settings/PLA.png</file>
         <file>src/images/icons/settings/Spinner.png</file>
         <file>src/images/icons/settings/UpdateIcon.png</file>
-        <file>src/images/icons/settings/Warning.png</file>
-        <file>src/images/icons/settings/WF.png</file>
         <file>src/images/icons/settings/WiFiIcon.png</file>
-        <file>src/images/icons/gcodeIcon.png</file>
         <file>src/images/icons/noIcon.png</file>
         <file>src/images/icons/PrintrIcon.png</file>
         <file>src/pages/dashboard/controls/ChangeFanSpeed.qml</file>
@@ -146,11 +118,33 @@
         <file>src/pages/dashboard/PrintConfirmation.qml</file>
         <file>src/utils/PrintingSpinner.qml</file>
         <file>src/utils/PrintingError.qml</file>
-        <file>src/images/icons/dashboard/Overlays/TimesIcon.png</file>
         <file>src/pages/settings/wifi/WifiReset.qml</file>
         <file>src/pages/settings/wifi/WifiDisconnecting.qml</file>
         <file>src/pages/settings/extruders/ExtruderHeating.qml</file>
-        <file>src/images/icons/stlIcon.png</file>
         <file>src/images/icons/settings/LockIcon.png</file>
+        <file>src/images/icons/settings/APIcon.png</file>
+        <file>src/images/icons/header/BackButton.png</file>
+        <file>src/images/icons/header/MenuButton.png</file>
+        <file>src/images/icons/overlays/FlowRateIcon.png</file>
+        <file>src/images/icons/overlays/LowerIcon.png</file>
+        <file>src/images/icons/overlays/PrintSpeedIcon.png</file>
+        <file>src/images/icons/overlays/QueueButtonIcon.png</file>
+        <file>src/images/icons/overlays/RaiseIcon.png</file>
+        <file>src/images/icons/overlays/CloseButton.png</file>
+        <file>src/images/icons/overlays/FanSpeedIcon.png</file>
+        <file>src/images/icons/overlays/WifiIcon.png</file>
+        <file>src/images/icons/overlays/WifiIconA.png</file>
+        <file>src/images/icons/files/GcodeIcon.png</file>
+        <file>src/images/icons/files/StlIcon.png</file>
+        <file>src/images/icons/materials/ABS.png</file>
+        <file>src/images/icons/materials/BL.png</file>
+        <file>src/images/icons/materials/EWC.png</file>
+        <file>src/images/icons/materials/LW-3.png</file>
+        <file>src/images/icons/materials/NF.png</file>
+        <file>src/images/icons/materials/NPA6.png</file>
+        <file>src/images/icons/materials/PET.png</file>
+        <file>src/images/icons/materials/PF.png</file>
+        <file>src/images/icons/materials/PLA.png</file>
+        <file>src/images/icons/materials/WF.png</file>
     </qresource>
 </RCC>

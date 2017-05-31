@@ -111,6 +111,22 @@ Item {
             }
         }
         SingleListItem {
+            y: 138
+            name: "Access Point"
+
+            Image {
+                width: 48
+                height: 48
+                x: 24
+                y: 8
+                source: "../../images/icons/settings/APIcon.png"
+            }
+            onClickedSignal: {
+                main.settingsIndexSelected = 3
+                flick.animateContentY("AP")
+            }
+        }
+        SingleListItem {
 
             y: 203
             name: "Update"
@@ -124,7 +140,7 @@ Item {
             }
 
             onClickedSignal: {
-                main.settingsIndexSelected = 3
+                main.settingsIndexSelected = 4
                 flick.animateContentY("Update")
             }
         }
@@ -142,7 +158,7 @@ Item {
             }
 
             onClickedSignal: {
-                main.settingsIndexSelected = 4
+                main.settingsIndexSelected = 5
                 flick.animateContentY("Calibration")
             }
         }
@@ -172,7 +188,7 @@ Item {
 
                 else
                 {
-                    main.settingsIndexSelected = 5
+                    main.settingsIndexSelected = 6
                     flick.animateContentY("Extruders")
                 }
             }

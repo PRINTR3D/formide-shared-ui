@@ -29,7 +29,7 @@ Item {
             if (queueItems[index] !== undefined) {
 
                 if (queueItems[index].printJob.sliceMethod === "custom") {
-                    return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
+                    return Qt.resolvedUrl("../../images/icons/files/GcodeIcon.png")
                 }
                 else {
                     if (queueItems[index].printJob.images[0] !== undefined) {
@@ -37,7 +37,7 @@ Item {
                                 + queueItems[index].printJob.images[0]
                     }
                     else {
-                        return Qt.resolvedUrl("../../images/icons/stlIcon.png")
+                        return Qt.resolvedUrl("../../images/icons/files/StlIcon.png")
                     }
                 }
 

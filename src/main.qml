@@ -48,7 +48,7 @@ FormideNativeUi {
         console.log("Locked: " + passcode)
         isLocked = true
         viewStackActivePage = "Dashboard"
-        pagestack.popPagestack()
+        pagestack.clearScreenFast()
     }
 
     function checkPassCode(code) {

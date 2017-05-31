@@ -69,7 +69,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/PLA.png"
+            source: "../../../images/icons/materials/PLA.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -83,7 +83,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/ABS.png"
+            source: "../../../images/icons/materials/ABS.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -97,7 +97,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/PET.png"
+            source: "../../../images/icons/materials/PET.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -111,7 +111,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/WF.png"
+            source: "../../../images/icons/materials/WF.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -125,7 +125,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/NPA6.png"
+            source: "../../../images/icons/materials/NPA6.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -145,7 +145,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/BL.png"
+            source: "../../../images/icons/materials/BL.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -159,7 +159,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/LW3.png"
+            source: "../../../images/icons/materials/LW-3.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -173,7 +173,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/NF.png"
+            source: "../../../images/icons/materials/NF.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -187,7 +187,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/EWC.png"
+            source: "../../../images/icons/materials/EWC.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -201,7 +201,7 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/PF.png"
+            source: "../../../images/icons/materials/PF.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {

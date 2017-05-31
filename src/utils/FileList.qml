@@ -163,8 +163,8 @@ Flickable {
         SingleListItem {
             id: files
             name: getName(index)
-            arrowImagePath: Qt.resolvedUrl("../images/icons/dashboard/Overlays/RaiseIcon.png")
-            timesImagePath: Qt.resolvedUrl("../images/icons/dashboard/Overlays/TimesIcon.png")
+            arrowImagePath: Qt.resolvedUrl("../images/icons/overlays/RaiseIcon.png")
+            timesImagePath: Qt.resolvedUrl("../images/icons/overlays/TimesIcon.png")
             fileImagePath: getImage(index)
             textSize: 24
             y: getVerticalPosition(index)

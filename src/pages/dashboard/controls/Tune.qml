@@ -48,7 +48,7 @@ Rectangle {
             height: 56.1
             x: 83
             y: 96
-            source: "../../../images/icons/dashboard/Overlays/FlowRateIcon.png"
+            source: "../../../images/icons/overlays/FlowRateIcon.png"
         }
 
         KeyboardLetter {
@@ -90,7 +90,7 @@ Rectangle {
             height: 56.1
             x: 212.4
             y: 96
-            source: "../../../images/icons/dashboard/Overlays/PrintSpeedIcon.png"
+            source: "../../../images/icons/overlays/PrintSpeedIcon.png"
         }
 
         KeyboardLetter {
@@ -132,7 +132,7 @@ Rectangle {
             height: 56.1
             x: 340
             y: 96
-            source: "../../../images/icons/dashboard/Overlays/Shape.png"
+            source: "../../../images/icons/overlays/FanSpeedIcon.png"
         }
 
         KeyboardLetter {

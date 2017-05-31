@@ -40,7 +40,7 @@ Rectangle {
             height: 32
             x: 16
             y: 8
-            source: "../../../images/icons/dashboard/Overlays/HomeButtonOut.png"
+            source: "../../../images/icons/overlays/CloseButton.png"
         }
 
         MouseArea {

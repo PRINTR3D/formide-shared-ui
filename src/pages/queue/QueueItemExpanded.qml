@@ -38,7 +38,7 @@ Item {
         if (queueItems[index] !== undefined) {
 
             if (queueItems[index].printJob.sliceMethod === "custom") {
-                return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
+                return Qt.resolvedUrl("../../images/icons/files/GcodeIcon.png")
             }
             else {
                 if (queueItems[index].printJob.images[0] !== undefined) {
@@ -46,7 +46,7 @@ Item {
                             + queueItems[index].printJob.images[0]
                 }
                 else {
-                    return Qt.resolvedUrl("../../images/icons/stlIcon.png")
+                    return Qt.resolvedUrl("../../images/icons/files/StlIcon.png")
                 }
             }
 
@@ -81,7 +81,7 @@ Item {
         y: 8
         name: getName(fileIndexSelected)
         fileImagePath: getImage(fileIndexSelected)
-        arrowImagePath: Qt.resolvedUrl("../../images/icons/dashboard/Overlays/LowerIcon.png")
+        arrowImagePath: Qt.resolvedUrl("../../images/icons/overlays/LowerIcon.png")
 
         MouseArea {
             anchors.fill: parent

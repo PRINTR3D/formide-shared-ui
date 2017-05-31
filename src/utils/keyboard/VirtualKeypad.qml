@@ -249,7 +249,7 @@ Rectangle {
             x: 224
             letter: "clear"
             backgroundColor: "#646464"
-            letterColor: "#111111"
+            letterColor: "#000000"
             smallLetter: ""
             opacity: 0.8
 

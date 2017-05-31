@@ -248,9 +248,9 @@ Item {
 
         // USB icon
         Image {
-            width: 39
+            width: 34
             height: 24
-            x: /*parent.width - 156*/ 324
+            x: parent.width - (34 + 24 + 34 + 24 + 20 + 16)
             y: 12
             source: getUSBIcon()
             MouseArea {
@@ -271,9 +271,9 @@ Item {
 
         // Wi-Fi icon
         Image {
-            width: 33
+            width: 34
             height: 24
-            x: /*parent.width - 93*/ 387
+            x: parent.width - (34 + 24 + 20 + 16)
             y: 12
             source: getWifiIcon()
             MouseArea {
@@ -301,7 +301,7 @@ Item {
         Image {
             width: 20
             height: 24
-            x: /*parent.width - 36*/ 444
+            x: parent.width - (20 + 16)
             y: 12
             source: getLockIcon()
             MouseArea {

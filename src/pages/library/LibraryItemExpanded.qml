@@ -35,36 +35,7 @@ Item {
     }
 
     function getImage() {
-
-        if (fileIndexSelected === undefined) {
-            //            console.log("No photo shown in Library Extended - 1")
-            return Qt.resolvedUrl("../../images/icons/noIcon.png")
-        }
-
-        //        if(fileItems[fileIndexSelected].filetype==="text/gcode")
-        //        {
-        return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
-        //        }
-        //        if(fileItems[fileIndexSelected].filetype==="text/stl")
-        //        {
-        //            if(fileItems[fileIndexSelected].id)
-        //            {
-        //                if(fileItems[fileIndexSelected].images[0])
-        //                {
-        //                    var url = main.getImage(fileItems[fileIndexSelected].id, fileItems[fileIndexSelected].images[0] );
-        //                    return url;
-        //                }
-        //                else
-        //                {
-        //                    console.log("fileItems["+fileIndexSelected+"].id is UNDEFINED")
-        //                }
-        //            }
-        //            else
-        //            {
-        //                console.log("fileItems["+fileIndexSelected+"].id is UNDEFINED")
-        //            }
-        //        }
-        //        return Qt.resolvedUrl("../../images/icons/noIcon.png")
+        return Qt.resolvedUrl("../../images/icons/files/GcodeIcon.png")
     }
 
     function getName() {
@@ -98,7 +69,7 @@ Item {
         y: 8
         name: getName()
         fileImagePath: getImage()
-        arrowImagePath: Qt.resolvedUrl("../../images/icons/dashboard/Overlays/LowerIcon.png")
+        arrowImagePath: Qt.resolvedUrl("../../images/icons/overlays/LowerIcon.png")
 
         MouseArea {
             anchors.fill: parent

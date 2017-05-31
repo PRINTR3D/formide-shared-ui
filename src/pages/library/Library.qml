@@ -28,30 +28,7 @@ Item {
         }
 
         function getImage(index) {
-//            if(listModel[index].filetype==="text/gcode")
-//            {
-            return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
-//            }
-//            if(listModel[index].filetype==="text/stl")
-//            {
-//                if(listModel[index].id)
-//                {
-//                    if(listModel[index].images[0])
-//                    {
-//                        var url = main.getImage(listModel[index].id, listModel[index].images[0] );
-//                        return url;
-//                    }
-//                    else
-//                    {
-//                        console.log("listModel["+index+"].images[0] is UNDEFINED")
-//                    }
-//                }
-//                else
-//                {
-//                    console.log("listModel["+index+"].id is UNDEFINED")
-//                }
-//            }
-//            return Qt.resolvedUrl("../../images/icons/noIcon.png")
+            return Qt.resolvedUrl("../../images/icons/files/GcodeIcon.png")
         }
 
         LibraryItemExpanded {

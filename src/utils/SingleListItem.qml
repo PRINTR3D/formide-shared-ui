@@ -38,7 +38,7 @@ Rectangle {
         y: 8
         width: 48
         height: 48
-        radius:10
+        radius: 3
         visible:(wifi || wifiActive)?false:true
 
         Image{
@@ -93,9 +93,9 @@ Rectangle {
         function getWifiIcon()
         {
             if(wifiActive)
-                return Qt.resolvedUrl("../images/icons/settings/wifi/Wi-FiIconActive.png")
+                return Qt.resolvedUrl("../images/icons/overlays/WifiIconA.png")
             else if(wifi)
-                return Qt.resolvedUrl("../images/icons/settings/wifi/Wi-FiIcon.png")
+                return Qt.resolvedUrl("../images/icons/overlays/WifiIcon.png")
             else
                 return fileImagePath
         }
