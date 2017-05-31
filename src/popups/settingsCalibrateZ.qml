@@ -13,6 +13,14 @@ PopupSettingsCalibration {
 
     confirmButtonText:"Not implemented"
 
-    fullCalibrationButtonText:"Cancel Z Calibration"
+    fullCalibrationButtonText:"Cancel"
+
+    onConfirmButtonSignal: {
+
+    }
+
+    onCancelButtonSignal: {
+        main.viewStackActivePage = "Settings"
+    }
 
 }

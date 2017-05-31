@@ -10,7 +10,7 @@ import "../../../utils"
 MessageWindow {
     id: root
 
-    firstText: "Page not available" // Text shown as title
+    firstText: "Extruder settings not available" // Text shown as title
     secondText: "Printer is currently printing..." // Text shown in subtitle
 
     confirmButtonText: "Dismiss" // Text shown in confirm button
