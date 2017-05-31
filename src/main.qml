@@ -43,6 +43,18 @@ FormideNativeUi {
         pagestack.clearScreenFast()
     }
 
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            if (isLocked){
+                pagestack.changeTransition("newPageComesFromUp")
+                pagestack.pushPagestack(
+                            Qt.resolvedUrl(
+                                "utils/keyboard/VirtualKeypad.qml"))
+            }
+        }
+    }
+
     function setPassCode(code) {
         passcode = code
         console.log("Locked: " + passcode)
@@ -300,4 +312,5 @@ FormideNativeUi {
         }
 
     }
+
 }

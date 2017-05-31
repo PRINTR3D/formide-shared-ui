@@ -287,14 +287,11 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     if (isLocked) {
-                        console.log("Locked screen")
                         pagestack.changeTransition("newPageComesFromUp")
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(
                                         "utils/keyboard/VirtualKeypad.qml"))
                     } else {
-                        console.log("Wifi.qml")
-                        pagestack.changeTransition("newPageComesFromInside")
                         main.viewStackActivePage = "Wi-Fi"
                     }
                 }
@@ -314,7 +311,12 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("VirtualKeypad.qml")
+                    if (isLocked) {
+                        pagestack.changeTransition("newPageComesFromUp")
+                    } else {
+                        pagestack.changeTransition("newPageComesFromDown")
+                    }
+
                     pagestack.pushPagestack(
                                 Qt.resolvedUrl(
                                     "utils/keyboard/VirtualKeypad.qml"))
