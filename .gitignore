@@ -1,3 +1,7 @@
+# Dependencies
+node_modules
+deps
+
 # Build outputs
 formide-touch.app
 .qmake.stash
