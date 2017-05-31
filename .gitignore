@@ -1,3 +1,6 @@
+# Build outputs
+formide-touch.app
+
 # C++ objects and libs
 
 *.slo
