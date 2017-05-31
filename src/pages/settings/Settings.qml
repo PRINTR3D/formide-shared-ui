@@ -20,7 +20,7 @@ Item {
         width:parent.width
         height:224
         contentWidth: width
-        contentHeight: 467
+        contentHeight: 532
 
         property var index: main.settingsIndexSelected
 
@@ -111,7 +111,7 @@ Item {
             }
         }
         SingleListItem {
-            y: 138
+            y: 203
             name: "Access Point"
 
             Image {
@@ -128,7 +128,7 @@ Item {
         }
         SingleListItem {
 
-            y: 203
+            y: 268
             name: "Update"
 
             Image {
@@ -146,7 +146,7 @@ Item {
         }
         SingleListItem {
 
-            y: 268
+            y: 333
             name: "Calibration"
 
             Image {
@@ -165,7 +165,7 @@ Item {
 
         SingleListItem {
 
-            y: 333
+            y: 398
             name: "Extruders"
 
             Image {
@@ -196,7 +196,7 @@ Item {
 
         SingleListItem {
 
-            y: 398
+            y: 463
             name: "Lock Screen"
 
             Image {
