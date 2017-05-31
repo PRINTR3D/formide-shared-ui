@@ -60,9 +60,9 @@ Item {
     Rectangle{
         visible:cancelButton
 
-        x:56
-        y:176
-        width: 176
+        x: confirmButton ? 56 : 132
+        y: 176
+        width: confirmButton ? 176 : 216
         height: 48
         radius: 3
         color:mo.pressed?"#878896": "#ef4661"
@@ -89,9 +89,9 @@ Item {
     Rectangle{
         visible:confirmButton
 
-        x:248
-        y:176
-        width: 176
+        x: cancelButton ? 248 : 132
+        y: 176
+        width: cancelButton ? 176 : 216
         height: 48
         radius: 3
         color: "#46b1e6"

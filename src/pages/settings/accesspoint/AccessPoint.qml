@@ -20,7 +20,7 @@ Item {
 
 
     DefaultText {
-        x: 64
+        x: 70
         y: 32
         width: parent.width - 32
         height: 33
