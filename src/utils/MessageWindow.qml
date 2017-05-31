@@ -4,6 +4,7 @@
  */
 
 import QtQuick 2.0
+import "../"
 
 Item {
     id:root
@@ -24,10 +25,9 @@ Item {
 
     property var loading:false
 
-    // Blurry Background
-    Image{
-        anchors.fill: parent
-        source:"../images/blurBackground.jpg"
+    // Background
+    Background{
+        y:0
     }
 
     MouseArea{

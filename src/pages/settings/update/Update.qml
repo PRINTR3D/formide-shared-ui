@@ -37,7 +37,7 @@ Item {
         height: 32
         font.pixelSize: checking ? 24 : 18
         x: checking ? 89 : 70
-        y: checking ? 24 : 70
+        y: 70
 
         text: checking ? "Checking for update..." : "Please connect to Wi-Fi and try again"
     }
@@ -45,7 +45,7 @@ Item {
     Spinner {
 
         x: 254 + 89 + 16
-        y: 24
+        y: 70
         visible: checking
     }
 }

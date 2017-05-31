@@ -7,6 +7,7 @@
 
 // Controls
 import QtQuick 2.0
+import "../../../"
 import "../../../utils"
 import "../../../utils/keyboard"
 
@@ -24,10 +25,9 @@ Rectangle {
         Formide.printer(printerStatus.port).gcode("G91")
     }
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../../../images/blurBackground.jpg"
+    // Background
+    Background{
+        y:0
     }
 
     // Home Button
@@ -40,7 +40,7 @@ Rectangle {
             height: 32
             x: 16
             y: 8
-            source: "../../../images/icons/dashboard/Overlays/HomeButtonOut.png"
+            source: "../../../images/icons/overlays/CloseButton.png"
         }
 
         MouseArea {
@@ -60,7 +60,7 @@ Rectangle {
         letterSize: 16
         letter: "Home All"
         x: 16
-        y: 46
+        y: 56
 
         onClicked: {
             Formide.printer(printerStatus.port).gcode("G28\nG91\n")
@@ -72,7 +72,7 @@ Rectangle {
         width: 106
         height: 48
         x: 130
-        y: 46
+        y: 56
         backgroundColor: "#46b1e6"
         letterColor: "#ffffff"
         letterSize: 15
@@ -88,7 +88,7 @@ Rectangle {
         width: 106
         height: 48
         x: 244
-        y: 46
+        y: 56
         backgroundColor: "#46b1e6"
         letterColor: "#ffffff"
         letterSize: 15
@@ -104,7 +104,7 @@ Rectangle {
         width: 106
         height: 48
         x: 358
-        y: 46
+        y: 56
         letter: "Home Z-Axis"
         backgroundColor: "#46b1e6"
         letterColor: "#ffffff"
@@ -115,9 +115,9 @@ Rectangle {
         }
     }
 
+
     // + Y
-    KeyboardLetter {
-        width: 106
+    ControlKey {
         height: 104
         x: 16
         y: 120
@@ -126,78 +126,64 @@ Rectangle {
 
         letter: "+ Y"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 Y10\n")
         }
+
+
     }
 
     // + X
-    KeyboardLetter {
-        width: 106
-        height: 48
+    ControlKey {
         x: 130
         y: 120
-        backgroundColor: "lightgrey"
-        letterSize: 16
 
         letter: "+ X"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 X10\n")
         }
     }
 
     // - X
-    KeyboardLetter {
-        width: 106
-        height: 48
+    ControlKey {
         x: 130
         y: 176
-        backgroundColor: "lightgrey"
-        letterSize: 16
 
         letter: "- X"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 X-10\n")
         }
     }
 
     // - Y
-    KeyboardLetter {
-        width: 106
+    ControlKey {
         height: 104
         x: 244
         y: 120
-        backgroundColor: "lightgrey"
-        letterSize: 16
 
         letter: "- Y"
-        onClicked: {
+
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 Y-10\n")
         }
     }
 
     // + Z
-    KeyboardLetter {
-        width: 106
-        height: 48
+    ControlKey {
         x: 358
         y: 120
-        backgroundColor: "lightgrey"
-        letterSize: 16
 
         letter: "+ Z"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 Z5\n")
         }
     }
 
     // - Z
-    KeyboardLetter {
-        width: 106
-        height: 48
+    ControlKey {
         x: 358
         y: 176
         backgroundColor: "lightgrey"
@@ -205,7 +191,7 @@ Rectangle {
 
         letter: "- Z"
 
-        onClicked: {
+        function action () {
             Formide.printer(printerStatus.port).gcode("G1 F1500 Z-5\n")
         }
     }

@@ -6,6 +6,7 @@
 
 // Controls
 import QtQuick 2.0
+import "../../../"
 import "../../../utils"
 import "../../../utils/keyboard"
 
@@ -15,10 +16,9 @@ Rectangle {
     width: parent.width
     height: parent.height
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../../../images/blurBackground.jpg"
+    // Background
+    Background{
+        y:0
     }
 
     // Home icon
@@ -44,18 +44,18 @@ Rectangle {
 
         // FlowRate icon
         Image {
-            width: 58
-            height: 56.1
+            width: 56
+            height: 56
             x: 83
             y: 96
-            source: "../../../images/icons/dashboard/Overlays/FlowRateIcon.png"
+            source: "../../../images/icons/overlays/FlowRateIcon.png"
         }
 
         KeyboardLetter {
             width: 112
             height: 48
             x: 56
-            y: 168
+            y: 172
             letter: "Change"
 
             backgroundColor: "#46b1e6"
@@ -86,18 +86,18 @@ Rectangle {
 
         // PrintSpeed icon
         Image {
-            width: 58
-            height: 56.1
+            width: 56
+            height: 56
             x: 212.4
             y: 96
-            source: "../../../images/icons/dashboard/Overlays/PrintSpeedIcon.png"
+            source: "../../../images/icons/overlays/PrintSpeedIcon.png"
         }
 
         KeyboardLetter {
             width: 112
             height: 48
             x: 184
-            y: 168
+            y: 172
             letter: "Change"
 
             backgroundColor: "#46b1e6"
@@ -128,18 +128,18 @@ Rectangle {
 
         // Fan icon
         Image {
-            width: 58
-            height: 56.1
+            width: 56
+            height: 56
             x: 340
             y: 96
-            source: "../../../images/icons/dashboard/Overlays/Shape.png"
+            source: "../../../images/icons/overlays/FanSpeedIcon.png"
         }
 
         KeyboardLetter {
             width: 112
             height: 48
             x: 312
-            y: 168
+            y: 172
             letter: "Change"
 
             backgroundColor: "#46b1e6"

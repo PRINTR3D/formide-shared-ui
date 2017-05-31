@@ -5,6 +5,7 @@
 
 import QtQuick 2.0
 import QtQuick.LocalStorage 2.0
+import "../../../"
 import "../../../utils"
 import "../../../../lib/formide/formideShared.js" as FormideShared
 import "../../../../lib/formide/formide.js" as Formide
@@ -30,17 +31,24 @@ Item {
     property var ewcTemperature: 200
     property var pfTemperature: 200
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../../../images/blurBackground.jpg"
+
+    function setTemperature (){
+        Formide.printer(printerStatus.port).gcode(
+                            "M104 T" + FormideShared.extruderSelected + " S" + FormideShared.temperature)
+        pagestack.popPagestack()
+        pagestack.pushPagestack(Qt.resolvedUrl("ExtruderHeating.qml"))
+        main.viewStackActivePage = "Extruder Replace"
+    }
+
+    // Background
+    Background{
+        y:0
     }
 
     HomeIcon {
         visible: visibleHomeIcon
         type: "quit"
         onHomeClicked: {
-            main.replaced = false
             pagestack.popPagestack()
         }
     }
@@ -49,7 +57,6 @@ Item {
         x: 48
         y: 48
         font.pixelSize: 24
-        //font.bold: true
         font.weight: Font.Medium
 
         text: "Choose Material for preheat"
@@ -62,70 +69,70 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/PLA.png"
+            source: "../../../images/icons/materials/PLA.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
+
                     FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    setTemperature()
                 }
             }
         }
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/ABS.png"
+            source: "../../../images/icons/materials/ABS.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    FormideShared.temperature = absTemperature
+
+                    setTemperature()
                 }
             }
         }
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/PET.png"
+            source: "../../../images/icons/materials/PET.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    FormideShared.temperature = petTemperature
+
+                    setTemperature()
                 }
             }
         }
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/WF.png"
+            source: "../../../images/icons/materials/WF.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    FormideShared.temperature = wfTemperature
+
+                    setTemperature()
                 }
             }
         }
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/NPA6.png"
+            source: "../../../images/icons/materials/NPA6.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    FormideShared.temperature = npa6Temperature
+
+                    setTemperature()
                 }
             }
         }
@@ -138,70 +145,70 @@ Item {
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/BL.png"
+            source: "../../../images/icons/materials/BL.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    FormideShared.temperature = blTemperature
+
+                    setTemperature()
                 }
             }
         }
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/LW3.png"
+            source: "../../../images/icons/materials/LW-3.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    FormideShared.temperature = lw3Temperature
+
+                    setTemperature()
                 }
             }
         }
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/NF.png"
+            source: "../../../images/icons/materials/NF.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    FormideShared.temperature = nfTemperature
+
+                    setTemperature()
                 }
             }
         }
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/EWC.png"
+            source: "../../../images/icons/materials/EWC.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    FormideShared.temperature = ewcTemperature
+
+                    setTemperature()
                 }
             }
         }
         Image {
             width: 72
             height: 72
-            source: "../../../images/icons/settings/PF.png"
+            source: "../../../images/icons/materials/PF.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("PLA")
-                    FormideShared.temperature = plaTemperature
-                    main.replaced = true
-                    pagestack.popPagestack()
+
+                    FormideShared.temperature = pfTemperature
+
+                    setTemperature()
                 }
             }
         }

@@ -22,6 +22,8 @@ Item {
 
     property bool lock: main.isLocked
 
+    property var queueItems: main.queueItems
+
     function isPrinting() {
         if (!printerStatus)
             return false
@@ -46,52 +48,59 @@ Item {
 
     function getE1Temp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else
             return printerStatus.extruders[0].temp + "°"
     }
 
     function getE1TargetTemp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else
             return printerStatus.extruders[0].targetTemp + "°"
     }
 
     function getE2Temp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else {
             if (printerStatus.extruders[1])
                 return printerStatus.extruders[1].temp + "°"
             else
-                return "000 °"
+                return "-"
         }
     }
 
     function getE2TargetTemp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else {
             if (printerStatus.extruders[1])
                 return printerStatus.extruders[1].targetTemp + "°"
             else
-                return "000 °"
+                return ""
         }
     }
 
     function getBedTemp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else
-            return printerStatus.bed.temp + "°"
+            if (printerStatus.bed.temp)
+                return printerStatus.bed.temp + "°"
+            else
+                return "-"
+
     }
 
     function getBedTargetTemp() {
         if (!printerStatus) {
-            return "000 °"
+            return "0 °"
         } else
-            return printerStatus.bed.targetTemp + "°"
+            if (printerStatus.bed.temp)
+                return printerStatus.bed.targetTemp + "°"
+            else
+                return ""
     }
 
     function getBedHeight() {
@@ -107,7 +116,7 @@ Item {
 
     function getPrintJobName() {
         if (!printerStatus)
-            return "..."
+            return "-"
         else {
             if (printerStatus.status === "printing"
                     || printerStatus.status === "heating"
@@ -115,19 +124,19 @@ Item {
                 if (!main.currentQueueItemName) {
                     console.log("If you see this message continuously, something is going wrong")
                     main.getQueue()
-                    return "..."
+                    return "-"
                 } else {
                     return main.currentQueueItemName
                 }
             } else {
-                return "..."
+                return "-"
             }
         }
     }
 
     function getPrinterStatus() {
         if (!printerStatus)
-            return "Unknown"
+            return "Idle"
         else {
             if (printerStatus.status === "online")
                 return "Idle"
@@ -144,12 +153,12 @@ Item {
 
     function getPrintingTime() {
         if (!printerStatus)
-            return "Unknown"
+            return "-"
         else {
             if (printerStatus.status !== "printing"
                     && printerStatus.status !== "heating"
                     && printerStatus.status !== "paused") {
-                return "..."
+                return "-"
             }
 
             var totalSec = printerStatus.remainingPrintingTime
@@ -215,7 +224,7 @@ Item {
                                     Qt.resolvedUrl(
                                         "../../utils/keyboard/VirtualKeypad.qml"))
                     } else {
-                        if (!printerStatus) {
+                        if (!printerStatus || !printerStatus.extruders[0]) {
                             return
                         } else {
                             pagestack.changeTransition("newPageComesFromInside")
@@ -269,7 +278,7 @@ Item {
                                     Qt.resolvedUrl(
                                         "../../utils/keyboard/VirtualKeypad.qml"))
                     } else {
-                        if (!printerStatus)
+                        if (!printerStatus || !printerStatus.extruders[1])
                             return
                         pagestack.changeTransition("newPageComesFromInside")
                         pagestack.pushPagestack(
@@ -321,7 +330,7 @@ Item {
                                     Qt.resolvedUrl(
                                         "../../utils/keyboard/VirtualKeypad.qml"))
                     } else {
-                        if (!printerStatus)
+                        if (!printerStatus || !printerStatus.bed.temp)
                             return
                         pagestack.changeTransition("newPageComesFromInside")
                         pagestack.pushPagestack(
@@ -374,7 +383,7 @@ Item {
 
         function getProgress() {
             if (!printerStatus)
-                return 60
+                return 0
             else
                 return printerStatus.progress
         }
@@ -385,32 +394,6 @@ Item {
 
         // Information
         Item {
-            // Job info
-            Item {
-
-                // Job label
-                DefaultText {
-                    width: 56 * unitMultiplierX
-                    height: 24 * unitMultiplierY
-                    x: 16 * unitMultiplierX
-                    y: 136 * unitMultiplierY
-                    font.pixelSize: 16
-                    text: "File"
-                    font.weight: Font.Black
-                }
-
-                // Job description
-                DefaultText {
-                    width: 160 * unitMultiplierX
-                    height: 24 * unitMultiplierY
-                    x: 80 * unitMultiplierX
-                    y: 136 * unitMultiplierY
-                    clip: true
-                    font.pixelSize: 16
-                    font.weight: Font.Medium
-                    text: getPrintJobName()
-                }
-            }
 
             // Status information
             Item {
@@ -420,7 +403,7 @@ Item {
                     width: 56 * unitMultiplierX
                     height: 24 * unitMultiplierY
                     x: 16 * unitMultiplierX
-                    y: 160 * unitMultiplierY
+                    y: 136 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Black
                     text: "Status"
@@ -431,12 +414,40 @@ Item {
                     width: 160 * unitMultiplierX
                     height: 24 * unitMultiplierY
                     x: 80 * unitMultiplierX
-                    y: 160 * unitMultiplierY
+                    y: 136 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Medium
                     text: getPrinterStatus()
                 }
             }
+
+            // Job info
+            Item {
+
+                // Job label
+                DefaultText {
+                    width: 56 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 16 * unitMultiplierX
+                    y: 160 * unitMultiplierY
+                    font.pixelSize: 16
+                    text: "File"
+                    font.weight: Font.Black
+                }
+
+                // Job description
+                DefaultText {
+                    width: 160 * unitMultiplierX
+                    height: 24 * unitMultiplierY
+                    x: 80 * unitMultiplierX
+                    y: 160 * unitMultiplierY
+                    clip: true
+                    font.pixelSize: 16
+                    font.weight: Font.Medium
+                    text: getPrintJobName()
+                }
+            }
+
 
             // Time information
             Item {
@@ -477,9 +488,8 @@ Item {
                     height: 40
                     x: 266 * unitMultiplierX
                     y: 136 * unitMultiplierY
-                    source: isPrinting(
-                                ) ? isPaused(
-                                        ) ? "../../images/icons/dashboard/StartButtonIcon.png" : "../../images/icons/dashboard/PauseButtonIcon.png" : "../../images/icons/dashboard/StartButtonIcon.png"
+                    visible: isPrinting()
+                    source: isPaused() ? "../../images/icons/dashboard/StartButtonIcon.png" : "../../images/icons/dashboard/PauseButtonIcon.png"
                 }
 
                 // Pause/Resume text
@@ -491,9 +501,8 @@ Item {
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
                     font.weight: Font.Black
-
-                    text: isPrinting() ? isPaused(
-                                             ) ? "Resume" : "Pause" : "Start"
+                    visible: isPrinting()
+                    text: isPaused() ? "Resume" : "Pause"
                 }
 
                 MouseArea {
@@ -515,7 +524,7 @@ Item {
                                     Formide.printer(printerStatus.port).pause()
                                 }
                             } else {
-                                main.viewStackActivePage = "Queue"
+
                             }
                         }
                     }
@@ -531,7 +540,7 @@ Item {
                     height: 40
                     x: 336 * unitMultiplierX
                     y: 136 * unitMultiplierY
-                    source: "../../images/icons/dashboard/StopButtonIcon.png"
+                    source: isPrinting() ? "../../images/icons/dashboard/StopButtonIcon.png" : "../../images/icons/dashboard/QueueButtonIcon.png"
                 }
 
                 // Stop text
@@ -543,8 +552,7 @@ Item {
                     font.weight: Font.Black
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
-
-                    text: "Stop"
+                    text: isPrinting() ? "Stop" : "Print"
                 }
 
                 MouseArea {
@@ -565,7 +573,8 @@ Item {
                                 pagestack.pushPagestack(Qt.resolvedUrl(
                                                             "StopConfirm.qml"))
                             } else {
-                                console.log("no stop because it's not printing!")
+                                pagestack.changeTransition("newPageComesFromInside")
+                                pagestack.pushPagestack(Qt.resolvedUrl("PrintConfirmation.qml"))
                             }
                         }
                     }
@@ -581,8 +590,7 @@ Item {
                     height: 40
                     x: 408 * unitMultiplierX
                     y: 136 * unitMultiplierY
-                    source: isPrinting(
-                                ) ? "../../images/icons/dashboard/TuneIcon.png" : "../../images/icons/dashboard/ControlButtonIcon.png"
+                    source: isPrinting() ? "../../images/icons/dashboard/TuneIcon.png" : "../../images/icons/dashboard/ControlButtonIcon.png"
                 }
 
                 // Tune text

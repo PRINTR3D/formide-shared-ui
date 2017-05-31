@@ -28,30 +28,7 @@ Item {
         }
 
         function getImage(index) {
-//            if(listModel[index].filetype==="text/gcode")
-//            {
-            return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
-//            }
-//            if(listModel[index].filetype==="text/stl")
-//            {
-//                if(listModel[index].id)
-//                {
-//                    if(listModel[index].images[0])
-//                    {
-//                        var url = main.getImage(listModel[index].id, listModel[index].images[0] );
-//                        return url;
-//                    }
-//                    else
-//                    {
-//                        console.log("listModel["+index+"].images[0] is UNDEFINED")
-//                    }
-//                }
-//                else
-//                {
-//                    console.log("listModel["+index+"].id is UNDEFINED")
-//                }
-//            }
-//            return Qt.resolvedUrl("../../images/icons/noIcon.png")
+            return Qt.resolvedUrl("../../images/icons/files/GcodeIcon.png")
         }
 
         LibraryItemExpanded {
@@ -65,7 +42,7 @@ Item {
 
                 console.log("Printing file: " + list.listModel[fileIndexSelected].path)
 
-                pagestack.pushPagestack(Qt.resolvedUrl("Printing.qml"))
+                pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
                 main.startPrintFromFileSystem(
                             list.listModel[fileIndexSelected].path,
                             function (err, response) {
@@ -74,7 +51,7 @@ Item {
                                                 JSON.stringify(err))
                                     pagestack.pushPagestack(
                                                 Qt.resolvedUrl(
-                                                    "PrintingError.qml"))
+                                                    "../../utils/PrintingError.qml"))
                                 }
                                 if (response) {
                                     console.log("Print file success",

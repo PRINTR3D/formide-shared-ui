@@ -20,6 +20,7 @@ Item {
 
     property var fileIndexSelected
     property var fileItems: main.fileItems
+    property var printerStatus: main.printerStatus
 
     property var item
 
@@ -34,35 +35,7 @@ Item {
     }
 
     function getImage() {
-        if (fileIndexSelected === undefined) {
-            //            console.log("No photo shown in Library Extended - 1")
-            return Qt.resolvedUrl("../../images/icons/noIcon.png")
-        }
-
-        //        if(fileItems[fileIndexSelected].filetype==="text/gcode")
-        //        {
-        return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
-        //        }
-        //        if(fileItems[fileIndexSelected].filetype==="text/stl")
-        //        {
-        //            if(fileItems[fileIndexSelected].id)
-        //            {
-        //                if(fileItems[fileIndexSelected].images[0])
-        //                {
-        //                    var url = main.getImage(fileItems[fileIndexSelected].id, fileItems[fileIndexSelected].images[0] );
-        //                    return url;
-        //                }
-        //                else
-        //                {
-        //                    console.log("fileItems["+fileIndexSelected+"].id is UNDEFINED")
-        //                }
-        //            }
-        //            else
-        //            {
-        //                console.log("fileItems["+fileIndexSelected+"].id is UNDEFINED")
-        //            }
-        //        }
-        //        return Qt.resolvedUrl("../../images/icons/noIcon.png")
+        return Qt.resolvedUrl("../../images/icons/files/GcodeIcon.png")
     }
 
     function getName() {
@@ -72,12 +45,31 @@ Item {
             return ""
     }
 
+    function isPrinting(){
+        if (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused')
+            return true
+        else
+            return false
+    }
+
+    function isPrintingThisFile(){
+        var statusFilename = printerStatus.filePath.substring(printerStatus.filePath.lastIndexOf('/')+1)
+
+        if ( statusFilename == fileItems[fileIndexSelected].filename && printerStatus.device == 'LOCAL' &&
+            (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused') )
+
+            return true
+        else
+            return false
+    }
+
+
     SingleListItem {
         id: singleItem
         y: 8
         name: getName()
         fileImagePath: getImage()
-        arrowImagePath: Qt.resolvedUrl("../../images/icons/dashboard/Overlays/LowerIcon.png")
+        arrowImagePath: Qt.resolvedUrl("../../images/icons/overlays/LowerIcon.png")
 
         MouseArea {
             anchors.fill: parent
@@ -88,24 +80,13 @@ Item {
     }
 
     DefaultText {
-        width: 112
+        width: 432
         height: 24
         x: 24
         y: 89
         font.pixelSize: 16
         lineHeight: 1.5
-        text: "Description"
-    }
-
-    DefaultText {
-        width: 230
-        height: 24
-        x: 144
-        y: 90
-        font.pixelSize: 16
-        lineHeightMode: Text.FixedHeight
-        lineHeight: 2.25
-        text: "GCODE File in local storage"
+        text: isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""
     }
 
     KeyboardLetter {
@@ -113,12 +94,13 @@ Item {
         height: 48
         x: 24
         y: 129
-        backgroundColor: "#46b1e6"
+        backgroundColor: "#ef4661"
         letterColor: "#ffffff"
-        letter: "Print File"
+        letter: "Delete File"
         letterSize: 16
+        enabled: !isPrintingThisFile()
 
-        onClicked: printFile.call()
+        onClicked: deleteFile.call()
     }
 
     KeyboardLetter {
@@ -126,11 +108,13 @@ Item {
         height: 48
         x: 248
         y: 129
-        backgroundColor: "#ef4661"
+        backgroundColor: "#46b1e6"
         letterColor: "#ffffff"
-        letter: "Delete File"
+        letter: "Print File"
         letterSize: 16
+        enabled: !isPrinting()
 
-        onClicked: deleteFile.call()
+        onClicked: printFile.call()
     }
+
 }

@@ -35,11 +35,50 @@ Item {
     }
 
     Rectangle {
+        id: barEmpty
+        width: parent.width
+        height: parent.height
+        radius: 3
+        color: "#fff"
+    }
+
+    Rectangle {
         id: bar
         //property var targetProgress: parent.width * progress / 100
         width: parent.width * progress / 100
         height: parent.height
         radius: 3
         color: "#46b1e6"
+    }
+
+    DefaultText {
+        id: barLabel
+        x: getX()
+        y: -2
+        font.pixelSize: 14
+        font.weight: Font.Black
+        text: getText()
+        color: getColor()
+
+        function getText() {
+            if (targetProgress == 0)
+                return ""
+            else
+                return targetProgress + "%"
+        }
+
+        function getColor() {
+            if (targetProgress < 10)
+                return "#46b1e6"
+            else
+                return "#fff"
+        }
+
+        function getX() {
+            if (targetProgress < 10)
+                return parent.width / 100 * progress + 8
+            else
+                return 8
+        }
     }
 }

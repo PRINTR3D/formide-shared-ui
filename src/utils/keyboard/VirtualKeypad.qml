@@ -6,6 +6,7 @@
 
 import QtQuick 2.0
 import "../"
+import "../../"
 import "../../../lib/formide/formide.js" as Formide
 
 Rectangle {
@@ -77,34 +78,33 @@ Rectangle {
 
     onPressLetter: {
 
-        if (letter === "clear") {
+        if (letter === "clear")
             emptyPasscode()
-        } else {
+        else if (letter === "back")
+            if (enterPasscode.length > 0)
+                enterPasscode = enterPasscode.slice(0, -1)
+            else
+                return
+        else
             if (enterPasscode.length < 4)
                 enterPasscode = enterPasscode + letter
 
-            console.log("enterPasscode: " + enterPasscode)
-
-            if (enterPasscode.length == 4) {
-                if (!isLocked) {
+            if (enterPasscode.length == 4)
+                if (!isLocked)
                     // if we are locking
                     setPassCode(enterPasscode)
-                } else {
+                else
                     //if we are unlocking
                     checkPassCode(enterPasscode)
-                }
-            }
-        }
     }
 
     Component.onCompleted: {
         console.log("Is locked? " + isLocked)
     }
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../../images/blurBackground.jpg"
+    // Background
+    Background{
+        y:0
     }
 
     //Home Icon
@@ -180,14 +180,14 @@ Rectangle {
             x: 304
             letter: "2"
             onClicked: pressLetter("2")
-            smallLetter: "ABC"
+            smallLetter: ""
         }
 
         KeypadLetter {
             x: 384
             letter: "3"
             onClicked: pressLetter("3")
-            smallLetter: "DEF"
+            smallLetter: ""
         }
     }
 
@@ -198,21 +198,21 @@ Rectangle {
             x: 224
             letter: "4"
             onClicked: pressLetter("4")
-            smallLetter: "GHI"
+            smallLetter: ""
         }
 
         KeypadLetter {
             x: 304
             letter: "5"
             onClicked: pressLetter("5")
-            smallLetter: "JKL"
+            smallLetter: ""
         }
 
         KeypadLetter {
             x: 384
             letter: "6"
             onClicked: pressLetter("6")
-            smallLetter: "MNO"
+            smallLetter: ""
         }
     }
 
@@ -223,21 +223,21 @@ Rectangle {
             x: 224
             letter: "7"
             onClicked: pressLetter("7")
-            smallLetter: "PQRS"
+            smallLetter: ""
         }
 
         KeypadLetter {
             x: 304
             letter: "8"
             onClicked: pressLetter("8")
-            smallLetter: "TUV"
+            smallLetter: ""
         }
 
         KeypadLetter {
             x: 384
             letter: "9"
             onClicked: pressLetter("9")
-            smallLetter: "WXYZ"
+            smallLetter: ""
         }
     }
 
@@ -249,19 +249,24 @@ Rectangle {
             x: 224
             letter: "clear"
             backgroundColor: "#646464"
-            opacity: 0.6
+            letterColor: "#000000"
+            smallLetter: ""
+            opacity: 0.8
+
             onClicked: pressLetter("clear")
         }
 
         KeypadLetter {
             x: 304
             letter: "0"
+            smallLetter: ""
             onClicked: pressLetter("0")
         }
 
         KeypadLetter {
             x: 384
             letter: "back"
+            smallLetter: ""
             Image {
                 width: 44
                 height: 32
@@ -269,8 +274,9 @@ Rectangle {
                 source: "../../images/icons/keyboard/BackIcon.png"
             }
             backgroundColor: "#646464"
-            opacity: 0.6
-            onClicked: remove.call()
+            opacity: 0.8
+
+            onClicked: pressLetter("back")
         }
     }
 }

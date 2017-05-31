@@ -4,6 +4,7 @@
  */
 
 import QtQuick 2.0
+import "../"
 import "keyboard/"
 
 Item {
@@ -41,10 +42,10 @@ Item {
 
         return newValue + unit
     }
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "../images/blurBackground.jpg"
+
+    // Background
+    Background{
+        y:0
     }
 
     Item {
@@ -94,7 +95,7 @@ Item {
         height: 56
         x: 100
         y: 64
-        source: "../images/icons/dashboard/Overlays/LowerIcon.png"
+        source: "../images/icons/overlays/LowerIcon.png"
     }
 
     // Arrow forward
@@ -103,7 +104,7 @@ Item {
         height: 56
         x: 344
         y: 64
-        source: "../images/icons/dashboard/Overlays/RaiseIcon.png"
+        source: "../images/icons/overlays/RaiseIcon.png"
     }
 
     KeyboardLetter {

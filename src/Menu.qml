@@ -13,10 +13,8 @@ Item {
     width: parent.width
     height: parent.height
 
-    // Blurry Background
-    Image {
-        anchors.fill: parent
-        source: "images/blurBackground.jpg"
+    Background{
+        y:0
     }
 
     // Home Icon
@@ -27,7 +25,7 @@ Item {
 
     MenuItem {
         x: 44
-        y: 48
+        y: 56
         label: "Dashboard"
         Image {
             width: 72
@@ -43,7 +41,7 @@ Item {
 
     MenuItem {
         x: 124
-        y: 48
+        y: 56
         label: "Library"
         Image {
             width: 72
@@ -59,8 +57,8 @@ Item {
 
     MenuItem {
         x: 204
-        y: 48
-        label: "Queue"
+        y: 56
+        label: "Cloud Queue"
         Image {
             width: 72
             height: 72
@@ -69,13 +67,13 @@ Item {
 
         onClicked: {
             pagestack.popPagestack()
-            main.viewStackActivePage = "Queue"
+            main.viewStackActivePage = "Cloud Queue"
         }
     }
 
     MenuItem {
         x: 284
-        y: 48
+        y: 56
         label: "Settings"
         Image {
             width: 72

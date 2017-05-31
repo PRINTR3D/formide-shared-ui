@@ -25,45 +25,31 @@ Item {
         listModel: queueItems
 
         function getImage(index) {
+
             if (queueItems[index] !== undefined) {
-                //CLOUD LOGIC
-                if (queueItems[index].origin == "cloud") {
-                    if (queueItems[index].printJob.sliceMethod === "custom") {
-                        return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
-                    } else {
-                        return "https://storage.googleapis.com/images.formide.com/"
-                                + queueItems[index].printJob.files[0].images[0]
-                    }
-                } // LOCAL LOGIC
+
+                if (queueItems[index].printJob.sliceMethod === "custom") {
+                    return Qt.resolvedUrl("../../images/icons/files/GcodeIcon.png")
+                }
                 else {
-
-                    var file = {
-
+                    if (queueItems[index].printJob.images[0] !== undefined) {
+                        return "https://storage.googleapis.com/images.formide.com/"
+                                + queueItems[index].printJob.images[0]
                     }
-                    for (var i = 0, len = fileItems.length; i < len; i++) {
-                        if (fileItems[i].id == queueItems[index].printJob.files[0].id)
-                            file = fileItems[i]
-                    }
-
-                    if (file.filetype == "text/stl") {
-                        var url = main.getImage(queueItems[index].id,
-                                                file.images[0])
-                        return url
-                    } else {
-                        return Qt.resolvedUrl("../../images/icons/gcodeIcon.png")
+                    else {
+                        return Qt.resolvedUrl("../../images/icons/files/StlIcon.png")
                     }
                 }
+
             } else
                 return Qt.resolvedUrl("../../images/icons/noIcon.png")
         }
 
         onItemSelected: {
             FormideShared.fileIndexSelected = indexSelected
-
-            pagestack.changeTransition("newPageComesFromInside")
-            pagestack.pushPagestack(Qt.resolvedUrl("PrintConfirmation.qml"))
-
-            contentytimer.restart()
+            expanded = true
+            status = "expanded"
+            expandedMenuSize = 216
         }
 
         Timer {
@@ -77,6 +63,36 @@ Item {
                 } else {
                     parent.contentY = 0
                 }
+            }
+        }
+
+        QueueItemExpanded {
+            visible: list.status === "expanded"
+
+            onFileClicked: {
+                list.status = "list"
+                list.expanded = !list.expanded
+            }
+            onPrintFile: {
+
+                main.startPrintFromQueueId(
+                            queueItems[fileIndexSelected].id,
+                            queueItems[fileIndexSelected].printJob.gcode,
+                            function (err, response) {
+                                if (err) {
+                                    pagestack.pushPagestack(
+                                                Qt.resolvedUrl(
+                                                    "../../utils/PrintingError.qml"))
+                                }
+                            })
+                pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
+            }
+
+            onDeleteFile: {
+
+                main.removeQueueItem(queueItems[fileIndexSelected].id)
+                list.status = "list"
+                list.expanded = !list.expanded
             }
         }
     }

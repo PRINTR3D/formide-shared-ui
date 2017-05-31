@@ -20,7 +20,7 @@ Item {
         width:parent.width
         height:224
         contentWidth: width
-        contentHeight: 402
+        contentHeight: 532
 
         property var index: main.settingsIndexSelected
 
@@ -111,8 +111,24 @@ Item {
             }
         }
         SingleListItem {
-
             y: 203
+            name: "Access Point"
+
+            Image {
+                width: 48
+                height: 48
+                x: 24
+                y: 8
+                source: "../../images/icons/settings/APIcon.png"
+            }
+            onClickedSignal: {
+                main.settingsIndexSelected = 3
+                flick.animateContentY("Access Point")
+            }
+        }
+        SingleListItem {
+
+            y: 268
             name: "Update"
 
             Image {
@@ -124,13 +140,13 @@ Item {
             }
 
             onClickedSignal: {
-                main.settingsIndexSelected = 3
+                main.settingsIndexSelected = 4
                 flick.animateContentY("Update")
             }
         }
         SingleListItem {
 
-            y: 268
+            y: 333
             name: "Calibration"
 
             Image {
@@ -142,14 +158,14 @@ Item {
             }
 
             onClickedSignal: {
-                main.settingsIndexSelected = 4
+                main.settingsIndexSelected = 5
                 flick.animateContentY("Calibration")
             }
         }
 
         SingleListItem {
 
-            y: 333
+            y: 398
             name: "Extruders"
 
             Image {
@@ -172,9 +188,31 @@ Item {
 
                 else
                 {
-                    main.settingsIndexSelected = 5
+                    main.settingsIndexSelected = 6
                     flick.animateContentY("Extruders")
-                    main.replaced = false
+                }
+            }
+        }
+
+        SingleListItem {
+
+            y: 463
+            name: "Lock Screen"
+
+            Image {
+                width: 48
+                height: 48
+                x: 24
+                y: 8
+                source: "../../images/icons/settings/LockIcon.png"
+            }
+
+            onClickedSignal: {
+
+                onClickedSignal: {
+                    pagestack.pushPagestack(
+                                Qt.resolvedUrl(
+                                    "../../utils/keyboard/VirtualKeypad.qml"))
                 }
             }
         }

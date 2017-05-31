@@ -58,7 +58,7 @@ Item {
             buttonText: "Calibrate X and Y Axes"
             onClicked: {
                 main.viewStackActivePage = "X and Y Calibration"
-                calibratePage.parent.push(Qt.resolvedUrl("ChangeXYaxes.qml"))
+                //calibratePage.parent.push(Qt.resolvedUrl("ChangeXYaxes.qml"))
             }
         }
     }

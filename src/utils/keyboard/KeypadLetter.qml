@@ -40,7 +40,7 @@ MouseArea {
         y: getOffset()
 
         font.pixelSize: (letter === "clear") ? 16 : letterSize
-        color: keypadLetter.pressed ? "#ffffff" : letterColor
+        color: getColor()
         anchors.horizontalCenter: parent.horizontalCenter
         text: getLetter()
 
@@ -52,11 +52,22 @@ MouseArea {
         }
 
         function getOffset() {
-            if (letter === "clear" || letter === "back" || letter === "0"
-                    || letter === "1")
+            if (letter === "clear")
                 return 18
+            if (smallLetter === "")
+                return 14
             else
                 return 2
+        }
+
+        function getColor() {
+            if(keypadLetter.pressed)
+                if (letter === "clear")
+                    return letterColor
+                else
+                    return "#ffffff"
+            else
+                return letterColor
         }
     }
 

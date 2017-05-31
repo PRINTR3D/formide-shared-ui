@@ -15,6 +15,7 @@ Rectangle {
 
     property string name:"File name"
     property string arrowImagePath
+    property string timesImagePath
     property string fileImagePath
     property var wifiActive:false
     property var wifi:false
@@ -37,7 +38,7 @@ Rectangle {
         y: 8
         width: 48
         height: 48
-        radius:10
+        radius: 3
         visible:(wifi || wifiActive)?false:true
 
         Image{
@@ -92,9 +93,9 @@ Rectangle {
         function getWifiIcon()
         {
             if(wifiActive)
-                return Qt.resolvedUrl("../images/icons/settings/wifi/Wi-FiIconActive.png")
+                return Qt.resolvedUrl("../images/icons/overlays/WifiIconA.png")
             else if(wifi)
-                return Qt.resolvedUrl("../images/icons/settings/wifi/Wi-FiIcon.png")
+                return Qt.resolvedUrl("../images/icons/overlays/WifiIcon.png")
             else
                 return fileImagePath
         }
@@ -103,7 +104,7 @@ Rectangle {
     // Label
     DefaultText{
         x: 80
-        y: 14
+        y: 16
         width: 328
         height: 32
         font.family: "OpenSans-Regular"
@@ -145,6 +146,20 @@ Rectangle {
             duration:150
         }
     }
+
+//    // Times
+//    Item{
+//        width:45
+//        height:48
+//        x:412
+//        y:8
+
+//        Image{
+//            id:timesImage
+//            anchors.fill: parent
+//            source:timesImagePath
+//        }
+//    }
 
     // Separator
     Rectangle{

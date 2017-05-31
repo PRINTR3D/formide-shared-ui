@@ -39,60 +39,36 @@ Item {
         font.family: "OpenSans"
         font.pixelSize: 16
         color: "#ffffff"
-        lineHeight: 1.5
+        lineHeight: 1.3
         //wrapMode: "WordWrap"
         text: firstText
     }
 
-    Image {
-        id: warningicon
-        width: 20
-        height: 20
-        x: 48
-        y: 104
-        source: "../images/icons/settings/Warning.png"
-    }
+//    Image {
+//        id: warningicon
+//        width: 20
+//        height: 20
+//        x: 48
+//        y: 104
+//        source: "../images/icons/settings/Warning.png"
+//    }
 
     Text {
-        width: 400 - warningicon.x - 2
+        width: 384
         height: 24
-        y: 104
+        y: 108
         anchors.horizontalCenter: parent.horizontalCenter
         font.family: "OpenSans"
         font.pixelSize: 16
         color: "#ef4661"
-        lineHeight: 1.5
+        lineHeight: 1.3
         text: secondText
-        anchors.horizontalCenterOffset: 8
     }
 
     Rectangle {
+
         x: 48
-        y: 144
-        width: 184
-        height: 48
-        radius: 3
-        color: "#46b1e6"
-
-        Text {
-            font.family: "OpenSans"
-            font.pixelSize: 16
-            color: "#ffffff"
-            anchors.centerIn: parent
-            text: confirmButtonText
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                confirmButtonSignal.call()
-            }
-        }
-    }
-
-    Rectangle {
-        x: 240
-        y: 144
+        y: 150
         width: 184
         height: 48
         radius: 3
@@ -110,6 +86,31 @@ Item {
             anchors.fill: parent
             onClicked: {
                 cancelButtonSignal.call()
+            }
+        }
+    }
+
+    Rectangle {
+
+        x: 240
+        y: 150
+        width: 184
+        height: 48
+        radius: 3
+        color: "#46b1e6"
+
+        Text {
+            font.family: "OpenSans"
+            font.pixelSize: 16
+            color: "#ffffff"
+            anchors.centerIn: parent
+            text: confirmButtonText
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                confirmButtonSignal.call()
             }
         }
     }

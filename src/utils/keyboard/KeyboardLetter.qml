@@ -13,6 +13,7 @@ MouseArea {
 
     width: 40
     height: 48
+    enabled: true
 
     property var letter: "A"
 
@@ -28,13 +29,13 @@ MouseArea {
         width: keyboardLetter.width
         height: keyboardLetter.height
         radius: 3
-        color: keyboardLetter.pressed ? "#878896" : backgroundColor
+        color: keyboardLetter.pressed || !keyboardLetter.enabled ? "#878896" : backgroundColor
     }
 
     DefaultText {
 
         font.pixelSize: letterSize
-        color: keyboardLetter.pressed ? "#ffffff" : letterColor
+        color: keyboardLetter.pressed ? "#ffffff" : keyboardLetter.enabled ? letterColor : "#ffffff"
         anchors.centerIn: parent
         text: letter
     }

@@ -13,7 +13,7 @@ Rectangle {
     color: "#141414"
 
     property var name: "Network name"
-    property var fileImagePath: "../images/icons/dashboard/Overlays/RaiseIcon.png"
+    property var fileImagePath: "../images/icons/overlays/RaiseIcon.png"
     property var fileImagePathLock: "../images/icons/header/LockIcon.png"
 
     signal clickedSignal

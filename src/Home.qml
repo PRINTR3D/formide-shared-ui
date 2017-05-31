@@ -37,7 +37,7 @@ Item {
         if (viewStackActivePage == "Dashboard")
             viewStack.push(Qt.resolvedUrl("pages/dashboard/Dashboard.qml"))
 
-        else if (viewStackActivePage == "Queue")
+        else if (viewStackActivePage == "Cloud Queue")
             viewStack.push(Qt.resolvedUrl("pages/queue/Queue.qml"))
 
         else if (viewStackActivePage == "Library")
@@ -54,6 +54,9 @@ Item {
 
         else if (viewStackActivePage == "Cloud")
             viewStack.push(Qt.resolvedUrl("pages/settings/cloud/Cloud.qml"))
+
+        else if (viewStackActivePage == "Access Point")
+            viewStack.push(Qt.resolvedUrl("pages/settings/accesspoint/AccessPoint.qml"))
 
         else if (viewStackActivePage == "Update")
             viewStack.push(Qt.resolvedUrl("pages/settings/update/Update.qml"))
@@ -75,15 +78,15 @@ Item {
         else if (viewStackActivePage == "Extruders")
             viewStack.push(Qt.resolvedUrl("pages/settings/extruders/Extruders.qml"))
 
-        else if (viewStackActivePage == "MaterialPreheat")
+        else if (viewStackActivePage == "Material Preheat")
             viewStack.push(Qt.resolvedUrl(
                                "pages/settings/extruders/MaterialPreheat.qml"))
 
-        else if (viewStackActivePage == "ExtruderReplace")
+        else if (viewStackActivePage == "Extruder Replace")
             viewStack.push(Qt.resolvedUrl(
                                "pages/settings/extruders/ExtruderReplace.qml"))
 
-        else if (viewStackActivePage == "ExtruderReplace")
+        else if (viewStackActivePage == "Extruder Replace")
             viewStack.push(Qt.resolvedUrl(
                                "pages/settings/extruders/ExtruderReplace.qml"))
 
@@ -162,6 +165,8 @@ Item {
                     return "back"
                 else if (viewStackActivePage == "Cloud")
                     return "back"
+                else if (viewStackActivePage == "Access Point")
+                    return "back"
                 else if (viewStackActivePage == "Update")
                     return "back"
                 else if (viewStackActivePage == "Update Available")
@@ -172,9 +177,9 @@ Item {
                     return "back"
                 else if (viewStackActivePage == "Extruders")
                     return "back"
-                else if (viewStackActivePage == "MaterialPreheat")
+                else if (viewStackActivePage == "Material Preheat")
                     return "back"
-                else if (viewStackActivePage == "ExtruderReplace")
+                else if (viewStackActivePage == "Extruder Replace")
                     return "back"
                 else if (viewStackActivePage == "X and Y Calibration")
                     return "back"
@@ -206,6 +211,8 @@ Item {
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Cloud")
                         main.viewStackActivePage = "Settings"
+                    else if (viewStackActivePage == "Access Point")
+                        main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Update")
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Update Available")
@@ -216,9 +223,9 @@ Item {
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Extruders")
                         main.viewStackActivePage = "Settings"
-                    else if (viewStackActivePage == "MaterialPreheat")
+                    else if (viewStackActivePage == "Material Preheat")
                         main.viewStackActivePage = "Extruders"
-                    else if (viewStackActivePage == "ExtruderReplace")
+                    else if (viewStackActivePage == "Extruder Replace")
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "X and Y Calibration")
                         main.viewStackActivePage = "Calibration"
@@ -245,33 +252,12 @@ Item {
             font.weight: Font.Black
         }
 
-        // AP icon
-        Image {
-            width: 42
-            height: 24
-            x: /*parent.width - 174*/ 306
-            y: 12
-            source: getAPIcon()
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    if (isLocked) {
-                        console.log("Locked screen")
-                        pagestack.pushPagestack(
-                                    Qt.resolvedUrl(
-                                        "utils/keyboard/VirtualKeypad.qml"))
-                    } else {
-                        console.log("AP.qml")
-                    }
-                }
-            }
-        }
 
         // USB icon
         Image {
-            width: 39
+            width: 34
             height: 24
-            x: /*parent.width - 124*/ 356
+            x: parent.width - (34 + 24 + 34 + 24 + 20 + 16)
             y: 12
             source: getUSBIcon()
             MouseArea {
@@ -292,9 +278,9 @@ Item {
 
         // Wi-Fi icon
         Image {
-            width: 33
+            width: 34
             height: 24
-            x: /*parent.width - 77*/ 403
+            x: parent.width - (34 + 24 + 20 + 16)
             y: 12
             source: getWifiIcon()
             MouseArea {
@@ -322,7 +308,7 @@ Item {
         Image {
             width: 20
             height: 24
-            x: /*parent.width - 36*/ 444
+            x: parent.width - (20 + 16)
             y: 12
             source: getLockIcon()
             MouseArea {
@@ -337,13 +323,7 @@ Item {
         }
     }
 
-    Rectangle {
-        id: background
-        width: parent.width
-        height: parent.height - 48
-        y: 48
-        color: "#141414"
-    }
+    Background{}
 
     // Second Stack for views under main menu
     StackView {
