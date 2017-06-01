@@ -34,15 +34,15 @@ Item {
         }
     }
 
-    DefaultText {
-        id: text
-        height: 32
-        font.pixelSize: 18
-        horizontalAlignment: TextInput.AlignHCenter
-        width: 448
-        x: 16
-        y: 70
-        visible: !isConnectedToWiFi
-        text: "Please connect to Wi-Fi and try again"
+    MessageWindow {
+        id: wifiMessage
+
+        visible: !isConnectedToWifi
+
+        firstText: "Connect to Wi-Fi and try again" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
     }
 }

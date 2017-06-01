@@ -47,7 +47,7 @@ Item {
     }
 
     MessageWindow {
-        id: root
+        id: emptyList
 
         visible: main.wifiList.length == 0
 

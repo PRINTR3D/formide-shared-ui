@@ -31,22 +31,34 @@ Item {
         }
     }
 
-    DefaultText {
-        id: text
-        height: 32
-        font.pixelSize: checking ? 24 : 18
-        horizontalAlignment: TextInput.AlignHCenter
-        width: 448
-        x: 16
-        y: 70
+    MessageWindow {
+        id: checkingMessage
 
-        text: checking ? "Checking for update..." : "Please connect to Wi-Fi and try again"
+        visible: checking
+
+        firstText: "Checking for update" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
+    }
+
+    MessageWindow {
+        id: wifiMessage
+
+        visible: !checking
+
+        firstText: "Connect to Wi-Fi and try again" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
     }
 
     Spinner {
 
-        x: 254 + 89 + 16
-        y: 70
+        x: 368
+        y: 64
         visible: checking
     }
 }

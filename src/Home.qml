@@ -105,6 +105,15 @@ Item {
             viewStack.push(Qt.resolvedUrl("Background.qml"))
     }
 
+    function getPageTitle(){
+        if(viewStackActivePage == "No Update")
+            return "Update"
+        if(viewStackActivePage == "Update Available")
+            return "Update"
+        else
+            return viewStackActivePage
+    }
+
     function getAPIcon() {
 
         if (isHotspot)
@@ -247,7 +256,7 @@ Item {
         DefaultText {
             y: 8
             x: 64//parent.width - 416
-            text: viewStackActivePage
+            text: getPageTitle()
             font.pixelSize: 24
             font.weight: Font.Black
         }

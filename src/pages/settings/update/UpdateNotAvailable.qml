@@ -16,14 +16,16 @@ Item {
     height: parent.height
     width: parent.width
 
-    DefaultText {
-        height: 32
-        font.pixelSize: 24
-        horizontalAlignment: TextInput.AlignHCenter
-        width: 448
-        x: 16
-        y: 70
+    MessageWindow {
+        id: wifiMessage
 
-        text: "Your software is up to date."
+        visible: !checking
+
+        firstText: "Your software is up to date" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
     }
+
 }

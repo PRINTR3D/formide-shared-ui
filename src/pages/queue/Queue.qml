@@ -16,13 +16,14 @@ Item {
 
     property var fileIndexSelected
     property var queueItems: main.queueItems
+    property var isConnectedToWifi: main.isConnectedToWifi
 
     FileList {
 
         id: list
         type: "queue"
 
-        visible: main.queueItems.length > 0
+        visible: main.queueItems.length > 0 && isConnectedToWifi
 
         listModel: queueItems
 
@@ -100,9 +101,9 @@ Item {
     }
 
     MessageWindow {
-        id: root
+        id: emptyList
 
-        visible: main.queueItems.length == 0
+        visible: main.queueItems.length == 0 && isConnectedToWifi
 
         firstText: "No Queue items found" // Text shown as title
 
@@ -110,4 +111,17 @@ Item {
 
         confirmButton: false // Showing confirm button
     }
+
+    MessageWindow {
+        id: wifiMessage
+
+        visible: !isConnectedToWifi
+
+        firstText: "Connect to Wi-Fi and try again" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
+    }
+
 }
