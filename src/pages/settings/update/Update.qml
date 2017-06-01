@@ -33,10 +33,11 @@ Item {
 
     DefaultText {
         id: text
-        width: 254
         height: 32
         font.pixelSize: checking ? 24 : 18
-        x: checking ? 89 : 70
+        horizontalAlignment: TextInput.AlignHCenter
+        width: 448
+        x: 16
         y: 70
 
         text: checking ? "Checking for update..." : "Please connect to Wi-Fi and try again"

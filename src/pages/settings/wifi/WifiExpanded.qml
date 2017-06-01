@@ -59,9 +59,9 @@ Item {
     }
 
     KeyboardLetter {
-        width: 168
+        width: 216
         height: 48
-        x: 156
+        x: 132
         y: 129
         backgroundColor: "#46b1e6"
         letterColor: "#ffffff"
@@ -203,7 +203,7 @@ Item {
             font.pixelSize: 16
             lineHeight: 1.5
             horizontalAlignment: TextInput.AlignHCenter
-            text: "For printing via the Cloud"
+            text: "Print via the cloud at"
         }
 
         DefaultText {
@@ -214,7 +214,7 @@ Item {
             font.pixelSize: 16
             lineHeight: 1.5
             horizontalAlignment: TextInput.AlignHCenter
-            text: "Go to: www.formide.com"
+            text: "www.formide.com"
         }
 
         // Separator
@@ -234,7 +234,7 @@ Item {
             font.pixelSize: 16
             lineHeight: 1.5
             horizontalAlignment: TextInput.AlignHCenter
-            text: "For printing via the local network"
+            text: "Print via local network at"
         }
 
         DefaultText {

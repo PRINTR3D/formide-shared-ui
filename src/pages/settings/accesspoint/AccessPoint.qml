@@ -20,7 +20,7 @@ Item {
 
 
     DefaultText {
-        x: 70
+        x: isHotspot ? 70 : 78
         y: 32
         width: parent.width - 32
         height: 33
@@ -32,8 +32,8 @@ Item {
     KeyboardLetter {
         width: 216
         height: 48
-        x: 132
-        y: 96
+        x:132
+        y:128
 
         letter: isHotspot ? "Disable" : "Enable"
 

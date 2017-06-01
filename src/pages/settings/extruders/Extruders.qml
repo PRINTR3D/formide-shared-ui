@@ -22,7 +22,7 @@ Item {
 
     DefaultText {
         x: 61
-        y: 16
+        y: 32
         width: 216
         height: 33
 
@@ -32,7 +32,7 @@ Item {
 
     DefaultText {
         x: 293
-        y: 16
+        y: 32
 
         font.pixelSize: 24
         text: "Extruder 2"
@@ -42,7 +42,7 @@ Item {
         width: 216
         height: 48
         x: 16
-        y: 73
+        y: 128
 
         letter: "Change Material"
 
@@ -62,7 +62,7 @@ Item {
         width: 216
         height: 48
         x: 248
-        y: 73
+        y: 128
 
         letter: "Change Material"
 

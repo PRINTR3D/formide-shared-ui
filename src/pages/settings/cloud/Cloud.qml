@@ -36,10 +36,11 @@ Item {
 
     DefaultText {
         id: text
-        width: 254
         height: 32
         font.pixelSize: 18
-        x: 70
+        horizontalAlignment: TextInput.AlignHCenter
+        width: 448
+        x: 16
         y: 70
         visible: !isConnectedToWiFi
         text: "Please connect to Wi-Fi and try again"

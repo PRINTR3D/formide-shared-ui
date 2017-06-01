@@ -18,23 +18,31 @@ PopupWindow {
     secondText: getName(0) ? "File: " + getName(0) : ""
 
     cancelButtonText: "Cancel" // Text shown on cancel button
-    confirmButtonText: "Print" // Text shown in confirm button
+    confirmButtonText: getName(0) ? "Print" : "Dismiss"  // Text shown in confirm button
 
-    cancelButton: true
-    confirmButton: getName(0) ? true : false
+    cancelButton: getName(0) ? true : false
+    confirmButton: true
+
+    centerText: getName(0) ? false : true
 
     onConfirmButtonSignal: {
-        main.startPrintFromQueueId(
-                    queueItems[0].id,
-                    queueItems[0].printJob.gcode,
-                    function (err, response) {
-                        if (err) {
-                            pagestack.pushPagestack(
-                                        Qt.resolvedUrl(
-                                            "../../utils/PrintingError.qml"))
-                        }
-                    })
-        pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
+
+        if(getName(0)){
+            main.startPrintFromQueueId(
+                        queueItems[0].id,
+                        queueItems[0].printJob.gcode,
+                        function (err, response) {
+                            if (err) {
+                                pagestack.pushPagestack(
+                                            Qt.resolvedUrl(
+                                                "../../utils/PrintingError.qml"))
+                            }
+                        })
+            pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
+        }
+        else{
+            pagestack.popPagestack()
+        }
     }
 
     onCancelButtonSignal: {

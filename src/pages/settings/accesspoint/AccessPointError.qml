@@ -10,7 +10,7 @@ import "../../../utils"
 MessageWindow {
     id: root
 
-    firstText: "Failed to configure the Access Point" // Text shown as title
+    firstText: "Failed to configure" // Text shown as title
     secondText: "Please try again" // Text shown in subtitle
 
     confirmButtonText: "Dismiss" // Text shown in confirm button
