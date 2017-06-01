@@ -3,9 +3,7 @@
         <file>deployment.pri</file>
         <file>src/main.qml</file>
         <file>src/fonts/OpenSans-Regular.ttf</file>
-        <file>src/images/gif/smallSpinner.gif</file>
         <file>src/images/gif/Spinner.gif</file>
-        <file>src/images/gif/SpinnerSlow.gif</file>
         <file>src/images/icons/dashboard/ControlButtonIcon.png</file>
         <file>src/images/icons/dashboard/PauseButtonIcon.png</file>
         <file>src/images/icons/dashboard/StartButtonIcon.png</file>

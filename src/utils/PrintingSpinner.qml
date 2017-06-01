@@ -11,7 +11,7 @@ MessageWindow {
     id: root
 
     firstText: "Processing file" // Text shown as title
-    secondText: "Your file will start\nprinting immediately." // Text shown in subtitle
+    secondText: "Your file will start printing immediately." // Text shown in subtitle
 
     confirmButton: false // Not showing confirm button
 
