@@ -138,7 +138,7 @@ Item {
         width: 216
         height: 48
         x: 16
-        y: 114
+        y: 128
 
         letter: "Extrude"
 
@@ -171,7 +171,7 @@ Item {
         width: 216
         height: 48
         x: 248
-        y: 114
+        y: 128
 
         letter: "Retract"
 

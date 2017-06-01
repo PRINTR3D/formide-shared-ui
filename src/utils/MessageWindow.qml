@@ -20,6 +20,8 @@ Item {
     property bool confirmButton:true            // Showing confirm button
     property bool exitButton:false
 
+    property bool centerText:false              // Center first text
+
     signal confirmButtonSignal                  // Event emitted when pressing confirm
     signal quitButtonSignal                     // Event emitted when pressing the [X] button
 
@@ -60,10 +62,12 @@ Item {
 
     DefaultText{
 
-        width:368
         height:32
-        x:56
+        width: 368
+        x: 56
         y:64
+
+        horizontalAlignment: centerText ? TextInput.AlignHCenter: TextInput.AlignLeft
 
         font.family: "OpenSans"
         font.pixelSize:24
@@ -93,10 +97,10 @@ Item {
     Rectangle{
         visible:confirmButton
 
-        x:100
+        x:132
         y:176
 
-        width: 280
+        width: 216
         height: 48
         radius: 3
         color: "#46b1e6"

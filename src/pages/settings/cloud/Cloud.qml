@@ -34,14 +34,15 @@ Item {
         }
     }
 
-    DefaultText {
-        id: text
-        width: 254
-        height: 32
-        font.pixelSize: 18
-        x: 70
-        y: 70
-        visible: !isConnectedToWiFi
-        text: "Please connect to Wi-Fi and try again"
+    MessageWindow {
+        id: wifiMessage
+
+        visible: !isConnectedToWifi
+
+        firstText: "Connect to Wi-Fi and try again" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
     }
 }

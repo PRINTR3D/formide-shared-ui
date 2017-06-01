@@ -21,6 +21,8 @@ Item {
     property bool cancelButton:true             // Showing cancel button
     property bool confirmButton:true            // Showing confirm button
 
+    property bool centerText:false              // Center first text
+
     signal cancelButtonSignal                   // Event emitted when pressing cancel
     signal confirmButtonSignal                  // Event emitted when pressing confirm
     signal quitButtonSignal                     // Event emitted when pressing the [X] button
@@ -32,10 +34,12 @@ Item {
 
     DefaultText{
 
-        width:368
         height:32
-        x:56
+        width: 368
+        x: 56
         y:64
+
+        horizontalAlignment: centerText ? TextInput.AlignHCenter: TextInput.AlignLeft
 
         font.pixelSize:24
         font.weight: Font.Black

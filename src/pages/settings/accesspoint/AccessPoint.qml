@@ -17,23 +17,43 @@ Item {
     width: parent.width
 
     property var isHotspot: main.isHotspot
+    property var macAddress: main.macAddress
 
+
+    function getAPname(){
+        if(macAddress)
+            return "The-Element-" + macAddress.slice(-8).replace(/:/g, '')
+        else
+            return ""
+    }
 
     DefaultText {
-        x: 70
         y: 32
-        width: parent.width - 32
+        horizontalAlignment: TextInput.AlignHCenter
+        width: 448
+        x: 16
         height: 33
 
-        font.pixelSize: 24
+        font.pixelSize: 18
+        text: "Access point name:  " + getAPname()
+    }
+
+    DefaultText {
+        y: 80
+        horizontalAlignment: TextInput.AlignHCenter
+        width: 448
+        x: 16
+        height: 33
+
+        font.pixelSize: 18
         text: isHotspot ? "Disable to no longer emit Wi-Fi" : "Enable to emit Printer's Wi-Fi"
     }
 
     KeyboardLetter {
         width: 216
         height: 48
-        x: 132
-        y: 96
+        x:132
+        y:128
 
         letter: isHotspot ? "Disable" : "Enable"
 

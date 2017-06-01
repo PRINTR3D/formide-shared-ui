@@ -67,9 +67,9 @@ Item {
 
     Rectangle {
 
-        x: 48
+        x: 56
         y: 150
-        width: 184
+        width: 176
         height: 48
         radius: 3
         color: "#ef4661"
@@ -92,9 +92,9 @@ Item {
 
     Rectangle {
 
-        x: 240
+        x: 248
         y: 150
-        width: 184
+        width: 176
         height: 48
         radius: 3
         color: "#46b1e6"

@@ -18,7 +18,6 @@ MessageWindow {
     confirmButton: true // Showing confirm button
 
     onConfirmButtonSignal: {
-
         pagestack.popPagestack()
     }
 }

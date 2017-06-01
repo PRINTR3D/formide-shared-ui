@@ -19,6 +19,7 @@ Item {
         id: list
         listModel: main.fileItems
         type: "library"
+        visible: main.fileItems.length > 0
 
         onItemSelected: {
             FormideShared.fileIndexSelected = indexSelected
@@ -69,5 +70,17 @@ Item {
                 list.expanded = !list.expanded
             }
         }
+    }
+
+    MessageWindow {
+        id: emptyList
+
+        visible: main.fileItems.length == 0
+
+        firstText: "No Library items found" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
     }
 }

@@ -9,5 +9,5 @@ import "../images/gif"
 AnimatedImage{
     width:30
     height:30
-    source:"../images/gif/smallSpinner.gif"
+    source:"../images/gif/Spinner.gif"
 }

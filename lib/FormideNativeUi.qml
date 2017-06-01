@@ -678,8 +678,6 @@ Window {
                 console.log('Response hotspot', JSON.stringify(response))
                 checkConnection()
 
-                isHotspot = !isHotspot
-
                 if (callback)
                     callback(null, response)
             }

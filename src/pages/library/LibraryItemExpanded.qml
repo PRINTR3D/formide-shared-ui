@@ -84,6 +84,7 @@ Item {
         height: 24
         x: 24
         y: 89
+        horizontalAlignment: TextInput.AlignHCenter
         font.pixelSize: 16
         lineHeight: 1.5
         text: isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""

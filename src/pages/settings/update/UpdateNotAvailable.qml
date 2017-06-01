@@ -16,13 +16,16 @@ Item {
     height: parent.height
     width: parent.width
 
-    DefaultText {
-        width: 318
-        height: 32
-        font.pixelSize: 24
-        x: 81
-        y: 70
+    MessageWindow {
+        id: wifiMessage
 
-        text: "Your software is up to date."
+        visible: !checking
+
+        firstText: "Your software is up to date" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
     }
+
 }
