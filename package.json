@@ -1,5 +1,5 @@
 {
-  "name": "formide-touch",
+  "name": "formide-shared-ui",
   "version": "1.0.0",
   "description": "Shared code base for 3D printer touch screen interfaces",
   "main": "FormideNativeUI.qml",

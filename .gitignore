@@ -3,7 +3,7 @@ node_modules
 deps
 
 # Build outputs
-formide-touch.app
+formide-shared-ui.app
 .qmake.stash
 
 # C++ objects and libs
