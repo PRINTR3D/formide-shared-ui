@@ -22,6 +22,8 @@ Item {
         id: list
         type: "queue"
 
+        visible: main.queueItems.length > 0
+
         listModel: queueItems
 
         function getImage(index) {
@@ -95,5 +97,17 @@ Item {
                 list.expanded = !list.expanded
             }
         }
+    }
+
+    MessageWindow {
+        id: root
+
+        visible: main.queueItems.length == 0
+
+        firstText: "No Queue items found" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
     }
 }

@@ -28,6 +28,7 @@ Item {
     FileList {
 
         id: list
+        visible: main.wifiList.length > 0
 
         type: "wifi"
         property var fileIndexSelected
@@ -44,4 +45,17 @@ Item {
                 pagestack.pushPagestack(Qt.resolvedUrl("WifiKeyboard.qml"))
         }
     }
+
+    MessageWindow {
+        id: root
+
+        visible: main.wifiList.length == 0
+
+        firstText: "No Wi-Fi networks found" // Text shown as title
+
+        centerText: true
+
+        confirmButton: false // Showing confirm button
+    }
+
 }
