@@ -81,7 +81,7 @@ Window {
     property var driveFiles: [] // Array of files and dirs found
     property var driveListing
     // Toggle to see if content is file list or drive list
-    property var drivePath
+    property var drivePath: "/"
     // Current folder path
     property var driveUnit
     // Name of drive unit
@@ -446,6 +446,7 @@ Window {
                     if (!usbAvailable)
                         usbAvailable = true
                     driveFiles = list
+
                 } else {
                     //console.log("Not updating drive")
                     if (usbAvailable) {
@@ -476,8 +477,7 @@ Window {
                                                        driveFiles = list.filter(
                                                                    function (file) {
                                                                        if (file.name) {
-                                                                           if (file.name.toLowerCase().indexO(".gcode") !== -1 || file.name.toLowerCase().indexOf(".stl") !== -1 || file.type == "dir")
-                                                                               return file
+                                                                           return file
                                                                        }
                                                                    })
 
@@ -501,6 +501,8 @@ Window {
 
             if (list) {
 
+                getFiles()
+
                 //console.log("Response OK: ",JSON.stringify(list))
                 if (callback)
                     callback(null, list)
@@ -511,7 +513,6 @@ Window {
     function updateDriveUnit(driveU, callback) {
         driveUnit = driveU
 
-        console.log("NOOOOOO")
         Formide.usb().mount(driveUnit, function (err, response) {
             if (err) {
                 console.log("Error mounting drive: ", JSON.stringify(err))
@@ -519,7 +520,7 @@ Window {
                     callback(err, null)
             }
             if (response) {
-                //console.log("Response mounting drive: ",JSON.stringify(response));
+                console.log("Response mounting drive: ",JSON.stringify(response));
                 if (response.message == "drive mounted") {
                     updateDriveFilesFromPath(callback)
                 }

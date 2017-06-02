@@ -14,12 +14,14 @@ Item {
     height: parent.height
     width: parent.width
 
+    property var fileItems: main.fileItems
+
     FileList {
 
         id: list
-        listModel: main.fileItems
+        listModel: fileItems
         type: "library"
-        visible: main.fileItems.length > 0
+        visible: fileItems.length > 0
 
         onItemSelected: {
             FormideShared.fileIndexSelected = indexSelected
@@ -76,7 +78,7 @@ Item {
     MessageWindow {
         id: emptyList
 
-        visible: main.fileItems.length == 0
+        visible: fileItems.length == 0
 
         firstText: "No Library items found" // Text shown as title
 

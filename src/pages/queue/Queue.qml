@@ -23,7 +23,7 @@ Item {
         id: list
         type: "queue"
 
-        visible: main.queueItems.length > 0 && isConnectedToWifi
+        visible: queueItems.length > 0 && isConnectedToWifi
 
         listModel: queueItems
 
@@ -105,7 +105,7 @@ Item {
     MessageWindow {
         id: emptyList
 
-        visible: main.queueItems.length == 0 && isConnectedToWifi
+        visible: queueItems.length == 0 && isConnectedToWifi
 
         firstText: "No Queue items found" // Text shown as title
 

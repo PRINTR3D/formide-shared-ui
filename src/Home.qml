@@ -101,6 +101,13 @@ Item {
 
         else if (viewStackActivePage == "Full Calibration")
             viewStack.push(Qt.resolvedUrl("popups/settingsFullCalibrate.qml"))
+
+        else if (viewStackActivePage == "USB Drives")
+            viewStack.push(Qt.resolvedUrl("pages/usb/USB.qml"))
+
+        else if (viewStackActivePage == "USB Drive")
+            viewStack.push(Qt.resolvedUrl("pages/usb/USBDrive.qml"))
+
         else
             viewStack.push(Qt.resolvedUrl("Background.qml"))
     }

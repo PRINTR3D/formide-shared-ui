@@ -82,7 +82,7 @@ Item {
         }
 
         onClicked: {
-            main.viewStackActivePage = "USB Drive"
+            main.viewStackActivePage = "USB Drives"
             pagestack.popPagestack()
         }
     }
