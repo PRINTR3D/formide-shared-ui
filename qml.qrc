@@ -21,14 +21,12 @@
         <file>src/images/icons/keyboard/Shift.png</file>
         <file>src/images/icons/menu/DashboardIcon.png</file>
         <file>src/images/icons/menu/LibraryIcon.png</file>
-        <file>src/images/icons/menu/PrintIcon.png</file>
         <file>src/images/icons/menu/QueueIcon.png</file>
         <file>src/images/icons/menu/SettingsIcon.png</file>
         <file>src/images/icons/settings/AboutIcon.png</file>
         <file>src/images/icons/settings/CalibrationIcon.png</file>
         <file>src/images/icons/settings/CloudIcon.png</file>
         <file>src/images/icons/settings/ExtrudersIcon.png</file>
-        <file>src/images/icons/settings/Spinner.png</file>
         <file>src/images/icons/settings/UpdateIcon.png</file>
         <file>src/images/icons/settings/WiFiIcon.png</file>
         <file>src/images/icons/noIcon.png</file>
@@ -148,5 +146,8 @@
         <file>src/pages/settings/accesspoint/AccessPointError.qml</file>
         <file>src/pages/settings/accesspoint/AccessPointEnabling.qml</file>
         <file>src/pages/settings/accesspoint/AccessPointDisabling.qml</file>
+        <file>src/images/icons/menu/USBIcon.png</file>
+        <file>src/pages/usb/USB.qml</file>
+        <file>src/pages/usb/USBItemExpanded.qml</file>
     </qresource>
 </RCC>
