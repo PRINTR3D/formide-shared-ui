@@ -8,53 +8,80 @@ import "../../utils"
 import "../../../lib/formide/formide.js" as Formide
 import "../../../lib/formide/formideShared.js" as FormideShared
 
-PopupWindow {
 
-    property var printerStatus: main.printerStatus
-    property var fileIndexSelected: FormideShared.fileIndexSelected
-    property var queueItems: main.queueItems
+Item {
 
-    firstText: getName(0) ? "Print the next queued file?" : "No queue items found"
-    secondText: getName(0) ? "File: " + getName(0) : ""
+    property var isConnectedToWifi: main.isConnectedToWifi
 
-    cancelButtonText: "Cancel" // Text shown on cancel button
-    confirmButtonText: getName(0) ? "Print" : "Dismiss"  // Text shown in confirm button
+    PopupWindow {
 
-    cancelButton: getName(0) ? true : false
-    confirmButton: true
+        visible: isConnectedToWifi
 
-    centerText: getName(0) ? false : true
+        property var printerStatus: main.printerStatus
+        property var fileIndexSelected: FormideShared.fileIndexSelected
+        property var queueItems: main.queueItems
 
-    onConfirmButtonSignal: {
+        firstText: getName(0) ? "Print the next queued file?" : "No queue items found"
+        secondText: getName(0) ? "File: " + getName(0) : ""
 
-        if(getName(0)){
-            pagestack.changeTransition("newPageComesFromInside")
+        cancelButtonText: "Cancel" // Text shown on cancel button
+        confirmButtonText: getName(0) ? "Print" : "Dismiss"  // Text shown in confirm button
 
-            main.startPrintFromQueueId(
-                        queueItems[0].id,
-                        queueItems[0].printJob.gcode,
-                        function (err, response) {
-                            if (err) {
-                                pagestack.pushPagestack(
-                                            Qt.resolvedUrl(
-                                                "../../utils/PrintingError.qml"))
-                            }
-                        })
-            pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
+        cancelButton: getName(0) ? true : false
+        confirmButton: true
+
+        centerText: getName(0) ? false : true
+
+        onConfirmButtonSignal: {
+
+            if(getName(0)){
+                pagestack.changeTransition("newPageComesFromInside")
+
+                main.startPrintFromQueueId(
+                            queueItems[0].id,
+                            queueItems[0].printJob.gcode,
+                            function (err, response) {
+                                if (err) {
+                                    pagestack.pushPagestack(
+                                                Qt.resolvedUrl(
+                                                    "../../utils/PrintingError.qml"))
+                                }
+                            })
+                pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
+            }
+            else{
+                pagestack.popPagestack()
+            }
         }
-        else{
+
+        onCancelButtonSignal: {
+            pagestack.popPagestack()
+        }
+
+        function getName(index) {
+            if (queueItems[index])
+                return queueItems[index].printJob.name
+            else
+                return false
+        }
+    }
+
+    PopupWindow {
+        id: wifiMessage
+
+        visible: !isConnectedToWifi
+
+        firstText: "Connect to Wi-Fi and try again" // Text shown as title
+
+        centerText: true
+
+        cancelButton: false
+        confirmButton: true
+        confirmButtonText: "Dismiss"  // Text shown in confirm button
+
+        onConfirmButtonSignal: {
             pagestack.popPagestack()
         }
     }
 
-    onCancelButtonSignal: {
-        pagestack.popPagestack()
-    }
-
-    function getName(index) {
-        if (queueItems[index])
-            return queueItems[index].printJob.name
-        else
-            return false
-    }
 }
