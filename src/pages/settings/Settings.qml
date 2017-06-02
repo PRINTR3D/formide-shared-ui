@@ -140,8 +140,21 @@ Item {
             }
 
             onClickedSignal: {
-                main.settingsIndexSelected = 4
-                flick.animateContentY("Update")
+
+                if (printerStatus.status === "printing"
+                        || printerStatus.status === "heating"
+                        || printerStatus.status === "paused")
+                {
+                    pagestack.changeTransition("newPageComesFromInside")
+                    pagestack.pushPagestack(Qt.resolvedUrl("update/UpdateCurrentlyPrinting.qml"))
+                }
+
+                else
+                {
+                    main.settingsIndexSelected = 4
+                    flick.animateContentY("Update")
+                }
+
             }
         }
         SingleListItem {
@@ -158,8 +171,21 @@ Item {
             }
 
             onClickedSignal: {
-                main.settingsIndexSelected = 5
-                flick.animateContentY("Calibration")
+
+                if (printerStatus.status === "printing"
+                        || printerStatus.status === "heating"
+                        || printerStatus.status === "paused")
+                {
+                    pagestack.changeTransition("newPageComesFromInside")
+                    pagestack.pushPagestack(Qt.resolvedUrl("calibration/CalibrationCurrentlyPrinting.qml"))
+                }
+
+                else
+                {
+                    main.settingsIndexSelected = 5
+                    flick.animateContentY("Calibration")
+                }
+
             }
         }
 
@@ -183,7 +209,7 @@ Item {
                         || printerStatus.status === "paused")
                 {
                     pagestack.changeTransition("newPageComesFromInside")
-                    pagestack.pushPagestack(Qt.resolvedUrl("extruders/ExtrudersNotAvailable.qml"))
+                    pagestack.pushPagestack(Qt.resolvedUrl("extruders/ExtrudersCurrentlyPrinting.qml"))
                 }
 
                 else

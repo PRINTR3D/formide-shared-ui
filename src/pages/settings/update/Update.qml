@@ -14,6 +14,7 @@ Item {
     height: parent.height
     width: parent.width
 
+    property var printerStatus: main.printerStatus
     property var checking: true
 
     Component.onCompleted: {

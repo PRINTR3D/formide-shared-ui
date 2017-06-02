@@ -52,7 +52,6 @@
         <file>src/pages/settings/cloud/CloudError.qml</file>
         <file>src/pages/settings/extruders/ExtruderReplace.qml</file>
         <file>src/pages/settings/extruders/Extruders.qml</file>
-        <file>src/pages/settings/extruders/ExtrudersNotAvailable.qml</file>
         <file>src/pages/settings/extruders/MaterialPreheat.qml</file>
         <file>src/pages/settings/update/Update.qml</file>
         <file>src/pages/settings/update/UpdateActive.qml</file>
@@ -149,5 +148,8 @@
         <file>src/images/icons/menu/USBIcon.png</file>
         <file>src/pages/usb/USB.qml</file>
         <file>src/pages/usb/USBItemExpanded.qml</file>
+        <file>src/pages/settings/extruders/ExtrudersCurrentlyPrinting.qml</file>
+        <file>src/pages/settings/update/UpdateCurrentlyPrinting.qml</file>
+        <file>src/pages/settings/calibration/CalibrationCurrentlyPrinting.qml</file>
     </qresource>
 </RCC>
