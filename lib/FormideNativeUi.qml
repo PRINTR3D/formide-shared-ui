@@ -289,6 +289,9 @@ Window {
                                                       }
                                                       if (response) {
                                                           //              console.log("Response starting a print",JSON.stringify(response))
+
+                                                          getFiles()
+
                                                           if (callback)
                                                               callback(null,
                                                                        response)
@@ -809,6 +812,7 @@ Window {
 
 
                 if (data.channel === "printer.stopped") {
+
                     printerStopped.call()
                 }
 
@@ -937,10 +941,8 @@ Window {
         onTriggered: {
 
             if (printerStatus)
-                if (printerStatus.status === "online") {
-                    getFiles()
-                    getQueue()
-                }
+                getFiles()
+                getQueue()
         }
     }
 

@@ -74,6 +74,22 @@ Item {
     MenuItem {
         x: 284
         y: 56
+        label: "USB Drive"
+        Image {
+            width: 72
+            height: 72
+            source: "images/icons/menu/USBIcon.png"
+        }
+
+        onClicked: {
+            main.viewStackActivePage = "USB Drive"
+            pagestack.popPagestack()
+        }
+    }
+
+    MenuItem {
+        x: 364
+        y: 56
         label: "Settings"
         Image {
             width: 72
@@ -87,4 +103,5 @@ Item {
             pagestack.popPagestack()
         }
     }
+
 }

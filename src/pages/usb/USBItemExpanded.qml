@@ -10,7 +10,7 @@ import "../../utils/keyboard"
 import "../../../lib/formide/formideShared.js" as FormideShared
 
 Item {
-    id: mainLibraryExtended
+    id: mainQueueExtended
     height: parent.height
     width: parent.width
 
@@ -19,14 +19,13 @@ Item {
     signal deleteFile
 
     property var fileIndexSelected
-    property var fileItems: main.fileItems
-    property var printerStatus: main.printerStatus
+    property var queueItems: main.queueItems
 
     property var item
 
     onVisibleChanged: {
         if (!visible) {
-            fileIndexSelected = null
+            fileIndexSelected = 0
         }
         if (visible) {
             singleItem.rotateArrow()
@@ -34,13 +33,30 @@ Item {
         }
     }
 
-    function getImage() {
-        return Qt.resolvedUrl("../../images/icons/files/GcodeIcon.png")
+    function getImage(index) {
+
+        if (queueItems[index] !== undefined) {
+
+            if (queueItems[index].printJob.sliceMethod === "custom") {
+                return Qt.resolvedUrl("../../images/icons/files/GcodeIcon.png")
+            }
+            else {
+                if (queueItems[index].printJob.images[0] !== undefined) {
+                    return "https://storage.googleapis.com/images.formide.com/"
+                            + queueItems[index].printJob.images[0]
+                }
+                else {
+                    return Qt.resolvedUrl("../../images/icons/files/StlIcon.png")
+                }
+            }
+
+        } else
+            return Qt.resolvedUrl("../../images/icons/noIcon.png")
     }
 
-    function getName() {
-        if (fileItems[fileIndexSelected])
-            return fileItems[fileIndexSelected].filename
+    function getName(index) {
+        if (queueItems[index])
+            return queueItems[index].printJob.name
         else
             return ""
     }
@@ -53,11 +69,7 @@ Item {
     }
 
     function isPrintingThisFile(){
-        var statusFilename = printerStatus.filePath.substring(printerStatus.filePath.lastIndexOf('/')+1)
-
-        if ( fileIndexSelected !== null && statusFilename == fileItems[fileIndexSelected].filename && printerStatus.device == 'LOCAL' &&
-            (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused') )
-
+        if (printerStatus.queueItemId === queueItems[fileIndexSelected].id)
             return true
         else
             return false
@@ -67,8 +79,8 @@ Item {
     SingleListItem {
         id: singleItem
         y: 8
-        name: getName()
-        fileImagePath: getImage()
+        name: getName(fileIndexSelected)
+        fileImagePath: getImage(fileIndexSelected)
         arrowImagePath: Qt.resolvedUrl("../../images/icons/overlays/LowerIcon.png")
 
         MouseArea {
@@ -97,7 +109,7 @@ Item {
         y: 129
         backgroundColor: "#ef4661"
         letterColor: "#ffffff"
-        letter: "Delete File"
+        letter: "Remove File"
         letterSize: 16
         enabled: !isPrintingThisFile()
 
@@ -117,5 +129,4 @@ Item {
 
         onClicked: printFile.call()
     }
-
 }

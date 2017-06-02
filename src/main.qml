@@ -39,8 +39,26 @@ FormideNativeUi {
     // Replacing material
     property bool replaced: false
 
+    // Stopping print
+    property bool stopping: false
+
     onPrinterStarted: {
+
+        // clear starting print screen once printer has finished stopping
         pagestack.clearScreenFast()
+    }
+
+    onPrinterStopped: {
+        stopping = true
+    }
+
+    onPrinterStatusEvent: {
+
+        // clear stopping print screen once printer has finished stopping
+        if (data.data.status==="online" && stopping){
+            pagestack.clearScreenFast()
+            stopping = false
+        }
     }
 
     MouseArea {

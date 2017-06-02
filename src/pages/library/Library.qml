@@ -42,6 +42,7 @@ Item {
             onPrintFile: {
 
                 console.log("Printing file: " + list.listModel[fileIndexSelected].path)
+                pagestack.changeTransition("newPageComesFromInside")
 
                 pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
                 main.startPrintFromFileSystem(

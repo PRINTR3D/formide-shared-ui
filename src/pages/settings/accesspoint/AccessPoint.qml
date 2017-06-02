@@ -62,6 +62,8 @@ Item {
         letterSize: 16
 
         onClicked: {
+            pagestack.changeTransition("newPageComesFromInside")
+
             main.hotspot(!isHotspot,
                         function (err, response) {
                             if (err) {

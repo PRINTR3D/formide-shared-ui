@@ -25,7 +25,7 @@ Item {
 
     onVisibleChanged: {
         if (!visible) {
-            fileIndexSelected = 0
+            fileIndexSelected = null
         }
         if (visible) {
             singleItem.rotateArrow()
@@ -69,7 +69,7 @@ Item {
     }
 
     function isPrintingThisFile(){
-        if (printerStatus.queueItemId === queueItems[fileIndexSelected].id)
+        if (fileIndexSelected !== null && printerStatus.queueItemId === queueItems[fileIndexSelected].id)
             return true
         else
             return false

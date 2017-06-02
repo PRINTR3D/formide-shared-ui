@@ -206,9 +206,8 @@ Item {
 
             onHomeClicked: {
 
-                //                console.log("BUTTONSS")
                 if (isLocked) {
-                    console.log("Locked screen")
+                    pagestack.changeTransition("newPageComesFromDown")
                     pagestack.pushPagestack(
                                 Qt.resolvedUrl(
                                     "utils/keyboard/VirtualKeypad.qml"))
@@ -273,7 +272,6 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     if (isLocked) {
-                        console.log("Locked screen")
                         pagestack.changeTransition("newPageComesFromUp")
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(

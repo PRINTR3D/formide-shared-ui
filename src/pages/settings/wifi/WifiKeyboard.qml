@@ -17,6 +17,8 @@ VirtualKeyboard {
     onSubmitPassword: {
 
         console.log("Connecting to " + FormideShared.ssidToConnect)
+        pagestack.changeTransition("newPageComesFromInside")
+
         main.connectToWifi(FormideShared.ssidToConnect, password,
                            function (err, response) {
                                if (err) {

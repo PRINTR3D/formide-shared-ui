@@ -78,8 +78,6 @@ Item {
             }
             onPrintFile: {
 
-                pagestack.changeTransition("newPageComesFromInside")
-
                 main.startPrintFromQueueId(
                             queueItems[fileIndexSelected].id,
                             queueItems[fileIndexSelected].printJob.gcode,

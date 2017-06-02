@@ -22,6 +22,9 @@ PopupWindow {
     confirmButton: true
 
     onConfirmButtonSignal: {
+
+        pagestack.changeTransition("newPageComesFromInside")
+
         main.reset(
                     function (err, response) {
                         if (err) {
