@@ -26,7 +26,7 @@ Item {
 
     onVisibleChanged: {
         if (!visible) {
-            fileIndexSelected = 0
+            fileIndexSelected = null
         }
         if (visible) {
             singleItem.rotateArrow()
@@ -55,7 +55,7 @@ Item {
     function isPrintingThisFile(){
         var statusFilename = printerStatus.filePath.substring(printerStatus.filePath.lastIndexOf('/')+1)
 
-        if ( statusFilename == fileItems[fileIndexSelected].filename && printerStatus.device == 'LOCAL' &&
+        if ( fileIndexSelected !== null && statusFilename == fileItems[fileIndexSelected].filename && printerStatus.device == 'LOCAL' &&
             (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused') )
 
             return true

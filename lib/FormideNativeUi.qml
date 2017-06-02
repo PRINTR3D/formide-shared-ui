@@ -289,6 +289,9 @@ Window {
                                                       }
                                                       if (response) {
                                                           //              console.log("Response starting a print",JSON.stringify(response))
+
+                                                          getFiles()
+
                                                           if (callback)
                                                               callback(null,
                                                                        response)
@@ -937,10 +940,8 @@ Window {
         onTriggered: {
 
             if (printerStatus)
-                if (printerStatus.status === "online") {
-                    getFiles()
-                    getQueue()
-                }
+                getFiles()
+                getQueue()
         }
     }
 
