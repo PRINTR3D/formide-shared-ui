@@ -28,6 +28,8 @@ PopupWindow {
     onConfirmButtonSignal: {
 
         if(getName(0)){
+            pagestack.changeTransition("newPageComesFromInside")
+
             main.startPrintFromQueueId(
                         queueItems[0].id,
                         queueItems[0].printJob.gcode,

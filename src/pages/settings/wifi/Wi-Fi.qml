@@ -39,6 +39,8 @@ Item {
             console.log("Wi-Fi selected: " + listModel[indexSelected])
             FormideShared.ssidToConnect = listModel[indexSelected]
 
+            pagestack.changeTransition("newPageComesFromInside")
+
             if (name === main.singleNetwork)
                 pagestack.pushPagestack(Qt.resolvedUrl("WifiReset.qml"))
             else

@@ -210,6 +210,7 @@ Item {
             onClickedSignal: {
 
                 onClickedSignal: {
+                    pagestack.changeTransition("newPageComesFromDown")
                     pagestack.pushPagestack(
                                 Qt.resolvedUrl(
                                     "../../utils/keyboard/VirtualKeypad.qml"))

@@ -74,13 +74,12 @@ Item {
 
             main.getRegistrationToken(function (err, response) {
                 if (err) {
-                    //TODO: false
                     expanded = false
+                    pagestack.changeTransition("newPageComesFromInside")
                     pagestack.pushPagestack(Qt.resolvedUrl(
                                                 "../cloud/CloudError.qml"))
                 }
                 if (response) {
-                    //TODO: replace for string
                     registrationTokenString = registrationToken
                 }
             })
