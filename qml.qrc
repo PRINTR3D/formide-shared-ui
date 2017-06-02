@@ -151,5 +151,6 @@
         <file>src/pages/settings/extruders/ExtrudersCurrentlyPrinting.qml</file>
         <file>src/pages/settings/update/UpdateCurrentlyPrinting.qml</file>
         <file>src/pages/settings/calibration/CalibrationCurrentlyPrinting.qml</file>
+        <file>src/pages/dashboard/PrintStopping.qml</file>
     </qresource>
 </RCC>

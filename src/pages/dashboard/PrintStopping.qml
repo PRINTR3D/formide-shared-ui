@@ -5,13 +5,13 @@
 
 import QtQuick 2.0
 
-import "../"
+import "../../utils"
 
 MessageWindow {
     id: root
 
-    firstText: "Processing file" // Text shown as title
-    secondText: "Your file will start printing shortly" // Text shown in subtitle
+    firstText: "Stopping Print" // Text shown as title
+    secondText: "Your file will stop printing shortly" // Text shown in subtitle
 
     confirmButton: false // Not showing confirm button
 

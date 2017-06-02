@@ -23,7 +23,9 @@ PopupWindow {
     onConfirmButtonSignal: {
 
         Formide.printer(printerStatus.port).stop()
+        pagestack.changeTransition("newPageComesFromInside")
         pagestack.popPagestack()
+        pagestack.pushPagestack(Qt.resolvedUrl("PrintStopping.qml"))
     }
 
     onCancelButtonSignal: {

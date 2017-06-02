@@ -812,6 +812,7 @@ Window {
 
 
                 if (data.channel === "printer.stopped") {
+
                     printerStopped.call()
                 }
 
