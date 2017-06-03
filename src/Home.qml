@@ -297,7 +297,7 @@ Item {
                                     Qt.resolvedUrl(
                                         "utils/keyboard/VirtualKeypad.qml"))
                     } else {
-                        console.log("USB.qml")
+                        main.viewStackActivePage = "USB Drives"
                     }
                 }
             }
