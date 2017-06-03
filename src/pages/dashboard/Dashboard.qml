@@ -402,7 +402,7 @@ Item {
                 DefaultText {
                     width: 56 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 16 * unitMultiplierX
+                    x: 24 * unitMultiplierX
                     y: 136 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Black
@@ -411,9 +411,9 @@ Item {
 
                 // Status description
                 DefaultText {
-                    width: 160 * unitMultiplierX
+                    width: 152 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 80 * unitMultiplierX
+                    x: 88 * unitMultiplierX
                     y: 136 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Medium
@@ -428,7 +428,7 @@ Item {
                 DefaultText {
                     width: 56 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 16 * unitMultiplierX
+                    x: 24 * unitMultiplierX
                     y: 162 * unitMultiplierY
                     font.pixelSize: 16
                     text: "File"
@@ -437,9 +437,9 @@ Item {
 
                 // Job description
                 DefaultText {
-                    width: 160 * unitMultiplierX
+                    width: 152 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 80 * unitMultiplierX
+                    x: 88 * unitMultiplierX
                     y: 162 * unitMultiplierY
                     clip: true
                     font.pixelSize: 16
@@ -456,7 +456,7 @@ Item {
                 DefaultText {
                     width: 56 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 16 * unitMultiplierX
+                    x: 24 * unitMultiplierX
                     y: 188 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Black
@@ -465,9 +465,9 @@ Item {
 
                 // Time description
                 DefaultText {
-                    width: 160 * unitMultiplierX
+                    width: 152 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 80 * unitMultiplierX
+                    x: 88 * unitMultiplierX
                     y: 188 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Medium
