@@ -51,7 +51,7 @@ Item {
                 expandedMenuSize = 216
             }
             else if(driveFiles[indexSelected].type && driveFiles[indexSelected].type == "dir"){
-                main.drivePath = main.drivePath + driveFiles[indexSelected].name
+                main.drivePath.push(driveFiles[indexSelected].name)
                 main.updateDriveFilesFromPath()
             }
 
@@ -79,14 +79,16 @@ Item {
                 list.expanded = !list.expanded
             }
             onCopyFile: {
-                if(main.drivePath === "/"){
-                    main.drivePath = driveFiles[FormideShared.fileIndexSelected].name
+                var path
+
+                if(main.drivePath.length === 1){
+                    path = driveFiles[FormideShared.fileIndexSelected].name
                 }
                 else {
-                    main.drivePath = main.drivePath + driveFiles[FormideShared.fileIndexSelected].name
+                    path = main.drivePath.join('') + driveFiles[FormideShared.fileIndexSelected].name
                 }
 
-                main.copyFile(function(err, response){
+                main.copyFile(path, function(err, response){
 
                     pagestack.popPagestack()
 

@@ -81,7 +81,7 @@ Window {
     property var driveFiles: [] // Array of files and dirs found
     property var driveListing
     // Toggle to see if content is file list or drive list
-    property var drivePath: "/"
+    property var drivePath: ["/"]
     // Current folder path
     property var driveUnit
     // Name of drive unit
@@ -461,7 +461,10 @@ Window {
     }
 
     function updateDriveFilesFromPath(callback) {
-        Formide.usb().updateDriveFilesFromPath(driveUnit, drivePath,
+
+        var path = main.drivePath.join('')
+
+        Formide.usb().updateDriveFilesFromPath(driveUnit, path,
                                                function (err, list) {
 
                                                    if (err) {
@@ -487,8 +490,8 @@ Window {
                                                })
     }
 
-    function copyFile(callback) {
-        Formide.usb().copyFile(driveUnit, drivePath, function (err, list) {
+    function copyFile(path, callback) {
+        Formide.usb().copyFile(driveUnit, path, function (err, list) {
 
             if (err) {
                 console.log("Response ERR: ", JSON.stringify(err))

@@ -205,6 +205,8 @@ Item {
                     return "back"
                 else if (viewStackActivePage == "Full Calibration")
                     return "back"
+                else if (viewStackActivePage == "USB Drive")
+                    return "back"
                 else {
                     //                    console.log("Returning home")
                     return "home"
@@ -250,6 +252,17 @@ Item {
                         main.viewStackActivePage = "Calibration"
                     else if (viewStackActivePage == "Full Calibration")
                         main.viewStackActivePage = "Calibration"
+
+                    else if (viewStackActivePage == "USB Drive"){
+                        if(main.drivePath.length > 1){
+                            main.drivePath.pop()
+                            main.updateDriveFilesFromPath()
+                        }
+                        else{
+                            main.viewStackActivePage = "USB Drives"
+                        }
+                    }
+
                     else {
                         pagestack.changeTransition("newPageComesFromDown")
                         pagestack.pushPagestack(Qt.resolvedUrl("Menu.qml"))
