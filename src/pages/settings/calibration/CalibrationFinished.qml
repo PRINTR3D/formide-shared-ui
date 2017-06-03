@@ -30,7 +30,7 @@ Item {
         x: 48
         y: 56
 
-        text: "Your 3D printer is successfully calibrated, you can\nstart printing all the models in the world."
+        text: "Your 3D printer is successfully calibrated, you can\nstart printing all the models in the world"
     }
 
     KeyboardLetter {
