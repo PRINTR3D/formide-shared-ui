@@ -89,7 +89,6 @@
         <file>src/utils/PushButton.qml</file>
         <file>src/utils/SingleListItem.qml</file>
         <file>src/utils/Spinner.qml</file>
-        <file>src/utils/WifiSingle.qml</file>
         <file>src/Background.qml</file>
         <file>src/Home.qml</file>
         <file>src/Menu.qml</file>

@@ -27,9 +27,7 @@ Item {
     // Event emitted when pressing confirm
 
     // Background
-    Background{
-        y:0
-    }
+    Background{}
 
     // Home icon
     HomeIcon {

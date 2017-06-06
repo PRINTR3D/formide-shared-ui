@@ -92,10 +92,7 @@ FormideNativeUi {
         }
     }
 
-    Background{
-        anchors.fill: parent
-        y:0
-    }
+    Background{}
 
     // This is the main page stack (StackView) of the application.
     // You can push pages and pop them by simply calling the functions push and pop

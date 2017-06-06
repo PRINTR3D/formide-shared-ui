@@ -4,6 +4,7 @@
  */
 
 import QtQuick 2.0
+import "../"
 
 Item {
     id: root
@@ -25,11 +26,7 @@ Item {
     signal // Event emitted when pressing confirm
     cancelButtonSignal
 
-    // Background
-    Rectangle {
-        anchors.fill: parent
-        color: "#141414"
-    }
+    Background{}
 
     Text {
         width: 384

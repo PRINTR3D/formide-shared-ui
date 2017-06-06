@@ -42,9 +42,7 @@ Item {
     }
 
     // Background
-    Background{
-        y:0
-    }
+    Background{}
 
     HomeIcon {
         visible: visibleHomeIcon

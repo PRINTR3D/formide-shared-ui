@@ -17,9 +17,7 @@ Rectangle {
     height: parent.height
 
     // Background
-    Background{
-        y:0
-    }
+    Background{}
 
     // Home icon
     HomeIcon {

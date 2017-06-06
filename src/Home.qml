@@ -354,14 +354,15 @@ Item {
         }
     }
 
-    Background{}
+    Background{
+        y:48
+    }
 
     // Second Stack for views under main menu
     StackView {
         id: viewStack
         width: parent.width
         height: parent.height - 48
-        //x:(parent.width - width)/2
         y: 48
 
         Component.onCompleted: {
@@ -369,26 +370,7 @@ Item {
         }
 
         delegate: StackViewDelegate {
-            function transitionFinished(properties) {
-                properties.exitItem.opacity = 1
-            }
-
-            pushTransition: StackViewTransition {
-                PropertyAnimation {
-                    target: enterItem
-                    property: "opacity"
-                    from: 0
-                    to: 1
-                    duration: 250
-                }
-                PropertyAnimation {
-                    target: exitItem
-                    property: "opacity"
-                    from: 1
-                    to: 0
-                    duration: 300
-                }
-            }
+            pushTransition: StackViewTransition {}
         }
     }
 }

@@ -5,13 +5,15 @@
 
 import QtQuick 2.0
 import "../"
+import "../../"
 
 Rectangle {
 
     id: root
     width: parent.width
     height: parent.height
-    color: "#0a0a0a"
+
+    Background{}
 
     property var currentPassword: ""
     property var activeKeyboard: "lowerCase"

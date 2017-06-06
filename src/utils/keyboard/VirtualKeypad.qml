@@ -103,9 +103,7 @@ Rectangle {
     }
 
     // Background
-    Background{
-        y:0
-    }
+    Background{}
 
     //Home Icon
     HomeIcon {

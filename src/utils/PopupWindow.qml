@@ -28,9 +28,7 @@ Item {
     signal quitButtonSignal                     // Event emitted when pressing the [X] button
 
     // Background
-    Background{
-        y:0
-    }
+    Background{}
 
     DefaultText{
 

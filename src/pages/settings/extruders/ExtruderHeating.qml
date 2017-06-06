@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "../../.."
 import "../../../utils"
 import "../../../utils/keyboard"
 import "../../../../lib/formide/formideShared.js" as FormideShared
@@ -11,11 +12,7 @@ Item {
     property var targetTemp: FormideShared.temperature
     property var extruderSelected: FormideShared.extruderSelected
 
-    // Background
-    Rectangle {
-        anchors.fill: parent
-        color: "#141414"
-    }
+    Background{}
 
     DefaultText {
         width: 448

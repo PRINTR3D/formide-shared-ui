@@ -4,12 +4,14 @@
  */
 
 import QtQuick 2.0
+import "../"
 
 Rectangle {
 
     width: parent.width
     height: 65
-    color: "#141414"
+
+    Background{}
 
     property int textSize:24
 

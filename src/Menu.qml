@@ -13,9 +13,7 @@ Item {
     width: parent.width
     height: parent.height
 
-    Background{
-        y:0
-    }
+    Background{}
 
     // Home Icon
     HomeIcon {

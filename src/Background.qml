@@ -10,6 +10,7 @@ Rectangle{
     id:background
     width: parent.width
     height: parent.height
-    y:48
+    y:0
+    x:0
     color: "#141414"
 }
