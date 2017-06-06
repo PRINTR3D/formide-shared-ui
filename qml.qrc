@@ -47,7 +47,6 @@
         <file>src/pages/settings/calibration/Calibrate.qml</file>
         <file>src/pages/settings/calibration/Calibrating.qml</file>
         <file>src/pages/settings/calibration/CalibrationFinished.qml</file>
-        <file>src/pages/settings/calibration/ChangeXYaxes.qml</file>
         <file>src/pages/settings/cloud/Cloud.qml</file>
         <file>src/pages/settings/cloud/CloudError.qml</file>
         <file>src/pages/settings/extruders/ExtruderReplace.qml</file>
@@ -65,10 +64,6 @@
         <file>src/pages/settings/wifi/WifiKeyboard.qml</file>
         <file>src/pages/settings/About.qml</file>
         <file>src/pages/settings/Settings.qml</file>
-        <file>src/popups/settingsCalibrateBed.qml</file>
-        <file>src/popups/settingsCalibrateXY.qml</file>
-        <file>src/popups/settingsCalibrateZ.qml</file>
-        <file>src/popups/settingsFullCalibrate.qml</file>
         <file>src/utils/keyboard/KeyboardLetter.qml</file>
         <file>src/utils/keyboard/KeypadLetter.qml</file>
         <file>src/utils/keyboard/Selector.qml</file>
@@ -81,8 +76,6 @@
         <file>src/utils/HomeIcon.qml</file>
         <file>src/utils/InsertValue.qml</file>
         <file>src/utils/MenuItem.qml</file>
-        <file>src/utils/MessageWindow.qml</file>
-        <file>src/utils/PopupSettingsCalibration.qml</file>
         <file>src/utils/PopupWindow.qml</file>
         <file>src/utils/ProgressBar.qml</file>
         <file>src/utils/PushButton.qml</file>
@@ -157,5 +150,11 @@
         <file>src/pages/usb/USBCopyConfirm.qml</file>
         <file>src/pages/usb/USBCopyError.qml</file>
         <file>src/images/splash/splash.jpg</file>
+        <file>src/utils/MessageInnerWindow.qml</file>
+        <file>src/utils/SettingsCalibration.qml</file>
+        <file>src/pages/settings/calibration/settingsCalibrateBed.qml</file>
+        <file>src/pages/settings/calibration/settingsCalibrateXY.qml</file>
+        <file>src/pages/settings/calibration/settingsCalibrateZ.qml</file>
+        <file>src/pages/settings/calibration/settingsFullCalibrate.qml</file>
     </qresource>
 </RCC>

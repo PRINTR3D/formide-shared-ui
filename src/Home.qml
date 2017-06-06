@@ -92,16 +92,16 @@ Item {
                                "pages/settings/extruders/ExtruderReplace.qml"))
 
         else if (viewStackActivePage == "X and Y Calibration")
-            viewStack.push(Qt.resolvedUrl("popups/settingsCalibrateXY.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/calibration/settingsCalibrateXY.qml"))
 
         else if (viewStackActivePage == "Z Calibration")
-            viewStack.push(Qt.resolvedUrl("popups/settingsCalibrateZ.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/calibration/settingsCalibrateZ.qml"))
 
         else if (viewStackActivePage == "Bed Calibration")
-            viewStack.push(Qt.resolvedUrl("popups/settingsCalibrateBed.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/calibration/settingsCalibrateBed.qml"))
 
         else if (viewStackActivePage == "Full Calibration")
-            viewStack.push(Qt.resolvedUrl("popups/settingsFullCalibrate.qml"))
+            viewStack.push(Qt.resolvedUrl("pages/settings/calibration/settingsFullCalibrate.qml"))
 
         else if (viewStackActivePage == "USB Drives")
             viewStack.push(Qt.resolvedUrl("pages/usb/USB.qml"))

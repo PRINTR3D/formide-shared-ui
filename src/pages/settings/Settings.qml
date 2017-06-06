@@ -20,7 +20,7 @@ Item {
         width:parent.width
         height:224
         contentWidth: width
-        contentHeight: 532
+        contentHeight: 534
 
         property var index: main.settingsIndexSelected
 

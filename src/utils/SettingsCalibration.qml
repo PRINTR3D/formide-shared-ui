@@ -54,23 +54,9 @@ Item {
     }
 
     PushButton {
-        x: 56
+        x:132
         y: 150
-        width: 176
-        buttonText: fullCalibrationButtonText
 
-        backgroundColor: "#ef4661"
-        textColor: "#ffffff"
-
-        onClicked: {
-            cancelButtonSignal.call()
-        }
-    }
-
-    PushButton {
-        x: 248
-        y: 150
-        width: 176
         buttonText: confirmButtonText
 
         backgroundColor: "#46b1e6"

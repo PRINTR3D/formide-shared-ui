@@ -4,9 +4,9 @@
  */
 
 import QtQuick 2.0
-import "../utils"
+import "../../../utils"
 
-PopupSettingsCalibration {
+SettingsCalibration {
 
     id: root
 
@@ -15,13 +15,7 @@ PopupSettingsCalibration {
 
     confirmButtonText: "Not implemented"
 
-    fullCalibrationButtonText: "Cancel"
-
     onConfirmButtonSignal: {
 
-    }
-
-    onCancelButtonSignal: {
-        main.viewStackActivePage = "Settings"
     }
 }
