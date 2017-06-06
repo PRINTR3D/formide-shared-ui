@@ -44,9 +44,7 @@ Item {
     }
 
     // Background
-    Background{
-        y:0
-    }
+    Background{}
 
     Item {
         width: parent.width

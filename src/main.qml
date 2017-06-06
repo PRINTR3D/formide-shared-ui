@@ -33,6 +33,9 @@ FormideNativeUi {
     property string viewStackActivePage: ""
     property int settingsIndexSelected: 0
 
+    // initialized printer
+    property bool initialized: false
+
     // Locked status
     property bool isLocked: false
 
@@ -58,6 +61,11 @@ FormideNativeUi {
         if (data.data.status==="online" && stopping){
             pagestack.clearScreenFast()
             stopping = false
+        }
+
+        if(!initialized){
+            initialized = true
+            splash.visible = false
         }
     }
 
@@ -92,10 +100,7 @@ FormideNativeUi {
         }
     }
 
-    Background{
-        anchors.fill: parent
-        y:0
-    }
+    Background{}
 
     // This is the main page stack (StackView) of the application.
     // You can push pages and pop them by simply calling the functions push and pop
@@ -300,4 +305,26 @@ FormideNativeUi {
         } //Stackview
     } // Rectangle
 
+
+    // always hide splash screen after 30 seconds timeout
+    Timer {
+        id: splashTimer
+
+        interval: 30000
+        repeat: false
+        running: true
+
+        onTriggered: {
+            splash.visible = false
+        }
+    }
+
+    // splash screen
+    Image {
+        id: splash
+        width: parent.width
+        height: parent.height
+        visible: true
+        source: "images/splash/splash.png"
+    }
 }

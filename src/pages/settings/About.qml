@@ -5,6 +5,7 @@
 
 
 import QtQuick 2.0
+import "../../"
 import "../../utils"
 
 Flickable {
@@ -61,7 +62,8 @@ Flickable {
         id: about
         width: parent.width
         height: 344
-        color: "#141414"
+
+        Background{}
 
         Image {
             width: 72

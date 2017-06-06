@@ -28,9 +28,7 @@ Item {
     property var loading:false
 
     // Background
-    Background{
-        y:0
-    }
+    Background{}
 
     MouseArea{
         anchors.fill: parent
