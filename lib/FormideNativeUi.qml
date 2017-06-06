@@ -239,7 +239,7 @@ Window {
          MAIN LOGIC - Printer
          ************************************/
     function getQueue() {
-        checkEverythingTimer.restart()
+
         if (!printerStatus) {
             return
         }
@@ -587,11 +587,6 @@ Window {
             })
     }
 
-    function resetWifiUsbTimer()
-    {
-        wifiTimer.restart()
-    }
-
     function checkConnection(callback) {
         Formide.wifi().checkConnection(function (err, response) {
 
@@ -606,7 +601,6 @@ Window {
                 if (callback)
                     callback(err, null)
 
-                wifiTimer.restart()
                 getWifiList()
             }
             if (response) {
@@ -921,23 +915,19 @@ Window {
          TIMERS
          ************************************/
 
-    function restartTimers(){
-        checkEverythingTimer.restart()
+    function resetCheckConnections() {
+        checkConnections.restart()
     }
 
-    // Timer to check queue and files
+    // Timer to check connections
     Timer {
-        id: checkEverythingTimer
+        id: checkConnections
         running: true
         repeat: true
         interval: oneSecond * 15
         onTriggered: {
-            getWifiList()
             checkConnection()
             isUsbConnected()
-            scanDrives()
-            getFiles()
-            getQueue()
         }
     }
 

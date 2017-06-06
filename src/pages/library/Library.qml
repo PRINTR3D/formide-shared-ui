@@ -16,6 +16,20 @@ Item {
 
     property var fileItems: main.fileItems
 
+    Component.onCompleted: {
+        main.getFiles()
+    }
+
+    Timer {
+        id: checkEverythingTimer
+        running: true
+        repeat: true
+        interval: 15000
+        onTriggered: {
+            main.getFiles()
+        }
+    }
+
     FileList {
 
         id: list
