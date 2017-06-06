@@ -46,7 +46,7 @@ Item {
     }
 
     function isPrinting(){
-        if (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused')
+        if (printerStatus && (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused'))
             return true
         else
             return false
@@ -87,7 +87,7 @@ Item {
         horizontalAlignment: TextInput.AlignHCenter
         font.pixelSize: 16
         lineHeight: 1.5
-        text: isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""
+        text: !printerStatus ? "No printer connected" : isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""
     }
 
     KeyboardLetter {
@@ -113,7 +113,7 @@ Item {
         letterColor: "#ffffff"
         letter: "Print File"
         letterSize: 16
-        enabled: !isPrinting()
+        enabled: !isPrinting() && printerStatus !== undefined
 
         onClicked: printFile.call()
     }

@@ -850,6 +850,8 @@ Window {
                 if (data.channel === "printer.status") {
 //                    console.log(JSON.stringify(data.data))
 
+                    resetCheckPrinterStatus()
+
                     printerStatusEvent(data)
                     if (data.data.port === "/dev/virt0") {
                         //                        console.log("Virtual printer return")
@@ -914,6 +916,21 @@ Window {
     /************************************
          TIMERS
          ************************************/
+
+    function resetCheckPrinterStatus() {
+        checkPrinterStatus.restart()
+    }
+
+    // Timer to clear printerStatus if no status is received
+    Timer {
+        id: checkPrinterStatus
+        running: true
+        repeat: true
+        interval: oneSecond * 15
+        onTriggered: {
+            printerStatus = undefined
+        }
+    }
 
     function resetCheckConnections() {
         checkConnections.restart()
