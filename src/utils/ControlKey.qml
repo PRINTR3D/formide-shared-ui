@@ -6,15 +6,13 @@
 
 import QtQuick 2.0
 import "../"
-import "keyboard"
 
-KeyboardLetter {
-
-    id: controlKey
+PushButton {
     width: 106
     height: 48
+
+    buttonText: "Copy to Library"
     backgroundColor: "lightgrey"
-    letterSize: 16
 
     function action(){}
 

@@ -5,7 +5,6 @@
 
 import QtQuick 2.0
 import "../../../utils"
-import "../../../utils/keyboard"
 import "../../../../lib/formide/formideShared.js" as FormideShared
 import "../../../../lib/formide/formide.js" as Formide
 
@@ -49,17 +48,14 @@ Item {
         text: isHotspot ? "Disable to no longer emit Wi-Fi" : "Enable to emit Printer's Wi-Fi"
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
+    PushButton {
+
         x:132
-        y:128
+        y:126
 
-        letter: isHotspot ? "Disable" : "Enable"
-
+        buttonText: isHotspot ? "Disable" : "Enable"
         backgroundColor: "#46b1e6"
-        letterColor: "white"
-        letterSize: 16
+        textColor: "#ffffff"
 
         onClicked: {
             pagestack.changeTransition("newPageComesFromInside")

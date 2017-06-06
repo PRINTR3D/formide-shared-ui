@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import "../../.."
 import "../../../utils"
-import "../../../utils/keyboard"
 import "../../../../lib/formide/formideShared.js" as FormideShared
 import "../../../../lib/formide/formide.js" as Formide
 
@@ -18,7 +17,7 @@ Item {
         width: 448
         height: 24
         x: 16
-        y: 80
+        y: 58
         text: "Heating to " + targetTemp + "°, please Wait"
         color: "white"
         font.pixelSize: 24
@@ -31,7 +30,7 @@ Item {
         width: 384
         height: 16
         x: 16
-        y: 152
+        y: 122
         showPercentage: false
 
         function getProgress() {
@@ -49,7 +48,7 @@ Item {
         width: 56
         height: 32
         x: 416
-        y: 142
+        y: 112
         text: ((getTemperature()) + "°")
         font.pixelSize: 24
 
@@ -59,6 +58,37 @@ Item {
             }
             if (extruderSelected === 1) {
                 return (printerStatus.extruders[1].temp)
+            }
+        }
+    }
+
+    Rectangle{
+        x:132
+        y:176
+
+        width: 216
+        height: 48
+        radius: 3
+        color: mo.pressed?"#878896": "#ef4661"
+
+        DefaultText{
+           font.pixelSize: 16
+           anchors.centerIn: parent
+           color: "#ffffff"
+           text: "Cancel"
+        }
+
+        MouseArea{
+
+            id: mo
+            anchors.fill: parent
+            onClicked:{
+                // cool extruder
+                Formide.printer(printerStatus.port).gcode(
+                                    "M104 T" + FormideShared.extruderSelected + " S0")
+
+                main.viewStackActivePage = "Extruders"
+                pagestack.popPagestack()
             }
         }
     }

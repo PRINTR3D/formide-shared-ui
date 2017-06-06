@@ -59,61 +59,35 @@ Item {
         text: secondText
     }
 
-    Rectangle{
+    PushButton {
         visible:cancelButton
 
         x: confirmButton ? 56 : 132
         y: 176
         width: confirmButton ? 176 : 216
-        height: 48
-        radius: 3
-        color:mo.pressed?"#878896": "#ef4661"
 
-        DefaultText{
-           font.family: "OpenSans"
-           font.pixelSize: 16
-           anchors.centerIn: parent
-           color: "#ffffff"
+        buttonText: cancelButtonText
+        backgroundColor: "#ef4661"
+        textColor: "#ffffff"
 
-           text: cancelButtonText
-        }
-
-        MouseArea{
-
-            id:mo
-            anchors.fill: parent
-            onClicked:{
-                cancelButtonSignal.call()
-            }
+        onClicked: {
+            cancelButtonSignal.call()
         }
     }
 
-    Rectangle{
+    PushButton {
         visible:confirmButton
 
         x: cancelButton ? 248 : 132
         y: 176
         width: cancelButton ? 176 : 216
-        height: 48
-        radius: 3
-        color: "#46b1e6"
 
-        DefaultText{
-           font.family: "OpenSans"
-           font.pixelSize: 16
-           anchors.centerIn: parent
-           color: "#ffffff"
+        buttonText: confirmButtonText
+        backgroundColor: "#46b1e6"
+        textColor: "#ffffff"
 
-           text:confirmButtonText
-        }
-
-        MouseArea{
-
-            anchors.fill: parent
-            onClicked:{
-
-                confirmButtonSignal.call()
-            }
+        onClicked: {
+            confirmButtonSignal.call()
         }
     }
 }

@@ -14,7 +14,7 @@ Item {
     width: parent.width
 
     property var newValue
-    property var buttonText: "Change buttonText"
+    property var insertButtonText: ""
     property var unit: ""
 
     property var maxValue
@@ -105,16 +105,15 @@ Item {
         source: "../images/icons/overlays/RaiseIcon.png"
     }
 
-    KeyboardLetter {
-        width: 280
-        height: 48
+    PushButton {
         x: 100
         y: 160
-        letter: buttonText
+        width: 280
+
+        buttonText: insertButtonText
 
         backgroundColor: "#46b1e6"
-        letterColor: "#ffffff"
-        letterSize: 16
+        textColor: "#ffffff"
 
         onClicked: {
             confirmButton.call()

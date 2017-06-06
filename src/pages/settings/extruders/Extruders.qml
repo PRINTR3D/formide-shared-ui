@@ -5,7 +5,6 @@
 
 import QtQuick 2.0
 import "../../../utils"
-import "../../../utils/keyboard"
 import "../../../../lib/formide/formideShared.js" as FormideShared
 import "../../../../lib/formide/formide.js" as Formide
 
@@ -22,7 +21,7 @@ Item {
 
     DefaultText {
         x: 61
-        y: 32
+        y: 48
         width: 216
         height: 33
 
@@ -32,23 +31,20 @@ Item {
 
     DefaultText {
         x: 293
-        y: 32
+        y: 48
 
         font.pixelSize: 24
         text: "Extruder 2"
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
+    PushButton {
+
         x: 16
-        y: 128
+        y: 126
 
-        letter: "Change Material"
-
+        buttonText: "Change Material"
         backgroundColor: "#46b1e6"
-        letterColor: "white"
-        letterSize: 16
+        textColor: "#ffffff"
 
         onClicked: {
             FormideShared.extruderSelected = 0
@@ -57,22 +53,16 @@ Item {
         }
     }
 
-    KeyboardLetter {
+    PushButton {
 
-        width: 216
-        height: 48
         x: 248
-        y: 128
+        y: 126
 
-        letter: "Change Material"
-
+        buttonText: "Change Material"
         backgroundColor: "#46b1e6"
-        letterColor: "white"
-        letterSize: 16
-        enabled: printerStatus.extruders[1] ? true : false
+        textColor: "#ffffff"
 
         onClicked: {
-            replaced = false
             FormideShared.extruderSelected = 1
             pagestack.changeTransition("newPageComesFromInside")
             pagestack.pushPagestack(Qt.resolvedUrl("MaterialPreheat.qml"))

@@ -7,6 +7,7 @@ import QtQuick 2.3
 import QtQuick.Controls 1.2
 import "utils"
 import "../lib/formide/formide.js" as Formide
+import "../lib/formide/formideShared.js" as FormideShared
 
 Item {
 
@@ -242,8 +243,15 @@ Item {
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Material Preheat")
                         main.viewStackActivePage = "Extruders"
-                    else if (viewStackActivePage == "Extruder Replace")
+
+                    else if (viewStackActivePage == "Extruder Replace") {
+                        // cool extruder
+                        Formide.printer(printerStatus.port).gcode(
+                                            "M104 T" + FormideShared.extruderSelected + " S0")
+
                         main.viewStackActivePage = "Settings"
+                    }
+
                     else if (viewStackActivePage == "X and Y Calibration")
                         main.viewStackActivePage = "Calibration"
                     else if (viewStackActivePage == "Z Calibration")

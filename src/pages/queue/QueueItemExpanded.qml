@@ -5,7 +5,6 @@
 
 import QtQuick 2.0
 import "../../utils"
-import "../../utils/keyboard"
 
 import "../../../lib/formide/formideShared.js" as FormideShared
 
@@ -102,30 +101,30 @@ Item {
         text: !printerStatus ? "No printer connected" : isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
+    PushButton {
+
         x: 24
         y: 129
+
+        buttonText: "Remove File"
         backgroundColor: "#ef4661"
-        letterColor: "#ffffff"
-        letter: "Remove File"
-        letterSize: 16
-        enabled: !isPrintingThisFile() && printerStatus !== undefined
+        textColor: "#ffffff"
+
+        enabled: !isPrintingThisFile()
 
         onClicked: deleteFile.call()
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
+    PushButton {
+
         x: 248
         y: 129
+
+        buttonText: "Print File"
         backgroundColor: "#46b1e6"
-        letterColor: "#ffffff"
-        letter: "Print File"
-        letterSize: 16
-        enabled: !isPrinting()
+        textColor: "#ffffff"
+
+        enabled: !isPrinting() && printerStatus !== undefined
 
         onClicked: printFile.call()
     }
