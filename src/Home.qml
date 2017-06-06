@@ -167,7 +167,7 @@ Item {
     // Top bar
     Rectangle {
         width: parent.width
-        height: 48
+        height: 50
         color: "#000000"
 
         HomeIcon {
@@ -355,15 +355,15 @@ Item {
     }
 
     Background{
-        y:48
+        y:50
     }
 
     // Second Stack for views under main menu
     StackView {
         id: viewStack
         width: parent.width
-        height: parent.height - 48
-        y: 48
+        height: parent.height - 50
+        y: 50
 
         Component.onCompleted: {
             main.viewStackActivePage = "Dashboard"

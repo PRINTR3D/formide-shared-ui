@@ -9,7 +9,7 @@ import QtQuick 2.0
 // Home icon
 Item {
     width: 80
-    height: 48
+    height: 50
 
     signal homeClicked
 
