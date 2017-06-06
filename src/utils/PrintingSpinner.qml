@@ -7,7 +7,7 @@ import QtQuick 2.0
 
 import "../"
 
-MessageWindow {
+PopupWindow {
     id: root
 
     firstText: "Processing file" // Text shown as title

@@ -18,14 +18,13 @@ Item {
     property var cancelButtonText:""            // Text shown on cancel button
     property var confirmButtonText:""           // Text shown in confirm button
 
-    property bool cancelButton:true             // Showing cancel button
+    property bool cancelButton:false             // Showing cancel button
     property bool confirmButton:true            // Showing confirm button
 
     property bool centerText:false              // Center first text
 
     signal cancelButtonSignal                   // Event emitted when pressing cancel
     signal confirmButtonSignal                  // Event emitted when pressing confirm
-    signal quitButtonSignal                     // Event emitted when pressing the [X] button
 
     // Background
     Background{}

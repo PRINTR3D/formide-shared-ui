@@ -32,7 +32,7 @@ Item {
         }
     }
 
-    MessageWindow {
+    PopupWindow {
         id: checkingMessage
 
         visible: checking
@@ -44,7 +44,7 @@ Item {
         confirmButton: false // Showing confirm button
     }
 
-    MessageWindow {
+    PopupWindow {
         id: wifiMessage
 
         visible: !checking

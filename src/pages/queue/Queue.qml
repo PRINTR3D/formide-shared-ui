@@ -116,7 +116,7 @@ Item {
         }
     }
 
-    MessageWindow {
+    PopupWindow {
         id: emptyList
 
         visible: queueItems.length == 0 && isConnectedToWifi
@@ -128,7 +128,7 @@ Item {
         confirmButton: false // Showing confirm button
     }
 
-    MessageWindow {
+    PopupWindow {
         id: wifiMessage
 
         visible: !isConnectedToWifi

@@ -7,7 +7,7 @@ import QtQuick 2.0
 
 import "../"
 
-MessageWindow {
+PopupWindow {
     id: root
 
     firstText: "Printing error" // Text shown as title

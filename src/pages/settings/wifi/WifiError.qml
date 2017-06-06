@@ -7,7 +7,7 @@ import QtQuick 2.0
 
 import "../../../utils"
 
-MessageWindow {
+PopupWindow {
     id: root
 
     firstText: "Failed to connect" // Text shown as title

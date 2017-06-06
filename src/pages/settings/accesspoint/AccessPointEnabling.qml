@@ -7,7 +7,7 @@ import QtQuick 2.0
 
 import "../../../utils"
 
-MessageWindow {
+PopupWindow {
     id: root
 
     firstText: "Enabling" // Text shown as title

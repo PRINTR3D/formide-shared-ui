@@ -34,7 +34,7 @@ Item {
         }
     }
 
-    MessageWindow {
+    PopupWindow {
         id: wifiMessage
 
         visible: !isConnectedToWifi

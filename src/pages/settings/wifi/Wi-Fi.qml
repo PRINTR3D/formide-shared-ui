@@ -60,7 +60,7 @@ Item {
         }
     }
 
-    MessageWindow {
+    PopupWindow {
         id: emptyList
 
         visible: main.wifiList.length == 0
