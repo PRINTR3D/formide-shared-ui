@@ -12,5 +12,5 @@ Rectangle{
     height: parent.height
     y:0
     x:0
-    color: "#141414"
+    color: "#1F1F1F"
 }
