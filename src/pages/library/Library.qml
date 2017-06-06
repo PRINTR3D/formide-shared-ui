@@ -80,9 +80,9 @@ Item {
 
         visible: fileItems.length == 0
 
-        firstText: "No Library items found" // Text shown as title
+        firstText: "No library items found" // Text shown as title
 
-        centerText: true
+        secondText: "Add items from the queue or a USB device"
 
         confirmButton: false // Showing confirm button
     }
