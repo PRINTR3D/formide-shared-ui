@@ -81,7 +81,7 @@ Window {
     property var driveFiles: [] // Array of files and dirs found
     property var driveListing
     // Toggle to see if content is file list or drive list
-    property var drivePath
+    property var drivePath: ["/"]
     // Current folder path
     property var driveUnit
     // Name of drive unit
@@ -446,6 +446,7 @@ Window {
                     if (!usbAvailable)
                         usbAvailable = true
                     driveFiles = list
+
                 } else {
                     //console.log("Not updating drive")
                     if (usbAvailable) {
@@ -460,7 +461,10 @@ Window {
     }
 
     function updateDriveFilesFromPath(callback) {
-        Formide.usb().updateDriveFilesFromPath(driveUnit, drivePath,
+
+        var path = main.drivePath.join('')
+
+        Formide.usb().updateDriveFilesFromPath(driveUnit, path,
                                                function (err, list) {
 
                                                    if (err) {
@@ -476,8 +480,7 @@ Window {
                                                        driveFiles = list.filter(
                                                                    function (file) {
                                                                        if (file.name) {
-                                                                           if (file.name.toLowerCase().indexO(".gcode") !== -1 || file.name.toLowerCase().indexOf(".stl") !== -1 || file.type == "dir")
-                                                                               return file
+                                                                           return file
                                                                        }
                                                                    })
 
@@ -487,8 +490,8 @@ Window {
                                                })
     }
 
-    function copyFile(callback) {
-        Formide.usb().copyFile(driveUnit, drivePath, function (err, list) {
+    function copyFile(path, callback) {
+        Formide.usb().copyFile(driveUnit, path, function (err, list) {
 
             if (err) {
                 console.log("Response ERR: ", JSON.stringify(err))
@@ -501,6 +504,8 @@ Window {
 
             if (list) {
 
+                getFiles()
+
                 //console.log("Response OK: ",JSON.stringify(list))
                 if (callback)
                     callback(null, list)
@@ -511,7 +516,6 @@ Window {
     function updateDriveUnit(driveU, callback) {
         driveUnit = driveU
 
-        console.log("NOOOOOO")
         Formide.usb().mount(driveUnit, function (err, response) {
             if (err) {
                 console.log("Error mounting drive: ", JSON.stringify(err))
@@ -519,7 +523,7 @@ Window {
                     callback(err, null)
             }
             if (response) {
-                //console.log("Response mounting drive: ",JSON.stringify(response));
+                console.log("Response mounting drive: ",JSON.stringify(response));
                 if (response.message == "drive mounted") {
                     updateDriveFilesFromPath(callback)
                 }
@@ -918,94 +922,28 @@ Window {
          ************************************/
 
     function restartTimers(){
-
         checkEverythingTimer.restart()
-        wifiTimer.restart()
-
     }
 
-
-    // note
-    // /!\ Printer specific timers need to be implemented out of here, in main.qml
-    function touchInput() {
-        checkEverythingTimer.restart()
-        wifiTimer.restart()
-    }
-
-    // Timer to check queue, print jobs and files
+    // Timer to check queue and files
     Timer {
         id: checkEverythingTimer
         running: true
         repeat: true
         interval: oneSecond * 15
         onTriggered: {
-
-            if (printerStatus)
-                getFiles()
-                getQueue()
-        }
-    }
-
-    Timer {
-        id: updateEverythingTimer
-        running: false
-        repeat: false
-        interval: 5000
-        onTriggered: {
-
+            getWifiList()
+            checkConnection()
+            isUsbConnected()
             getFiles()
             getQueue()
-        }
-    }
-
-    // Timer for printer status override (Builder specific - move out of here)
-    Timer {
-        id: statusBlockedTimer
-        running: false
-        repeat: false
-        interval: oneSecond * 5
-        onTriggered: {
-            statusBlocked = false
-        }
-    }
-
-    // Timer to check Wi-Fi status
-    Timer {
-        id: wifiTimer
-        interval: 15000
-        repeat: true
-        running: true
-        onTriggered: {
-            if (printerStatus)
-            {
-                if (printerStatus.status === "online"
-                        || printerStatus.status === "printing"
-                        || printerStatus.status === "heating"
-                        || printerStatus.status === "paused") {
-                    console.log("Wi-Fi Checking")
-                    checkConnection()
-
-                    return;
-
-                }
-
-                if(printerStatus.status === "online")
-                    isUsbConnected()
-            }
-            else
-            {
-                getWifiList()
-                checkConnection()
-            }
-
-
         }
     }
 
     // Initial loop to login in. It stops after connecting with Formide.
     Timer {
         id: loginTimer
-        interval: 20000
+        interval: oneSecond * 20
         repeat: true
         running: true
 

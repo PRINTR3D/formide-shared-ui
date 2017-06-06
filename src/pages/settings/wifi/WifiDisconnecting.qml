@@ -11,7 +11,7 @@ MessageWindow {
     id: root
 
     firstText: "Disconnecting" // Text shown as title
-    secondText: "Please wait while the printer\ndisconnects from the wireless network." // Text shown in subtitle
+    secondText: "Please wait while the printer\ndisconnects from the wireless network" // Text shown in subtitle
 
     confirmButtonText: "Dismiss" // Text shown in confirm button
 

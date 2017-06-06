@@ -101,6 +101,13 @@ Item {
 
         else if (viewStackActivePage == "Full Calibration")
             viewStack.push(Qt.resolvedUrl("popups/settingsFullCalibrate.qml"))
+
+        else if (viewStackActivePage == "USB Drives")
+            viewStack.push(Qt.resolvedUrl("pages/usb/USB.qml"))
+
+        else if (viewStackActivePage == "USB Drive")
+            viewStack.push(Qt.resolvedUrl("pages/usb/USBDrive.qml"))
+
         else
             viewStack.push(Qt.resolvedUrl("Background.qml"))
     }
@@ -198,6 +205,8 @@ Item {
                     return "back"
                 else if (viewStackActivePage == "Full Calibration")
                     return "back"
+                else if (viewStackActivePage == "USB Drive")
+                    return "back"
                 else {
                     //                    console.log("Returning home")
                     return "home"
@@ -243,6 +252,19 @@ Item {
                         main.viewStackActivePage = "Calibration"
                     else if (viewStackActivePage == "Full Calibration")
                         main.viewStackActivePage = "Calibration"
+
+                    else if (viewStackActivePage == "USB Drive"){
+                        if(main.drivePath.length > 1){
+                            main.drivePath.pop()
+                            main.updateDriveFilesFromPath()
+                        }
+                        else{
+                            main.scanDrives(function(){
+                                main.viewStackActivePage = "USB Drives"
+                            })
+                        }
+                    }
+
                     else {
                         pagestack.changeTransition("newPageComesFromDown")
                         pagestack.pushPagestack(Qt.resolvedUrl("Menu.qml"))
@@ -277,7 +299,7 @@ Item {
                                     Qt.resolvedUrl(
                                         "utils/keyboard/VirtualKeypad.qml"))
                     } else {
-                        console.log("USB.qml")
+                        main.viewStackActivePage = "USB Drives"
                     }
                 }
             }

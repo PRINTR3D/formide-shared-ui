@@ -11,7 +11,7 @@ MessageWindow {
     id: root
 
     firstText: "Printing error" // Text shown as title
-    secondText: "File could not start printing." // Text shown in subtitle
+    secondText: "File could not start printing" // Text shown in subtitle
 
     confirmButtonText: "Dismiss"
     confirmButton: true // Showing confirm button

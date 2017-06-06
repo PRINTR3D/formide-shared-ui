@@ -300,35 +300,4 @@ FormideNativeUi {
         } //Stackview
     } // Rectangle
 
-    onPrinterStatusChanged:
-    {
-        splash.visible=false
-    }
-
-    Timer{
-        id:splashTimer
-
-        interval: 5000
-        repeat: false
-        running: true
-
-        onTriggered:
-        {
-            console.log("Disabling splash")
-            splash.visible=false
-        }
-    }
-
-    Rectangle{
-        id:splash
-
-        visible:false
-        anchors.fill: parent
-        Image{
-            anchors.fill: parent
-            source:"images/splash.jpg"
-        }
-
-    }
-
 }

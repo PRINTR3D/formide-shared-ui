@@ -42,6 +42,9 @@ Flickable {
         if (type == "queue") {
             return listModel[index].printJob.name
         }
+        if (type == "usb") {
+            return listModel[index].name || listModel[index]
+        }
     }
 
     function getContentHeight() {
@@ -53,7 +56,7 @@ Flickable {
             returnValue = 65 * listModel.length
         }
 
-        returnValue += 7
+        returnValue += 12
 
         return returnValue
     }
@@ -139,8 +142,8 @@ Flickable {
             if (type === "library") {
                 return "No files in library"
             }
-            if (type === "printJob") {
-                return "No print jobs found"
+            if (type === "usb") {
+                return "No files found"
             }
             if (type === "queue") {
                 return "No queue items found"

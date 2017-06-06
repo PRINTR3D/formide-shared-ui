@@ -377,7 +377,7 @@ Item {
         width: parent.width - 32 // 448
         height: 16
         x: 16 * unitMultiplierX
-        y: 104 * unitMultiplierY
+        y: 108 * unitMultiplierY
 
         targetProgress: getProgress()
 
@@ -402,7 +402,7 @@ Item {
                 DefaultText {
                     width: 56 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 16 * unitMultiplierX
+                    x: 24 * unitMultiplierX
                     y: 136 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Black
@@ -411,9 +411,9 @@ Item {
 
                 // Status description
                 DefaultText {
-                    width: 160 * unitMultiplierX
+                    width: 152 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 80 * unitMultiplierX
+                    x: 88 * unitMultiplierX
                     y: 136 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Medium
@@ -428,8 +428,8 @@ Item {
                 DefaultText {
                     width: 56 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 16 * unitMultiplierX
-                    y: 160 * unitMultiplierY
+                    x: 24 * unitMultiplierX
+                    y: 162 * unitMultiplierY
                     font.pixelSize: 16
                     text: "File"
                     font.weight: Font.Black
@@ -437,10 +437,10 @@ Item {
 
                 // Job description
                 DefaultText {
-                    width: 160 * unitMultiplierX
+                    width: 152 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 80 * unitMultiplierX
-                    y: 160 * unitMultiplierY
+                    x: 88 * unitMultiplierX
+                    y: 162 * unitMultiplierY
                     clip: true
                     font.pixelSize: 16
                     font.weight: Font.Medium
@@ -456,8 +456,8 @@ Item {
                 DefaultText {
                     width: 56 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 16 * unitMultiplierX
-                    y: 184 * unitMultiplierY
+                    x: 24 * unitMultiplierX
+                    y: 188 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Black
                     text: "Time"
@@ -465,10 +465,10 @@ Item {
 
                 // Time description
                 DefaultText {
-                    width: 160 * unitMultiplierX
+                    width: 152 * unitMultiplierX
                     height: 24 * unitMultiplierY
-                    x: 80 * unitMultiplierX
-                    y: 184 * unitMultiplierY
+                    x: 88 * unitMultiplierX
+                    y: 188 * unitMultiplierY
                     font.pixelSize: 16
                     font.weight: Font.Medium
                     text: getPrintingTime()
@@ -487,7 +487,7 @@ Item {
                     width: 40
                     height: 40
                     x: 266 * unitMultiplierX
-                    y: 136 * unitMultiplierY
+                    y: 140 * unitMultiplierY
                     visible: isPrinting()
                     source: isPaused() ? "../../images/icons/dashboard/StartButtonIcon.png" : "../../images/icons/dashboard/PauseButtonIcon.png"
                 }
@@ -497,7 +497,7 @@ Item {
                     width: 72
                     height: 24
                     x: 248 * unitMultiplierX
-                    y: 184 * unitMultiplierY
+                    y: 188 * unitMultiplierY
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
                     font.weight: Font.Black
@@ -509,7 +509,7 @@ Item {
                     width: 72 * unitMultiplierX
                     height: 88 * unitMultiplierY
                     x: 248 * unitMultiplierX
-                    y: 120 * unitMultiplierY
+                    y: 124 * unitMultiplierY
                     onClicked: {
                         if (lock) {
                             pagestack.changeTransition("newPageComesFromUp")
@@ -539,7 +539,7 @@ Item {
                     width: 40
                     height: 40
                     x: 336 * unitMultiplierX
-                    y: 136 * unitMultiplierY
+                    y: 140 * unitMultiplierY
                     source: isPrinting() ? "../../images/icons/dashboard/StopButtonIcon.png" : "../../images/icons/dashboard/QueueButtonIcon.png"
                 }
 
@@ -548,7 +548,7 @@ Item {
                     width: 72
                     height: 24
                     x: 320 * unitMultiplierX
-                    y: 184 * unitMultiplierY
+                    y: 188 * unitMultiplierY
                     font.weight: Font.Black
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
@@ -559,7 +559,7 @@ Item {
                     width: 72 * unitMultiplierX
                     height: 88 * unitMultiplierY
                     x: 320 * unitMultiplierX
-                    y: 120 * unitMultiplierY
+                    y: 124 * unitMultiplierY
                     onClicked: {
                         if (lock) {
                             pagestack.changeTransition("newPageComesFromUp")
@@ -589,7 +589,7 @@ Item {
                     width: 40
                     height: 40
                     x: 408 * unitMultiplierX
-                    y: 136 * unitMultiplierY
+                    y: 140 * unitMultiplierY
                     source: isPrinting() ? "../../images/icons/dashboard/TuneIcon.png" : "../../images/icons/dashboard/ControlButtonIcon.png"
                 }
 
@@ -598,7 +598,7 @@ Item {
                     width: 72
                     height: 24
                     x: 392 * unitMultiplierX
-                    y: 184 * unitMultiplierY
+                    y: 188 * unitMultiplierY
                     horizontalAlignment: TextInput.AlignHCenter
                     font.pixelSize: 16
                     font.weight: Font.Black
@@ -610,7 +610,7 @@ Item {
                     width: 72 * unitMultiplierX
                     height: 88 * unitMultiplierY
                     x: 392 * unitMultiplierX
-                    y: 120 * unitMultiplierY
+                    y: 124 * unitMultiplierY
                     onClicked: {
                         if (lock) {
                             pagestack.changeTransition("newPageComesFromUp")
