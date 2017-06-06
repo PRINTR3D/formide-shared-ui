@@ -32,6 +32,7 @@ Item {
         height: 16
         x: 16
         y: 152
+        showPercentage: false
 
         function getProgress() {
 

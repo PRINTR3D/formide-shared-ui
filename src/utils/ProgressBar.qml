@@ -10,6 +10,7 @@ Item {
     property var progress: 0
     property var targetProgress: 0
     property var printerStatus: main.printerStatus
+    property bool showPercentage: true
 
     id: progressBar
     width: parent.width
@@ -59,6 +60,7 @@ Item {
         font.weight: Font.Black
         text: getText()
         color: getColor()
+        visible: showPercentage
 
         function getText() {
             if (targetProgress == 0)
