@@ -5,7 +5,6 @@
 
 import QtQuick 2.0
 import "../../../utils"
-import "../../../utils/keyboard"
 
 Item {
     id: mainLibraryExtended
@@ -58,15 +57,13 @@ Item {
         text: "Pair 3D printer with Formide through a verification code"
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
+    PushButton {
         x: 132
         y: 129
+        buttonText: "Generate Code"
+
         backgroundColor: "#46b1e6"
-        letterColor: "#ffffff"
-        letter: "Generate Code"
-        letterSize: 16
+        textColor: "#ffffff"
 
         onClicked: {
             // Expand a bit and Generate Code

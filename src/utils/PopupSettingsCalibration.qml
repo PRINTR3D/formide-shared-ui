@@ -41,15 +41,6 @@ Item {
         text: firstText
     }
 
-//    Image {
-//        id: warningicon
-//        width: 20
-//        height: 20
-//        x: 48
-//        y: 104
-//        source: "../images/icons/settings/Warning.png"
-//    }
-
     Text {
         width: 384
         height: 24
@@ -62,53 +53,31 @@ Item {
         text: secondText
     }
 
-    Rectangle {
-
+    PushButton {
         x: 56
         y: 150
         width: 176
-        height: 48
-        radius: 3
-        color: "#ef4661"
+        buttonText: fullCalibrationButtonText
 
-        Text {
-            font.family: "OpenSans"
-            font.pixelSize: 16
-            color: "#ffffff"
-            anchors.centerIn: parent
-            text: fullCalibrationButtonText
-        }
+        backgroundColor: "#ef4661"
+        textColor: "#ffffff"
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                cancelButtonSignal.call()
-            }
+        onClicked: {
+            cancelButtonSignal.call()
         }
     }
 
-    Rectangle {
-
+    PushButton {
         x: 248
         y: 150
         width: 176
-        height: 48
-        radius: 3
-        color: "#46b1e6"
+        buttonText: confirmButtonText
 
-        Text {
-            font.family: "OpenSans"
-            font.pixelSize: 16
-            color: "#ffffff"
-            anchors.centerIn: parent
-            text: confirmButtonText
-        }
+        backgroundColor: "#46b1e6"
+        textColor: "#ffffff"
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                confirmButtonSignal.call()
-            }
+        onClicked: {
+            confirmButtonSignal.call()
         }
     }
 }

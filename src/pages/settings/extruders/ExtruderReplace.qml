@@ -5,7 +5,6 @@
 
 import QtQuick 2.0
 import "../../../utils"
-import "../../../utils/keyboard"
 import "../../../../lib/formide/formideShared.js" as FormideShared
 import "../../../../lib/formide/formide.js" as Formide
 
@@ -120,18 +119,15 @@ Item {
         text: "Extrude or Retract Material"
     }
 
-    KeyboardLetter {
 
-        width: 216
-        height: 48
+    PushButton {
+
         x: 16
-        y: 128
+        y: 126
 
-        letter: "Extrude"
-
+        buttonText: "Extrude"
         backgroundColor: "#46b1e6"
-        letterColor: "white"
-        letterSize: 16
+        textColor: "#ffffff"
 
         onPressed: {
             if (extruderSelected == 0) {
@@ -153,18 +149,14 @@ Item {
         }
     }
 
-    KeyboardLetter {
+    PushButton {
 
-        width: 216
-        height: 48
         x: 248
-        y: 128
+        y: 126
 
-        letter: "Retract"
-
+        buttonText: "Retract"
         backgroundColor: "#46b1e6"
-        letterColor: "white"
-        letterSize: 16
+        textColor: "#ffffff"
 
         onPressed: {
             if (extruderSelected == 0) {
@@ -185,4 +177,5 @@ Item {
             unloadSecondTimer.stop()
         }
     }
+
 }

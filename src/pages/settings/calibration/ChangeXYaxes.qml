@@ -113,16 +113,14 @@ Item {
         }
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
-        x: 16
-        y: 128
-        letter: "Set X-axis Value"
+    PushButton {
 
+        x: 16
+        y: 126
+
+        buttonText: "Set X-axis Value"
         backgroundColor: "#46b1e6"
-        letterColor: "#ffffff"
-        letterSize: 16
+        textColor: "#ffffff"
 
         onClicked: {
             confirmButton.call()
@@ -200,16 +198,14 @@ Item {
         }
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
-        x: 248
-        y: 128
-        letter: "Set Y-axis Value"
+    PushButton {
 
+        x: 248
+        y: 126
+
+        buttonText: "Set Y-axis Value"
         backgroundColor: "#46b1e6"
-        letterColor: "#ffffff"
-        letterSize: 16
+        textColor: "#ffffff"
 
         onClicked: {
             confirmButton.call()

@@ -17,6 +17,22 @@ Item {
     property var fileIndexSelected
     property var driveFiles: main.driveFiles
 
+    Component.onCompleted: {
+        main.scanDrives()
+        main.resetCheckConnections()
+        main.isUsbConnected()
+    }
+
+    Timer {
+        id: checkEverythingTimer
+        running: true
+        repeat: true
+        interval: 15000
+        onTriggered: {
+            main.scanDrives()
+        }
+    }
+
 
     FileList {
 

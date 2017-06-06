@@ -5,7 +5,6 @@
 
 import QtQuick 2.0
 import "../../utils"
-import "../../utils/keyboard"
 
 import "../../../lib/formide/formideShared.js" as FormideShared
 
@@ -62,7 +61,7 @@ Item {
     }
 
     function isPrinting(){
-        if (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused')
+        if (printerStatus && (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused'))
             return true
         else
             return false
@@ -99,33 +98,33 @@ Item {
         horizontalAlignment: TextInput.AlignHCenter
         font.pixelSize: 16
         lineHeight: 1.5
-        text: isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""
+        text: !printerStatus ? "No printer connected" : isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
+    PushButton {
+
         x: 24
         y: 129
+
+        buttonText: "Remove File"
         backgroundColor: "#ef4661"
-        letterColor: "#ffffff"
-        letter: "Remove File"
-        letterSize: 16
+        textColor: "#ffffff"
+
         enabled: !isPrintingThisFile()
 
         onClicked: deleteFile.call()
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
+    PushButton {
+
         x: 248
         y: 129
+
+        buttonText: "Print File"
         backgroundColor: "#46b1e6"
-        letterColor: "#ffffff"
-        letter: "Print File"
-        letterSize: 16
-        enabled: !isPrinting()
+        textColor: "#ffffff"
+
+        enabled: !isPrinting() && printerStatus !== undefined
 
         onClicked: printFile.call()
     }

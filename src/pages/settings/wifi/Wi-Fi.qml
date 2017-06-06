@@ -22,7 +22,19 @@ Item {
     }
 
     Component.onCompleted: {
+        main.getWifiList()
+        main.resetCheckConnections()
         main.checkConnection()
+    }
+
+    Timer {
+        id: checkEverythingTimer
+        running: true
+        repeat: true
+        interval: 15000
+        onTriggered: {
+            main.getWifiList()
+        }
     }
 
     FileList {

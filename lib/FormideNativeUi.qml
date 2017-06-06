@@ -239,7 +239,7 @@ Window {
          MAIN LOGIC - Printer
          ************************************/
     function getQueue() {
-        checkEverythingTimer.restart()
+
         if (!printerStatus) {
             return
         }
@@ -587,11 +587,6 @@ Window {
             })
     }
 
-    function resetWifiUsbTimer()
-    {
-        wifiTimer.restart()
-    }
-
     function checkConnection(callback) {
         Formide.wifi().checkConnection(function (err, response) {
 
@@ -606,7 +601,6 @@ Window {
                 if (callback)
                     callback(err, null)
 
-                wifiTimer.restart()
                 getWifiList()
             }
             if (response) {
@@ -856,6 +850,8 @@ Window {
                 if (data.channel === "printer.status") {
 //                    console.log(JSON.stringify(data.data))
 
+                    resetCheckPrinterStatus()
+
                     printerStatusEvent(data)
                     if (data.data.port === "/dev/virt0") {
                         //                        console.log("Virtual printer return")
@@ -921,22 +917,34 @@ Window {
          TIMERS
          ************************************/
 
-    function restartTimers(){
-        checkEverythingTimer.restart()
+    function resetCheckPrinterStatus() {
+        checkPrinterStatus.restart()
     }
 
-    // Timer to check queue and files
+    // Timer to clear printerStatus if no status is received
     Timer {
-        id: checkEverythingTimer
+        id: checkPrinterStatus
         running: true
         repeat: true
         interval: oneSecond * 15
         onTriggered: {
-            getWifiList()
+            printerStatus = undefined
+        }
+    }
+
+    function resetCheckConnections() {
+        checkConnections.restart()
+    }
+
+    // Timer to check connections
+    Timer {
+        id: checkConnections
+        running: true
+        repeat: true
+        interval: oneSecond * 15
+        onTriggered: {
             checkConnection()
             isUsbConnected()
-            getFiles()
-            getQueue()
         }
     }
 

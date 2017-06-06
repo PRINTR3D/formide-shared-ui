@@ -7,6 +7,7 @@ import QtQuick 2.3
 import QtQuick.Controls 1.2
 import "utils"
 import "../lib/formide/formide.js" as Formide
+import "../lib/formide/formideShared.js" as FormideShared
 
 Item {
 
@@ -167,7 +168,7 @@ Item {
     // Top bar
     Rectangle {
         width: parent.width
-        height: 48
+        height: 50
         color: "#000000"
 
         HomeIcon {
@@ -242,8 +243,15 @@ Item {
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Material Preheat")
                         main.viewStackActivePage = "Extruders"
-                    else if (viewStackActivePage == "Extruder Replace")
+
+                    else if (viewStackActivePage == "Extruder Replace") {
+                        // cool extruder
+                        Formide.printer(printerStatus.port).gcode(
+                                            "M104 T" + FormideShared.extruderSelected + " S0")
+
                         main.viewStackActivePage = "Settings"
+                    }
+
                     else if (viewStackActivePage == "X and Y Calibration")
                         main.viewStackActivePage = "Calibration"
                     else if (viewStackActivePage == "Z Calibration")
@@ -355,15 +363,15 @@ Item {
     }
 
     Background{
-        y:48
+        y:50
     }
 
     // Second Stack for views under main menu
     StackView {
         id: viewStack
         width: parent.width
-        height: parent.height - 48
-        y: 48
+        height: parent.height - 50
+        y: 50
 
         Component.onCompleted: {
             main.viewStackActivePage = "Dashboard"

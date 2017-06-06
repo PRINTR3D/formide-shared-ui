@@ -13,7 +13,7 @@ InsertValue {
 
     property var printerStatus: main.printerStatus
 
-    buttonText: "Change Flow Rate"
+    insertButtonText: "Change Flow Rate"
     unit: "%"
 
     maxValue: 500

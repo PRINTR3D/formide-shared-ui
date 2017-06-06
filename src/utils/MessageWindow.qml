@@ -91,31 +91,18 @@ Item {
         text: secondText
     }
 
-
-    Rectangle{
+    PushButton {
         visible:confirmButton
 
         x:132
         y:176
 
-        width: 216
-        height: 48
-        radius: 3
-        color: "#46b1e6"
+        buttonText: confirmButtonText
+        backgroundColor: "#46b1e6"
+        textColor: "#ffffff"
 
-        DefaultText{
-           font.pixelSize: 16
-           anchors.centerIn: parent
-           color: "#ffffff"
-           text:confirmButtonText
-        }
-
-        MouseArea{
-
-            anchors.fill: parent
-            onClicked:{
-                confirmButtonSignal.call()
-            }
+        onClicked: {
+            confirmButtonSignal.call()
         }
     }
 

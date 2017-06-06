@@ -18,6 +18,20 @@ Item {
     property var queueItems: main.queueItems
     property var isConnectedToWifi: main.isConnectedToWifi
 
+    Component.onCompleted: {
+        main.getQueue()
+    }
+
+    Timer {
+        id: checkEverythingTimer
+        running: true
+        repeat: true
+        interval: 15000
+        onTriggered: {
+            main.getQueue()
+        }
+    }
+
     FileList {
 
         id: list
@@ -107,9 +121,9 @@ Item {
 
         visible: queueItems.length == 0 && isConnectedToWifi
 
-        firstText: "No Queue items found" // Text shown as title
+        firstText: "No queue items found" // Text shown as title
 
-        centerText: true
+        secondText: "Add items via www.formide.com"
 
         confirmButton: false // Showing confirm button
     }

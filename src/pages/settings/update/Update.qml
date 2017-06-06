@@ -59,7 +59,7 @@ Item {
     Spinner {
 
         x: 368
-        y: 64
+        y: 66
         visible: checking
     }
 }

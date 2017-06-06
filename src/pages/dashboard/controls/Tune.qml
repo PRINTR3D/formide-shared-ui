@@ -8,7 +8,6 @@
 import QtQuick 2.0
 import "../../../"
 import "../../../utils"
-import "../../../utils/keyboard"
 
 Rectangle {
 
@@ -49,16 +48,15 @@ Rectangle {
             source: "../../../images/icons/overlays/FlowRateIcon.png"
         }
 
-        KeyboardLetter {
+        PushButton {
+
             width: 112
-            height: 48
             x: 56
             y: 172
-            letter: "Change"
 
+            buttonText: "Change"
             backgroundColor: "#46b1e6"
-            letterColor: "#ffffff"
-            letterSize: 16
+            textColor: "#ffffff"
 
             onClicked: {
                 pagestack.changeTransition("newPageComesFromInside")
@@ -91,16 +89,15 @@ Rectangle {
             source: "../../../images/icons/overlays/PrintSpeedIcon.png"
         }
 
-        KeyboardLetter {
+        PushButton {
+
             width: 112
-            height: 48
             x: 184
             y: 172
-            letter: "Change"
 
+            buttonText: "Change"
             backgroundColor: "#46b1e6"
-            letterColor: "#ffffff"
-            letterSize: 16
+            textColor: "#ffffff"
 
             onClicked: {
                 pagestack.changeTransition("newPageComesFromInside")
@@ -133,16 +130,15 @@ Rectangle {
             source: "../../../images/icons/overlays/FanSpeedIcon.png"
         }
 
-        KeyboardLetter {
+        PushButton {
+
             width: 112
-            height: 48
             x: 312
             y: 172
-            letter: "Change"
 
+            buttonText: "Change"
             backgroundColor: "#46b1e6"
-            letterColor: "#ffffff"
-            letterSize: 16
+            textColor: "#ffffff"
 
             onClicked: {
                 pagestack.changeTransition("newPageComesFromInside")

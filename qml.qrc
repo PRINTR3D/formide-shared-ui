@@ -82,7 +82,6 @@
         <file>src/utils/InsertValue.qml</file>
         <file>src/utils/MenuItem.qml</file>
         <file>src/utils/MessageWindow.qml</file>
-        <file>src/utils/PopupCalibration.qml</file>
         <file>src/utils/PopupSettingsCalibration.qml</file>
         <file>src/utils/PopupWindow.qml</file>
         <file>src/utils/ProgressBar.qml</file>

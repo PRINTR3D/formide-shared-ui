@@ -6,7 +6,6 @@
 
 import QtQuick 2.0
 import "../../../utils"
-import "../../../utils/keyboard"
 
 import "../../../../lib/formide/formide.js" as Formide
 

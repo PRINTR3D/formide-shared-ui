@@ -12,7 +12,7 @@ InsertValue {
 
     property var printerStatus: main.printerStatus
 
-    buttonText: "Change Temperature E2"
+    insertButtonText: "Change Temperature E2"
     unit: "°"
 
     maxValue: 275

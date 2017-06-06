@@ -45,21 +45,21 @@ Item {
 
     function getE1Temp() {
         if (!printerStatus) {
-            return "0 °"
+            return "0°"
         } else
             return printerStatus.extruders[0].temp + "°"
     }
 
     function getE1TargetTemp() {
         if (!printerStatus) {
-            return "0 °"
+            return "0°"
         } else
             return printerStatus.extruders[0].targetTemp + "°"
     }
 
     function getE2Temp() {
         if (!printerStatus) {
-            return "0 °"
+            return "0°"
         } else {
             if (printerStatus.extruders[1])
                 return printerStatus.extruders[1].temp + "°"
@@ -70,7 +70,7 @@ Item {
 
     function getE2TargetTemp() {
         if (!printerStatus) {
-            return "0 °"
+            return "0°"
         } else {
             if (printerStatus.extruders[1])
                 return printerStatus.extruders[1].targetTemp + "°"
@@ -81,7 +81,7 @@ Item {
 
     function getBedTemp() {
         if (!printerStatus) {
-            return "0 °"
+            return "0°"
         } else
             if (printerStatus.bed.temp)
                 return printerStatus.bed.temp + "°"
@@ -92,7 +92,7 @@ Item {
 
     function getBedTargetTemp() {
         if (!printerStatus) {
-            return "0 °"
+            return "0°"
         } else
             if (printerStatus.bed.temp)
                 return printerStatus.bed.targetTemp + "°"

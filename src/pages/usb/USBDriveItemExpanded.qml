@@ -5,7 +5,6 @@
 
 import QtQuick 2.0
 import "../../utils"
-import "../../utils/keyboard"
 
 import "../../../lib/formide/formideShared.js" as FormideShared
 
@@ -59,15 +58,13 @@ Item {
         }
     }
 
-    KeyboardLetter {
-        width: 216
-        height: 48
+    PushButton {
         x: 132
         y: 129
+        buttonText: "Copy to Library"
+
         backgroundColor: "#46b1e6"
-        letterColor: "#ffffff"
-        letter: "Copy to Library"
-        letterSize: 16
+        textColor: "#ffffff"
 
         onClicked: copyFile.call()
     }
