@@ -62,6 +62,8 @@ Item {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
+        enabled: printerStatus.extruders[1] ? true : false
+
         onClicked: {
             FormideShared.extruderSelected = 1
             pagestack.changeTransition("newPageComesFromInside")

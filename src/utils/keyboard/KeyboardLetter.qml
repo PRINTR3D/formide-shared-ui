@@ -33,7 +33,6 @@ MouseArea {
     }
 
     DefaultText {
-
         font.pixelSize: letterSize
         color: keyboardLetter.pressed ? "#ffffff" : keyboardLetter.enabled ? letterColor : "#ffffff"
         anchors.centerIn: parent

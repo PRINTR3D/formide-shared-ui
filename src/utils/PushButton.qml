@@ -10,6 +10,8 @@ MouseArea {
 
     id: pushButton
 
+    enabled: true
+
     width:216
     height:48
 
@@ -23,7 +25,7 @@ MouseArea {
         width:pushButton.width
         height:pushButton.height
         radius:3
-        color:pushButton.pressed?"#878896":backgroundColor
+        color:pushButton.pressed || !pushButton.enabled?"#878896":backgroundColor
     }
 
     DefaultText{
