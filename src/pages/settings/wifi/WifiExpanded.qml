@@ -91,7 +91,7 @@ Item {
         visible: expanded
 
         Rectangle {
-            color: "#141414"
+            color: "#1F1F1F"
             border.color: "#ffffff"
             border.width: 2
             radius: 3
@@ -109,7 +109,7 @@ Item {
         }
 
         Rectangle {
-            color: "#141414"
+            color: "#1F1F1F"
             border.color: "#ffffff"
             border.width: 2
             radius: 3
@@ -127,7 +127,7 @@ Item {
         }
 
         Rectangle {
-            color: "#141414"
+            color: "#1F1F1F"
             border.color: "#ffffff"
             border.width: 2
             radius: 3
@@ -145,7 +145,7 @@ Item {
         }
 
         Rectangle {
-            color: "#141414"
+            color: "#1F1F1F"
             border.color: "#ffffff"
             border.width: 2
             radius: 3
@@ -163,7 +163,7 @@ Item {
         }
 
         Rectangle {
-            color: "#141414"
+            color: "#1F1F1F"
             border.color: "#ffffff"
             border.width: 2
             radius: 3

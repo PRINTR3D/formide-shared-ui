@@ -13,8 +13,8 @@ import "../lib"
 
 FormideNativeUi {
 
-    width:800
-    height:480
+    width:960
+    height:544
 
     property var unitMultiplierX:width/480
     property var unitMultiplierY:height/272
@@ -325,6 +325,6 @@ FormideNativeUi {
         width: parent.width
         height: parent.height
         visible: true
-        source: "images/splash/splash.png"
+        source: "images/splash/splash.jpg"
     }
 }
