@@ -157,5 +157,6 @@
         <file>src/pages/usb/USBCopying.qml</file>
         <file>src/pages/usb/USBCopyConfirm.qml</file>
         <file>src/pages/usb/USBCopyError.qml</file>
+        <file>src/images/splash/splash.png</file>
     </qresource>
 </RCC>

@@ -168,7 +168,7 @@ Item {
     Rectangle {
         width: parent.width
         height: 48
-        color: "#0a0a0a"
+        color: "#000000"
 
         HomeIcon {
             type: getType()
