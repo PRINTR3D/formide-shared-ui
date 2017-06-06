@@ -935,6 +935,7 @@ Window {
             getWifiList()
             checkConnection()
             isUsbConnected()
+            scanDrives()
             getFiles()
             getQueue()
         }
