@@ -325,6 +325,6 @@ FormideNativeUi {
         width: parent.width
         height: parent.height
         visible: true
-        source: "images/splash/splash.png"
+        source: "images/splash/splash.jpg"
     }
 }
