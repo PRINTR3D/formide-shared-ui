@@ -16,5 +16,6 @@ PopupWindow {
 
     onConfirmButtonSignal: {
         pagestack.popPagestack()
+        pagestack.popPagestack()
     }
 }

@@ -259,7 +259,9 @@ Item {
                             main.updateDriveFilesFromPath()
                         }
                         else{
-                            main.viewStackActivePage = "USB Drives"
+                            main.scanDrives(function(){
+                                main.viewStackActivePage = "USB Drives"
+                            })
                         }
                     }
 

@@ -51,7 +51,7 @@ Item {
                 expandedMenuSize = 216
             }
             else if(driveFiles[indexSelected].type && driveFiles[indexSelected].type == "dir"){
-                main.drivePath.push(driveFiles[indexSelected].name)
+                main.drivePath.push(driveFiles[indexSelected].name + '/')
                 main.updateDriveFilesFromPath()
             }
 
@@ -90,8 +90,6 @@ Item {
 
                 main.copyFile(path, function(err, response){
 
-                    pagestack.popPagestack()
-
                     if (response){
                         pagestack.pushPagestack(Qt.resolvedUrl("USBCopyConfirm.qml"))
                     }
@@ -112,7 +110,7 @@ Item {
 
         visible: driveFiles.length == 0
 
-        firstText: "No Drive items found" // Text shown as title
+        firstText: "No G-code files or folders found" // Text shown as title
 
         centerText: true
 

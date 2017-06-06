@@ -56,7 +56,7 @@ Flickable {
             returnValue = 65 * listModel.length
         }
 
-        returnValue += 7
+        returnValue += 12
 
         return returnValue
     }
