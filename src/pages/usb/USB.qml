@@ -74,7 +74,7 @@ Item {
         }
     }
 
-    MessageWindow {
+    PopupWindow {
         id: emptyList
 
         visible: driveFiles.length == 0

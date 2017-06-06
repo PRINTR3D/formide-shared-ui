@@ -5,7 +5,6 @@
 
 import QtQuick 2.0
 import "../"
-import "keyboard/"
 
 Item {
 

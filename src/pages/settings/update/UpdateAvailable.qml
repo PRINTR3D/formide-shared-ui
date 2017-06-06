@@ -10,17 +10,19 @@ import "../../../utils"
 import "../../../../lib/formide/formide.js" as Formide
 
 
-MessageWindow {
+MessagePage {
     id: updatePage
 
     firstText: "Software Update Available" // Text shown as title
 
-    secondText: "Don't turn off the printer during update. When the update is finished the printer will automatically reboot. This may take a few minutes to complete."
+    secondText: "Don't turn off during update. The printer will automatically reboot when finished. This may take a few minutes to complete."
 
     confirmButtonText: "Start Update"
 
     onConfirmButtonSignal: {
         console.log("Starting software update")
-        main.viewStackActivePage = "Update Active"
+        main.updateElement()
+        pagestack.changeTransition("newPageComesFromInside")
+        pagestack.pushPagestack(Qt.resolvedUrl("UpdateActive.qml"))
     }
 }

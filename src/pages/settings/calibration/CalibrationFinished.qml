@@ -6,12 +6,12 @@
 import QtQuick 2.0
 import "../../../utils"
 
-MessageWindow {
+MessagePage {
     id: calibratePage
 
     firstText: "Calibration Finished" // Text shown as title
 
-    secondText: "Your 3D printer is successfully calibrated, you can\nstart printing all the models in the world"
+    secondText: "Your 3D printer is successfully calibrated, you can start printing all the models in the world"
 
     confirmButtonText: "Start Printing"
 

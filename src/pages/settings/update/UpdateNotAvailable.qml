@@ -15,7 +15,7 @@ Item {
     height: parent.height
     width: parent.width
 
-    MessageWindow {
+    PopupWindow {
         id: wifiMessage
 
         visible: !checking

@@ -18,7 +18,6 @@ Item {
     property var confirmButtonText:""           // Text shown in confirm button
 
     property bool confirmButton:true            // Showing confirm button
-    property bool exitButton:false
 
     property bool centerText:false              // Center first text
 
@@ -34,28 +33,6 @@ Item {
         anchors.fill: parent
     }
 
-    // Home icon
-    Item{
-        width:80
-        height:52
-        visible:exitButton
-
-
-        Image{
-            width:30
-            height:30
-            x:25
-            y:11
-            source:"../images/icons/noIcon.png"
-
-        }
-
-        MouseArea{
-            anchors.fill: parent
-            onClicked: quitButtonSignal.call()
-        }
-    }
-
 
 
     DefaultText{
@@ -63,7 +40,7 @@ Item {
         height:32
         width: 368
         x: 56
-        y:64
+        y: 24
 
         horizontalAlignment: centerText ? TextInput.AlignHCenter: TextInput.AlignLeft
 
@@ -81,7 +58,7 @@ Item {
         width:368
         height:48
         x:56
-        y:112
+        y: 62
 
         font.family: "OpenSans"
         font.pixelSize:16
@@ -95,7 +72,7 @@ Item {
         visible:confirmButton
 
         x:132
-        y:176
+        y:142
 
         buttonText: confirmButtonText
         backgroundColor: "#46b1e6"

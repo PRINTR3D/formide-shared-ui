@@ -9,23 +9,17 @@ import "../../../utils"
 
 import "../../../../lib/formide/formide.js" as Formide
 
-Item {
+PopupWindow {
+    id: root
 
-    id: updatePage
-    height: parent.height
-    width: parent.width
+    firstText: "Updating Printer" // Text shown as title
+    secondText: "Don't turn off during update. The printer will automatically reboot when finished. This may take a few minutes to complete."
 
-    DefaultText {
-        width: 318
-        height: 32
-        font.pixelSize: 24
-        x: 81
-        y: 70
 
-        text: "Restarting..."
-    }
+    confirmButton: false // Showing confirm button
 
-    Component.onCompleted: {
-        main.updateElement()
+    Spinner {
+        x: parent.width - 60
+        y: parent.height - 60
     }
 }
