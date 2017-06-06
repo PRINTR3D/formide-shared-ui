@@ -922,94 +922,28 @@ Window {
          ************************************/
 
     function restartTimers(){
-
         checkEverythingTimer.restart()
-        wifiTimer.restart()
-
     }
 
-
-    // note
-    // /!\ Printer specific timers need to be implemented out of here, in main.qml
-    function touchInput() {
-        checkEverythingTimer.restart()
-        wifiTimer.restart()
-    }
-
-    // Timer to check queue, print jobs and files
+    // Timer to check queue and files
     Timer {
         id: checkEverythingTimer
         running: true
         repeat: true
         interval: oneSecond * 15
         onTriggered: {
-
-            if (printerStatus)
-                getFiles()
-                getQueue()
-        }
-    }
-
-    Timer {
-        id: updateEverythingTimer
-        running: false
-        repeat: false
-        interval: 5000
-        onTriggered: {
-
+            getWifiList()
+            checkConnection()
+            isUsbConnected()
             getFiles()
             getQueue()
-        }
-    }
-
-    // Timer for printer status override (Builder specific - move out of here)
-    Timer {
-        id: statusBlockedTimer
-        running: false
-        repeat: false
-        interval: oneSecond * 5
-        onTriggered: {
-            statusBlocked = false
-        }
-    }
-
-    // Timer to check Wi-Fi status
-    Timer {
-        id: wifiTimer
-        interval: 15000
-        repeat: true
-        running: true
-        onTriggered: {
-            if (printerStatus)
-            {
-                if (printerStatus.status === "online"
-                        || printerStatus.status === "printing"
-                        || printerStatus.status === "heating"
-                        || printerStatus.status === "paused") {
-                    console.log("Wi-Fi Checking")
-                    checkConnection()
-
-                    return;
-
-                }
-
-                if(printerStatus.status === "online")
-                    isUsbConnected()
-            }
-            else
-            {
-                getWifiList()
-                checkConnection()
-            }
-
-
         }
     }
 
     // Initial loop to login in. It stops after connecting with Formide.
     Timer {
         id: loginTimer
-        interval: 20000
+        interval: oneSecond * 20
         repeat: true
         running: true
 

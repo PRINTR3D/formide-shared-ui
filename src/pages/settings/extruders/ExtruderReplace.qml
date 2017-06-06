@@ -21,9 +21,6 @@ Item {
 
     // Load functions
     function loadFirst() {
-
-        touchInput()
-
         if (FormideShared.extruderSelected == 0) {
             Formide.printer(printerStatus.port).gcode("G1 E2 F300\n")
         } else {
@@ -32,9 +29,8 @@ Item {
             Formide.printer(printerStatus.port).gcode("T0\nG1 E2 F300\n")
         }
     }
-    function loadSecond() {
 
-        touchInput()
+    function loadSecond() {
         if (FormideShared.extruderSelected == 1) {
             Formide.printer(printerStatus.port).gcode("G1 E2 F300\n")
         } else {
@@ -42,9 +38,8 @@ Item {
             Formide.printer(printerStatus.port).gcode("T1\nG1 E2 F300\n")
         }
     }
-    function unloadFirst() {
 
-        touchInput()
+    function unloadFirst() {
         if (FormideShared.extruderSelected == 0) {
             Formide.printer(printerStatus.port).gcode("G1 E-2 F300\n")
         } else {
@@ -52,9 +47,8 @@ Item {
             Formide.printer(printerStatus.port).gcode("T0\nG1 E-2 F300\n")
         }
     }
-    function unloadSecond() {
 
-        touchInput()
+    function unloadSecond() {
         if (FormideShared.extruderSelected == 1) {
             Formide.printer(printerStatus.port).gcode("G1 E-2 F300\n")
         } else {
@@ -63,13 +57,6 @@ Item {
         }
     }
 
-    function touchInput() {
-        main.touchInput()
-    }
-
-    function getProgressTemperature() {
-        return "000°"
-    }
 
     Timer {
         id: unloadFirstTimer

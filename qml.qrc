@@ -106,7 +106,6 @@
         <file>lib/FormideNativeUi.qml</file>
         <file>lib/SystemCall.cpp</file>
         <file>lib/SystemCall.h</file>
-        <file>src/images/splash.jpg</file>
         <file>src/images/icons/dashboard/QueueButtonIcon.png</file>
         <file>src/utils/ControlKey.qml</file>
         <file>src/pages/queue/QueueItemExpanded.qml</file>
