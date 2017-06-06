@@ -55,6 +55,8 @@ Item {
         font.pixelSize:16
         color: "#ffffff"
 
+        wrapMode: "WordWrap"
+
         text: secondText
     }
 

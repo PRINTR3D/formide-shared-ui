@@ -56,7 +56,6 @@
         <file>src/pages/settings/update/UpdateActive.qml</file>
         <file>src/pages/settings/update/UpdateAvailable.qml</file>
         <file>src/pages/settings/update/UpdateNotAvailable.qml</file>
-        <file>src/pages/settings/update/Updating.qml</file>
         <file>src/pages/settings/wifi/Wi-Fi.qml</file>
         <file>src/pages/settings/wifi/WifiConnecting.qml</file>
         <file>src/pages/settings/wifi/WifiError.qml</file>
@@ -150,11 +149,11 @@
         <file>src/pages/usb/USBCopyConfirm.qml</file>
         <file>src/pages/usb/USBCopyError.qml</file>
         <file>src/images/splash/splash.jpg</file>
-        <file>src/utils/MessageInnerWindow.qml</file>
         <file>src/utils/SettingsCalibration.qml</file>
         <file>src/pages/settings/calibration/settingsCalibrateBed.qml</file>
         <file>src/pages/settings/calibration/settingsCalibrateXY.qml</file>
         <file>src/pages/settings/calibration/settingsCalibrateZ.qml</file>
         <file>src/pages/settings/calibration/settingsFullCalibrate.qml</file>
+        <file>src/utils/MessagePage.qml</file>
     </qresource>
 </RCC>

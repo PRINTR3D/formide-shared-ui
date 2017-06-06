@@ -10,7 +10,7 @@ import "../../../utils"
 import "../../../../lib/formide/formide.js" as Formide
 
 
-MessageInnerWindow {
+MessagePage {
     id: updatePage
 
     firstText: "Software Update Available" // Text shown as title
@@ -21,6 +21,8 @@ MessageInnerWindow {
 
     onConfirmButtonSignal: {
         console.log("Starting software update")
-        main.viewStackActivePage = "Update Active"
+        main.updateElement()
+        pagestack.changeTransition("newPageComesFromInside")
+        pagestack.pushPagestack(Qt.resolvedUrl("UpdateActive.qml"))
     }
 }

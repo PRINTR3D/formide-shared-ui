@@ -6,7 +6,7 @@
 import QtQuick 2.0
 import "../../../utils"
 
-MessageInnerWindow {
+MessagePage {
     id: calibratePage
 
     firstText: "Calibration Finished" // Text shown as title
