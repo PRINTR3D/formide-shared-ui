@@ -89,7 +89,7 @@ Item {
         }
     }
 
-    PopupWindow {
+    MessagePage {
         id: emptyList
 
         visible: fileItems.length == 0
