@@ -9,6 +9,7 @@ import QtQuick.Window 2.2
 
 import "../lib/formide/formide.js" as Formide
 import "../lib"
+import "utils"
 
 
 FormideNativeUi {
@@ -63,7 +64,7 @@ FormideNativeUi {
             stopping = false
         }
 
-        if(!initialized){
+        if(data.data.status === "online" && !initialized){
             initialized = true
             splash.visible = false
         }
@@ -315,7 +316,11 @@ FormideNativeUi {
         running: true
 
         onTriggered: {
-            splash.visible = false
+            if (!printerStatus){
+                splash.visible = false
+                pagestack.changeTransition("newPageComesFromInside")
+                pagestack.pushPagestack(Qt.resolvedUrl("utils/NoPrinterConnected.qml"))
+            }
         }
     }
 
