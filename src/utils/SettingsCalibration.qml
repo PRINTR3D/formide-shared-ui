@@ -32,25 +32,13 @@ Item {
         width: 384
         height: 72
         x: 48
-        y: 24
+        y: 40
         font.family: "OpenSans"
         font.pixelSize: 16
         color: "#ffffff"
         lineHeight: 1.3
         //wrapMode: "WordWrap"
         text: firstText
-    }
-
-    Text {
-        width: 384
-        height: 24
-        y: 108
-        anchors.horizontalCenter: parent.horizontalCenter
-        font.family: "OpenSans"
-        font.pixelSize: 16
-        color: "#ef4661"
-        lineHeight: 1.3
-        text: secondText
     }
 
     PushButton {
