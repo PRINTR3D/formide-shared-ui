@@ -20,10 +20,10 @@ Item {
 
 
     function getAPname(){
-        if(macAddress)
+        if(macAddress && macAddress !== 'Unknown')
             return "The-Element-" + macAddress.slice(-8).replace(/:/g, '')
         else
-            return ""
+            return "Unknown"
     }
 
     DefaultText {

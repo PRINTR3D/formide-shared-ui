@@ -64,7 +64,9 @@ FormideNativeUi {
             stopping = false
         }
 
-        if(data.data.status === "online" && !initialized){
+        if( (data.data.status === "online"|| data.data.status === "printing"
+                                          || data.data.status === "heating"
+                                          || data.data.status === "paused") && !initialized){
             initialized = true
             splash.visible = false
         }
@@ -319,7 +321,7 @@ FormideNativeUi {
             if (!printerStatus){
                 splash.visible = false
                 pagestack.changeTransition("newPageComesFromInside")
-                pagestack.pushPagestack(Qt.resolvedUrl("utils/NoPrinterConnected.qml"))
+                pagestack.pushPagestack(Qt.resolvedUrl("utils/NoPrinterPopup.qml"))
             }
         }
     }

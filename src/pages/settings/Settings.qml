@@ -28,10 +28,9 @@ Item {
 
         Component.onCompleted: {
             var newC = 65 * index
-            if(contentHeight - newC > height)
+            if(contentHeight - newC > height){
                 contentY=newC
-//            else
-//                contentY=contentHeight-height
+            }
 
 
         }
@@ -141,14 +140,18 @@ Item {
 
             onClickedSignal: {
 
-                if (printerStatus.status === "printing"
+                console.log('printerStatus', printerStatus)
+
+                if (!printerStatus){
+                    main.settingsIndexSelected = 4
+                    flick.animateContentY("Update")
+                }
+                else if (printerStatus.status === "printing"
                         || printerStatus.status === "heating"
                         || printerStatus.status === "paused")
                 {
-                    pagestack.changeTransition("newPageComesFromInside")
-                    pagestack.pushPagestack(Qt.resolvedUrl("update/UpdateCurrentlyPrinting.qml"))
+                    flick.animateContentY("Printer Busy")
                 }
-
                 else
                 {
                     main.settingsIndexSelected = 4
@@ -172,12 +175,14 @@ Item {
 
             onClickedSignal: {
 
-                if (printerStatus.status === "printing"
+                if (!printerStatus){
+                    flick.animateContentY("No Printer Connected")
+                }
+                else if (printerStatus.status === "printing"
                         || printerStatus.status === "heating"
                         || printerStatus.status === "paused")
                 {
-                    pagestack.changeTransition("newPageComesFromInside")
-                    pagestack.pushPagestack(Qt.resolvedUrl("calibration/CalibrationCurrentlyPrinting.qml"))
+                    flick.animateContentY("Printer Busy")
                 }
 
                 else
@@ -204,12 +209,14 @@ Item {
 
             onClickedSignal: {
 
-                if (printerStatus.status === "printing"
+                if (!printerStatus){
+                    flick.animateContentY("No Printer Connected")
+                }
+                else if (printerStatus.status === "printing"
                         || printerStatus.status === "heating"
                         || printerStatus.status === "paused")
                 {
-                    pagestack.changeTransition("newPageComesFromInside")
-                    pagestack.pushPagestack(Qt.resolvedUrl("extruders/ExtrudersCurrentlyPrinting.qml"))
+                    flick.animateContentY("Printer Busy")
                 }
 
                 else

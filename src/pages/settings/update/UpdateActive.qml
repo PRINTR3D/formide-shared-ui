@@ -13,7 +13,7 @@ PopupWindow {
     id: root
 
     firstText: "Updating Printer" // Text shown as title
-    secondText: "Don't turn off during update. The printer will automatically reboot when finished. This may take a few minutes to complete."
+    secondText: "Don't turn off during update. The printer will automatically reboot when finished."
 
 
     confirmButton: false // Showing confirm button

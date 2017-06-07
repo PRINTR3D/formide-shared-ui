@@ -220,6 +220,10 @@ Item {
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(
                                         "../../utils/keyboard/VirtualKeypad.qml"))
+                    }else if (!printerStatus){
+                        pagestack.changeTransition("newPageComesFromInside")
+                        pagestack.pushPagestack(Qt.resolvedUrl("../../utils/NoPrinterPopup.qml"))
+
                     } else {
                         if (!printerStatus || !printerStatus.extruders[0]) {
                             return
@@ -274,6 +278,10 @@ Item {
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(
                                         "../../utils/keyboard/VirtualKeypad.qml"))
+                    }else if (!printerStatus){
+                        pagestack.changeTransition("newPageComesFromInside")
+                        pagestack.pushPagestack(Qt.resolvedUrl("../../utils/NoPrinterPopup.qml"))
+
                     } else {
                         if (!printerStatus || !printerStatus.extruders[1])
                             return
@@ -326,6 +334,10 @@ Item {
                         pagestack.pushPagestack(
                                     Qt.resolvedUrl(
                                         "../../utils/keyboard/VirtualKeypad.qml"))
+                    }else if (!printerStatus){
+                        pagestack.changeTransition("newPageComesFromInside")
+                        pagestack.pushPagestack(Qt.resolvedUrl("../../utils/NoPrinterPopup.qml"))
+
                     } else {
                         if (!printerStatus || !printerStatus.bed.temp)
                             return
@@ -563,7 +575,11 @@ Item {
                             pagestack.pushPagestack(
                                         Qt.resolvedUrl(
                                             "../../utils/keyboard/VirtualKeypad.qml"))
-                        } else {
+                        }else if (!printerStatus){
+                            pagestack.changeTransition("newPageComesFromInside")
+                            pagestack.pushPagestack(Qt.resolvedUrl("../../utils/NoPrinterPopup.qml"))
+
+                        }else {
                             if (isPrinting()) {
                                 pagestack.changeTransition(
                                             "newPageComesFromInside")
@@ -614,6 +630,10 @@ Item {
                             pagestack.pushPagestack(
                                         Qt.resolvedUrl(
                                             "../../utils/keyboard/VirtualKeypad.qml"))
+                        }else if (!printerStatus){
+                            pagestack.changeTransition("newPageComesFromInside")
+                            pagestack.pushPagestack(Qt.resolvedUrl("../../utils/NoPrinterPopup.qml"))
+
                         } else {
                             if (isPrinting()) {
                                 pagestack.changeTransition(

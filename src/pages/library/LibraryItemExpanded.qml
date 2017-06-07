@@ -86,7 +86,7 @@ Item {
         horizontalAlignment: TextInput.AlignHCenter
         font.pixelSize: 16
         lineHeight: 1.5
-        text: !printerStatus ? "No printer connected" : isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""
+        text: !printerStatus ? "Printer not connected" : isPrintingThisFile() ? "Currently printing this file" : isPrinting() ? "Finish current print before starting a new print" : ""
     }
 
     PushButton {

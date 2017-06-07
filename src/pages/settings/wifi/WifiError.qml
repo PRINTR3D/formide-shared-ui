@@ -11,7 +11,7 @@ PopupWindow {
     id: root
 
     firstText: "Failed to connect" // Text shown as title
-    secondText: "Could not connect to Wi-Fi network" // Text shown in subtitle
+    secondText: "Could not connect to Wi-Fi network. Please try again." // Text shown in subtitle
 
     confirmButtonText: "Dismiss" // Text shown in confirm button
 

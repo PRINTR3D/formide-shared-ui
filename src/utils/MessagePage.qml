@@ -40,7 +40,7 @@ Item {
         height:32
         width: 368
         x: 56
-        y: 24
+        y: 40
 
         horizontalAlignment: centerText ? TextInput.AlignHCenter: TextInput.AlignLeft
 
@@ -58,7 +58,7 @@ Item {
         width:368
         height:48
         x:56
-        y: 62
+        y: 88
 
         font.family: "OpenSans"
         font.pixelSize:16
@@ -72,7 +72,7 @@ Item {
         visible:confirmButton
 
         x:132
-        y:142
+        y:150
 
         buttonText: confirmButtonText
         backgroundColor: "#46b1e6"
