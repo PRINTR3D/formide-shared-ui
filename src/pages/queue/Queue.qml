@@ -116,7 +116,7 @@ Item {
         }
     }
 
-    PopupWindow {
+    MessagePage {
         id: emptyList
 
         visible: queueItems.length == 0 && isConnectedToWifi

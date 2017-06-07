@@ -109,6 +109,12 @@ Item {
         else if (viewStackActivePage == "USB Drive")
             viewStack.push(Qt.resolvedUrl("pages/usb/USBDrive.qml"))
 
+        else if (viewStackActivePage == "No Printer Connected")
+            viewStack.push(Qt.resolvedUrl("utils/NoPrinterPage.qml"))
+
+        else if (viewStackActivePage == "Printer Busy")
+            viewStack.push(Qt.resolvedUrl("utils/CurrentlyPrintingPage.qml"))
+
         else
             viewStack.push(Qt.resolvedUrl("Background.qml"))
     }
@@ -208,6 +214,10 @@ Item {
                     return "back"
                 else if (viewStackActivePage == "USB Drive")
                     return "back"
+                else if (viewStackActivePage == "No Printer Connected")
+                    return "back"
+                else if (viewStackActivePage == "Printer Busy")
+                    return "back"
                 else {
                     //                    console.log("Returning home")
                     return "home"
@@ -243,6 +253,10 @@ Item {
                         main.viewStackActivePage = "Settings"
                     else if (viewStackActivePage == "Material Preheat")
                         main.viewStackActivePage = "Extruders"
+                    else if (viewStackActivePage == "No Printer Connected")
+                        main.viewStackActivePage = "Settings"
+                    else if (viewStackActivePage == "Printer Busy")
+                        main.viewStackActivePage = "Settings"
 
                     else if (viewStackActivePage == "Extruder Replace") {
                         // cool extruder

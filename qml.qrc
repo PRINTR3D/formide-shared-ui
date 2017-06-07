@@ -99,7 +99,6 @@
         <file>src/images/icons/dashboard/QueueButtonIcon.png</file>
         <file>src/utils/ControlKey.qml</file>
         <file>src/pages/queue/QueueItemExpanded.qml</file>
-        <file>src/pages/dashboard/PrintConfirmation.qml</file>
         <file>src/utils/PrintingSpinner.qml</file>
         <file>src/utils/PrintingError.qml</file>
         <file>src/pages/settings/wifi/WifiReset.qml</file>
@@ -135,9 +134,6 @@
         <file>src/pages/settings/accesspoint/AccessPointEnabling.qml</file>
         <file>src/pages/settings/accesspoint/AccessPointDisabling.qml</file>
         <file>src/images/icons/menu/USBIcon.png</file>
-        <file>src/pages/settings/extruders/ExtrudersCurrentlyPrinting.qml</file>
-        <file>src/pages/settings/update/UpdateCurrentlyPrinting.qml</file>
-        <file>src/pages/settings/calibration/CalibrationCurrentlyPrinting.qml</file>
         <file>src/pages/dashboard/PrintStopping.qml</file>
         <file>src/pages/usb/USBDrive.qml</file>
         <file>src/pages/usb/USBDriveItemExpanded.qml</file>
@@ -155,5 +151,9 @@
         <file>src/pages/settings/calibration/settingsCalibrateZ.qml</file>
         <file>src/pages/settings/calibration/settingsFullCalibrate.qml</file>
         <file>src/utils/MessagePage.qml</file>
+        <file>src/utils/NoPrinterPage.qml</file>
+        <file>src/utils/NoPrinterPopup.qml</file>
+        <file>src/utils/CurrentlyPrintingPage.qml</file>
+        <file>src/pages/dashboard/PrintNext.qml</file>
     </qresource>
 </RCC>

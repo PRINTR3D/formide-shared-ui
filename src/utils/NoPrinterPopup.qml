@@ -5,13 +5,11 @@
 
 import QtQuick 2.0
 
-import "../../../utils"
-
 PopupWindow {
     id: root
 
-    firstText: "Calibration is not available" // Text shown as title
-    secondText: "Printer is currently busy printing..." // Text shown in subtitle
+    firstText: "Printer not connected" // Text shown as title
+    secondText: "Printer could not be found. Please check connection before continuing." // Text shown in subtitle
 
     confirmButtonText: "Dismiss" // Text shown in confirm button
 
