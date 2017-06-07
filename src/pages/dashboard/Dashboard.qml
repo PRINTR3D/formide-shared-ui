@@ -581,13 +581,11 @@ Item {
 
                         }else {
                             if (isPrinting()) {
-                                pagestack.changeTransition(
-                                            "newPageComesFromInside")
-                                pagestack.pushPagestack(Qt.resolvedUrl(
-                                                            "StopConfirm.qml"))
+                                pagestack.changeTransition("newPageComesFromInside")
+                                pagestack.pushPagestack(Qt.resolvedUrl("StopConfirm.qml"))
                             } else {
                                 pagestack.changeTransition("newPageComesFromInside")
-                                pagestack.pushPagestack(Qt.resolvedUrl("PrintConfirmation.qml"))
+                                pagestack.pushPagestack(Qt.resolvedUrl("PrintNext.qml"))
                             }
                         }
                     }
