@@ -62,6 +62,7 @@ Item {
 
         font.family: "OpenSans"
         font.pixelSize:16
+        lineHeight:1.2
         color: "#ffffff"
         wrapMode: "WordWrap"
 

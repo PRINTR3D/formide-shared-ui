@@ -47,8 +47,7 @@ FormideNativeUi {
     property bool stopping: false
 
     onPrinterStarted: {
-
-        // clear starting print screen once printer has finished stopping
+        // clear starting print screen once printer has started printing
         pagestack.clearScreenFast()
     }
 
@@ -319,9 +318,9 @@ FormideNativeUi {
 
         onTriggered: {
             if (!printerStatus){
-                splash.visible = false
                 pagestack.changeTransition("newPageComesFromInside")
                 pagestack.pushPagestack(Qt.resolvedUrl("utils/NoPrinterPopup.qml"))
+                splash.visible = false
             }
         }
     }
