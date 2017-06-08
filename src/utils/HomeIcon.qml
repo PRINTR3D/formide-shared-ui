@@ -39,7 +39,10 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            homeClicked.call()
+            if(!main.inputDisabled) {
+                main.inputDisabled = true
+                homeClicked.call()
+            }
         }
     }
 }

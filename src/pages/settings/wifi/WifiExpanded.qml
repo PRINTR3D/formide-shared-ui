@@ -41,7 +41,10 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                fileClicked.call()
+                if(!main.inputDisabled) {
+                    main.inputDisabled = true
+                    fileClicked.call()
+                }
             }
         }
     }
@@ -65,7 +68,7 @@ Item {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        onClicked: {
+        onButtonClicked: {
             // Expand a bit and Generate Code
             expanded = true
 

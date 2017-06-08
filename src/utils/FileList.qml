@@ -213,15 +213,18 @@ Flickable {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+                    if(!main.inputDisabled) {
+                        main.inputDisabled = true
 
-                    if (type === "wifi") {
-                        root.indexSelected = index
-                        root.name = getName(index)
-                        itemSelected(indexSelected, name)
-                    } else {
-                        root.indexSelected = index
-                        root.name = getName(index)
-                        animateContentY(index * 65)
+                        if (type === "wifi") {
+                            root.indexSelected = index
+                            root.name = getName(index)
+                            itemSelected(indexSelected, name)
+                        } else {
+                            root.indexSelected = index
+                            root.name = getName(index)
+                            animateContentY(index * 65)
+                        }
                     }
                 }
                 propagateComposedEvents: true

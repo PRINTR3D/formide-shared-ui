@@ -114,7 +114,7 @@ Item {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        onClicked: {
+        onButtonClicked: {
             confirmButton.call()
         }
     }

@@ -65,8 +65,6 @@
         <file>src/pages/settings/Settings.qml</file>
         <file>src/utils/keyboard/KeyboardLetter.qml</file>
         <file>src/utils/keyboard/KeypadLetter.qml</file>
-        <file>src/utils/keyboard/Selector.qml</file>
-        <file>src/utils/keyboard/ToggleKey.qml</file>
         <file>src/utils/keyboard/VirtualKeyboard.qml</file>
         <file>src/utils/keyboard/VirtualKeypad.qml</file>
         <file>src/utils/DefaultText.qml</file>

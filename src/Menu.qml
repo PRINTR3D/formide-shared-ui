@@ -31,7 +31,9 @@ Item {
             source: "images/icons/menu/DashboardIcon.png"
         }
 
-        onClicked: {
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: {
             pagestack.popPagestack()
             main.viewStackActivePage = "Dashboard"
         }
@@ -47,7 +49,9 @@ Item {
             source: "images/icons/menu/LibraryIcon.png"
         }
 
-        onClicked: {
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: {
             pagestack.popPagestack()
             main.viewStackActivePage = "Library"
         }
@@ -63,7 +67,9 @@ Item {
             source: "images/icons/menu/QueueIcon.png"
         }
 
-        onClicked: {
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: {
             pagestack.popPagestack()
             main.viewStackActivePage = "Cloud Queue"
         }
@@ -79,7 +85,9 @@ Item {
             source: "images/icons/menu/USBIcon.png"
         }
 
-        onClicked: {
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: {
             main.viewStackActivePage = "USB Drives"
             pagestack.popPagestack()
         }
@@ -95,7 +103,9 @@ Item {
             source: "images/icons/menu/SettingsIcon.png"
         }
 
-        onClicked: {
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: {
             main.settingsIndexSelected = 0
             main.viewStackActivePage = "Settings"
             pagestack.popPagestack()

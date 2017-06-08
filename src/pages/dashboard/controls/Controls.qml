@@ -28,25 +28,13 @@ Rectangle {
     Background{}
 
     // Home Button
-    Item {
-        width: 80
-        height: 48
-
-        Image {
-            width: 32
-            height: 32
-            x: 16
-            y: 8
-            source: "../../../images/icons/overlays/CloseButton.png"
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                pagestack.popPagestack()
-            }
+    HomeIcon {
+        type: "quit"
+        onHomeClicked: {
+            pagestack.popPagestack()
         }
     }
+
 
     // Home All
     PushButton {
@@ -59,7 +47,7 @@ Rectangle {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        onClicked: {
+        onButtonClicked: {
             Formide.printer(printerStatus.port).gcode("G28\nG91\n")
         }
     }
@@ -76,7 +64,7 @@ Rectangle {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        onClicked: {
+        onButtonClicked: {
             Formide.printer(printerStatus.port).gcode("G28 X\nG91\n")
         }
     }
@@ -92,7 +80,7 @@ Rectangle {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        onClicked: {
+        onButtonClicked: {
             Formide.printer(printerStatus.port).gcode("G28 Y\nG91\n")
         }
     }
@@ -108,7 +96,7 @@ Rectangle {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        onClicked: {
+        onButtonClicked: {
             Formide.printer(printerStatus.port).gcode("G28 Z\nG91\n")
         }
     }

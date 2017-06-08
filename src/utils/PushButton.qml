@@ -15,11 +15,30 @@ MouseArea {
     width:216
     height:48
 
+    signal buttonClicked
+
+    // disable this button when clicked
+    property bool _localInputDisabled: false
+    // diable all buttons when clicked if passed
+    property bool inputDisabled: null
+
     property var buttonText:""
 
     property var backgroundColor: "#dcdcde"
     property var textColor: "4a4a4a"
     property var textSize:16
+
+    Timer {
+        id: localTimer
+
+        interval: 500
+        repeat: false
+        running: false
+
+        onTriggered: {
+            _localInputDisabled = false
+        }
+    }
 
     Rectangle{
         width:pushButton.width
@@ -35,5 +54,22 @@ MouseArea {
         anchors.centerIn: parent
         text:buttonText
     }
+
+    onClicked: {
+
+        if (inputDisabled === null) {
+            _localInputDisabled = true
+            localTimer.restart()
+            buttonClicked.call()
+
+        } else if(!_localInputDisabled && !inputDisabled) {
+            _localInputDisabled = true
+            localTimer.restart()
+
+            inputDisabled = true
+            buttonClicked.call()
+        }
+    }
+
 
 }
