@@ -52,14 +52,22 @@ Item {
     }
 
     function isPrintingThisFile(){
-        var statusFilename = printerStatus.filePath.substring(printerStatus.filePath.lastIndexOf('/')+1)
 
-        if ( fileIndexSelected !== null && statusFilename == fileItems[fileIndexSelected].filename && printerStatus.device == 'LOCAL' &&
-            (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused') )
+        if(printerStatus){
+            var statusFilename = printerStatus.filePath.substring(printerStatus.filePath.lastIndexOf('/')+1)
 
-            return true
-        else
+            if ( fileIndexSelected !== null && statusFilename == fileItems[fileIndexSelected].filename && printerStatus.device == 'LOCAL' &&
+                (printerStatus.status == 'printing' || printerStatus.status == 'heating' || printerStatus.status == 'paused') )
+
+                return true
+            else
+                return false
+        }
+        else{
             return false
+        }
+
+
     }
 
 
