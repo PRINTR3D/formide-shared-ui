@@ -74,14 +74,14 @@ Item {
         }
     }
 
-    PopupWindow {
+    MessagePage {
         id: emptyList
 
         visible: driveFiles.length == 0
 
         firstText: "No USB drives found" // Text shown as title
 
-        centerText: true
+        secondText: "Insert a USB drive to copy G-codes\nto the library"
 
         confirmButton: false // Showing confirm button
     }

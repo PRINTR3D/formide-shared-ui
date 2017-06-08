@@ -34,12 +34,14 @@ Item {
         height:32
         width: 368
         x: 56
-        y:64
+        y:58
 
         horizontalAlignment: centerText ? TextInput.AlignHCenter: TextInput.AlignLeft
 
+        font.family: "OpenSans"
         font.pixelSize:24
-        font.weight: Font.Black
+        lineHeightMode:Text.FixedHeight
+        lineHeight:1.5
         color: "#ffffff"
 
         text:firstText
@@ -49,13 +51,13 @@ Item {
         width:368
         height:48
         x:56
-        y:112
+        y:106
 
         font.family: "OpenSans"
         font.pixelSize:16
         color: "#ffffff"
-
         wrapMode: "WordWrap"
+        lineHeight:1.2
 
         text: secondText
     }

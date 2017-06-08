@@ -415,7 +415,7 @@ Window {
         Formide.usb().scanDrives(function(err,list)
         {
 
-            if(list.length>0 && list[0]!=="platform-musb*part*")
+            if(list && list.length>0 && list[0]!=="platform-musb*part*")
             {
                 if(!usbAvailable)
                     usbAvailable=true

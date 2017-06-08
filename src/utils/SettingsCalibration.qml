@@ -36,8 +36,7 @@ Item {
         font.family: "OpenSans"
         font.pixelSize: 16
         color: "#ffffff"
-        lineHeight: 1.3
-        //wrapMode: "WordWrap"
+        lineHeight: 1.2
         text: firstText
     }
 
