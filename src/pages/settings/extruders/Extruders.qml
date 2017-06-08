@@ -46,7 +46,9 @@ Item {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        onClicked: {
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: {
             FormideShared.extruderSelected = 0
             pagestack.changeTransition("newPageComesFromInside")
             pagestack.pushPagestack(Qt.resolvedUrl("MaterialPreheat.qml"))
@@ -64,7 +66,9 @@ Item {
 
         enabled: printerStatus.extruders[1] ? true : false
 
-        onClicked: {
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: {
             FormideShared.extruderSelected = 1
             pagestack.changeTransition("newPageComesFromInside")
             pagestack.pushPagestack(Qt.resolvedUrl("MaterialPreheat.qml"))

@@ -33,12 +33,17 @@ Item {
 
 
     function setTemperature (){
-        Formide.printer(printerStatus.port).gcode(
-                            "M104 T" + FormideShared.extruderSelected + " S" + FormideShared.temperature)
-        pagestack.popPagestack()
-        pagestack.changeTransition("newPageComesFromInside")
-        pagestack.pushPagestack(Qt.resolvedUrl("ExtruderHeating.qml"))
-        main.viewStackActivePage = "Extruder Replace"
+
+        if(!main.inputDisabled){
+            main.inputDisabled = true
+
+            Formide.printer(printerStatus.port).gcode(
+                                "M104 T" + FormideShared.extruderSelected + " S" + FormideShared.temperature)
+            pagestack.popPagestack()
+            pagestack.changeTransition("newPageComesFromInside")
+            pagestack.pushPagestack(Qt.resolvedUrl("ExtruderHeating.qml"))
+            main.viewStackActivePage = "Extruder Replace"
+        }
     }
 
     // Background

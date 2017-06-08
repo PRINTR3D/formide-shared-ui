@@ -9,7 +9,27 @@ MouseArea {
 
     width: 72
     height: 72 + 4 + 20
+
     property var label
+
+    signal buttonClicked
+
+    // disable this button when clicked
+    property bool _localInputDisabled: false
+    // diable all buttons when clicked if passed
+    property bool inputDisabled: null
+
+    Timer {
+        id: localTimer
+
+        interval: 500
+        repeat: false
+        running: false
+
+        onTriggered: {
+            _localInputDisabled = false
+        }
+    }
 
     Rectangle {
         width: 72
@@ -27,5 +47,21 @@ MouseArea {
         lineHeight: 1.67
 
         text: label
+    }
+
+    onClicked: {
+
+        if (inputDisabled === null) {
+            _localInputDisabled = true
+            localTimer.restart()
+            buttonClicked.call()
+
+        } else if(!_localInputDisabled && !inputDisabled) {
+            _localInputDisabled = true
+            localTimer.restart()
+
+            inputDisabled = true
+            buttonClicked.call()
+        }
     }
 }

@@ -315,13 +315,17 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    if (isLocked) {
-                        pagestack.changeTransition("newPageComesFromUp")
-                        pagestack.pushPagestack(
-                                    Qt.resolvedUrl(
-                                        "utils/keyboard/VirtualKeypad.qml"))
-                    } else {
-                        main.viewStackActivePage = "USB Drives"
+                    if(!main.inputDisabled) {
+                        main.inputDisabled = true
+
+                        if (isLocked) {
+                            pagestack.changeTransition("newPageComesFromUp")
+                            pagestack.pushPagestack(
+                                        Qt.resolvedUrl(
+                                            "utils/keyboard/VirtualKeypad.qml"))
+                        } else {
+                            main.viewStackActivePage = "USB Drives"
+                        }
                     }
                 }
             }
@@ -337,14 +341,19 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    if (isLocked) {
-                        pagestack.changeTransition("newPageComesFromUp")
-                        pagestack.pushPagestack(
-                                    Qt.resolvedUrl(
-                                        "utils/keyboard/VirtualKeypad.qml"))
-                    } else {
-                        main.viewStackActivePage = "Wi-Fi"
-                    }
+                    if(!main.inputDisabled) {
+                        main.inputDisabled = true
+
+                        if (isLocked) {
+                            pagestack.changeTransition("newPageComesFromUp")
+                            pagestack.pushPagestack(
+                                        Qt.resolvedUrl(
+                                            "utils/keyboard/VirtualKeypad.qml"))
+                        } else {
+                            main.viewStackActivePage = "Wi-Fi"
+                        }
+
+                     }
                 }
             }
         }
@@ -362,15 +371,19 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    if (isLocked) {
-                        pagestack.changeTransition("newPageComesFromUp")
-                    } else {
-                        pagestack.changeTransition("newPageComesFromDown")
-                    }
 
-                    pagestack.pushPagestack(
-                                Qt.resolvedUrl(
-                                    "utils/keyboard/VirtualKeypad.qml"))
+                    if(!main.inputDisabled) {
+                        main.inputDisabled = true
+
+                        if (isLocked) {
+                            pagestack.changeTransition("newPageComesFromUp")
+                        } else {
+                            pagestack.changeTransition("newPageComesFromDown")
+                        }
+
+                        pagestack.pushPagestack(
+                                    Qt.resolvedUrl("utils/keyboard/VirtualKeypad.qml"))
+                    }
                 }
             }
         }

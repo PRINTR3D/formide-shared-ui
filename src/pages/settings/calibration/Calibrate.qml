@@ -29,7 +29,9 @@ Item {
             x: 16
             y: 73
             buttonText: "Full Calibration"
-            onClicked: {
+            inputDisabled: main.inputDisabled
+
+            onButtonClicked: {
                 main.viewStackActivePage = "Full Calibration"
             }
         }
@@ -38,7 +40,9 @@ Item {
             x: 16
             y: 129
             buttonText: "Calibrate Bed"
-            onClicked: {
+            inputDisabled: main.inputDisabled
+
+            onButtonClicked: {
                 main.viewStackActivePage = "Bed Calibration"
             }
         }
@@ -47,7 +51,9 @@ Item {
             x: 248
             y: 73
             buttonText: "Calibrate Z Axis"
-            onClicked: {
+            inputDisabled: main.inputDisabled
+
+            onButtonClicked: {
                 main.viewStackActivePage = "Z Calibration"
             }
         }
@@ -56,7 +62,9 @@ Item {
             x: 248
             y: 129
             buttonText: "Calibrate X and Y Axes"
-            onClicked: {
+            inputDisabled: main.inputDisabled
+
+            onButtonClicked: {
                 main.viewStackActivePage = "X and Y Calibration"
                 //calibratePage.parent.push(Qt.resolvedUrl("ChangeXYaxes.qml"))
             }

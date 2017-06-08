@@ -58,7 +58,7 @@ Rectangle {
             backgroundColor: "#46b1e6"
             textColor: "#ffffff"
 
-            onClicked: {
+            onButtonClicked: {
                 pagestack.changeTransition("newPageComesFromInside")
                 pagestack.pushPagestack(Qt.resolvedUrl("ChangeFlowRate.qml"))
             }
@@ -99,7 +99,7 @@ Rectangle {
             backgroundColor: "#46b1e6"
             textColor: "#ffffff"
 
-            onClicked: {
+            onButtonClicked: {
                 pagestack.changeTransition("newPageComesFromInside")
                 pagestack.pushPagestack(Qt.resolvedUrl("ChangePrintSpeed.qml"))
             }
@@ -140,7 +140,7 @@ Rectangle {
             backgroundColor: "#46b1e6"
             textColor: "#ffffff"
 
-            onClicked: {
+            onButtonClicked: {
                 pagestack.changeTransition("newPageComesFromInside")
                 pagestack.pushPagestack(Qt.resolvedUrl("ChangeFanSpeed.qml"))
             }

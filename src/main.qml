@@ -46,6 +46,26 @@ FormideNativeUi {
     // Stopping print
     property bool stopping: false
 
+    // Inputs disbled
+    property bool inputDisabled: false
+
+    // enable input 0.5 seconds after being disabled
+    onInputDisabledChanged: {
+        inputTimer.restart()
+    }
+
+    Timer {
+        id: inputTimer
+
+        interval: 500
+        repeat: false
+        running: false
+
+        onTriggered: {
+            inputDisabled = false
+        }
+    }
+
     onPrinterStarted: {
         // clear starting print screen once printer has started printing
         pagestack.clearScreenFast()
@@ -74,11 +94,15 @@ FormideNativeUi {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            if (isLocked){
-                pagestack.changeTransition("newPageComesFromUp")
-                pagestack.pushPagestack(
-                            Qt.resolvedUrl(
-                                "utils/keyboard/VirtualKeypad.qml"))
+            if(!main.inputDisabled) {
+                main.inputDisabled = true
+
+                if (isLocked){
+                    pagestack.changeTransition("newPageComesFromUp")
+                    pagestack.pushPagestack(
+                                Qt.resolvedUrl(
+                                    "utils/keyboard/VirtualKeypad.qml"))
+                }
             }
         }
     }
@@ -333,4 +357,5 @@ FormideNativeUi {
         visible: true
         source: "images/splash/splash.jpg"
     }
+
 }

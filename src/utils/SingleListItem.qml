@@ -130,7 +130,10 @@ Rectangle {
     MouseArea{
         anchors.fill: parent
         onClicked:{
-            clickedSignal.call()
+            if(!main.inputDisabled) {
+                main.inputDisabled = true
+                clickedSignal.call()
+            }
         }
     }
 }

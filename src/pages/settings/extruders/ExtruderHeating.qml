@@ -83,12 +83,16 @@ Item {
             id: mo
             anchors.fill: parent
             onClicked:{
-                // cool extruder
-                Formide.printer(printerStatus.port).gcode(
-                                    "M104 T" + FormideShared.extruderSelected + " S0")
+                if(!main.inputDisabled) {
+                    main.inputDisabled = true
 
-                main.viewStackActivePage = "Extruders"
-                pagestack.popPagestack()
+                    // cool extruder
+                    Formide.printer(printerStatus.port).gcode(
+                                        "M104 T" + FormideShared.extruderSelected + " S0")
+
+                    main.viewStackActivePage = "Extruders"
+                    pagestack.popPagestack()
+                }
             }
         }
     }

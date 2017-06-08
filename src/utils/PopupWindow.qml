@@ -73,7 +73,9 @@ Item {
         backgroundColor: "#ef4661"
         textColor: "#ffffff"
 
-        onClicked: {
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: {
             cancelButtonSignal.call()
         }
     }
@@ -89,7 +91,9 @@ Item {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        onClicked: {
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: {
             confirmButtonSignal.call()
         }
     }

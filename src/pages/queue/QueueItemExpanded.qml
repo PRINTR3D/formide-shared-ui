@@ -85,7 +85,10 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                fileClicked.call()
+                if(!main.inputDisabled) {
+                    main.inputDisabled = true
+                    fileClicked.call()
+                }
             }
         }
     }
@@ -112,7 +115,9 @@ Item {
 
         enabled: !isPrintingThisFile()
 
-        onClicked: deleteFile.call()
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: deleteFile.call()
     }
 
     PushButton {
@@ -126,6 +131,8 @@ Item {
 
         enabled: !isPrinting() && printerStatus !== undefined
 
-        onClicked: printFile.call()
+        inputDisabled: main.inputDisabled
+
+        onButtonClicked: printFile.call()
     }
 }
