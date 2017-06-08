@@ -102,4 +102,20 @@ Item {
         }
     }
 
+    MenuItem {
+        x: 44
+        y: 160
+        label: "3D Hubs"
+        Image {
+            width: 72
+            height: 72
+            source: "images/icons/menu/3dHubsIcon.png"
+        }
+
+        onClicked: {
+            pagestack.popPagestack()
+            main.viewStackActivePage = "3D Hubs"
+        }
+    }
+
 }

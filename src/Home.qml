@@ -115,6 +115,9 @@ Item {
         else if (viewStackActivePage == "Printer Busy")
             viewStack.push(Qt.resolvedUrl("utils/CurrentlyPrintingPage.qml"))
 
+        else if (viewStackActivePage == "3D Hubs")
+            viewStack.push(Qt.resolvedUrl("pages/3dhubs/Queue.qml"))
+
         else
             viewStack.push(Qt.resolvedUrl("Background.qml"))
     }

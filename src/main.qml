@@ -46,11 +46,9 @@ FormideNativeUi {
     // Stopping print
     property bool stopping: false
 
-    onPrinterStarted: {
-
-        // clear starting print screen once printer has finished stopping
-        pagestack.clearScreenFast()
-    }
+//    onPrinterStarted: {
+//        pagestack.clearScreenFast()
+//    }
 
     onPrinterStopped: {
         stopping = true
@@ -334,4 +332,34 @@ FormideNativeUi {
         visible: true
         source: "images/splash/splash.jpg"
     }
+
+    Timer {
+        id: hubsprint
+
+        interval: 10000
+        repeat: true
+        running: true
+
+        onTriggered: {
+            getHubsQueue(function(){
+                if (printerStatus.status === 'online' && queueHubsItems.length > 0){
+
+                    main.startPrintFromHubsQueueId(
+                                queueHubsItems[0].id,
+                                queueHubsItems[0].printJob.gcode,
+                                function (err, response) {
+                                    if (err) {
+                                        pagestack.pushPagestack(
+                                                    Qt.resolvedUrl(
+                                                        "../../utils/PrintingError.qml"))
+                                    }
+                                })
+
+                    pagestack.changeTransition("newPageComesFromLeft")
+                    pagestack.pushPagestack(Qt.resolvedUrl("pages/3dhubs/HubsPrintPage.qml"))
+                }
+            })
+        }
+    }
+
 }

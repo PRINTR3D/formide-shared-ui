@@ -155,5 +155,11 @@
         <file>src/utils/NoPrinterPopup.qml</file>
         <file>src/utils/CurrentlyPrintingPage.qml</file>
         <file>src/pages/dashboard/PrintNext.qml</file>
+        <file>src/images/icons/menu/3dHubsIcon.png</file>
+        <file>src/pages/3dhubs/Queue.qml</file>
+        <file>src/pages/3dhubs/QueueItemExpanded.qml</file>
+        <file>src/pages/3dhubs/HubsPrintPage.qml</file>
+        <file>src/images/icons/overlays/3dHubsLogo.png</file>
+        <file>src/images/gif/hubsLogo.gif</file>
     </qresource>
 </RCC>

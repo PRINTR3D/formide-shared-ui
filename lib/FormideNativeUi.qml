@@ -55,7 +55,9 @@ Window {
     property var printers: []
     property var fileItems: []
     property var queueItems: []
+    property var queueHubsItems: []
     property bool loadingQueue: false
+    property bool loadingHubsQueue: false
 
     // UI Status - general
     property var initialized: false // UI is initialised
@@ -314,6 +316,69 @@ Window {
                                 callback(null, response)
                         }
                     })
+    }
+
+    function getHubsQueue(callback) {
+
+        if (!printerStatus) {
+            return
+        }
+
+        loadingHubsQueue = true
+        Formide.printer(printerStatus.port).getHubsQueue(function (err, response) {
+
+            if (err) {
+                console.log("Error loading queue", JSON.stringify(err))
+                loadingHubsQueue = false
+            }
+            if (response) {
+//                console.log("Response get hubs queue",JSON.stringify(response));
+                for (var i in response) {
+                    if (response[i].id === currentQueueItemId) {
+                        currentQueueItemName=response[i].printJob.name
+                        break
+                    }
+                }
+
+                loadingHubsQueue = false
+
+                // Update queue items
+                queueHubsItems = response.filter(function (queueHubsItem) {
+                    if (queueHubsItem.status == "queued")
+                        return queueHubsItem
+                })
+
+                callback()
+            }
+        })
+    }
+
+    onLoadingHubsQueueChanged: {
+        console.log("LOADING HUBS QUEUE ",loadingHubsQueue)
+    }
+
+    function startPrintFromHubsQueueId(queueId, gcode, callback) {
+
+        Formide.printer(printerStatus.port).start(queueId, gcode,
+                                                  function (err, response) {
+                                                      if (err) {
+                                                          console.log("Error starting a print",
+                                                                      JSON.stringify(
+                                                                          err))
+                                                          if (callback)
+                                                              callback(err,
+                                                                       null)
+                                                      }
+                                                      if (response) {
+                                                          //              console.log("Response starting a print",JSON.stringify(response))
+
+                                                          getFiles()
+
+                                                          if (callback)
+                                                              callback(null,
+                                                                       response)
+                                                      }
+                                                  })
     }
 
 
@@ -835,6 +900,7 @@ Window {
                     else
                     {
                         getQueue()
+                        getHubsQueue()
                     }
 
                     printerStarted(data)
@@ -871,6 +937,7 @@ Window {
                                 initialized = true
 
                                 getQueue()
+                                getHubsQueue()
                                 getFiles()
                                 getPrinters()
                             }
@@ -887,6 +954,7 @@ Window {
                                                 + currentQueueItemId)
 
                                     getQueue()
+                                    getHubsQueue()
                                 }
                             }
                         }
