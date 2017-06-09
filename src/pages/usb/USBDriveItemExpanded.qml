@@ -69,7 +69,13 @@ Item {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: copyFile.call()
     }
