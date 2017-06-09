@@ -31,7 +31,13 @@ Item {
             source: "images/icons/menu/DashboardIcon.png"
         }
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: {
             pagestack.popPagestack()
@@ -49,7 +55,13 @@ Item {
             source: "images/icons/menu/LibraryIcon.png"
         }
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: {
             pagestack.popPagestack()
@@ -67,7 +79,13 @@ Item {
             source: "images/icons/menu/QueueIcon.png"
         }
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: {
             pagestack.popPagestack()
@@ -85,7 +103,13 @@ Item {
             source: "images/icons/menu/USBIcon.png"
         }
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: {
             main.viewStackActivePage = "USB Drives"
@@ -103,7 +127,13 @@ Item {
             source: "images/icons/menu/SettingsIcon.png"
         }
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: {
             main.settingsIndexSelected = 0

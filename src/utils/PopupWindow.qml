@@ -73,7 +73,13 @@ Item {
         backgroundColor: "#ef4661"
         textColor: "#ffffff"
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: {
             cancelButtonSignal.call()
@@ -91,7 +97,13 @@ Item {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: {
             confirmButtonSignal.call()

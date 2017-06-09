@@ -29,7 +29,13 @@ Item {
             x: 16
             y: 73
             buttonText: "Full Calibration"
-            inputDisabled: main.inputDisabled
+            function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
             onButtonClicked: {
                 main.viewStackActivePage = "Full Calibration"
@@ -40,7 +46,13 @@ Item {
             x: 16
             y: 129
             buttonText: "Calibrate Bed"
-            inputDisabled: main.inputDisabled
+            function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
             onButtonClicked: {
                 main.viewStackActivePage = "Bed Calibration"
@@ -51,7 +63,13 @@ Item {
             x: 248
             y: 73
             buttonText: "Calibrate Z Axis"
-            inputDisabled: main.inputDisabled
+            function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
             onButtonClicked: {
                 main.viewStackActivePage = "Z Calibration"
@@ -62,7 +80,13 @@ Item {
             x: 248
             y: 129
             buttonText: "Calibrate X and Y Axes"
-            inputDisabled: main.inputDisabled
+            function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
             onButtonClicked: {
                 main.viewStackActivePage = "X and Y Calibration"

@@ -46,7 +46,13 @@ Item {
         backgroundColor: "#46b1e6"
         textColor: "#ffffff"
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: {
             FormideShared.extruderSelected = 0
@@ -66,7 +72,13 @@ Item {
 
         enabled: printerStatus.extruders[1] ? true : false
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: {
             FormideShared.extruderSelected = 1

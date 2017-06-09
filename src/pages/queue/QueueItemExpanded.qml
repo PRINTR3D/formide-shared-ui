@@ -115,7 +115,13 @@ Item {
 
         enabled: !isPrintingThisFile()
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: deleteFile.call()
     }
@@ -131,7 +137,13 @@ Item {
 
         enabled: !isPrinting() && printerStatus !== undefined
 
-        inputDisabled: main.inputDisabled
+        function getInputDisabledValue(){
+            return main.inputDisabled
+        }
+
+        function setInputDisabledValue(value){
+            main.inputDisabled = value
+        }
 
         onButtonClicked: printFile.call()
     }

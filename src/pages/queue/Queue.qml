@@ -19,17 +19,8 @@ Item {
     property var isConnectedToWifi: main.isConnectedToWifi
 
     Component.onCompleted: {
+        main.resetCheckConnections()
         main.getQueue()
-    }
-
-    Timer {
-        id: checkEverythingTimer
-        running: true
-        repeat: true
-        interval: 15000
-        onTriggered: {
-            main.getQueue()
-        }
     }
 
     FileList {

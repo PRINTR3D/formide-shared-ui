@@ -47,11 +47,13 @@ FormideNativeUi {
     property bool stopping: false
 
     // Inputs disbled
-    property bool inputDisabled: false
+    property var inputDisabled: false
 
     // enable input 0.5 seconds after being disabled
     onInputDisabledChanged: {
-        inputTimer.restart()
+        if(inputDisabled){
+            inputTimer.restart()
+        }
     }
 
     Timer {
@@ -65,6 +67,7 @@ FormideNativeUi {
             inputDisabled = false
         }
     }
+
 
     onPrinterStarted: {
         // clear starting print screen once printer has started printing

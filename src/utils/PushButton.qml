@@ -19,14 +19,21 @@ MouseArea {
 
     // disable this button when clicked
     property bool _localInputDisabled: false
-    // diable all buttons when clicked if passed
-    property bool inputDisabled: null
 
     property var buttonText:""
 
     property var backgroundColor: "#dcdcde"
     property var textColor: "4a4a4a"
     property var textSize:16
+
+
+    function getInputDisabledValue(){
+        return null
+    }
+    function setInputDisabledValue(value){
+        return
+    }
+
 
     Timer {
         id: localTimer
@@ -57,16 +64,19 @@ MouseArea {
 
     onClicked: {
 
-        if (inputDisabled === null) {
+        // if no global InputDisabled value is passed, just start local InputDisabled timer
+        if (getInputDisabledValue() === null) {
             _localInputDisabled = true
             localTimer.restart()
             buttonClicked.call()
 
-        } else if(!_localInputDisabled && !inputDisabled) {
+        // else start both the InputDisabled for this button and global InputDisabled timer
+        // useful when naviagting to disble the buttons on the next page temporally to avoid double clicking
+        } else if(!_localInputDisabled && !getInputDisabledValue()) {
             _localInputDisabled = true
             localTimer.restart()
 
-            inputDisabled = true
+            setInputDisabledValue(true)
             buttonClicked.call()
         }
     }
