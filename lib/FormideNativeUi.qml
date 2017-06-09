@@ -145,9 +145,9 @@ Window {
          MAIN LOGIC - Auth
          ************************************/
     function login() {
-        Formide.auth().login('admin@local', 'admin', function (callback) {
+        Formide.auth().login('admin@local', 'admin', function (success) {
 
-            if (callback == true) {
+            if (success == true) {
                 if (Formide.auth().getAccessToken().length > 29) {
                     console.log("Login completed")
                     loginTimer.repeat = false
@@ -155,15 +155,11 @@ Window {
 
                     loggedIn = true
 
-                    // Check if this is optimal
-                    getCurrentClientVersion()
-                    getFiles()
-                    // Temporal:
-                    checkConnection()
-
-
-                    scanDrives()
                     sock.active = true
+
+                    checkConnection()
+                    isUsbConnected()
+                    getCurrentClientVersion()
                 }
             }
         })
@@ -290,8 +286,6 @@ Window {
                                                       if (response) {
                                                           //              console.log("Response starting a print",JSON.stringify(response))
 
-                                                          getFiles()
-
                                                           if (callback)
                                                               callback(null,
                                                                        response)
@@ -339,9 +333,6 @@ Window {
                     updateAvailable = false
                 }
 
-                //{"message":"There is no update available at this moment","needsUpdate":false}
-
-                //{"message":"update found","needsUpdate":true,"signature":"D0S4ZyJ3eN4mp3K1dSwxCr/FzJS7uV7ekA9yf+yKnTvROp2tt3uhWYTo1V/dcOsJda0lSnC0pwwmULCBMqgRd5mxK5HYNMyQDCDYfwcO7MeN2idTnx/8lxe0WtK3brJ0RMKEtRdGkqKMxxV9Mj0pVJURYNGcygAP0oiQ57hdy8oBEUDE1yqLijZcEcPZoALZGfBujFxdaQiWdS1IaGQsD2m2crjQq5Kh7XyeDX3+Nzin3yLnLEFzb2yYlBy/HDtt69LnWF3Sv3Dpr88hodHYV1EVJ4vnYf6IPE/bRBAgvkAUx+ZcB8N8dkU3tb4alFpgTdaDC2tcMtEqDh1L9YExybjh4wvoTxN3RiHy1dg0U99qHSp5N+i9eP7uu9CkX8KlbfTSI6zreaYuBv62eyjqRDRqsiptW1IWYGDCEUSfvZpoeZNT7Kc1LsukMX3hcXffMnsmrrAK0XJDgfL8gk80PBS1/VcZrsddo7CEv7QtQntq5lbnKmDgGAqIUfUltqFsWxdTw0ngIweY0u8616yWzu0pyGZd3B0E2PDc3YrLNf348kcED8eO0TKsJ6twcB/vGfPZfkHjZ/ZQTOIf+gNAVh1MMOcOGZ+z0se9CHb+jHdbZz8JEnz9g/zLrekzSc5mU9rIQb9nIQe6SiBDGKfIv0tIiG/QAHqzTDj/KvW7nTM=","version":"1.3.6-387","flavour":"standalone"}
                 if(callback)
                     callback(null,response)
             }
@@ -504,8 +495,6 @@ Window {
 
             if (list) {
 
-                getFiles()
-
                 //console.log("Response OK: ",JSON.stringify(list))
                 if (callback)
                     callback(null, list)
@@ -600,12 +589,10 @@ Window {
                 isHotspot = false
                 if (callback)
                     callback(err, null)
-
-                getWifiList()
             }
             if (response) {
 //                console.log("Response Check Connection",JSON.stringify(response))
-                getWifiList()
+
                 if (response.isConnected) {
 
                     if(!isConnectedToWifi)
@@ -659,7 +646,6 @@ Window {
                 //console.log('Response reset', JSON.stringify(response))
                 checkConnection()
                 singleNetwork = ""
-                wifiList = []
 
                 if (callback)
                     callback(null, response)
@@ -871,8 +857,6 @@ Window {
                                 initialized = true
 
                                 getQueue()
-                                getFiles()
-                                getPrinters()
                             }
 
                             // If printer is printing, print job id needs to be updated
@@ -885,8 +869,6 @@ Window {
 
                                     console.log("Current queue item id updated: "
                                                 + currentQueueItemId)
-
-                                    getQueue()
                                 }
                             }
                         }
@@ -897,6 +879,7 @@ Window {
                 //console.log(e);
             }
         }
+
         onStatusChanged: {
             console.log("onStatusChanged")
             if (sock.status == WebSocket.Error) {
@@ -945,6 +928,7 @@ Window {
         onTriggered: {
             checkConnection()
             isUsbConnected()
+            getQueue()
         }
     }
 
