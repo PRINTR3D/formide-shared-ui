@@ -159,7 +159,6 @@ Window {
 
                     checkConnection()
                     isUsbConnected()
-                    getCurrentClientVersion()
                 }
             }
         })
@@ -416,7 +415,6 @@ Window {
                 if(usbAvailable)
                 {
                     usbAvailable=false
-                    driveFiles=[]
                 }
             }
         });
@@ -442,7 +440,6 @@ Window {
                     //console.log("Not updating drive")
                     if (usbAvailable) {
                         usbAvailable = false
-                        driveFiles = []
                     }
                 }
                 if (callback)
@@ -852,11 +849,15 @@ Window {
                         if (data.data.extruders[0].temp > 0) {
                             printerStatus = data.data
 
-                            // If the app is not initialized, we initialize it and get the current client version
+                            // If the app is not initialized, we initialize it and get data
                             if (!initialized && loggedIn) {
                                 initialized = true
 
                                 getQueue()
+                                getFiles()
+                                scanDrives()
+                                getCurrentClientVersion()
+                                getWifiList()
                             }
 
                             // If printer is printing, print job id needs to be updated
