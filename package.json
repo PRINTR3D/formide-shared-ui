@@ -1,30 +1,12 @@
 {
   "name": "formide-shared-ui",
-  "version": "1.0.0",
-  "description": "Shared code base for all formide-native-ui's made with Qt Quick",
-  "main": "FormideNativeUi.qml",
+  "version": "1.0.0-rc.1",
+  "description": "Shared code base for 3D printer touch screen interfaces",
+  "main": "FormideNativeUI.qml",
+  "os" : [ "darwin", "linux" ],
   "scripts": {
-    "test": "ls"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PRINTR3D/formide-shared-ui.git"
-  },
-  "keywords": [
-    "fnui"
-  ],
-  "author": {
-    "name": "printr3d"
-  },
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PRINTR3D/formide-shared-ui/issues"
-  },
-  "homepage": "https://github.com/PRINTR3D/formide-shared-ui#readme",
-  "gitHead": "5925a9dca207db2f141025d331a33436e5fb1ed3",
-  "readme": "ERROR: No README data found!",
-  "_id": "formide-shared-ui@0.0.1",
-  "_shasum": "644da2b87a3647809bcd5a916d89e06b06a2b2c5",
-  "_from": "printr3d/formide-shared-ui#development",
-  "_resolved": "git+https://github.com/printr3d/formide-shared-ui.git#5925a9dca207db2f141025d331a33436e5fb1ed3"
+  "author": "printr3d",
+  "license": "ISC"
 }
