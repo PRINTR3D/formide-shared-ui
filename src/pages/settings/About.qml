@@ -100,7 +100,7 @@ Flickable {
             lineHeightMode: Text.FixedHeight
             lineHeight: 25
 
-            text: singleNetwork+"\n"+totalSpace+" GB\n"+freeSpace+" GB\nFormide Linux\n" + "0.0.1" + "\n" + getCurrentVersion(
+            text: singleNetwork+"\n"+totalSpace+" GB\n"+freeSpace+" GB\nFormide Linux\n" + "1.0.0-rc.1" + "\n" + getCurrentVersion(
                       ) + "\n" + getFirmwareName() + "\n" + getMacAddress()
         }
     }
