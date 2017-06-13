@@ -2,11 +2,11 @@
   "name": "formide-shared-ui",
   "version": "1.0.0-rc.1",
   "description": "Shared code base for 3D printer touch screen interfaces",
-  "main": "FormideNativeUI.qml",
+  "main": "lib/FormideNativeUI.qml",
   "os" : [ "darwin", "linux" ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "printr3d",
-  "license": "ISC"
+  "license": "GPL-2.0"
 }
