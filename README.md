@@ -15,7 +15,7 @@ At the same time, it is an API wrapper for Formide Client, including a wide list
 * Check printer status (temperatures, progress, coordinates, current layer, etc).
 
 # Documentation
-Please find all the documentation in this project's [wiki](https://github.com/PRINTR3D/formide-touch/wiki).
+Please find all the documentation in this project's [wiki](https://github.com/PRINTR3D/formide-shared-ui/wiki).
 
 # Installation
 Installation of this library can be done with `npm`:
@@ -25,7 +25,7 @@ npm install --save formide-shared-ui
 
 # Build
 The build process depends on the project where the library is included.
-Build instructions for a normal Qt Application can be found [here](https://github.com/PRINTR3D/formide-shared-ui/wiki/Build-and-Run).
+Build instructions for the example application can be found [here](https://github.com/PRINTR3D/formide-shared-ui/wiki/Build-example-interface).
 
 # Contributing
 You can contribute to `formide-shared-ui` by closing issues (via fork -> pull request to development), adding features or just using it and report bugs!
