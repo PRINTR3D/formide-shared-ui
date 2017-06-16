@@ -192,7 +192,7 @@ Item {
                 x: 16
                 y: 8
                 text: "Nozzle One"
-                font.weight: Font.Black
+                font.weight: Font.Medium
                 font.pixelSize: 16
                 horizontalAlignment: TextInput.AlignHCenter
             }
@@ -204,7 +204,18 @@ Item {
                 x: 16
                 y: 32
                 font.weight: Font.Black
-                text: getE1Temp() + '\n' + getE1TargetTemp() //e1temp
+                text: getE1Temp() //e1 temp
+                font.pixelSize: 28
+                horizontalAlignment: TextInput.AlignHCenter
+            }
+
+            DefaultText {
+                width: 112
+                height: 64
+                x: 16
+                y: 68
+                font.weight: Font.Medium
+                text: getE1TargetTemp() //e1 target temp
                 font.pixelSize: 24
                 horizontalAlignment: TextInput.AlignHCenter
             }
@@ -263,10 +274,21 @@ Item {
                 x: 128
                 y: 32
                 font.weight: Font.Black
-                text: getE2Temp() + '\n' + getE2TargetTemp() //e1temp
-                font.pixelSize: 24
+                text: getE2Temp() //e1 temp
+                font.pixelSize: 28
                 horizontalAlignment: TextInput.AlignHCenter
                 //font.letterSpacing: 1.5
+            }
+
+            DefaultText {
+                width: 112
+                height: 64
+                x: 128
+                y: 68
+                font.weight: Font.Medium
+                text: getE2TargetTemp() //e2 target temp
+                font.pixelSize: 22
+                horizontalAlignment: TextInput.AlignHCenter
             }
 
             MouseArea {
@@ -324,10 +346,21 @@ Item {
                 x: 240
                 y: 32
                 font.weight: Font.Black
-                text: getBedTemp() + '\n' + getBedTargetTemp() //e1temp
-                font.pixelSize: 24
+                text: getBedTemp() //bed temp
+                font.pixelSize: 28
                 horizontalAlignment: TextInput.AlignHCenter
                 //                font.letterSpacing: 1.5
+            }
+
+            DefaultText {
+                width: 112
+                height: 64
+                x: 240
+                y: 68
+                font.weight: Font.Medium
+                text: getBedTargetTemp() //bed target temp
+                font.pixelSize: 22
+                horizontalAlignment: TextInput.AlignHCenter
             }
 
             MouseArea {
@@ -386,7 +419,7 @@ Item {
                 y: 32
                 font.weight: Font.Black
                 text: getBedHeight()
-                font.pixelSize: 24
+                font.pixelSize: 28
                 horizontalAlignment: TextInput.AlignHCenter
             }
         }
