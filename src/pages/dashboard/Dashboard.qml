@@ -205,7 +205,7 @@ Item {
                 y: 32
                 font.weight: Font.Black
                 text: getE1Temp() //e1 temp
-                font.pixelSize: 28
+                font.pixelSize: 26
                 horizontalAlignment: TextInput.AlignHCenter
             }
 
@@ -213,7 +213,7 @@ Item {
                 width: 112
                 height: 64
                 x: 16
-                y: 68
+                y: 66
                 font.weight: Font.Medium
                 text: getE1TargetTemp() //e1 target temp
                 font.pixelSize: 24
@@ -275,7 +275,7 @@ Item {
                 y: 32
                 font.weight: Font.Black
                 text: getE2Temp() //e1 temp
-                font.pixelSize: 28
+                font.pixelSize: 26
                 horizontalAlignment: TextInput.AlignHCenter
                 //font.letterSpacing: 1.5
             }
@@ -284,10 +284,10 @@ Item {
                 width: 112
                 height: 64
                 x: 128
-                y: 68
+                y: 66
                 font.weight: Font.Medium
                 text: getE2TargetTemp() //e2 target temp
-                font.pixelSize: 22
+                font.pixelSize: 24
                 horizontalAlignment: TextInput.AlignHCenter
             }
 
@@ -347,7 +347,7 @@ Item {
                 y: 32
                 font.weight: Font.Black
                 text: getBedTemp() //bed temp
-                font.pixelSize: 28
+                font.pixelSize: 26
                 horizontalAlignment: TextInput.AlignHCenter
                 //                font.letterSpacing: 1.5
             }
@@ -356,10 +356,10 @@ Item {
                 width: 112
                 height: 64
                 x: 240
-                y: 68
+                y: 66
                 font.weight: Font.Medium
                 text: getBedTargetTemp() //bed target temp
-                font.pixelSize: 22
+                font.pixelSize: 24
                 horizontalAlignment: TextInput.AlignHCenter
             }
 
@@ -419,7 +419,7 @@ Item {
                 y: 32
                 font.weight: Font.Black
                 text: getBedHeight()
-                font.pixelSize: 28
+                font.pixelSize: 26
                 horizontalAlignment: TextInput.AlignHCenter
             }
         }
