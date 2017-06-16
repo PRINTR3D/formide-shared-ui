@@ -91,6 +91,10 @@ FormideNativeUi {
                                           || data.data.status === "paused") && !initialized){
             initialized = true
             splash.visible = false
+
+            flowRateValue = data.data.flowRate
+            speedMultiplierValue = data.data.speedMultiplier
+            fanSpeedValue = data.data.fanSpeed
         }
     }
 
@@ -359,6 +363,60 @@ FormideNativeUi {
         height: parent.height
         visible: true
         source: "images/splash/splash.jpg"
+    }
+
+    onFanSpeedValueChanged: {
+        fanSpeedValueTimer.restart()
+    }
+
+    // ensure fanSpeedValue is correct
+
+    Timer {
+        id: fanSpeedValueTimer
+
+        interval: 30000
+        repeat: true
+        running: true
+
+        onTriggered: {
+            fanSpeedValue = printerStatus.fanSpeed
+        }
+    }
+
+    onFlowRateValueChanged: {
+        flowRateValueTimer.restart()
+    }
+
+    // ensure flowRateValue is correct
+
+    Timer {
+        id: flowRateValueTimer
+
+        interval: 30000
+        repeat: true
+        running: true
+
+        onTriggered: {
+            flowRateValue = printerStatus.flowRate
+        }
+    }
+
+    onSpeedMultiplierValueChanged: {
+        speedMultiplierValueTimer.restart()
+    }
+
+    // ensure speedMultiplierValue is correct
+
+    Timer {
+        id: speedMultiplierValueTimer
+
+        interval: 30000
+        repeat: true
+        running: true
+
+        onTriggered: {
+            speedMultiplierValue = printerStatus.speedMultiplier
+        }
     }
 
 }

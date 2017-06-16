@@ -47,9 +47,11 @@ Window {
 
     // Printer status
     property var printerStatus
+
     // Information about printer status
     property var flowRateValue: 100
     property var speedMultiplierValue: 100
+    property var fanSpeedValue: 100
 
     // Formide Data
     property var printers: []

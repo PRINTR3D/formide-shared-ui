@@ -10,7 +10,6 @@ import "../../../../lib/formide/formide.js" as Formide
 
 InsertValue {
 
-    property var printerStatus: main.printerStatus
     property var maxFan: 255
 
     insertButtonText: "Change Fan Speed"
@@ -18,9 +17,11 @@ InsertValue {
 
     maxValue: 100
     minValue: 0
-    newValue: printerStatus.fanSpeed
+    newValue: main.fanSpeedValue
 
     onConfirmButton: {
+        main.fanSpeedValue = newValue
+
         if (newValue == "0")
             Formide.printer(printerStatus.port).tune("M107")
         else

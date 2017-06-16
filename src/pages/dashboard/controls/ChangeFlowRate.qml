@@ -11,16 +11,16 @@ import "../../../../lib/formide/formide.js" as Formide
 
 InsertValue {
 
-    property var printerStatus: main.printerStatus
-
     insertButtonText: "Change Flow Rate"
     unit: "%"
 
     maxValue: 500
     minValue: 25
-    newValue: printerStatus.flowRate
+    newValue: main.flowRateValue
 
     onConfirmButton: {
+
+        main.flowRateValue = newValue
 
         Formide.printer(printerStatus.port).tune("M221 S" + newValue)
         pagestack.popPagestack()
