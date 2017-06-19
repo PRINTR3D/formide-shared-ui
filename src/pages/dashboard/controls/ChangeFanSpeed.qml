@@ -22,10 +22,12 @@ InsertValue {
     onConfirmButton: {
         main.fanSpeedValue = newValue
 
+        var fanValue = Math.round((maxFan / 100) * newValue)
+
         if (newValue == "0")
             Formide.printer(printerStatus.port).tune("M107")
         else
-            Formide.printer(printerStatus.port).tune("M106 S" + newValue)
+            Formide.printer(printerStatus.port).tune("M106 S" + fanValue)
 
         pagestack.popPagestack()
     }
