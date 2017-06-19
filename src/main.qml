@@ -43,6 +43,9 @@ FormideNativeUi {
     // Replacing material
     property bool replaced: false
 
+    // Starting print
+    property bool starting: false
+
     // Stopping print
     property bool stopping: false
 
@@ -72,10 +75,18 @@ FormideNativeUi {
     onPrinterStarted: {
         // clear starting print screen once printer has started printing
         pagestack.clearScreenFast()
+        starting = false
     }
 
     onPrinterStopped: {
         stopping = true
+    }
+
+    onDownloadStarted: {
+        // show PrintingSpinner if print is started from cloud
+        if(!starting){
+            pagestack.pushPagestack(Qt.resolvedUrl("utils/PrintingSpinner.qml"))
+        }
     }
 
     onPrinterStatusEvent: {

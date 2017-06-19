@@ -39,6 +39,8 @@ Window {
     signal printerUsbIn
     signal printerUsbOut
 
+    signal downloadStarted
+
     signal printerStatusEvent(var data)
 
     // UI
@@ -830,6 +832,10 @@ Window {
                 }
                 if (data.channel === "printer.disconnected") {
                     printerDisconnected.call()
+                }
+
+                if (data.channel === "cloud.downloadStarted") {
+                    downloadStarted.call()
                 }
 
                 if (data.channel === "printer.status") {
