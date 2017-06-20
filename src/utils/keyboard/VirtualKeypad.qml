@@ -33,6 +33,13 @@ Rectangle {
 
     }
 
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            // stop lock screen being opened again when locked
+        }
+    }
+
 
     /************
           FUNCTIONS

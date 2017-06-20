@@ -43,6 +43,9 @@ FormideNativeUi {
     // Replacing material
     property bool replaced: false
 
+    // Starting print
+    property bool starting: false
+
     // Stopping print
     property bool stopping: false
 
@@ -72,10 +75,18 @@ FormideNativeUi {
     onPrinterStarted: {
         // clear starting print screen once printer has started printing
         pagestack.clearScreenFast()
+        starting = false
     }
 
     onPrinterStopped: {
         stopping = true
+    }
+
+    onDownloadStarted: {
+        // show PrintingSpinner if print is started from cloud
+        if(!starting){
+            pagestack.pushPagestack(Qt.resolvedUrl("utils/PrintingSpinner.qml"))
+        }
     }
 
     onPrinterStatusEvent: {
@@ -91,6 +102,10 @@ FormideNativeUi {
                                           || data.data.status === "paused") && !initialized){
             initialized = true
             splash.visible = false
+
+            flowRateValue = data.data.flowRate
+            speedMultiplierValue = data.data.speedMultiplier
+            fanSpeedValue = data.data.fanSpeed
         }
     }
 
@@ -359,6 +374,60 @@ FormideNativeUi {
         height: parent.height
         visible: true
         source: "images/splash/splash.jpg"
+    }
+
+    onFanSpeedValueChanged: {
+        fanSpeedValueTimer.restart()
+    }
+
+    // ensure fanSpeedValue is correct
+
+    Timer {
+        id: fanSpeedValueTimer
+
+        interval: 30000
+        repeat: true
+        running: true
+
+        onTriggered: {
+            fanSpeedValue = printerStatus.fanSpeed
+        }
+    }
+
+    onFlowRateValueChanged: {
+        flowRateValueTimer.restart()
+    }
+
+    // ensure flowRateValue is correct
+
+    Timer {
+        id: flowRateValueTimer
+
+        interval: 30000
+        repeat: true
+        running: true
+
+        onTriggered: {
+            flowRateValue = printerStatus.flowRate
+        }
+    }
+
+    onSpeedMultiplierValueChanged: {
+        speedMultiplierValueTimer.restart()
+    }
+
+    // ensure speedMultiplierValue is correct
+
+    Timer {
+        id: speedMultiplierValueTimer
+
+        interval: 30000
+        repeat: true
+        running: true
+
+        onTriggered: {
+            speedMultiplierValue = printerStatus.speedMultiplier
+        }
     }
 
 }

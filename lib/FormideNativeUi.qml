@@ -39,6 +39,8 @@ Window {
     signal printerUsbIn
     signal printerUsbOut
 
+    signal downloadStarted
+
     signal printerStatusEvent(var data)
 
     // UI
@@ -47,9 +49,11 @@ Window {
 
     // Printer status
     property var printerStatus
+
     // Information about printer status
     property var flowRateValue: 100
     property var speedMultiplierValue: 100
+    property var fanSpeedValue: 100
 
     // Formide Data
     property var printers: []
@@ -828,6 +832,10 @@ Window {
                 }
                 if (data.channel === "printer.disconnected") {
                     printerDisconnected.call()
+                }
+
+                if (data.channel === "cloud.downloadStarted") {
+                    downloadStarted.call()
                 }
 
                 if (data.channel === "printer.status") {

@@ -37,7 +37,7 @@ Item {
 
             var temperature = temp.getTemperature()
             var result = (temperature * 100 / targetTemp).toFixed(0)
-            if (result >= 100)
+            if (result >= 99)
                 pagestack.popPagestack()
             return result
         }

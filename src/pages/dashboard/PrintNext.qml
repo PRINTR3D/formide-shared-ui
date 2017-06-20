@@ -47,6 +47,8 @@ Item {
                                                     "../../utils/PrintingError.qml"))
                                 }
                             })
+
+                main.starting = true
                 pagestack.pushPagestack(Qt.resolvedUrl("../../utils/PrintingSpinner.qml"))
             }
             else{
