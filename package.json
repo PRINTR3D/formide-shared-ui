@@ -1,6 +1,6 @@
 {
   "name": "formide-shared-ui",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.1",
   "description": "Shared code base for 3D printer touch screen interfaces",
   "main": "lib/FormideNativeUI.qml",
   "os" : [ "darwin", "linux" ],
