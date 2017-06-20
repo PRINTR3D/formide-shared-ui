@@ -390,7 +390,9 @@ FormideNativeUi {
         running: true
 
         onTriggered: {
-            fanSpeedValue = printerStatus.fanSpeed
+            if(printerStatus){
+                fanSpeedValue = printerStatus.fanSpeed
+            }
         }
     }
 
@@ -408,7 +410,9 @@ FormideNativeUi {
         running: true
 
         onTriggered: {
-            flowRateValue = printerStatus.flowRate
+            if(printerStatus){
+                flowRateValue = printerStatus.flowRate
+            }
         }
     }
 
@@ -426,7 +430,9 @@ FormideNativeUi {
         running: true
 
         onTriggered: {
-            speedMultiplierValue = printerStatus.speedMultiplier
+            if(printerStatus){
+                speedMultiplierValue = printerStatus.speedMultiplier
+            }
         }
     }
 

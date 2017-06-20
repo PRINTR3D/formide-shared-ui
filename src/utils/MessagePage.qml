@@ -35,7 +35,7 @@ Item {
         height:32
         width: 368
         x: 56
-        y: 40
+        y: confirmButton ? 24 : 40
 
         horizontalAlignment: centerText ? TextInput.AlignHCenter: TextInput.AlignLeft
 
@@ -53,7 +53,7 @@ Item {
         width:368
         height:48
         x:56
-        y: 88
+        y: confirmButton ? 72 : 88
 
         font.family: "OpenSans"
         font.pixelSize:16
