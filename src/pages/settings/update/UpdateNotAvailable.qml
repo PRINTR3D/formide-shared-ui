@@ -18,8 +18,6 @@ Item {
     PopupWindow {
         id: wifiMessage
 
-        visible: !checking
-
         firstText: "Your software is up to date" // Text shown as title
 
         centerText: true

@@ -22,8 +22,8 @@ Item {
         if (!main.isConnectedToWifi) {
             checking = false
         } else {
-            main.checkUpdate(function (callback) {
-                if (callback) {
+            main.checkUpdate(function (err, response) {
+                if (response && response.needsUpdate) {
                     main.viewStackActivePage = "Update Available"
                 } else {
                     main.viewStackActivePage = "No Update"
